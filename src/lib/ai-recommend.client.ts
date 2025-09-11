@@ -33,6 +33,9 @@ export interface AIChatResponse {
     total_tokens: number;
   };
   recommendations?: MovieRecommendation[];
+  youtubeVideos?: any[];
+  videoLinks?: any[];
+  type?: string;
 }
 
 export interface AIRecommendHistory {
@@ -248,14 +251,17 @@ export function formatAIResponseWithLinks(
   // 处理粗体
   formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-gray-900 dark:text-gray-100">$1</strong>');
   
-  // 处理数字列表
-  formatted = formatted.replace(/^\d+[.、]\s*(.*)$/gim, '<div class="ml-4 mb-2 text-gray-800 dark:text-gray-200">• $1</div>');
+  // 先处理双换行
+  formatted = formatted.replace(/\n\n/g, '{{DOUBLE_BR}}');
   
-  // 处理普通列表
-  formatted = formatted.replace(/^[-•]\s*(.*)$/gim, '<div class="ml-4 mb-2 text-gray-800 dark:text-gray-200">• $1</div>');
+  // 处理数字列表 - 不添加mb-2间距
+  formatted = formatted.replace(/^\d+[.、]\s*(.*)$/gim, '<div class="ml-4 text-gray-800 dark:text-gray-200">• $1</div>');
   
-  // 处理换行
-  formatted = formatted.replace(/\n\n/g, '<br><br>');
+  // 处理普通列表 - 不添加mb-2间距
+  formatted = formatted.replace(/^[-•]\s*(.*)$/gim, '<div class="ml-4 text-gray-800 dark:text-gray-200">• $1</div>');
+  
+  // 恢复双换行并处理单换行
+  formatted = formatted.replace(/{{DOUBLE_BR}}/g, '<br><br>');
   formatted = formatted.replace(/\n/g, '<br>');
   
   return formatted;
