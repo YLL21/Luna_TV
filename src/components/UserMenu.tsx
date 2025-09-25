@@ -30,6 +30,7 @@ import {
   getCachedWatchingUpdates,
   getDetailedWatchingUpdates,
   subscribeToWatchingUpdatesEvent,
+  checkWatchingUpdates,
   type WatchingUpdate,
 } from '@/lib/watching-updates';
 import {
@@ -256,8 +257,8 @@ export const UserMenu: React.FC = () => {
         console.log('getDetailedWatchingUpdates 返回:', updates);
         setWatchingUpdates(updates);
 
-        // 检测是否有新更新
-        if (updates && ((updates.updatedCount || 0) > 0 || (updates.continueWatchingCount || 0) > 0)) {
+        // 检测是否有新更新（只检查新剧集更新，不包括继续观看）
+        if (updates && (updates.updatedCount || 0) > 0) {
           const lastViewed = parseInt(localStorage.getItem('watchingUpdatesLastViewed') || '0');
           const currentTime = Date.now();
 
@@ -269,8 +270,41 @@ export const UserMenu: React.FC = () => {
         }
       };
 
-      // 初始加载
-      updateWatchingUpdates();
+      // 页面初始化时强制检查一次更新（绕过缓存限制）
+      const forceInitialCheck = async () => {
+        console.log('页面初始化，强制检查更新...');
+        try {
+          // 暂时清除缓存时间，强制检查一次
+          const lastCheckTime = localStorage.getItem('moontv_last_update_check');
+          localStorage.removeItem('moontv_last_update_check');
+
+          // 执行检查
+          await checkWatchingUpdates();
+
+          // 恢复缓存时间（如果之前有的话）
+          if (lastCheckTime) {
+            localStorage.setItem('moontv_last_update_check', lastCheckTime);
+          }
+
+          // 更新UI
+          updateWatchingUpdates();
+          console.log('页面初始化更新检查完成');
+        } catch (error) {
+          console.error('页面初始化检查更新失败:', error);
+          // 失败时仍然尝试从缓存加载
+          updateWatchingUpdates();
+        }
+      };
+
+      // 先尝试从缓存加载，然后强制检查
+      const cachedUpdates = getCachedWatchingUpdates();
+      if (cachedUpdates) {
+        console.log('发现缓存数据，先加载缓存');
+        updateWatchingUpdates();
+      }
+
+      // 无论是否有缓存，都强制检查一次以确保数据最新
+      forceInitialCheck();
 
       // 订阅更新事件
       const unsubscribe = subscribeToWatchingUpdatesEvent(() => {
@@ -309,7 +343,21 @@ export const UserMenu: React.FC = () => {
           console.error('加载播放记录失败:', error);
         }
       };
+
       loadPlayRecords();
+
+      // 监听播放记录更新事件（修复删除记录后页面不立即更新的问题）
+      const handlePlayRecordsUpdate = () => {
+        console.log('UserMenu: 播放记录更新，重新加载继续观看列表');
+        loadPlayRecords();
+      };
+
+      // 监听播放记录更新事件
+      window.addEventListener('playRecordsUpdated', handlePlayRecordsUpdate);
+
+      return () => {
+        window.removeEventListener('playRecordsUpdated', handlePlayRecordsUpdate);
+      };
     }
   }, [authInfo, storageType]);
 
@@ -333,7 +381,21 @@ export const UserMenu: React.FC = () => {
           console.error('加载收藏失败:', error);
         }
       };
+
       loadFavorites();
+
+      // 监听收藏更新事件（修复删除收藏后页面不立即更新的问题）
+      const handleFavoritesUpdate = () => {
+        console.log('UserMenu: 收藏更新，重新加载收藏列表');
+        loadFavorites();
+      };
+
+      // 监听收藏更新事件
+      window.addEventListener('favoritesUpdated', handleFavoritesUpdate);
+
+      return () => {
+        window.removeEventListener('favoritesUpdated', handleFavoritesUpdate);
+      };
     }
   }, [authInfo, storageType]);
 
@@ -372,8 +434,45 @@ export const UserMenu: React.FC = () => {
     }
   }, [isDoubanImageProxyDropdownOpen]);
 
-  const handleMenuClick = () => {
-    setIsOpen(!isOpen);
+  const handleMenuClick = async () => {
+    const willOpen = !isOpen;
+    setIsOpen(willOpen);
+
+    // 如果是打开菜单，立即检查更新（不受缓存限制）
+    if (willOpen && authInfo?.username && storageType !== 'localstorage') {
+      console.log('打开菜单时强制检查更新...');
+      try {
+        // 暂时清除缓存时间，强制检查一次
+        const lastCheckTime = localStorage.getItem('moontv_last_update_check');
+        localStorage.removeItem('moontv_last_update_check');
+
+        // 执行检查
+        await checkWatchingUpdates();
+
+        // 恢复缓存时间（如果之前有的话）
+        if (lastCheckTime) {
+          localStorage.setItem('moontv_last_update_check', lastCheckTime);
+        }
+
+        // 更新UI状态
+        const updates = getDetailedWatchingUpdates();
+        setWatchingUpdates(updates);
+
+        // 重新计算未读状态
+        if (updates && (updates.updatedCount || 0) > 0) {
+          const lastViewed = parseInt(localStorage.getItem('watchingUpdatesLastViewed') || '0');
+          const currentTime = Date.now();
+          const hasNewUpdates = lastViewed === 0 || (currentTime - lastViewed > 60000);
+          setHasUnreadUpdates(hasNewUpdates);
+        } else {
+          setHasUnreadUpdates(false);
+        }
+
+        console.log('菜单打开时的更新检查完成');
+      } catch (error) {
+        console.error('菜单打开时检查更新失败:', error);
+      }
+    }
   };
 
   const handleCloseMenu = () => {
@@ -645,12 +744,11 @@ export const UserMenu: React.FC = () => {
   // 检查是否显示更新提醒按钮（登录用户且非localstorage存储就显示）
   const showWatchingUpdates = authInfo?.username && storageType !== 'localstorage';
 
-  // 检查是否有实际更新（用于显示红点）
-  const hasActualUpdates = watchingUpdates &&
-    ((watchingUpdates.updatedCount || 0) > 0 || (watchingUpdates.continueWatchingCount || 0) > 0);
+  // 检查是否有实际更新（用于显示红点）- 只检查新剧集更新
+  const hasActualUpdates = watchingUpdates && (watchingUpdates.updatedCount || 0) > 0;
 
-  // 计算更新数量
-  const totalUpdates = (watchingUpdates?.updatedCount || 0) + (watchingUpdates?.continueWatchingCount || 0);
+  // 计算更新数量（只统计新剧集更新）
+  const totalUpdates = watchingUpdates?.updatedCount || 0;
 
   // 调试信息
   console.log('UserMenu 更新提醒调试:', {
@@ -1411,12 +1509,6 @@ export const UserMenu: React.FC = () => {
                     {watchingUpdates.updatedCount}部有新集
                   </span>
                 )}
-                {watchingUpdates && watchingUpdates.continueWatchingCount > 0 && (
-                  <span className='inline-flex items-center gap-1'>
-                    <div className='w-2 h-2 bg-blue-500 rounded-full animate-pulse'></div>
-                    {watchingUpdates.continueWatchingCount}部待续看
-                  </span>
-                )}
               </div>
             </div>
             <button
@@ -1434,10 +1526,10 @@ export const UserMenu: React.FC = () => {
             {!hasActualUpdates && (
               <div className='text-center py-8'>
                 <div className='text-gray-500 dark:text-gray-400 text-sm'>
-                  暂无剧集更新
+                  暂无新剧集更新
                 </div>
                 <div className='text-xs text-gray-400 dark:text-gray-500 mt-2'>
-                  系统会定期检查您的观看记录中的剧集是否有新集更新
+                  系统会定期检查您观看过的剧集是否有新集数更新
                 </div>
               </div>
             )}
@@ -1484,56 +1576,12 @@ export const UserMenu: React.FC = () => {
               </div>
             )}
 
-            {/* 继续观看的剧集 */}
-            {watchingUpdates && watchingUpdates.updatedSeries.filter(series => series.hasContinueWatching && !series.hasNewEpisode).length > 0 && (
-              <div>
-                <div className='flex items-center gap-2 mb-4'>
-                  <h4 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    继续观看
-                  </h4>
-                  <div className='flex items-center gap-1'>
-                    <div className='w-2 h-2 bg-blue-500 rounded-full animate-pulse'></div>
-                    <span className='text-sm text-blue-500 font-medium'>
-                      {watchingUpdates.updatedSeries.filter(series => series.hasContinueWatching && !series.hasNewEpisode).length}部剧集待续看
-                    </span>
-                  </div>
-                </div>
-
-                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4'>
-                  {watchingUpdates.updatedSeries
-                    .filter(series => series.hasContinueWatching && !series.hasNewEpisode)
-                    .map((series, index) => (
-                      <div key={`continue-${series.title}_${series.year}_${index}`} className='relative'>
-                        <VideoCard
-                          title={series.title}
-                          poster={series.cover}
-                          year={series.year}
-                          source={series.sourceKey}
-                          source_name={series.source_name}
-                          episodes={series.totalEpisodes}
-                          currentEpisode={series.currentEpisode}
-                          id={series.videoId}
-                          onDelete={undefined}
-                          type={series.totalEpisodes > 1 ? 'tv' : ''}
-                          from="playrecord"
-                        />
-                        {/* 继续观看光环效果 */}
-                        <div className='absolute inset-0 rounded-lg ring-2 ring-blue-400 ring-opacity-50 animate-pulse pointer-events-none z-10'></div>
-                        {/* 继续观看徽章 */}
-                        <div className='absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs px-2 py-1 rounded-full shadow-lg z-50'>
-                          继续看
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              </div>
-            )}
           </div>
 
           {/* 底部说明 */}
           <div className='mt-6 pt-4 border-t border-gray-200 dark:border-gray-700'>
             <p className='text-xs text-gray-500 dark:text-gray-400 text-center'>
-              点击海报即可进入播放页面
+              点击海报即可观看新更新的剧集
             </p>
           </div>
         </div>
