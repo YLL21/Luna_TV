@@ -1357,7 +1357,7 @@ function SearchPageClient() {
         {/* 搜索框区域 - 美化版 */}
         <div className='mb-8'>
           {/* 搜索类型选项卡 - 移动优先响应式设计 */}
-          <div className='max-w-3xl mx-auto mb-6 px-3 sm:px-0'>
+          <div className='mb-6 px-3 sm:px-0'>
             {/* 移动端：可滚动横向布局；桌面端：居中排列 */}
             <div className='overflow-x-auto scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0'>
               <div className='inline-flex sm:flex items-center justify-start sm:justify-center min-w-full sm:min-w-0 bg-gray-100 dark:bg-gray-800/95 rounded-2xl p-2 gap-2 sm:gap-2.5 shadow-xl border-2 border-gray-200/70 dark:border-gray-600/70 backdrop-blur-md'>
@@ -1567,7 +1567,7 @@ function SearchPageClient() {
         </div>
 
         {/* 搜索结果或搜索历史 */}
-        <div className='max-w-[95%] mx-auto mt-12 overflow-visible'>
+        <div className='mt-12 overflow-visible'>
           {showResults ||
            (searchType === 'youtube' && (youtubeMode === 'popular' || youtubeResults)) ||
            (searchType === 'bilibili' && (bilibiliMode === 'popular' || bilibiliResults)) ? (

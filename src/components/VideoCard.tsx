@@ -1563,7 +1563,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
 
         {/* 标题与来源 */}
         <div
-          className='mt-2 text-center'
+          className='mt-2 text-left'
           style={{
             WebkitUserSelect: 'none',
             userSelect: 'none',

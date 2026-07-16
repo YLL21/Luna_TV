@@ -496,7 +496,7 @@ function DoubanPageClient() {
         </div>
 
         {/* 内容展示区域 */}
-        <div className='max-w-[95%] mx-auto mt-8 overflow-visible'>
+        <div className='mt-8 overflow-visible'>
           {/* 条件渲染：虚拟化 vs 传统网格 */}
           {useVirtualization ? (
             <>
