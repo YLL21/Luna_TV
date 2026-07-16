@@ -461,15 +461,15 @@ function HeroBanner({
           );
         })}
 
-        {/* Netflix经典渐变遮罩：底部黑→中间透明→顶部黑 */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
+        {/* 扁平化压字遮罩：仅贴底极淡暗角保证白字可读，上半部无遮罩，消除半透明横条 */}
+        <div className="absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-black/70 to-transparent" />
 
         {/* 左侧额外渐变（增强文字可读性） */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
       </div>
 
       {/* 内容叠加层 - Netflix风格：左下角 */}
-      <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+      <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
         <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6">
           {/* 标题 - Netflix风格：超大字体，有 TMDB logo 就显示图片 */}
           {currentItem.tmdbLogo ? (
