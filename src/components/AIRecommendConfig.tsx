@@ -19,9 +19,9 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
 
   const [aiSettings, setAiSettings] = useState({
     enabled: false,
-    apiUrl: '',  // 🔥 不给默认值
+ apiUrl: '', // 不给默认值
     apiKey: '',
-    model: '',  // 🔥 不给默认值
+ model: '', // 不给默认值
     temperature: 0.7,
     maxTokens: 3000,
     enableOrchestrator: false,
@@ -77,9 +77,9 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
       const keys = config.AIRecommendConfig.tavilyApiKeys || [];
       setAiSettings({
         enabled: config.AIRecommendConfig.enabled ?? false,
-        apiUrl: config.AIRecommendConfig.apiUrl || '',  // 🔥 不给默认值，保持空字符串
+ apiUrl: config.AIRecommendConfig.apiUrl || '', // 不给默认值，保持空字符串
         apiKey: config.AIRecommendConfig.apiKey || '',
-        model: config.AIRecommendConfig.model || '',  // 🔥 不给默认值，保持空字符串
+ model: config.AIRecommendConfig.model || '', // 不给默认值，保持空字符串
         temperature: config.AIRecommendConfig.temperature ?? 0.7,
         maxTokens: config.AIRecommendConfig.maxTokens ?? 3000,
         enableOrchestrator: config.AIRecommendConfig.enableOrchestrator ?? false,
@@ -112,7 +112,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
 
     // 基本验证
     if (settingsToSave.enabled) {
-      // 🔥 检查是否至少配置了一种模式
+ // 检查是否至少配置了一种模式
       const hasAIModel = !!(settingsToSave.apiUrl.trim() && settingsToSave.apiKey.trim() && settingsToSave.model.trim());
       const hasTavilySearch = !!(settingsToSave.enableOrchestrator && settingsToSave.enableWebSearch && keys.length > 0);
 
@@ -284,7 +284,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
             lastUpdated: new Date().toLocaleString('zh-CN')
           };
         });
-        showMessage('success', '✅ 统计数据已更新！请点击下方"保存配置"按钮保存Key到配置文件');
+ showMessage('success', ' 统计数据已更新！请点击下方"保存配置"按钮保存Key到配置文件');
       } else {
         // 全部查询：替换所有数据
         setTavilyUsage({
@@ -292,7 +292,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
           data: mappedResults,
           lastUpdated: new Date().toLocaleString('zh-CN')
         });
-        showMessage('success', '✅ 统计数据已更新！请点击下方"保存配置"按钮保存Key到配置文件');
+ showMessage('success', ' 统计数据已更新！请点击下方"保存配置"按钮保存Key到配置文件');
       }
     } catch (err) {
       console.error('获取 Tavily 用量失败:', err);
@@ -328,7 +328,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
               <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
                 <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
               </svg>
-              <span>🤖 支持OpenAI兼容的API接口，包括ChatGPT、Claude、Gemini等模型</span>
+ <span> 支持OpenAI兼容的API接口，包括ChatGPT、Claude、Gemini等模型</span>
             </div>
             <div className='flex items-center space-x-2 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-3 py-2 rounded-lg'>
               <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
@@ -340,7 +340,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
               <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
                 <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
               </svg>
-              <span>📋 <strong>配置说明</strong>：请至少配置一种模式（AI模型 或 Tavily搜索），或两者都配置以获得最佳体验</span>
+ <span> <strong>配置说明</strong>：请至少配置一种模式（AI模型 或 Tavily搜索），或两者都配置以获得最佳体验</span>
             </div>
           </div>
         </div>
@@ -376,8 +376,8 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
         {aiSettings.enabled && (
           <div className='space-y-4'>
             {/* 配置模式提示 */}
-            <div className='bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 border border-blue-200 dark:border-blue-800 rounded-lg p-4'>
-              <h4 className='text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2'>💡 配置模式选择</h4>
+            <div className='bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800 rounded-lg p-4'>
+ <h4 className='text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2'> 配置模式选择</h4>
               <div className='text-xs text-gray-700 dark:text-gray-300 space-y-1'>
                 <p><strong>模式一：AI模型 + Tavily搜索（推荐）</strong> - 配置以下所有选项，获得最佳体验</p>
                 <p><strong>模式二：仅AI模型</strong> - 配置API地址/密钥/模型，跳过智能协调器</p>
@@ -415,13 +415,13 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
               </div>
               <div className='mt-2 space-y-2'>
                 <p className='text-xs text-gray-500 dark:text-gray-400'>
-                  <span className='text-yellow-600 dark:text-yellow-400'>💡 提示：</span>
+ <span className='text-yellow-600 dark:text-yellow-400'> 提示：</span>
                   大多数OpenAI兼容API需要在地址末尾添加 <code className='bg-gray-100 dark:bg-gray-800 px-1 rounded'>/v1</code>
                 </p>
                 <div className='grid grid-cols-1 gap-1 text-xs'>
                   <details className='text-gray-500 dark:text-gray-400'>
                     <summary className='cursor-pointer hover:text-gray-700 dark:hover:text-gray-300'>
-                      📝 常见API地址示例 (点击展开)
+ 常见API地址示例 (点击展开)
                     </summary>
                     <div className='mt-2 space-y-1 pl-4 border-l-2 border-gray-200 dark:border-gray-700'>
                       {[
@@ -485,7 +485,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
               />
               <div className='mt-2 text-xs text-gray-500 dark:text-gray-400'>
                 <p className='mb-1'>常用模型参考（建议使用支持联网搜索的模型）：</p>
-                <p className='mb-2 text-orange-600 dark:text-orange-400'>⚠️ 请确保填入的模型名称与API提供商的官方文档一致</p>
+ <p className='mb-2 text-orange-600 dark:text-orange-400'> 请确保填入的模型名称与API提供商的官方文档一致</p>
                 <div className='flex flex-wrap gap-2'>
                   {MODEL_EXAMPLES.map((example, index) => (
                     <button
@@ -538,7 +538,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                 />
                 <p className='mt-1 text-xs text-gray-500 dark:text-gray-400'>
                   限制AI回复的最大长度。推荐设置：GPT-5/o1/o3/o4推理模型建议2000+，普通模型500-4000即可。
-                  <span className="text-yellow-600 dark:text-yellow-400">⚠️ 设置过低可能导致空回复！</span>
+ <span className="text-yellow-600 dark:text-yellow-400"> 设置过低可能导致空回复！</span>
                 </p>
               </div>
             </div>
@@ -555,7 +555,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
               <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
                 <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
               </svg>
-              <span>🔥 开启后AI可自动判断是否需要联网搜索获取最新信息（如：最新上映、演员动态等）</span>
+ <span> 开启后AI可自动判断是否需要联网搜索获取最新信息（如：最新上映、演员动态等）</span>
             </div>
           </div>
 
@@ -643,11 +643,11 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                   />
                   <div className='mt-2 space-y-2'>
                     <p className='text-xs text-gray-500 dark:text-gray-400'>
-                      <span className='text-green-600 dark:text-green-400'>💡 提示：</span>
+ <span className='text-green-600 dark:text-green-400'> 提示：</span>
                       多个API Key用<strong>逗号</strong>分隔，系统会自动轮询使用以提高免费额度
                     </p>
                     <div className='text-xs bg-blue-50 dark:bg-blue-900/20 px-3 py-2 rounded-lg space-y-1'>
-                      <p className='font-semibold text-blue-700 dark:text-blue-300'>📊 免费额度说明：</p>
+ <p className='font-semibold text-blue-700 dark:text-blue-300'> 免费额度说明：</p>
                       <ul className='list-disc list-inside space-y-0.5 text-blue-600 dark:text-blue-400'>
                         <li>每个Tavily账号提供 <strong>1000次</strong> 免费API调用/月</li>
                         <li>配置多个Key可实现轮询，失败时自动切换下一个Key</li>
@@ -667,7 +667,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                     </div>
                     {aiSettings.tavilyApiKeys.length > 0 && (
                       <p className='text-xs text-green-600 dark:text-green-400'>
-                        ✅ 已配置 <strong>{aiSettings.tavilyApiKeys.length}</strong> 个API Key
+ 已配置 <strong>{aiSettings.tavilyApiKeys.length}</strong> 个API Key
                         （预计每月 <strong>{aiSettings.tavilyApiKeys.length * 1000}</strong> 次免费调用）
                       </p>
                     )}
@@ -678,7 +678,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                     <div className='mt-4 space-y-3'>
                       <div className='flex items-center justify-between'>
                         <h4 className='text-sm font-semibold text-gray-900 dark:text-gray-100'>
-                          📊 API 用量统计
+ API 用量统计
                         </h4>
                         <div className='flex gap-2'>
                           {aiSettings.tavilyApiKeys.length > 1 && (
@@ -701,7 +701,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                           <svg className='h-4 w-4 flex-shrink-0' fill='currentColor' viewBox='0 0 20 20'>
                             <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
                           </svg>
-                          <span>💡 提示：点击下方每个Key卡片的"查询"按钮可单独查询，或点击上方"查询全部"一次性查询所有Key</span>
+ <span> 提示：点击下方每个Key卡片的"查询"按钮可单独查询，或点击上方"查询全部"一次性查询所有Key</span>
                         </div>
                       )}
 
@@ -720,7 +720,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                           return (
                             <div
                               key={index}
-                              className='bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/10 dark:to-blue-900/10 border border-purple-200 dark:border-purple-800 rounded-lg p-3'
+                              className='bg-purple-50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-800 rounded-lg p-3'
                             >
                               <div className='flex items-center justify-between mb-2'>
                                 <span className='text-xs font-mono text-gray-600 dark:text-gray-400'>
@@ -758,7 +758,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                                         <path fillRule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clipRule='evenodd' />
                                       </svg>
                                       <div className='flex-1'>
-                                        <p className='font-semibold mb-1'>⚠️ Tavily Usage API 暂时不可用</p>
+ <p className='font-semibold mb-1'> Tavily Usage API 暂时不可用</p>
                                         <p className='mb-2'>Tavily 的用量查询接口被 AWS WAF 拦截（HTTP 202 Challenge），这是 Tavily 服务端的配置问题。</p>
                                         <p className='mb-2'>
                                           <strong>临时解决方案：</strong>请访问
@@ -773,7 +773,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
                                           {' '}查看 API 用量
                                         </p>
                                         <p className='text-xs text-orange-600 dark:text-orange-400'>
-                                          💡 提示：搜索功能正常工作，只是用量查询接口有问题。我们会持续关注 Tavily 的修复进度。
+ 提示：搜索功能正常工作，只是用量查询接口有问题。我们会持续关注 Tavily 的修复进度。
                                         </p>
                                       </div>
                                     </div>
@@ -886,7 +886,7 @@ const AIRecommendConfig = ({ config, refreshConfig }: AIRecommendConfigProps) =>
           <svg className='h-4 w-4 mr-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
           </svg>
-          {isLoading ? '保存中...' : hasUnsavedChanges ? '⚠️ 保存配置（有未保存更改）' : '保存配置'}
+ {isLoading ? '保存中...' : hasUnsavedChanges ? ' 保存配置（有未保存更改）' : '保存配置'}
         </button>
       </div>
     </div>

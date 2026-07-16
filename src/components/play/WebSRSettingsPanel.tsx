@@ -55,7 +55,7 @@ export const WebSRSettingsPanel = memo(function WebSRSettingsPanel({
   const [isVisible, setIsVisible] = useState(false);
   const [sliderComparePosition, setSliderComparePosition] = useState(settings.comparePosition);
 
-  // ♿ 检测用户是否偏好减少动画
+ // 检测用户是否偏好减少动画
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -161,7 +161,7 @@ export const WebSRSettingsPanel = memo(function WebSRSettingsPanel({
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      {/* 💎 边缘光晕效果 */}
+ {/* 边缘光晕效果 */}
       <div
         className="absolute inset-0 rounded-[20px] pointer-events-none"
         style={{
@@ -179,7 +179,7 @@ export const WebSRSettingsPanel = memo(function WebSRSettingsPanel({
           }}
         />
         <div className='relative flex items-center gap-3'>
-          <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-600/20 backdrop-blur-sm">
+          <div className="p-2 rounded-xl bg-purple-500/20 backdrop-blur-sm">
             <Sparkles className='w-4 h-4 text-purple-400' />
           </div>
           <div className="flex flex-col">
@@ -190,7 +190,7 @@ export const WebSRSettingsPanel = memo(function WebSRSettingsPanel({
           </div>
           {settings.enabled && (
             <span
-              className='px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-purple-500/20 to-violet-600/20 text-purple-300 border border-purple-500/30 backdrop-blur-sm'
+              className='px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-sm'
               style={{
                 boxShadow: '0 0 12px rgba(139, 92, 246, 0.2)',
               }}
@@ -319,9 +319,9 @@ export const WebSRSettingsPanel = memo(function WebSRSettingsPanel({
               </div>
               <div className='grid grid-cols-3 gap-2'>
                 {[
-                  { value: 'an' as const, label: '动漫', icon: '🎨' },
-                  { value: 'rl' as const, label: '真人', icon: '📷' },
-                  { value: '3d' as const, label: '3D', icon: '🎮' },
+ { value: 'an' as const, label: '动漫', icon: '' },
+ { value: 'rl' as const, label: '真人', icon: '' },
+ { value: '3d' as const, label: '3D', icon: '' },
                 ].map((option) => (
                   <button
                     key={option.value}

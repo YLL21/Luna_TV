@@ -168,7 +168,7 @@ export default function PerformanceMonitor() {
     );
     const trafficPerMinute = Number((totalTraffic / minutes).toFixed(2));
 
-    // 🚀 检测是否为 Cron 任务筛选
+ // 检测是否为 Cron 任务筛选
     const isCron = apiFilter === 'cron';
 
     return {
@@ -180,7 +180,7 @@ export default function PerformanceMonitor() {
     };
   };
 
-  // 🚀 检查是否为 Cron 任务（基于路径判断）
+ // 检查是否为 Cron 任务（基于路径判断）
   const isCronTask = (path: string) => {
     return path.includes('/api/cron') || path.includes('/api/admin/cron');
   };

@@ -594,7 +594,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
 
               <div className='bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3'>
                 <h4 className='text-sm font-semibold text-blue-900 dark:text-blue-300 mb-2'>
-                  💡 功能说明
+ 功能说明
                 </h4>
                 <ul className='text-xs text-blue-800 dark:text-blue-300 space-y-1'>
                   <li>• 通过Cloudflare全球CDN加速视频源API访问</li>
@@ -606,7 +606,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
 
               <div className='bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3'>
                 <h4 className='text-sm font-semibold text-yellow-900 dark:text-yellow-300 mb-2'>
-                  ⚠️ 部署说明
+ 部署说明
                 </h4>
                 <p className='text-xs text-yellow-800 dark:text-yellow-300'>
                   如需自定义部署，请参考：<a href='https://github.com/SzeMeng76/CORSAPI' target='_blank' rel='noopener noreferrer' className='underline hover:text-yellow-600'>CORSAPI项目</a>
@@ -664,7 +664,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
           </div>
           
           <p className='text-xs text-blue-700 dark:text-blue-400 mt-3'>
-            💡 在TVBox中导入此URL即可使用。Base64格式请在URL后添加 &format=base64
+ 在TVBox中导入此URL即可使用。Base64格式请在URL后添加 &format=base64
           </p>
         </div>
 
@@ -686,7 +686,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                   ? 'text-green-900 dark:text-green-300'
                   : 'text-yellow-900 dark:text-yellow-300'
               }`}>
-                诊断结果 {diagnoseResult.pass ? '✓ 通过' : '⚠ 发现问题'}
+ 诊断结果 {diagnoseResult.pass ? ' 通过' : ' 发现问题'}
               </h3>
             </div>
 
@@ -702,9 +702,9 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                 <div className='text-gray-600 dark:text-gray-400'>JSON解析:</div>
                 <div className='text-gray-900 dark:text-gray-100 mb-1 sm:mb-0'>
                   {diagnoseResult.hasJson ? (
-                    <span className='text-green-600 dark:text-green-400'>✓ 成功</span>
+ <span className='text-green-600 dark:text-green-400'> 成功</span>
                   ) : (
-                    <span className='text-red-600 dark:text-red-400'>✗ 失败</span>
+ <span className='text-red-600 dark:text-red-400'> 失败</span>
                   )}
                 </div>
 
@@ -758,9 +758,9 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                     {diagnoseResult.spiderPrivate !== undefined && (
                       <div className='text-xs'>
                         {diagnoseResult.spiderPrivate ? (
-                          <span className='text-yellow-600 dark:text-yellow-400'>⚠ Spider 是私网地址</span>
+ <span className='text-yellow-600 dark:text-yellow-400'> Spider 是私网地址</span>
                         ) : (
-                          <span className='text-green-600 dark:text-green-400'>✓ Spider 是公网地址</span>
+ <span className='text-green-600 dark:text-green-400'> Spider 是公网地址</span>
                         )}
                       </div>
                     )}
@@ -768,12 +768,12 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                       <div className='text-xs'>
                         {diagnoseResult.spiderReachable ? (
                           <span className='text-green-600 dark:text-green-400'>
-                            ✓ Spider 可访问
+ Spider 可访问
                             {diagnoseResult.spiderStatus && ` (状态码: ${diagnoseResult.spiderStatus})`}
                           </span>
                         ) : (
                           <span className='text-red-600 dark:text-red-400'>
-                            ✗ Spider 不可访问
+ Spider 不可访问
                             {diagnoseResult.spiderStatus && ` (状态码: ${diagnoseResult.spiderStatus})`}
                           </span>
                         )}
@@ -782,7 +782,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                     {diagnoseResult.spiderSizeKB !== undefined && (
                       <div className='text-xs'>
                         <span className={diagnoseResult.spiderSizeKB < 50 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}>
-                          {diagnoseResult.spiderSizeKB < 50 ? '⚠' : '✓'} 文件大小: {diagnoseResult.spiderSizeKB}KB
+ {diagnoseResult.spiderSizeKB < 50 ? '' : ''} 文件大小: {diagnoseResult.spiderSizeKB}KB
                         </span>
                       </div>
                     )}
@@ -805,7 +805,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                           <div className='break-all'>• MD5: {(diagnoseResult as any).spider_md5}</div>
                         )}
                         {(diagnoseResult as any).spider_cached !== undefined && (
-                          <div>• 缓存: {(diagnoseResult as any).spider_cached ? '✓ 是' : '✗ 否（实时下载）'}</div>
+ <div>• 缓存: {(diagnoseResult as any).spider_cached ? ' 是' : ' 否（实时下载）'}</div>
                         )}
                         {(diagnoseResult as any).spider_real_size !== undefined && (
                           <div>• 真实大小: {Math.round((diagnoseResult as any).spider_real_size / 1024)}KB</div>
@@ -814,7 +814,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                           <div>• 尝试次数: {(diagnoseResult as any).spider_tried}</div>
                         )}
                         {(diagnoseResult as any).spider_success !== undefined && (
-                          <div>• 状态: {(diagnoseResult as any).spider_success ? '✓ 成功' : '✗ 降级（使用fallback jar）'}</div>
+ <div>• 状态: {(diagnoseResult as any).spider_success ? ' 成功' : ' 降级（使用fallback jar）'}</div>
                         )}
                       </div>
                     </div>
@@ -848,9 +848,9 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
         )}
 
         {/* 自定义 JAR URL 配置 */}
-        <div className='bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-700 rounded-lg p-4'>
+        <div className='bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 rounded-lg p-4'>
           <h3 className='text-sm font-semibold text-purple-900 dark:text-purple-300 mb-2'>
-            🔧 自定义 Spider JAR URL
+ 自定义 Spider JAR URL
           </h3>
           <p className='text-xs text-purple-700 dark:text-purple-300 mb-3'>
             配置自定义 JAR 文件地址（如上传到国内网盘），所有请求将通过本地代理处理
@@ -894,7 +894,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                         ? 'text-green-900 dark:text-green-300'
                         : 'text-red-900 dark:text-red-300'
                     }`}>
-                      {jarTestResult.success ? '✅ 测试成功' : '❌ 测试失败'}
+ {jarTestResult.success ? ' 测试成功' : ' 测试失败'}
                     </p>
                     {jarTestResult.success && (
                       <div className='mt-2 space-y-1 text-xs'>
@@ -911,7 +911,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
                         <div className='flex justify-between'>
                           <span className='text-gray-600 dark:text-gray-400'>代理状态:</span>
                           <span className='font-semibold text-gray-900 dark:text-white'>
-                            {jarTestResult.spiderSuccess === 'true' ? '✅ 成功' : '⚠️ 降级'}
+ {jarTestResult.spiderSuccess === 'true' ? ' 成功' : ' 降级'}
                           </span>
                         </div>
                       </div>
@@ -928,7 +928,7 @@ const TVBoxSecurityConfig = ({ config, refreshConfig }: TVBoxSecurityConfigProps
 
             <div className='bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded p-3'>
               <p className='text-xs text-blue-700 dark:text-blue-300'>
-                💡 <strong>提示：</strong>留空则使用默认 JAR 源。配置后，TVBox 将通过 <code className='bg-blue-100 dark:bg-blue-800 px-1 rounded'>/api/proxy/spider.jar?url=你的URL</code> 访问
+ <strong>提示：</strong>留空则使用默认 JAR 源。配置后，TVBox 将通过 <code className='bg-blue-100 dark:bg-blue-800 px-1 rounded'>/api/proxy/spider.jar?url=你的URL</code> 访问
               </p>
             </div>
           </div>

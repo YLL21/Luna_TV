@@ -100,13 +100,13 @@ export function WatchRoomProvider({ children }: WatchRoomProviderProps) {
 
       if (username !== '游客') {
         // 成功获取用户名
-        console.log('[WatchRoom] ✓ Username loaded:', username);
+ console.log('[WatchRoom] Username loaded:', username);
         setCurrentUserName(username);
         setUserNameLoaded(true);
         if (intervalId) clearInterval(intervalId);
       } else if (checkCount >= maxChecks) {
         // 达到最大检查次数，放弃
-        console.log('[WatchRoom] ✗ Failed to load username after', maxChecks, 'attempts');
+ console.log('[WatchRoom] Failed to load username after', maxChecks, 'attempts');
         setCurrentUserName('游客');
         setUserNameLoaded(true);
         if (intervalId) clearInterval(intervalId);

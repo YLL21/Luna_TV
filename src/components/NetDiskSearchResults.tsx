@@ -20,20 +20,20 @@ interface NetDiskSearchResultsProps {
 }
 
 const CLOUD_TYPES = {
-  baidu: { name: '百度网盘', color: 'bg-blue-500', lightColor: 'bg-blue-500/10 hover:bg-blue-500/20', icon: '📁', domain: 'pan.baidu.com' },
-  aliyun: { name: '阿里云盘', color: 'bg-orange-500', lightColor: 'bg-orange-500/10 hover:bg-orange-500/20', icon: '☁️', domain: 'alipan.com' },
-  quark: { name: '夸克网盘', color: 'bg-purple-500', lightColor: 'bg-purple-500/10 hover:bg-purple-500/20', icon: '⚡', domain: 'pan.quark.cn' },
-  guangya: { name: '光鸭云盘', color: 'bg-amber-500', lightColor: 'bg-amber-500/10 hover:bg-amber-500/20', icon: '🦆', domain: 'guangya.com' },
-  tianyi: { name: '天翼云盘', color: 'bg-red-500', lightColor: 'bg-red-500/10 hover:bg-red-500/20', icon: '📱', domain: 'cloud.189.cn' },
-  uc: { name: 'UC网盘', color: 'bg-green-500', lightColor: 'bg-green-500/10 hover:bg-green-500/20', icon: '🌐', domain: 'drive.uc.cn' },
-  mobile: { name: '移动云盘', color: 'bg-cyan-500', lightColor: 'bg-cyan-500/10 hover:bg-cyan-500/20', icon: '📲', domain: 'caiyun.139.com' },
-  '115': { name: '115网盘', color: 'bg-gray-500', lightColor: 'bg-gray-500/10 hover:bg-gray-500/20', icon: '💾', domain: '115.com' },
-  pikpak: { name: 'PikPak', color: 'bg-pink-500', lightColor: 'bg-pink-500/10 hover:bg-pink-500/20', icon: '📦', domain: 'mypikpak.com' },
-  xunlei: { name: '迅雷网盘', color: 'bg-yellow-500', lightColor: 'bg-yellow-500/10 hover:bg-yellow-500/20', icon: '⚡', domain: 'pan.xunlei.com' },
-  '123': { name: '123网盘', color: 'bg-indigo-500', lightColor: 'bg-indigo-500/10 hover:bg-indigo-500/20', icon: '🔢', domain: '123pan.com' },
-  magnet: { name: '磁力链接', color: 'bg-black', lightColor: 'bg-black/10 hover:bg-black/20', icon: '🧲', domain: 'magnet:' },
-  ed2k: { name: '电驴链接', color: 'bg-teal-500', lightColor: 'bg-teal-500/10 hover:bg-teal-500/20', icon: '🐴', domain: 'ed2k://' },
-  others: { name: '其他', color: 'bg-gray-400', lightColor: 'bg-gray-400/10 hover:bg-gray-400/20', icon: '📄', domain: '' }
+ baidu: { name: '百度网盘', color: 'bg-blue-500', lightColor: 'bg-blue-500/10 hover:bg-blue-500/20', icon: '', domain: 'pan.baidu.com' },
+ aliyun: { name: '阿里云盘', color: 'bg-orange-500', lightColor: 'bg-orange-500/10 hover:bg-orange-500/20', icon: '', domain: 'alipan.com' },
+ quark: { name: '夸克网盘', color: 'bg-purple-500', lightColor: 'bg-purple-500/10 hover:bg-purple-500/20', icon: '', domain: 'pan.quark.cn' },
+ guangya: { name: '光鸭云盘', color: 'bg-amber-500', lightColor: 'bg-amber-500/10 hover:bg-amber-500/20', icon: '', domain: 'guangya.com' },
+ tianyi: { name: '天翼云盘', color: 'bg-red-500', lightColor: 'bg-red-500/10 hover:bg-red-500/20', icon: '', domain: 'cloud.189.cn' },
+ uc: { name: 'UC网盘', color: 'bg-green-500', lightColor: 'bg-green-500/10 hover:bg-green-500/20', icon: '', domain: 'drive.uc.cn' },
+ mobile: { name: '移动云盘', color: 'bg-cyan-500', lightColor: 'bg-cyan-500/10 hover:bg-cyan-500/20', icon: '', domain: 'caiyun.139.com' },
+ '115': { name: '115网盘', color: 'bg-gray-500', lightColor: 'bg-gray-500/10 hover:bg-gray-500/20', icon: '', domain: '115.com' },
+ pikpak: { name: 'PikPak', color: 'bg-pink-500', lightColor: 'bg-pink-500/10 hover:bg-pink-500/20', icon: '', domain: 'mypikpak.com' },
+ xunlei: { name: '迅雷网盘', color: 'bg-yellow-500', lightColor: 'bg-yellow-500/10 hover:bg-yellow-500/20', icon: '', domain: 'pan.xunlei.com' },
+ '123': { name: '123网盘', color: 'bg-indigo-500', lightColor: 'bg-indigo-500/10 hover:bg-indigo-500/20', icon: '', domain: '123pan.com' },
+ magnet: { name: '磁力链接', color: 'bg-black', lightColor: 'bg-black/10 hover:bg-black/20', icon: '', domain: 'magnet:' },
+ ed2k: { name: '电驴链接', color: 'bg-teal-500', lightColor: 'bg-teal-500/10 hover:bg-teal-500/20', icon: '', domain: 'ed2k://' },
+ others: { name: '其他', color: 'bg-gray-400', lightColor: 'bg-gray-400/10 hover:bg-gray-400/20', icon: '', domain: '' }
 };
 
 export default function NetDiskSearchResults({ results, loading, error, total }: NetDiskSearchResultsProps) {
@@ -145,7 +145,7 @@ export default function NetDiskSearchResults({ results, loading, error, total }:
             {/* 用户友好的解决建议 */}
             <div className={`mt-3 p-3 ${isFunctionDisabled ? 'bg-blue-100 dark:bg-blue-800/30' : 'bg-red-100 dark:bg-red-800/30'} rounded-md`}>
               <div className={`text-xs ${isFunctionDisabled ? 'text-blue-600 dark:text-blue-400' : 'text-red-600 dark:text-red-400'}`}>
-                💡 <strong>解决方案：</strong>
+ <strong>解决方案：</strong>
                 {isFunctionDisabled ? (
                   <div className="mt-1">
                     • 联系管理员启用网盘搜索功能<br/>
@@ -207,7 +207,7 @@ export default function NetDiskSearchResults({ results, loading, error, total }:
                 </svg>
                 <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs text-white bg-gray-900 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
                   <div className="text-center">
-                    💡 使用技巧：<br/>
+ 使用技巧：<br/>
                     • 显示全部：点击标签快速跳转<br/>
                     • 仅显示选中：点击标签筛选显示
                   </div>
@@ -283,7 +283,7 @@ export default function NetDiskSearchResults({ results, loading, error, total }:
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
                 </svg>
-                <span>🎯 <strong>快速跳转模式</strong> - 点击任意标签快速滚动到对应网盘类型</span>
+ <span> <strong>快速跳转模式</strong> - 点击任意标签快速滚动到对应网盘类型</span>
               </div>
             ) : (
               <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -292,14 +292,14 @@ export default function NetDiskSearchResults({ results, loading, error, total }:
                     <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                     </svg>
-                    <span>📌 点击上方标签选择要显示的网盘类型，或切换到"显示全部"模式使用快速跳转</span>
+ <span> 点击上方标签选择要显示的网盘类型，或切换到"显示全部"模式使用快速跳转</span>
                   </div>
                 ) : (
                   <div className="flex items-center space-x-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-3 py-2 rounded-lg">
                     <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span>✅ 已选择 <strong>{selectedFilter.length}</strong> 种网盘类型，点击标签可取消选择</span>
+ <span> 已选择 <strong>{selectedFilter.length}</strong> 种网盘类型，点击标签可取消选择</span>
                   </div>
                 )}
               </div>

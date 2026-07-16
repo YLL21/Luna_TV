@@ -38,7 +38,7 @@ import { TelegramWelcomeModal } from '@/components/TelegramWelcomeModal';
 import VideoCard from '@/components/VideoCard';
 import { ConfirmDialog } from '@/components/ConfirmDialog';
 
-// 🎯 优化：合并状态管理 - 使用 useReducer 减少重渲染
+// 优化：合并状态管理 - 使用 useReducer 减少重渲染
 interface HomeState {
   activeTab: 'home' | 'favorites' | 'reminders';
   hotMovies: DoubanItem[];
@@ -144,10 +144,10 @@ function HomeClient({ initialConfig }: {
     showHotShortDramas: boolean;
   }
 }) {
-  // 🎯 优化：使用 useTransition 让 tab 切换不阻塞 UI
+ // 优化：使用 useTransition 让 tab 切换不阻塞 UI
   const [isPending, startTransition] = useTransition();
 
-  // 🔥 所有 useState 必须在最前面，保证 Hook 调用顺序稳定
+ // 所有 useState 必须在最前面，保证 Hook 调用顺序稳定
   const [favoriteFilter, setFavoriteFilter] = useState<'all' | 'movie' | 'tv' | 'anime' | 'shortdrama' | 'live' | 'variety'>('all');
   const [favoriteSortBy, setFavoriteSortBy] = useState<'recent' | 'title' | 'rating'>('recent');
   const [upcomingFilter, setUpcomingFilter] = useState<'all' | 'movie' | 'tv'>('all');
@@ -156,7 +156,7 @@ function HomeClient({ initialConfig }: {
   const [showClearRemindersDialog, setShowClearRemindersDialog] = useState(false);
   const [requireClearConfirmation, setRequireClearConfirmation] = useState(false);
 
-  // 🔥 使用 useMemo 确保 config 对象引用稳定，避免 hooks 数量变化
+ // 使用 useMemo 确保 config 对象引用稳定，避免 hooks 数量变化
   const stableConfig = useMemo(() => ({
     showHotMovies: initialConfig.showHotMovies,
     showHotTvShows: initialConfig.showHotTvShows,
@@ -171,8 +171,8 @@ function HomeClient({ initialConfig }: {
     initialConfig.showHotShortDramas,
   ]);
 
-  // 🎯 优化：使用 useReducer 合并本地状态
-  // 🔥 使用服务端传来的配置作为初始值
+ // 优化：使用 useReducer 合并本地状态
+ // 使用服务端传来的配置作为初始值
   const [state, dispatch] = useReducer(homeReducer, {
     activeTab: 'home',
     hotMovies: [],
@@ -185,11 +185,11 @@ function HomeClient({ initialConfig }: {
     loading: true,
     username: '',
     showAnnouncement: false,
-    homePageConfig: initialConfig, // 🔥 使用服务端配置
+ homePageConfig: initialConfig, // 使用服务端配置
   });
 
-  // 🚀 TanStack Query - 首页数据查询（替代 GlobalCache）
-  // 🔥 传入配置，只加载需要显示的模块数据
+ // TanStack Query - 首页数据查询（替代 GlobalCache）
+ // 传入配置，只加载需要显示的模块数据
   const {
     data: homeData,
     isLoading: homeLoading,
@@ -208,8 +208,8 @@ function HomeClient({ initialConfig }: {
     showAnnouncement,
   } = state;
 
-  // 🚀 从 TanStack Query 获取首页数据，本地状态作为详情增强
-  // 🔥 保留上一次的数据，避免 refetch 时数据暂时为空导致 HeroBanner 卸载
+ // 从 TanStack Query 获取首页数据，本地状态作为详情增强
+ // 保留上一次的数据，避免 refetch 时数据暂时为空导致 HeroBanner 卸载
   const prevHotMoviesRef = useRef<any[]>([]);
   const hotMovies = useMemo(() => {
     const cached = homeData?.hotMovies || [];
@@ -300,7 +300,7 @@ function HomeClient({ initialConfig }: {
 
   const bangumiCalendarData = Array.isArray(homeData?.bangumiCalendar) ? homeData.bangumiCalendar : [];
 
-  // 🚀 Memoize HeroBanner items to prevent unnecessary re-renders
+ // Memoize HeroBanner items to prevent unnecessary re-renders
   // HeroBanner uses React.memo, but items array is recreated on every render
   // This causes memo to fail shallow comparison and re-render unnecessarily
   const heroBannerItems = useMemo(() => [
@@ -358,7 +358,7 @@ function HomeClient({ initialConfig }: {
     }))
   ], [hotMovies, hotTvShows, hotVarietyShows, hotAnime]);
 
-  // 🚀 Fetch TMDB logos for hero banner items
+ // Fetch TMDB logos for hero banner items
   const tmdbLogos = useTMDBLogos(
     heroBannerItems.map(item => ({
       title: item.title,
@@ -367,7 +367,7 @@ function HomeClient({ initialConfig }: {
     }))
   );
 
-  // 🚀 Merge TMDB logos into hero banner items
+ // Merge TMDB logos into hero banner items
   const heroBannerItemsWithLogos = useMemo(() =>
     heroBannerItems.map(item => ({
       ...item,
@@ -376,23 +376,23 @@ function HomeClient({ initialConfig }: {
     [heroBannerItems, tmdbLogos]
   );
 
-  // 🚀 Memoize enableVideo to prevent HeroBanner remount
+ // Memoize enableVideo to prevent HeroBanner remount
   // Reading window.RUNTIME_CONFIG on every render can cause props to change
   const enableVideo = useMemo(() => {
     if (typeof window === 'undefined') return true; // SSR默认启用
     return !(window as any).RUNTIME_CONFIG?.DISABLE_HERO_TRAILER;
   }, []); // Empty deps - only read once on mount
 
-  // 🚀 计算 loading 状态：使用 TanStack Query 的 isLoading 状态
+ // 计算 loading 状态：使用 TanStack Query 的 isLoading 状态
   // isLoading = 任何查询正在首次加载（没有缓存数据）
   // 这确保用户看到的是完整加载好的页面，而不是部分内容逐渐出现
   // 参考 TanStack Query 官方文档 useQueries combine 示例
   const loading = homeLoading;
 
-  // 🚀 Web Worker引用
+ // Web Worker引用
   const workerRef = useRef<Worker | null>(null);
 
-  // 🎯 优化：缓存问候语计算
+ // 优化：缓存问候语计算
   const greeting = useMemo(() => {
     const hour = new Date().getHours();
     if (hour < 12) return '早上好';
@@ -400,7 +400,7 @@ function HomeClient({ initialConfig }: {
     return '晚上好';
   }, []); // 空依赖数组，只在组件挂载时计算一次
 
-  // 🎯 优化：缓存今日番剧计算
+ // 优化：缓存今日番剧计算
   const todayAnimes = useMemo(() => {
     const today = new Date();
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -411,7 +411,7 @@ function HomeClient({ initialConfig }: {
     )?.items || [];
   }, [bangumiCalendarData]); // 依赖bangumiCalendarData，数据变化时重新计算
 
-  // 🎯 优化：缓存今天的日期（用于上映日期计算）
+ // 优化：缓存今天的日期（用于上映日期计算）
   const today = useMemo(() => {
     // 使用 Asia/Shanghai 时区，返回 YYYY-MM-DD 格式字符串（与 watching-updates.ts 保持一致）
     const dateStr = new Date().toLocaleDateString('zh-CN', {
@@ -450,10 +450,10 @@ function HomeClient({ initialConfig }: {
     }
   }, [announcement]);
 
-  // 🚀 TanStack Query - 使用 useQuery 获取收藏数据（自动缓存，跨页面持久化）
+ // TanStack Query - 使用 useQuery 获取收藏数据（自动缓存，跨页面持久化）
   const { data: allFavorites = {} } = useQuery(allFavoritesOptions());
 
-  // 🚀 TanStack Query - 追番更新后台检查（30分钟自动刷新）
+ // TanStack Query - 追番更新后台检查（30分钟自动刷新）
   // 在主页启用，让 query 保持 active 状态，refetchInterval 才能工作
   const authInfo = getAuthInfoFromBrowserCookie();
   const storageType = typeof window !== 'undefined' ? localStorage.getItem('storageType') : null;
@@ -462,10 +462,10 @@ function HomeClient({ initialConfig }: {
     enabled: showWatchingUpdates, // 只在登录且非 localStorage 模式时启用
   });
 
-  // 🚀 TanStack Query - 使用 useQuery 获取播放记录（自动缓存，跨页面持久化）
+ // TanStack Query - 使用 useQuery 获取播放记录（自动缓存，跨页面持久化）
   const { data: allPlayRecords = {} } = useQuery(allPlayRecordsOptions());
 
-  // 🚀 TanStack Query - 使用 useQuery 获取提醒数据（自动缓存，跨页面持久化）
+ // TanStack Query - 使用 useQuery 获取提醒数据（自动缓存，跨页面持久化）
   const { data: allReminders = {} } = useQuery(allRemindersOptions());
 
   // 收藏夹数据
@@ -484,7 +484,7 @@ function HomeClient({ initialConfig }: {
     remarks?: string;
   };
 
-  // 🚀 TanStack Query - 使用 useMemo 计算收藏列表（自动响应数据变化）
+ // TanStack Query - 使用 useMemo 计算收藏列表（自动响应数据变化）
   const favoriteItems = useMemo(() => {
     // 根据保存时间排序（从近到远）
     return Object.entries(allFavorites)
@@ -516,7 +516,7 @@ function HomeClient({ initialConfig }: {
       });
   }, [allFavorites, allPlayRecords]);
 
-  // 🚀 TanStack Query - 使用 useMemo 计算提醒列表（自动响应数据变化）
+ // TanStack Query - 使用 useMemo 计算提醒列表（自动响应数据变化）
   const reminderItems = useMemo(() => {
     // 根据保存时间排序（从近到远）
     return Object.entries(allReminders)
@@ -543,7 +543,7 @@ function HomeClient({ initialConfig }: {
       });
   }, [allReminders]);
 
-  // 🎯 优化：缓存收藏夹统计信息计算
+ // 优化：缓存收藏夹统计信息计算
   const favoriteStats = useMemo(() => {
     if (favoriteItems.length === 0) return null;
 
@@ -586,16 +586,16 @@ function HomeClient({ initialConfig }: {
     // 清除可能缓存了空数据的短剧推荐缓存
     clearRecommendsCache().catch(console.error);
 
-    // 🔥 配置已经从服务端传入，不需要客户端再次获取
+ // 配置已经从服务端传入，不需要客户端再次获取
 
-    // 🚀 TanStack Query 会自动加载数据，无需手动调用
+ // TanStack Query 会自动加载数据，无需手动调用
 
-    // 🚀 清理Web Worker
+ // 清理Web Worker
     return () => {
       if (workerRef.current) {
         workerRef.current.terminate();
         workerRef.current = null;
-        console.log('📅 [Main] Web Worker已清理');
+ console.log(' [Main] Web Worker已清理');
       }
     };
   }, []);
@@ -608,8 +608,8 @@ function HomeClient({ initialConfig }: {
     }
   }, [homeData, homeLoading, refetchHomeData]);
 
-  // 🚀 当 GlobalCache 数据加载完成后，延迟加载详情数据
-  // 🔥 只加载显示模块的详情，节省带宽和性能
+ // 当 GlobalCache 数据加载完成后，延迟加载详情数据
+ // 只加载显示模块的详情，节省带宽和性能
   useEffect(() => {
     if (!homeData) return;
 
@@ -727,7 +727,7 @@ function HomeClient({ initialConfig }: {
       }, 3000);
     }
 
-    // 🔄 异步加载即将上映数据
+ // 异步加载即将上映数据
     fetch('/api/release-calendar?limit=100')
       .then(res => {
         if (!res.ok) {
@@ -739,7 +739,7 @@ function HomeClient({ initialConfig }: {
       .then(upcomingData => {
         if (upcomingData?.items) {
           const releases = upcomingData.items;
-          console.log('📅 获取到的即将上映数据:', releases.length, '条');
+ console.log(' 获取到的即将上映数据:', releases.length, '条');
 
           // 初始化Web Worker
           if (!workerRef.current && typeof window !== 'undefined' && window.Worker) {
@@ -750,21 +750,21 @@ function HomeClient({ initialConfig }: {
                 const { selectedItems, stats, error } = e.data;
 
                 if (error) {
-                  console.error('📅 [Worker] 处理失败:', error);
+ console.error(' [Worker] 处理失败:', error);
                   dispatch({ type: 'SET_UPCOMING_RELEASES', payload: [] });
                   return;
                 }
 
-                console.log('📅 [Main] Worker处理完成，分配结果:', stats);
+ console.log(' [Main] Worker处理完成，分配结果:', stats);
                 dispatch({ type: 'SET_UPCOMING_RELEASES', payload: selectedItems });
               };
 
               workerRef.current.onerror = (error) => {
-                console.error('📅 [Worker] 错误:', error);
+ console.error(' [Worker] 错误:', error);
                 dispatch({ type: 'SET_UPCOMING_RELEASES', payload: [] });
               };
             } catch (error) {
-              console.error('📅 [Worker] 初始化失败:', error);
+ console.error(' [Worker] 初始化失败:', error);
               dispatch({ type: 'SET_UPCOMING_RELEASES', payload: [] });
             }
           }
@@ -784,7 +784,7 @@ function HomeClient({ initialConfig }: {
               today: todayStr,
             });
           } else {
-            console.warn('📅 Web Worker不可用，跳过即将上映数据处理');
+ console.warn(' Web Worker不可用，跳过即将上映数据处理');
             dispatch({ type: 'SET_UPCOMING_RELEASES', payload: [] });
           }
         }
@@ -795,11 +795,11 @@ function HomeClient({ initialConfig }: {
       });
   }, [homeData, state.homePageConfig]);
 
-  // 🚀 TanStack Query - 使用 useMutation 管理清空收藏操作
+ // TanStack Query - 使用 useMutation 管理清空收藏操作
   // 特性：乐观更新（立即清空 UI）+ 错误回滚（失败时恢复数据）
   const clearFavoritesMutation = useClearFavoritesMutation();
 
-  // 🚀 TanStack Query - 使用 useMutation 管理清空提醒操作
+ // TanStack Query - 使用 useMutation 管理清空提醒操作
   const clearRemindersMutation = useClearRemindersMutation();
 
   const handleCloseAnnouncement = (announcement: string) => {
@@ -807,14 +807,14 @@ function HomeClient({ initialConfig }: {
     localStorage.setItem('hasSeenAnnouncement', announcement); // 记录已查看弹窗
   };
 
-  // 🔥 Show cinematic loading screen while data is being fetched
+ // Show cinematic loading screen while data is being fetched
   // This ensures users see the beautiful loading animation instead of skeleton screens
-  // 🔥 Use overlay instead of unmounting to prevent component remount issues
+ // Use overlay instead of unmounting to prevent component remount issues
   const showCinematicLoading = loading;
 
   return (
     <PageLayout>
-      {/* 🔥 Cinematic loading overlay - doesn't unmount content */}
+ {/* Cinematic loading overlay - doesn't unmount content */}
       {showCinematicLoading && (
         <div className="fixed inset-0 z-50">
           <CinematicLoadingFallback />
@@ -826,10 +826,10 @@ function HomeClient({ initialConfig }: {
 
       <div className='overflow-visible -mt-6 md:mt-0 pb-32 md:pb-safe-bottom'>
         {/* 欢迎横幅 - 现代化精简设计 */}
-        <div className='mb-6 relative overflow-hidden rounded-xl bg-linear-to-r from-blue-500/90 via-purple-500/90 to-pink-500/90 backdrop-blur-sm shadow-xl border border-white/20'>
+        <div className='mb-6 relative overflow-hidden rounded-xl bg-blue-500/90 backdrop-blur-sm shadow-xl border border-white/20'>
           <div className='relative p-4 sm:p-5'>
             {/* 动态渐变背景 */}
-            <div className='absolute inset-0 bg-linear-to-br from-white/5 via-transparent to-black/5'></div>
+            <div className='absolute inset-0 bg-white/5'></div>
 
             <div className='relative z-10 flex items-center justify-between gap-4'>
               <div className='flex-1 min-w-0'>
@@ -843,10 +843,10 @@ function HomeClient({ initialConfig }: {
                       {username}
                     </span>
                   )}
-                  <span className='inline-block animate-wave origin-bottom-right'>👋</span>
+ <span className='inline-block animate-wave origin-bottom-right'></span>
                 </h2>
                 <p className='text-sm text-white/90'>
-                  发现更多精彩影视内容 ✨
+ 发现更多精彩影视内容 
                 </p>
               </div>
 
@@ -900,21 +900,21 @@ function HomeClient({ initialConfig }: {
               {reminderItems.length > 0 && (
                 <div className='mb-4 flex flex-wrap gap-2'>
                   {[
-                    { key: 'all' as const, label: '全部', icon: '📚' },
-                    { key: 'upcoming' as const, label: '即将上映', icon: '⏰' },
-                    { key: 'today' as const, label: '今日上映', icon: '🎉' },
-                    { key: 'released' as const, label: '已上映', icon: '✅' },
+ { key: 'all' as const, label: '全部', icon: '' },
+ { key: 'upcoming' as const, label: '即将上映', icon: '' },
+ { key: 'today' as const, label: '今日上映', icon: '' },
+ { key: 'released' as const, label: '已上映', icon: '' },
                   ].map(({ key, label, icon }) => (
                     <button
                       key={key}
                       onClick={() => setReminderFilter(key)}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                         reminderFilter === key
-                          ? 'bg-linear-to-r from-orange-500 to-red-500 text-white shadow-lg scale-105'
+                          ? 'bg-orange-500 text-white'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                       }`}
                     >
-                      <span className='mr-1'>{icon}</span>
+                      {icon && <span className='mr-1'>{icon}</span>}
                       {label}
                     </button>
                   ))}
@@ -987,7 +987,7 @@ function HomeClient({ initialConfig }: {
                 {reminderItems.length === 0 && (
                   <div className='col-span-full flex flex-col items-center justify-center py-16 px-4'>
                     <div className='mb-6 relative'>
-                      <div className='absolute inset-0 bg-linear-to-r from-orange-300 to-red-300 dark:from-orange-600 dark:to-red-600 opacity-20 blur-3xl rounded-full animate-pulse'></div>
+                      <div className='absolute inset-0 bg-orange-300 dark:bg-orange-600 opacity-20 blur-3xl rounded-full animate-pulse'></div>
                       <svg className='w-32 h-32 relative z-10' viewBox='0 0 200 200' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path d='M100 50 L100 120 M100 50 L130 80'
                           className='stroke-gray-400 dark:stroke-gray-500'
@@ -1013,7 +1013,7 @@ function HomeClient({ initialConfig }: {
                       暂无想看内容
                     </h3>
                     <p className='text-sm text-gray-500 dark:text-gray-400 text-center max-w-xs'>
-                      发现即将上映的内容，点击 🔔 标记想看吧！
+ 发现即将上映的内容，点击 标记想看吧！
                     </p>
                   </div>
                 )}
@@ -1049,7 +1049,7 @@ function HomeClient({ initialConfig }: {
                       if (requireClearConfirmation) {
                         setShowClearFavoritesDialog(true);
                       } else {
-                        // 🚀 使用 mutation.mutate() 清空收藏
+ // 使用 mutation.mutate() 清空收藏
                         // 特性：立即清空 UI（乐观更新），失败时自动回滚
                         clearFavoritesMutation.mutate();
                       }
@@ -1104,24 +1104,24 @@ function HomeClient({ initialConfig }: {
               {favoriteItems.length > 0 && (
                 <div className='mb-4 flex flex-wrap gap-2'>
                   {[
-                    { key: 'all' as const, label: '全部', icon: '📚' },
-                    { key: 'movie' as const, label: '电影', icon: '🎬' },
-                    { key: 'tv' as const, label: '剧集', icon: '📺' },
-                    { key: 'anime' as const, label: '动漫', icon: '🎌' },
-                    { key: 'shortdrama' as const, label: '短剧', icon: '🎭' },
-                    { key: 'live' as const, label: '直播', icon: '📡' },
-                    { key: 'variety' as const, label: '综艺', icon: '🎪' },
+ { key: 'all' as const, label: '全部', icon: '' },
+ { key: 'movie' as const, label: '电影', icon: '' },
+ { key: 'tv' as const, label: '剧集', icon: '' },
+ { key: 'anime' as const, label: '动漫', icon: '' },
+ { key: 'shortdrama' as const, label: '短剧', icon: '' },
+ { key: 'live' as const, label: '直播', icon: '' },
+ { key: 'variety' as const, label: '综艺', icon: '' },
                   ].map(({ key, label, icon }) => (
                     <button
                       key={key}
                       onClick={() => setFavoriteFilter(key)}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                         favoriteFilter === key
-                          ? 'bg-linear-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105'
+                          ? 'bg-blue-500 text-white'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                       }`}
                     >
-                      <span className='mr-1'>{icon}</span>
+                      {icon && <span className='mr-1'>{icon}</span>}
                       {label}
                     </button>
                   ))}
@@ -1254,7 +1254,7 @@ function HomeClient({ initialConfig }: {
                   <div className='col-span-full flex flex-col items-center justify-center py-16 px-4'>
                     {/* SVG 插画 - 空收藏夹 */}
                     <div className='mb-6 relative'>
-                      <div className='absolute inset-0 bg-linear-to-r from-pink-300 to-purple-300 dark:from-pink-600 dark:to-purple-600 opacity-20 blur-3xl rounded-full animate-pulse'></div>
+                      <div className='absolute inset-0 bg-pink-300 dark:bg-pink-600 opacity-20 blur-3xl rounded-full animate-pulse'></div>
                       <svg className='w-32 h-32 relative z-10' viewBox='0 0 200 200' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         {/* 心形主体 */}
                         <path d='M100 170C100 170 30 130 30 80C30 50 50 30 70 30C85 30 95 40 100 50C105 40 115 30 130 30C150 30 170 50 170 80C170 130 100 170 100 170Z'
@@ -1277,7 +1277,7 @@ function HomeClient({ initialConfig }: {
                       收藏夹空空如也
                     </h3>
                     <p className='text-sm text-gray-500 dark:text-gray-400 text-center max-w-xs'>
-                      快去发现喜欢的影视作品，点击 ❤️ 添加到收藏吧！
+ 快去发现喜欢的影视作品，点击 添加到收藏吧！
                     </p>
                   </div>
                 )}
@@ -1292,7 +1292,7 @@ function HomeClient({ initialConfig }: {
                 cancelText="取消"
                 variant="danger"
                 onConfirm={() => {
-                  // 🚀 使用 mutation.mutate() 清空收藏
+ // 使用 mutation.mutate() 清空收藏
                   // 特性：立即清空 UI（乐观更新），失败时自动回滚
                   clearFavoritesMutation.mutate();
                   setShowClearFavoritesDialog(false);
@@ -1322,7 +1322,7 @@ function HomeClient({ initialConfig }: {
 
               {/* 即将上映 */}
               {(() => {
-                console.log('🔍 即将上映 section 渲染检查:', { loading, upcomingReleasesCount: upcomingReleases.length });
+ console.log(' 即将上映 section 渲染检查:', { loading, upcomingReleasesCount: upcomingReleases.length });
                 return null;
               })()}
               {state.homePageConfig.showUpcomingReleases && upcomingReleases.length > 0 && (
@@ -1687,7 +1687,7 @@ function HomeClient({ initialConfig }: {
             </div>
             <button
               onClick={() => handleCloseAnnouncement(announcement)}
-              className='w-full rounded-lg bg-linear-to-r from-green-600 to-green-700 px-4 py-3 text-white font-medium shadow-md hover:shadow-lg hover:from-green-700 hover:to-green-800 dark:from-green-600 dark:to-green-700 dark:hover:from-green-700 dark:hover:to-green-800 transition-all duration-300 transform hover:-translate-y-0.5'
+              className='w-full rounded-lg bg-green-600 px-4 py-3 text-white font-medium shadow-md hover:shadow-lg hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700 transition-all duration-300 transform hover:-translate-y-0.5'
             >
               我知道了
             </button>

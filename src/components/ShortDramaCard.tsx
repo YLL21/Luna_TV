@@ -68,7 +68,7 @@ function ShortDramaCard({
   const source = 'shortdrama';
   const id = drama.id.toString(); // 转换为字符串
 
-  // 🚀 TanStack Query - 获取收藏状态
+ // TanStack Query - 获取收藏状态
   const { data: favoritedStatus } = useIsFavoritedQuery(source, id);
 
   // 同步 Query 结果到本地 state
@@ -122,7 +122,7 @@ function ShortDramaCard({
       }
 
       try {
-        // 🔥 暂时注释掉备用API调用，避免后台日志报错（未配置备用API）
+ // 暂时注释掉备用API调用，避免后台日志报错（未配置备用API）
         // 优先尝试使用备用API（通过剧名获取集数，更快更可靠）
         // const episodeCountResponse = await fetch(
         //   `/api/shortdrama/episode-count?name=${encodeURIComponent(drama.name)}`
@@ -218,7 +218,7 @@ function ShortDramaCard({
     [favorited, source, id, drama.name, drama.cover, realEpisodeCount, toggleFavoriteMutation]
   );
 
-  // 🚀 数据预取 - 在 hover 时预取收藏数据
+ // 数据预取 - 在 hover 时预取收藏数据
   const handlePrefetch = useCallback(() => {
     // 预取收藏数据
     queryClient.prefetchQuery({
@@ -346,7 +346,7 @@ function ShortDramaCard({
 
             {/* 评分 - 只在评分大于0时显示 */}
             {Number(drama.vote_average) > 0 && (
-              <div className="flex items-center rounded-lg bg-linear-to-br from-yellow-400 to-orange-500 px-2 py-1 text-[10px] font-bold text-white shadow-lg backdrop-blur-sm ring-2 ring-white/30 transition-all duration-300 group-hover:scale-105">
+              <div className="flex items-center rounded-lg bg-yellow-400 px-2 py-1 text-[10px] font-bold text-white shadow-lg backdrop-blur-sm ring-2 ring-white/30 transition-all duration-300 group-hover:scale-105">
                 <Star className="h-3 w-3 mr-0.5 fill-current" />
                 {drama.vote_average.toFixed(1)}
               </div>
@@ -407,14 +407,14 @@ function ShortDramaCard({
 
         {/* 信息区域 */}
         <div className="mt-2 space-y-1.5">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-300">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-blue-600 dark:group-hover:bg-blue-400 transition-all duration-300">
             {drama.name}
           </h3>
 
           {/* 演员信息 */}
           {drama.author && (
             <div className="flex items-center gap-1.5 text-xs">
-              <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200/50 dark:border-blue-700/50">
+              <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-200/50 dark:border-blue-700/50">
                 <svg className="w-3 h-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
@@ -424,7 +424,7 @@ function ShortDramaCard({
           )}
 
           <div className="flex items-center gap-1.5 text-xs">
-            <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200/50 dark:border-green-700/50">
+            <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200/50 dark:border-green-700/50">
               <svg className="w-3 h-3 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>

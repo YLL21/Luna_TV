@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function WarningPage() {
   return (
-    <div translate="no" className='min-h-screen bg-linear-to-br from-red-50 to-orange-50 flex items-center justify-center p-4'>
+    <div translate="no" className='min-h-screen bg-red-50 flex items-center justify-center p-4'>
       <div className='max-w-2xl w-full bg-white rounded-2xl shadow-2xl p-4 sm:p-8 border border-red-200'>
         {/* 警告图标 */}
         <div className='flex justify-center mb-4 sm:mb-6'>
@@ -40,7 +40,7 @@ export default function WarningPage() {
         <div className='space-y-4 sm:space-y-6 text-gray-700'>
           <div className='bg-red-50 border-l-4 border-red-500 p-3 sm:p-4 rounded-r-lg'>
             <p className='text-base sm:text-lg font-semibold text-red-800 mb-2'>
-              ⚠️ 安全风险提示
+ 安全风险提示
             </p>
             <p className='text-sm sm:text-base text-red-700'>
               检测到您的站点未配置访问控制，存在潜在的安全风险和法律合规问题。
@@ -73,7 +73,7 @@ export default function WarningPage() {
 
           <div className='bg-yellow-50 border border-yellow-200 rounded-lg p-3 sm:p-4'>
             <h3 className='text-base sm:text-lg font-semibold text-yellow-800 mb-2'>
-              🔒 安全配置建议
+ 安全配置建议
             </h3>
             <p className='text-sm sm:text-base text-yellow-700'>
               请立即配置{' '}

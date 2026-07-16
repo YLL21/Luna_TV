@@ -218,7 +218,7 @@ export function DownloadPanel() {
                       <div
                         className={`h-full rounded-full transition-all duration-300 ${
                           task.status === 'downloading'
-                            ? 'bg-linear-to-r from-blue-500 to-purple-600 animate-pulse'
+                            ? 'bg-blue-500 animate-pulse'
                             : task.status === 'done'
                             ? 'bg-green-500'
                             : task.status === 'error'

@@ -168,11 +168,7 @@ export default function WatchRoomScreenPage() {
   const viewerCount = members.filter(m => !m.isOwner).length;
 
   return (
-    <div translate="no" className="fixed inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-blue-900 dark:to-slate-900">
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-400/10 via-transparent to-transparent dark:from-blue-600/20"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-purple-400/10 via-transparent to-transparent dark:from-purple-600/20"></div>
-
+    <div translate="no" className="fixed inset-0 bg-blue-50 dark:bg-slate-900">
       <div className="relative flex h-full flex-col">
         {/* 新标签页提示 */}
         {isOwner && showNewTabTip && (
@@ -181,7 +177,7 @@ export default function WatchRoomScreenPage() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3 className="mb-1 text-sm font-semibold text-blue-900 dark:text-blue-100">
-                    💡 提示：建议打开新标签页继续浏览
+ 提示：建议打开新标签页继续浏览
                   </h3>
                   <p className="text-sm text-blue-800 dark:text-blue-200/90">
                     本页面用于控制屏幕共享，请保持打开。你可以打开新标签页去选择视频或浏览其他内容。
@@ -403,7 +399,7 @@ export default function WatchRoomScreenPage() {
                     <button
                       onClick={() => startSharing()}
                       disabled={isStarting || isSharing}
-                      className="group flex-1 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-5 py-3.5 font-medium text-white shadow-lg shadow-blue-500/50 transition-all hover:shadow-xl hover:shadow-blue-500/60 disabled:from-gray-400 disabled:to-gray-500 disabled:shadow-none dark:disabled:from-gray-600 dark:disabled:to-gray-600"
+                      className="group flex-1 rounded-xl bg-blue-500 px-5 py-3.5 font-medium text-white shadow-lg shadow-blue-500/50 transition-all hover:shadow-xl hover:shadow-blue-500/60 disabled:bg-gray-400 disabled:shadow-none dark:disabled:bg-gray-600"
                     >
                       <span className="flex items-center justify-center gap-2">
                         {isStarting ? (
@@ -430,7 +426,7 @@ export default function WatchRoomScreenPage() {
                     <button
                       onClick={() => stopSharing(true)}
                       disabled={!isSharing}
-                      className="rounded-xl bg-gradient-to-r from-red-500 to-red-600 px-5 py-3.5 font-medium text-white shadow-lg shadow-red-500/50 transition-all hover:shadow-xl hover:shadow-red-500/60 disabled:from-gray-400 disabled:to-gray-500 disabled:shadow-none dark:disabled:from-gray-600 dark:disabled:to-gray-600"
+                      className="rounded-xl bg-red-500 px-5 py-3.5 font-medium text-white shadow-lg shadow-red-500/50 transition-all hover:shadow-xl hover:shadow-red-500/60 disabled:bg-gray-400 disabled:shadow-none dark:disabled:bg-gray-600"
                     >
                       停止
                     </button>
@@ -456,13 +452,13 @@ export default function WatchRoomScreenPage() {
                     className="flex items-center justify-between rounded-lg bg-gray-50/80 px-4 py-3 backdrop-blur-sm transition-colors hover:bg-gray-100/80 dark:bg-white/5 dark:hover:bg-white/10"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-sm font-medium text-white shadow-lg">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-sm font-medium text-white shadow-lg">
                         {member.name.charAt(0)}
                       </div>
                       <span className="font-medium text-gray-900 dark:text-white">{member.name}</span>
                     </div>
                     {member.isOwner && (
-                      <span className="rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 px-2.5 py-1 text-xs font-medium text-white shadow-lg">
+                      <span className="rounded-full bg-yellow-400 px-2.5 py-1 text-xs font-medium text-white shadow-lg">
                         房主
                       </span>
                     )}
@@ -472,8 +468,8 @@ export default function WatchRoomScreenPage() {
             </div>
 
             {/* 提示 */}
-            <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50/80 to-indigo-50/80 p-4 text-sm text-blue-800 shadow-2xl backdrop-blur-xl dark:border-blue-400/30 dark:from-blue-500/10 dark:to-indigo-500/10 dark:text-blue-200">
-              <div className="mb-1 font-medium">💡 使用建议</div>
+            <div className="rounded-xl border border-blue-200 bg-blue-50/80 p-4 text-sm text-blue-800 shadow-2xl backdrop-blur-xl dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-200">
+ <div className="mb-1 font-medium"> 使用建议</div>
               建议使用桌面版 Chrome / Edge，并优先共享标签页。
             </div>
           </div>

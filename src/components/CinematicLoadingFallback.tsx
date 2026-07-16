@@ -19,10 +19,10 @@ import { Film, Popcorn, Star, Sparkles } from 'lucide-react';
  */
 
 const loadingMessages = [
-  { icon: Film, text: '正在为您准备观影清单...', emoji: '🎬' },
-  { icon: Popcorn, text: '爆米花准备好了吗？', emoji: '🍿' },
+ { icon: Film, text: '正在为您准备观影清单...', emoji: '' },
+ { icon: Popcorn, text: '爆米花准备好了吗？', emoji: '' },
   { icon: Star, text: '发现了数百部精彩影片...', emoji: '⭐' },
-  { icon: Sparkles, text: '正在寻找最适合您的推荐...', emoji: '✨' },
+ { icon: Sparkles, text: '正在寻找最适合您的推荐...', emoji: '' },
 ];
 
 export function CinematicLoadingFallback() {
@@ -65,7 +65,7 @@ export function CinematicLoadingFallback() {
 
   return (
     <div
-      className={`min-h-screen flex items-center justify-center relative overflow-hidden transition-opacity duration-500 bg-gradient-to-b from-gray-900 via-gray-800 to-black ${
+      className={`min-h-screen flex items-center justify-center relative overflow-hidden transition-opacity duration-500 bg-gray-900${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
@@ -78,7 +78,7 @@ export function CinematicLoadingFallback() {
       )}
 
       {/* Gradient overlay layers (like login page) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/40 via-blue-600/30 to-pink-500/40 dark:from-purple-900/50 dark:via-blue-900/40 dark:to-pink-900/50" />
+      <div className="absolute inset-0 bg-purple-600/40 dark:bg-purple-900/50" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
 
       {/* Subtle animated background stars */}
@@ -108,7 +108,7 @@ export function CinematicLoadingFallback() {
 
           {/* Film reel icon with rotation - responsive sizing */}
           <div className="relative flex items-center justify-center">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 flex items-center justify-center animate-spin-gentle backdrop-blur-sm border-2 border-white/10">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-blue-500/20 flex items-center justify-center animate-spin-gentle backdrop-blur-sm border-2 border-white/10">
               {/* Film reel holes (4 corners) - responsive */}
               <div className="absolute w-2 h-2 sm:w-3 sm:h-3 bg-gray-900 rounded-full top-1.5 left-1.5 sm:top-2 sm:left-2" />
               <div className="absolute w-2 h-2 sm:w-3 sm:h-3 bg-gray-900 rounded-full top-1.5 right-1.5 sm:top-2 sm:right-2" />
@@ -123,11 +123,13 @@ export function CinematicLoadingFallback() {
           </div>
         </div>
 
-        {/* Message with emoji - responsive text sizing */}
+        {/* Message - responsive text sizing */}
         <div className="mb-5 sm:mb-6 space-y-2 sm:space-y-3">
-          <div className="text-3xl sm:text-4xl">
-            {currentMessage.emoji}
-          </div>
+          {currentMessage.emoji && (
+            <div className="text-3xl sm:text-4xl">
+              {currentMessage.emoji}
+            </div>
+          )}
           <h2 className="text-lg sm:text-xl font-medium text-white transition-opacity duration-500 leading-relaxed">
             {currentMessage.text}
           </h2>
@@ -143,7 +145,7 @@ export function CinematicLoadingFallback() {
         {/* Subtle tip - responsive padding and text */}
         <div className="mt-6 sm:mt-8 p-2.5 sm:p-3 bg-gray-800/30 rounded-lg border border-gray-700/30 backdrop-blur-sm">
           <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-            💡 快捷键 <kbd className="px-1.5 py-0.5 sm:px-2 bg-gray-700/50 rounded text-xs mx-1">Space</kbd> 播放/暂停
+ 快捷键 <kbd className="px-1.5 py-0.5 sm:px-2 bg-gray-700/50 rounded text-xs mx-1">Space</kbd> 播放/暂停
           </p>
         </div>
       </div>

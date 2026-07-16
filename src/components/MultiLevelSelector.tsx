@@ -432,7 +432,7 @@ const MultiLevelSelector: React.FC<MultiLevelSelectorProps> = ({
 
     const value = values[categoryKey];
 
-    // 🚀 排序始终显示选中的值，不隐藏默认值
+ // 排序始终显示选中的值，不隐藏默认值
     if (categoryKey === 'sort') {
       const option = category.options.find((opt) => opt.value === value);
       return option?.label || category.label;
@@ -449,7 +449,7 @@ const MultiLevelSelector: React.FC<MultiLevelSelectorProps> = ({
   // 检查是否为默认值（用于高亮显示）
   const isDefaultValue = (categoryKey: string) => {
     const value = values[categoryKey];
-    // 🚀 排序永远不视为默认值，始终高亮显示
+ // 排序永远不视为默认值，始终高亮显示
     if (categoryKey === 'sort') {
       return false;
     }

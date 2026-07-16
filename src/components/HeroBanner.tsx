@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useEffect, useState, useRef, useCallback, memo } from 'react';
 import { useAutoplay } from './hooks/useAutoplay';
 import { useSwipeGesture } from './hooks/useSwipeGesture';
-// 🚀 TanStack Query Queries & Mutations
+// TanStack Query Queries & Mutations
 import {
   useRefreshedTrailerUrlsQuery,
   useRefreshTrailerUrlMutation,
@@ -36,7 +36,7 @@ interface HeroBannerProps {
   enableVideo?: boolean; // 是否启用视频自动播放
 }
 
-// 🚀 优化方案6：使用React.memo防止不必要的重渲染
+// 优化方案6：使用React.memo防止不必要的重渲染
 function HeroBanner({
   items,
   autoPlayInterval = 8000, // Netflix风格：更长的停留时间
@@ -58,7 +58,7 @@ function HeroBanner({
   // 记录每个 video 元素的 onError 触发时间（防止同一个 video 的 onError 被多次触发）
   const videoErrorTimesRef = useRef<Record<string, number>>({});
 
-  // 🔥 记录已经请求过的 trailer ID，避免重复请求
+ // 记录已经请求过的 trailer ID，避免重复请求
   const requestedTrailerIdsRef = useRef<Set<string>>(new Set());
 
   // 获取上次强制刷新时间
@@ -91,7 +91,7 @@ function HeroBanner({
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // 🚀 TanStack Query - 刷新后的trailer URL缓存
+ // TanStack Query - 刷新后的trailer URL缓存
   // 替换 useState + localStorage 手动管理
   const { data: refreshedTrailerUrls = {} } = useRefreshedTrailerUrlsQuery();
   const refreshTrailerMutation = useRefreshTrailerUrlMutation();
@@ -126,7 +126,7 @@ function HeroBanner({
     // 其他豆瓣 URL 需要代理
     if (url?.includes('douban') || url?.includes('doubanio')) {
       const proxyUrl = `/api/video-proxy?url=${encodeURIComponent(url)}`;
-      // 🔥 添加 douban_id 参数，确保使用 movie_ 文件名
+ // 添加 douban_id 参数，确保使用 movie_ 文件名
       if (doubanId) {
         return `${proxyUrl}&douban_id=${doubanId}`;
       }
@@ -135,7 +135,7 @@ function HeroBanner({
     return url;
   };
 
-  // 🚀 TanStack Query - 刷新过期的trailer URL
+ // TanStack Query - 刷新过期的trailer URL
   // 替换手动 useCallback + setState + localStorage
   const refreshTrailerUrl = useCallback(async (doubanId: number | string, force = false) => {
     const result = await refreshTrailerMutation.mutateAsync({ doubanId, force });
@@ -229,7 +229,7 @@ function HeroBanner({
   const currentItem = items[currentIndex];
   const backgroundImage = getHDBackdrop(currentItem.backdrop) || currentItem.poster;
 
-  // 🔍 调试日志
+ // 调试日志
   console.log('[HeroBanner] 当前项目:', {
     title: currentItem.title,
     hasBackdrop: !!currentItem.backdrop,
@@ -238,7 +238,7 @@ function HeroBanner({
     enableVideo,
   });
 
-  // 🎯 延迟加载：只预加载当前和相邻的 trailer URL
+ // 延迟加载：只预加载当前和相邻的 trailer URL
   useEffect(() => {
     // 如果禁用了视频，不需要刷新 trailer
     if (!enableVideo) {
@@ -249,7 +249,7 @@ function HeroBanner({
       const RETRY_COOLDOWN = 5 * 60 * 1000; // 5分钟冷却期（服务端错误）
       const NO_TRAILER_COOLDOWN = 24 * 60 * 60 * 1000; // 24小时冷却期（无预告片）
 
-      // 🔥 只预加载当前和后一个（用户通常向后滑动）
+ // 只预加载当前和后一个（用户通常向后滑动）
       const indicesToLoad = [
         currentIndex,                                      // 当前
         (currentIndex + 1) % items.length,                 // 后一个
@@ -261,15 +261,15 @@ function HeroBanner({
 
         const doubanIdStr = item.douban_id.toString();
 
-        // 🔥 如果已经请求过，跳过（避免重复请求）
+ // 如果已经请求过，跳过（避免重复请求）
         if (requestedTrailerIdsRef.current.has(doubanIdStr)) {
           continue;
         }
 
-        // 🔥 从 React Query 缓存中获取最新值
+ // 从 React Query 缓存中获取最新值
         const cachedValue = refreshedTrailerUrls[item.douban_id];
 
-        // 🔥 只在没有缓存时才请求
+ // 只在没有缓存时才请求
         if (!cachedValue) {
           console.log('[HeroBanner] 延迟加载 trailer:', item.title);
           requestedTrailerIdsRef.current.add(doubanIdStr);
@@ -432,7 +432,7 @@ function HeroBanner({
                         clearTrailerMutation.mutate({ doubanId: item.douban_id });
                       }
 
-                      // 🔥 清除请求记录，允许重新请求
+ // 清除请求记录，允许重新请求
                       requestedTrailerIdsRef.current.delete(doubanIdStr);
 
                       // 重新刷新URL（强制刷新，跳过服务端缓存）
@@ -494,7 +494,7 @@ function HeroBanner({
           <div className="flex items-center gap-3 sm:gap-4 text-sm sm:text-base md:text-lg flex-wrap">
             {currentItem.rate && (
               <div className="flex items-center gap-1.5 px-2.5 py-1 bg-yellow-500/90 backdrop-blur-sm rounded">
-                <span className="text-white font-bold">★</span>
+ <span className="text-white font-bold"></span>
                 <span className="text-white font-bold">{currentItem.rate}</span>
               </div>
             )}

@@ -406,7 +406,7 @@ const MobileActionSheet: React.FC<MobileActionSheetProps> = ({
               <div className="flex flex-wrap items-center gap-2">
                 {doubanDetails.rate && parseFloat(doubanDetails.rate) > 0 && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 rounded bg-yellow-400/10 text-yellow-500 text-sm font-semibold">
-                    ★ {doubanDetails.rate}
+ {doubanDetails.rate}
                   </span>
                 )}
                 {doubanDetails.year && (

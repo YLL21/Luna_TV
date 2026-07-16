@@ -161,7 +161,7 @@ const YouTubeConfig = ({ config, refreshConfig }: YouTubeConfigProps) => {
             <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
               <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
             </svg>
-            <span>📺 支持YouTube官方API或演示模式，让用户直接搜索和观看YouTube视频</span>
+ <span> 支持YouTube官方API或演示模式，让用户直接搜索和观看YouTube视频</span>
           </div>
         </div>
 
@@ -236,7 +236,7 @@ const YouTubeConfig = ({ config, refreshConfig }: YouTubeConfigProps) => {
                   placeholder='AIzaSy...'
                 />
                 <div className='mt-2 text-xs text-gray-500 dark:text-gray-400'>
-                  <p className='mb-2 text-blue-600 dark:text-blue-400 font-medium'>💡 获取YouTube API密钥详细步骤：</p>
+ <p className='mb-2 text-blue-600 dark:text-blue-400 font-medium'> 获取YouTube API密钥详细步骤：</p>
                   <div className='space-y-2 pl-4 border-l-2 border-blue-200 dark:border-blue-700'>
                     <p><span className='font-medium text-blue-600 dark:text-blue-400'>1.</span> 访问 <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer" className='text-blue-600 dark:text-blue-400 hover:underline'>Google Cloud Console</a></p>
                     <p><span className='font-medium text-blue-600 dark:text-blue-400'>2.</span> 创建新项目或选择现有项目</p>
@@ -244,18 +244,18 @@ const YouTubeConfig = ({ config, refreshConfig }: YouTubeConfigProps) => {
                     <p><span className='font-medium text-blue-600 dark:text-blue-400'>4.</span> 在"凭据"页面点击"创建凭据" → "API密钥"</p>
                     <p><span className='font-medium text-blue-600 dark:text-blue-400'>5.</span> 复制生成的API密钥并粘贴到上方输入框</p>
                     <div className='mt-2 p-2 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded'>
-                      <p className='text-yellow-700 dark:text-yellow-300 text-xs'>⚠️ <span className='font-medium'>安全提醒：</span></p>
+ <p className='text-yellow-700 dark:text-yellow-300 text-xs'> <span className='font-medium'>安全提醒：</span></p>
                       <p className='text-yellow-700 dark:text-yellow-300 text-xs'>• 建议限制API密钥的IP或域名访问</p>
                       <p className='text-yellow-700 dark:text-yellow-300 text-xs'>• 请勿在公共代码库中暴露密钥</p>
                       <p className='text-yellow-700 dark:text-yellow-300 text-xs'>• 每日免费配额10,000次请求，超出需申请</p>
                     </div>
                     <div className='mt-2 p-2 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded'>
-                      <p className='text-red-700 dark:text-red-300 text-xs'>🚫 <span className='font-medium'>使用限制：</span></p>
+ <p className='text-red-700 dark:text-red-300 text-xs'> <span className='font-medium'>使用限制：</span></p>
                       <p className='text-red-700 dark:text-red-300 text-xs'>• 中国大陆IP无法直接访问YouTube API</p>
                       <p className='text-red-700 dark:text-red-300 text-xs'>• 需要使用海外服务器或代理服务</p>
                     </div>
                     <div className='mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded'>
-                      <p className='text-blue-700 dark:text-blue-300 text-xs'>📊 <span className='font-medium'>流量说明：</span></p>
+ <p className='text-blue-700 dark:text-blue-300 text-xs'> <span className='font-medium'>流量说明：</span></p>
                       <p className='text-blue-700 dark:text-blue-300 text-xs'>• YouTube视频播放<strong>不消耗</strong>您的服务器流量</p>
                       <p className='text-blue-700 dark:text-blue-300 text-xs'>• 视频内容直接从YouTube服务器传输到用户</p>
                       <p className='text-blue-700 dark:text-blue-300 text-xs'>• 您的服务器只提供网页显示，流量消耗很小</p>

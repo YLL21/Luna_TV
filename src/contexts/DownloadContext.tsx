@@ -91,7 +91,7 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
 
       // 输出 Storage Buckets 支持情况
       if (isStorageBucketsSupported()) {
-        console.log('✅ Storage Buckets API enabled for optimized segment storage');
+ console.log(' Storage Buckets API enabled for optimized segment storage');
       }
     }
   }, []);
@@ -131,7 +131,7 @@ export function DownloadProvider({ children }: { children: React.ReactNode }) {
         if (restoredTasks.length > 0) {
           setTasks(restoredTasks);
           // 不自动显示面板，保持用户上次的状态
-          console.log(`✅ 恢复了 ${restoredTasks.length} 个下载任务（面板状态已保留）`);
+ console.log(` 恢复了 ${restoredTasks.length} 个下载任务（面板状态已保留）`);
         }
       } catch (error) {
         console.error('恢复任务失败:', error);

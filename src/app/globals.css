@@ -51,6 +51,15 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
   --color-gray-950: #030712;
+
+  /* 扁平化：圆角统一收敛到 ≤6px (rounded-md) */
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius: 0.25rem;       /* 4px */
+  --radius-md: 0.375rem;   /* 6px — 允许的最大圆角 */
+  --radius-lg: 0.375rem;   /* 8px → 6px */
+  --radius-xl: 0.375rem;   /* 12px → 6px */
+  --radius-2xl: 0.375rem;  /* 16px → 6px */
+  --radius-3xl: 0.375rem;  /* 24px → 6px */
 }
 
 @layer utilities {
@@ -125,16 +134,29 @@ body {
 }
 
 html:not(.dark) body {
-  background: linear-gradient(
-    180deg,
-    #e6f3fb 0%,
-    #eaf3f7 18%,
-    #f7f7f3 38%,
-    #e9ecef 60%,
-    #dbe3ea 80%,
-    #d3dde6 100%
-  );
+  /* 扁平化/苹果化：纯色背景，移除高对比度渐变 */
+  background: #f5f5f7;
   background-attachment: fixed;
+}
+
+/* ============================================
+   扁平化：移除所有装饰性阴影
+   卡片/弹窗/按钮的层次感改由边框与背景对比提供
+   ============================================ */
+@layer utilities {
+  .shadow-sm,
+  .shadow,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  /* 任意值阴影 shadow-[...]（含 hover:/dark: 变体）一并归零 */
+  [class*="shadow-["] {
+    box-shadow: none !important;
+  }
 }
 
 /* 自定义滚动条样式 */

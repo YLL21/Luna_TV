@@ -248,7 +248,7 @@ const DirectYouTubePlayer = ({ className = '' }: DirectYouTubePlayerProps) => {
         {/* 支持的URL格式提示 */}
         {!videoData && (
           <div className="text-xs text-gray-500 dark:text-gray-400 space-y-1">
-            <p>💡 支持的YouTube链接格式：</p>
+ <p> 支持的YouTube链接格式：</p>
             <ul className="pl-4 space-y-1">
               <li>• https://www.youtube.com/watch?v=VIDEO_ID</li>
               <li>• https://youtu.be/VIDEO_ID</li>
@@ -264,7 +264,7 @@ const DirectYouTubePlayer = ({ className = '' }: DirectYouTubePlayerProps) => {
         <div className="space-y-3">
           <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
-              🎬 视频播放器
+ 视频播放器
             </h3>
             <div className="max-w-2xl mx-auto">
               <YouTubeVideoCard video={videoData} />

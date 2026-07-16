@@ -113,7 +113,7 @@ export function DownloadSettingsModal({
                   />
                   <div className='flex-1'>
                     <div className='flex items-center gap-2'>
-                      <span className='text-green-500 font-bold'>✓</span>
+ <span className='text-green-500 font-bold'></span>
                       <span className='font-medium text-gray-900 dark:text-white'>
                         {getStreamModeName('disabled')}
                       </span>
@@ -142,9 +142,9 @@ export function DownloadSettingsModal({
                   <div className='flex-1'>
                     <div className='flex items-center gap-2'>
                       {streamModeSupport.serviceWorker ? (
-                        <span className='text-green-500 font-bold'>✓</span>
+ <span className='text-green-500 font-bold'></span>
                       ) : (
-                        <span className='text-red-500 font-bold'>✗</span>
+ <span className='text-red-500 font-bold'></span>
                       )}
                       <span className={`font-medium ${!streamModeSupport.serviceWorker ? 'text-gray-400 dark:text-gray-500' : 'text-gray-900 dark:text-white'}`}>
                         {getStreamModeName('service-worker')}
@@ -176,9 +176,9 @@ export function DownloadSettingsModal({
                   <div className='flex-1'>
                     <div className='flex items-center gap-2'>
                       {streamModeSupport.fileSystem ? (
-                        <span className='text-green-500 font-bold'>✓</span>
+ <span className='text-green-500 font-bold'></span>
                       ) : (
-                        <span className='text-red-500 font-bold'>✗</span>
+ <span className='text-red-500 font-bold'></span>
                       )}
                       <span className={`font-medium ${!streamModeSupport.fileSystem ? 'text-gray-400 dark:text-gray-500' : 'text-gray-900 dark:text-white'}`}>
                         {getStreamModeName('file-system')}

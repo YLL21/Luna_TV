@@ -329,7 +329,7 @@ export function OIDCAuthConfig({ config, providers = [], onSave, onSaveProviders
               <li className='break-all'><strong>自建 Keycloak</strong>: <span className='text-xs'>https://your-domain/realms/your-realm</span></li>
             </ul>
             <p className='text-xs text-blue-600 dark:text-blue-300 mt-2'>
-              💡 填写 Issuer URL 后点击"自动发现"可自动获取端点配置
+ 填写 Issuer URL 后点击"自动发现"可自动获取端点配置
             </p>
           </div>
         </div>
@@ -711,7 +711,7 @@ function ProviderEditModal({
             />
             <div className='mt-1 text-xs text-gray-500 dark:text-gray-400 space-y-2'>
               <div className='bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded p-2'>
-                <p className='font-semibold text-yellow-800 dark:text-yellow-200'>⚠️ ID 规则说明：</p>
+ <p className='font-semibold text-yellow-800 dark:text-yellow-200'> ID 规则说明：</p>
               </div>
               <div>
                 <strong>已知提供商（显示专属logo）- 必须使用以下固定ID：</strong><br />

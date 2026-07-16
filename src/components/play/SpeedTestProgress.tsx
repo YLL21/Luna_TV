@@ -26,13 +26,13 @@ const SpeedTestProgress = memo(function SpeedTestProgress({
         <div className='h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden'>
           {/* 动态进度条 - Netflix红色 */}
           <div
-            className='h-full bg-gradient-to-r from-red-600 to-red-500 rounded-full transition-all duration-300 ease-out relative overflow-hidden'
+            className='h-full bg-red-600 rounded-full transition-all duration-300 ease-out relative overflow-hidden'
             style={{
               width: `${(progress.current / progress.total) * 100}%`,
             }}
           >
             {/* 闪烁效果 */}
-            <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer'></div>
+            <div className='absolute inset-0 bg-transparent animate-shimmer'></div>
           </div>
         </div>
 

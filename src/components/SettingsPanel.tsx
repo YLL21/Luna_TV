@@ -61,9 +61,9 @@ const doubanImageProxyTypeOptions = [
 ];
 
 const bufferModeOptions = [
-  { value: 'standard' as const, label: '默认模式', description: '标准缓冲设置，适合网络稳定的环境', icon: '🎯', color: 'green' },
-  { value: 'enhanced' as const, label: '增强模式', description: '1.5倍缓冲，适合偶尔卡顿的网络环境', icon: '⚡', color: 'blue' },
-  { value: 'max' as const, label: '强力模式', description: '3倍大缓冲，起播稍慢但播放更流畅', icon: '🚀', color: 'purple' },
+ { value: 'standard' as const, label: '默认模式', description: '标准缓冲设置，适合网络稳定的环境', icon: '', color: 'green' },
+ { value: 'enhanced' as const, label: '增强模式', description: '1.5倍缓冲，适合偶尔卡顿的网络环境', icon: '', color: 'blue' },
+ { value: 'max' as const, label: '强力模式', description: '3倍大缓冲，起播稍慢但播放更流畅', icon: '', color: 'purple' },
 ];
 
 function getThanksInfo(dataSource: string) {
@@ -609,18 +609,18 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                   const isSelected = playerBufferMode === option.value;
                   const colorClasses = {
                     green: {
-                      selected: 'border-transparent bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 ring-2 ring-green-400/60 dark:ring-green-500/50 shadow-[0_0_15px_-3px_rgba(34,197,94,0.4)] dark:shadow-[0_0_15px_-3px_rgba(34,197,94,0.3)]',
-                      icon: 'bg-linear-to-br from-green-100 to-emerald-100 dark:from-green-800/50 dark:to-emerald-800/50',
+                      selected: 'border-transparent bg-green-50 dark:bg-green-900/20 ring-2 ring-green-400/60 dark:ring-green-500/50 shadow-[0_0_15px_-3px_rgba(34,197,94,0.4)] dark:shadow-[0_0_15px_-3px_rgba(34,197,94,0.3)]',
+                      icon: 'bg-green-100 dark:bg-green-800/50',
                       check: 'text-green-500', label: 'text-green-700 dark:text-green-300',
                     },
                     blue: {
-                      selected: 'border-transparent bg-linear-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 ring-2 ring-blue-400/60 dark:ring-blue-500/50 shadow-[0_0_15px_-3px_rgba(59,130,246,0.4)] dark:shadow-[0_0_15px_-3px_rgba(59,130,246,0.3)]',
-                      icon: 'bg-linear-to-br from-blue-100 to-cyan-100 dark:from-blue-800/50 dark:to-cyan-800/50',
+                      selected: 'border-transparent bg-blue-50 dark:bg-blue-900/20 ring-2 ring-blue-400/60 dark:ring-blue-500/50 shadow-[0_0_15px_-3px_rgba(59,130,246,0.4)] dark:shadow-[0_0_15px_-3px_rgba(59,130,246,0.3)]',
+                      icon: 'bg-blue-100 dark:bg-blue-800/50',
                       check: 'text-blue-500', label: 'text-blue-700 dark:text-blue-300',
                     },
                     purple: {
-                      selected: 'border-transparent bg-linear-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 ring-2 ring-purple-400/60 dark:ring-purple-500/50 shadow-[0_0_15px_-3px_rgba(168,85,247,0.4)] dark:shadow-[0_0_15px_-3px_rgba(168,85,247,0.3)]',
-                      icon: 'bg-linear-to-br from-purple-100 to-pink-100 dark:from-purple-800/50 dark:to-pink-800/50',
+                      selected: 'border-transparent bg-purple-50 dark:bg-purple-900/20 ring-2 ring-purple-400/60 dark:ring-purple-500/50 shadow-[0_0_15px_-3px_rgba(168,85,247,0.4)] dark:shadow-[0_0_15px_-3px_rgba(168,85,247,0.3)]',
+                      icon: 'bg-purple-100 dark:bg-purple-800/50',
                       check: 'text-purple-500', label: 'text-purple-700 dark:text-purple-300',
                     },
                   } as const;
@@ -682,7 +682,7 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                 <Toggle checked={requireClearConfirmation} onChange={handleRequireClearConfirmationToggle} />
               </div>
               <div className='text-xs text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800'>
-                💡 这些设置会作为新视频的默认配置。对于已配置的视频，请在播放页面的"跳过设置"中单独调整。
+ 这些设置会作为新视频的默认配置。对于已配置的视频，请在播放页面的"跳过设置"中单独调整。
               </div>
             </div>
 
@@ -749,7 +749,7 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 ${downloadFormat === 'TS' ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'}`}
                 >
                   <div className='flex flex-col items-center gap-2'>
-                    <div className={`text-2xl ${downloadFormat === 'TS' ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>📦</div>
+ <div className={`text-2xl ${downloadFormat === 'TS' ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}></div>
                     <div className='text-center'>
                       <div className={`text-sm font-semibold ${downloadFormat === 'TS' ? 'text-green-700 dark:text-green-300' : 'text-gray-900 dark:text-gray-100'}`}>TS格式</div>
                       <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>推荐，兼容性好</div>
@@ -767,7 +767,7 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 ${downloadFormat === 'MP4' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'}`}
                 >
                   <div className='flex flex-col items-center gap-2'>
-                    <div className={`text-2xl ${downloadFormat === 'MP4' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'}`}>🎬</div>
+ <div className={`text-2xl ${downloadFormat === 'MP4' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'}`}></div>
                     <div className='text-center'>
                       <div className={`text-sm font-semibold ${downloadFormat === 'MP4' ? 'text-blue-700 dark:text-blue-300' : 'text-gray-900 dark:text-gray-100'}`}>MP4格式</div>
                       <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>通用格式</div>
@@ -781,7 +781,7 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                 </button>
               </div>
               <div className='text-xs text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800'>
-                💡 TS格式下载速度快，兼容性好；MP4格式经过转码，体积略小，兼容性更广
+ TS格式下载速度快，兼容性好；MP4格式经过转码，体积略小，兼容性更广
               </div>
             </div>
           </div>

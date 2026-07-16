@@ -241,7 +241,7 @@ const BilibiliVideoCard = ({ video }: BilibiliVideoCardProps) => {
         {/* 播放提示 */}
         {isBangumi && hasBadge && (
           <div className="mt-2 text-xs text-yellow-600 dark:text-yellow-400">
-            ⚠️ 此内容可能需要大会员
+ 此内容可能需要大会员
           </div>
         )}
       </div>

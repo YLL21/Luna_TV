@@ -5,9 +5,9 @@ import { Clock, Trash2 } from 'lucide-react';
 import { useEffect, useState, memo } from 'react';
 
 import type { PlayRecord } from '@/lib/db.client';
-// 🚀 TanStack Query Mutations
+// TanStack Query Mutations
 import { useClearPlayRecordsMutation } from '@/hooks/usePlayRecordsMutations';
-// 🚀 TanStack Query Queries
+// TanStack Query Queries
 import {
   useContinueWatchingQuery,
   useWatchingUpdatesQuery,
@@ -22,20 +22,20 @@ interface ContinueWatchingProps {
   className?: string;
 }
 
-// 🚀 优化方案6：使用React.memo防止不必要的重渲染
+// 优化方案6：使用React.memo防止不必要的重渲染
 function ContinueWatching({ className }: ContinueWatchingProps) {
   const [requireClearConfirmation, setRequireClearConfirmation] = useState(false);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
-  // 🚀 TanStack Query - 播放记录
+ // TanStack Query - 播放记录
   const { data: playRecords = [], isLoading: loading } = useContinueWatchingQuery();
 
-  // 🚀 TanStack Query - 观看更新（仅当有播放记录时才查询）
+ // TanStack Query - 观看更新（仅当有播放记录时才查询）
   const { data: watchingUpdates = null } = useWatchingUpdatesQuery({
     enabled: !loading && playRecords.length > 0
   });
 
-  // 🚀 TanStack Query - 使用 useMutation 管理清空播放记录操作
+ // TanStack Query - 使用 useMutation 管理清空播放记录操作
   const clearPlayRecordsMutation = useClearPlayRecordsMutation();
 
   // 读取清空确认设置
@@ -101,7 +101,7 @@ function ContinueWatching({ className }: ContinueWatchingProps) {
 
   // 处理清空所有记录
   const handleClearAll = () => {
-    // 🚀 使用 mutation.mutate() 清空播放记录
+ // 使用 mutation.mutate() 清空播放记录
     // 特性：立即清空 UI（乐观更新），失败时自动回滚
     clearPlayRecordsMutation.mutate();
     setShowConfirmDialog(false);

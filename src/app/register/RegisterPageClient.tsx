@@ -105,7 +105,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
   };
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4 py-8 sm:py-0 overflow-hidden bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900'>
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4 py-8 sm:py-0 overflow-hidden bg-purple-100 dark:bg-gray-900'>
       {/* Bing 每日壁纸背景 */}
       {bingWallpaper && (
         <div
@@ -115,13 +115,13 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
       )}
 
       {/* 渐变叠加层 */}
-      <div className='absolute inset-0 bg-gradient-to-br from-purple-600/40 via-blue-600/30 to-pink-500/40 dark:from-purple-900/50 dark:via-blue-900/40 dark:to-pink-900/50' />
+      <div className='absolute inset-0 bg-purple-600/40 dark:bg-purple-900/50' />
       <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30' />
 
       <div className='absolute top-3 right-3 sm:top-4 sm:right-4 z-20'>
         <ThemeToggle />
       </div>
-      <div className='relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white/95 via-white/85 to-white/75 dark:from-zinc-900/95 dark:via-zinc-900/85 dark:to-zinc-900/75 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.6)] p-6 sm:p-10 border border-white/50 dark:border-zinc-700/50 animate-fade-in hover:shadow-[0_25px_100px_rgba(0,0,0,0.4)] transition-shadow duration-500'
+      <div className='relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.6)] p-6 sm:p-10 border border-white/50 dark:border-zinc-700/50 animate-fade-in hover:shadow-[0_25px_100px_rgba(0,0,0,0.4)] transition-shadow duration-500'
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
         }}
@@ -135,15 +135,15 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
           }
         `}</style>
         {/* 装饰性光效 */}
-        <div className='absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-3xl animate-pulse' />
-        <div className='absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-3xl animate-pulse' style={{ animationDelay: '1s' }} />
+        <div className='absolute -top-20 -left-20 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl animate-pulse' />
+        <div className='absolute -bottom-20 -right-20 w-40 h-40 bg-purple-400/30 rounded-full blur-3xl animate-pulse' style={{ animationDelay: '1s' }} />
 
         {/* 标题区域 */}
         <div className='text-center mb-6 sm:mb-8'>
-          <div className='inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/50 dark:shadow-blue-500/30'>
+          <div className='inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50 dark:shadow-blue-500/30'>
             <UserPlus className='w-6 h-6 sm:w-8 sm:h-8 text-white' />
           </div>
-          <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 tracking-tight text-3xl sm:text-4xl font-extrabold mb-2 drop-shadow-sm'>
+          <h1 className='text-transparent bg-clip-text bg-blue-600 dark:bg-blue-400 tracking-tight text-3xl sm:text-4xl font-extrabold mb-2 drop-shadow-sm'>
             {siteName}
           </h1>
           <p className='text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium'>创建您的新账户</p>
@@ -251,9 +251,9 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
             disabled={
               !username || !password || !confirmPassword || loading || !!success
             }
-            className='group relative inline-flex w-full justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-lg overflow-hidden'
+            className='group relative inline-flex w-full justify-center items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-lg overflow-hidden'
           >
-            <span className='absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
+            <span className='absolute inset-0 w-full h-full bg-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
             <UserPlus className='h-5 w-5' />
             {loading ? '注册中...' : success ? '注册成功，正在跳转...' : '立即注册'}
           </button>
@@ -265,7 +265,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
             <Link
               href='/login'
               prefetch={true}
-              className='group flex items-center justify-center gap-2 w-full px-6 py-2.5 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800/50 text-blue-700 dark:text-blue-400 text-sm font-semibold hover:from-blue-100 hover:to-indigo-100 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-100'
+              className='group flex items-center justify-center gap-2 w-full px-6 py-2.5 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 text-blue-700 dark:text-blue-400 text-sm font-semibold hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-100'
             >
               <Lock className='w-4 h-4' />
               <span>立即登录</span>

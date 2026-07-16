@@ -205,7 +205,7 @@ export default function ModernNav({ showAIButton = false, onAIButtonClick }: Mod
           <div className='flex items-center justify-between h-16 gap-4'>
             {/* Logo */}
             <FastLink href='/' className='shrink-0'>
-              <div className='text-xl font-bold bg-linear-to-r from-green-600 via-emerald-600 to-teal-600 dark:from-green-400 dark:via-emerald-400 dark:to-teal-400 bg-clip-text text-transparent'>
+              <div className='text-xl font-bold bg-green-600 dark:bg-green-400 bg-clip-text text-transparent'>
                 {siteName}
               </div>
             </FastLink>
@@ -227,7 +227,7 @@ export default function ModernNav({ showAIButton = false, onAIButtonClick }: Mod
                   {/* Active indicator */}
                   {active && (
                     <div
-                      className={`absolute inset-0 bg-linear-to-r ${item.gradient} opacity-10 rounded-full animate-pulse`}
+                      className={`absolute inset-0${item.gradient} opacity-10 rounded-full animate-pulse`}
                     />
                   )}
 
@@ -256,7 +256,7 @@ export default function ModernNav({ showAIButton = false, onAIButtonClick }: Mod
                   {/* Bottom active border */}
                   {active && (
                     <div
-                      className={`absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r ${item.gradient} rounded-full`}
+                      className={`absolute bottom-0 left-0 right-0 h-0.5${item.gradient} rounded-full`}
                     />
                   )}
                 </FastLink>
@@ -264,12 +264,12 @@ export default function ModernNav({ showAIButton = false, onAIButtonClick }: Mod
             })}
             </div>
 
-            {/* Right Side Actions - ✨ AI Button, Theme Toggle & User Menu */}
+ {/* Right Side Actions - AI Button, Theme Toggle & User Menu */}
             <div className='flex items-center gap-2 shrink-0'>
               {showAIButton && onAIButtonClick && (
                 <button
                   onClick={onAIButtonClick}
-                  className='relative p-2 rounded-lg bg-linear-to-br from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 active:scale-95 transition-all duration-200 shadow-lg shadow-blue-500/30 group'
+                  className='relative p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 active:scale-95 transition-all duration-200 shadow-lg shadow-blue-500/30 group'
                   aria-label='AI 推荐'
                 >
                   <Sparkles className='h-5 w-5 group-hover:scale-110 transition-transform duration-300' />
@@ -324,7 +324,7 @@ export default function ModernNav({ showAIButton = false, onAIButtonClick }: Mod
                     <div
                       className={`flex items-center justify-center w-12 h-12 rounded-2xl ${
                         active
-                          ? `bg-linear-to-br ${item.gradient}`
+                          ? item.gradient.split(' ')[0].replace('from-', 'bg-')
                           : 'bg-gray-100 dark:bg-gray-800'
                       }`}
                     >

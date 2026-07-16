@@ -44,7 +44,7 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
               {/* 标题 */}
               <div className='mb-4 shrink-0'>
                 <div className='flex flex-col md:flex-row md:items-center gap-3'>
-                  <h1 className='text-2xl md:text-3xl font-bold tracking-wide text-center md:text-left bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-gray-100 dark:via-gray-200 dark:to-gray-100 bg-clip-text text-transparent'>
+                  <h1 className='text-2xl md:text-3xl font-bold tracking-wide text-center md:text-left bg-gray-900 dark:bg-gray-100 bg-clip-text text-transparent'>
                     {videoTitle || '影片标题'}
                   </h1>
 
@@ -96,7 +96,7 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                         <div className='flex items-center gap-2'>
                           <span className='font-semibold text-gray-700 dark:text-gray-300'>Bangumi评分: </span>
                           <div className='flex items-center group'>
-                            <span className='relative text-transparent bg-clip-text bg-linear-to-r from-pink-600 via-rose-600 to-pink-600 dark:from-pink-400 dark:via-rose-400 dark:to-pink-400 font-bold text-lg transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_2px_8px_rgba(236,72,153,0.5)]'>
+                            <span className='relative text-transparent bg-clip-text bg-pink-600 dark:bg-pink-400 font-bold text-lg transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_2px_8px_rgba(236,72,153,0.5)]'>
                               {bangumiDetails.rating.score}
                             </span>
                             <div className='flex ml-2 gap-0.5'>
@@ -154,14 +154,14 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                       {/* 标签信息 */}
                       <div className='flex flex-wrap gap-2 mt-3'>
                         {bangumiDetails.tags && bangumiDetails.tags.slice(0, 4).map((tag: any, index: number) => (
-                          <span key={index} className='relative group bg-linear-to-r from-blue-500/90 to-indigo-500/90 dark:from-blue-600/90 dark:to-indigo-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-blue-400 to-indigo-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span key={index} className='relative group bg-blue-500/90 dark:bg-blue-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>{tag.name}</span>
                           </span>
                         ))}
                         {bangumiDetails.total_episodes && (
-                          <span className='relative group bg-linear-to-r from-green-500/90 to-emerald-500/90 dark:from-green-600/90 dark:to-emerald-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-green-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span className='relative group bg-green-500/90 dark:bg-green-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-green-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>共{bangumiDetails.total_episodes}话</span>
                           </span>
                         )}
@@ -177,7 +177,7 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                         <div className='flex items-center gap-2'>
                           <span className='font-semibold text-gray-700 dark:text-gray-300'>豆瓣评分: </span>
                           <div className='flex items-center group'>
-                            <span className='relative text-transparent bg-clip-text bg-linear-to-r from-yellow-600 via-amber-600 to-yellow-600 dark:from-yellow-400 dark:via-amber-400 dark:to-yellow-400 font-bold text-lg transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_2px_8px_rgba(251,191,36,0.5)]'>
+                            <span className='relative text-transparent bg-clip-text bg-yellow-600 dark:bg-yellow-400 font-bold text-lg transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_2px_8px_rgba(251,191,36,0.5)]'>
                               {movieDetails.rate}
                             </span>
                             <div className='flex ml-2 gap-0.5'>
@@ -246,32 +246,32 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                       {/* 标签信息 */}
                       <div className='flex flex-wrap gap-2 mt-3'>
                         {movieDetails.countries && movieDetails.countries.slice(0, 2).map((country: string, index: number) => (
-                          <span key={index} className='relative group bg-linear-to-r from-blue-500/90 to-cyan-500/90 dark:from-blue-600/90 dark:to-cyan-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-blue-400 to-cyan-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span key={index} className='relative group bg-blue-500/90 dark:bg-blue-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>{country}</span>
                           </span>
                         ))}
                         {movieDetails.languages && movieDetails.languages.slice(0, 2).map((language: string, index: number) => (
-                          <span key={index} className='relative group bg-linear-to-r from-purple-500/90 to-pink-500/90 dark:from-purple-600/90 dark:to-pink-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-purple-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span key={index} className='relative group bg-purple-500/90 dark:bg-purple-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-purple-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>{language}</span>
                           </span>
                         ))}
                         {movieDetails.episodes && (
-                          <span className='relative group bg-linear-to-r from-green-500/90 to-emerald-500/90 dark:from-green-600/90 dark:to-emerald-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-green-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span className='relative group bg-green-500/90 dark:bg-green-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-green-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>共{movieDetails.episodes}集</span>
                           </span>
                         )}
                         {movieDetails.episode_length && (
-                          <span className='relative group bg-linear-to-r from-orange-500/90 to-amber-500/90 dark:from-orange-600/90 dark:to-amber-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-orange-400 to-amber-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span className='relative group bg-orange-500/90 dark:bg-orange-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-orange-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>单集{movieDetails.episode_length}分钟</span>
                           </span>
                         )}
                         {movieDetails.movie_duration && (
-                          <span className='relative group bg-linear-to-r from-red-500/90 to-rose-500/90 dark:from-red-600/90 dark:to-rose-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 hover:scale-105'>
-                            <span className='absolute inset-0 bg-linear-to-r from-red-400 to-rose-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                          <span className='relative group bg-red-500/90 dark:bg-red-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 hover:scale-105'>
+                            <span className='absolute inset-0 bg-red-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                             <span className='relative'>{movieDetails.movie_duration}分钟</span>
                           </span>
                         )}
@@ -289,16 +289,16 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                     {((detail?.source === 'shortdrama' && detail?.episodes && detail.episodes.length > 0) ||
                       (shortdramaDetails?.episodes && shortdramaDetails.episodes.length > 0)) && (
                       <div className='flex flex-wrap gap-2'>
-                        <span className='relative group bg-linear-to-r from-blue-500/90 to-indigo-500/90 dark:from-blue-600/90 dark:to-indigo-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105'>
-                          <span className='absolute inset-0 bg-linear-to-r from-blue-400 to-indigo-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                        <span className='relative group bg-blue-500/90 dark:bg-blue-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105'>
+                          <span className='absolute inset-0 bg-blue-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                           <span className='relative'>共{(shortdramaDetails?.episodes || detail?.episodes)?.length}集</span>
                         </span>
-                        <span className='relative group bg-linear-to-r from-green-500/90 to-emerald-500/90 dark:from-green-600/90 dark:to-emerald-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105'>
-                          <span className='absolute inset-0 bg-linear-to-r from-green-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                        <span className='relative group bg-green-500/90 dark:bg-green-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300 hover:scale-105'>
+                          <span className='absolute inset-0 bg-green-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                           <span className='relative'>短剧</span>
                         </span>
-                        <span className='relative group bg-linear-to-r from-purple-500/90 to-pink-500/90 dark:from-purple-600/90 dark:to-pink-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105'>
-                          <span className='absolute inset-0 bg-linear-to-r from-purple-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
+                        <span className='relative group bg-purple-500/90 dark:bg-purple-600/90 text-white px-3 py-1 rounded-full text-xs font-medium shadow-md hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105'>
+                          <span className='absolute inset-0 bg-purple-400 rounded-full opacity-0 group-hover:opacity-20 blur transition-opacity duration-300'></span>
                           <span className='relative'>{shortdramaDetails?.year || detail?.year}年</span>
                         </span>
                       </div>
@@ -333,7 +333,7 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                   {/* 演员 */}
                   {shortdramaDetails.metadata.author && (
                     <div className='flex items-start gap-2'>
-                      <span className='text-gray-600 dark:text-gray-400 shrink-0'>🎭 演员:</span>
+ <span className='text-gray-600 dark:text-gray-400 shrink-0'> 演员:</span>
                       <span className='text-gray-800 dark:text-gray-200'>
                         {shortdramaDetails.metadata.author}
                       </span>
@@ -346,7 +346,7 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
               {movieDetails?.celebrities && movieDetails.celebrities.length > 0 && movieDetails.celebrities.some((c: any) => c.avatar) && (
                 <div className='mt-6 border-t border-gray-200 dark:border-gray-700 pt-6'>
                   <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center gap-2'>
-                    <span>🎭</span>
+ <span></span>
                     <span>演员阵容</span>
                   </h3>
                   <div className='flex gap-4 overflow-x-auto pb-4 scrollbar-hide'>
@@ -387,14 +387,14 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
                 <div className='mt-6 border-t border-gray-200 dark:border-gray-700 pt-6'>
                   <div className='flex justify-between items-center mb-4'>
                     <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2'>
-                      <span>🎬</span>
+ <span></span>
                       <span>{selectedCelebrityName} 的作品</span>
                     </h3>
                     <button
                       onClick={onClearCelebrity}
                       className='text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                     >
-                      收起 ✕
+ 收起 
                     </button>
                   </div>
 
@@ -515,7 +515,7 @@ function VideoInfoSection(props: VideoInfoSectionProps) {
               {movieDetails?.recommendations && movieDetails.recommendations.length > 0 && (
                 <div className='mt-6 border-t border-gray-200 dark:border-gray-700 pt-6'>
                   <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center gap-2'>
-                    <span>💡</span>
+ <span></span>
                     <span>喜欢这部{movieDetails.episodes ? '剧' : '电影'}的人也喜欢</span>
                   </h3>
                   <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4'>

@@ -70,7 +70,7 @@ export function TranslationWarningToast() {
 
   return (
     <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-[9999] max-w-md w-full mx-4 animate-slide-down">
-      <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/30 dark:to-orange-900/30 border-2 border-amber-400 dark:border-amber-600 rounded-lg shadow-xl p-4">
+      <div className="bg-amber-50 dark:bg-amber-900/30 border-2 border-amber-400 dark:border-amber-600 rounded-lg shadow-xl p-4">
         {/* 关闭按钮 */}
         <button
           onClick={() => handleDismiss(false)}

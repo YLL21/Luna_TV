@@ -35,7 +35,7 @@ interface ExtendedAIMessage extends AIMessage {
   type?: string;
 }
 
-// ⚡ 优化：记忆化的消息组件
+// 优化：记忆化的消息组件
 interface MessageItemProps {
   message: ExtendedAIMessage;
   index: number;
@@ -64,7 +64,7 @@ const MessageItem = memo(({
       <div
         className={`max-w-[80%] p-3 rounded-xl shadow-sm ${
           message.role === 'user'
-            ? 'bg-linear-to-br from-blue-600 to-blue-700 text-white shadow-blue-500/20'
+            ? 'bg-blue-600 text-white shadow-blue-500/20'
             : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-200/50 dark:border-gray-600/50 shadow-gray-200/50 dark:shadow-gray-900/50'
         } ${message.content === '思考中...' ? 'opacity-70 animate-pulse' : ''}`}
       >
@@ -175,8 +175,8 @@ const MessageItem = memo(({
         <div className="mt-3 space-y-2 max-w-[80%]">
           <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="bg-linear-to-br from-blue-100 to-blue-50 dark:from-blue-900 dark:to-blue-950 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm ring-1 ring-blue-200/50 dark:ring-blue-800/50">
-                🎬 点击搜索
+              <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full text-xs font-semibold shadow-sm ring-1 ring-blue-200/50 dark:ring-blue-800/50">
+ 点击搜索
               </span>
               <span className="font-medium">推荐影片</span>
             </div>
@@ -208,7 +208,7 @@ const MessageItem = memo(({
                       <span className="text-gray-500 dark:text-gray-400 font-normal">({movie.year})</span>
                     )}
                     <span className="ml-auto opacity-0 group-hover:opacity-100 transition-all duration-200 text-blue-600 dark:text-blue-400 text-xs font-medium flex items-center gap-0.5">
-                      🔍 <span>搜索</span>
+ <span>搜索</span>
                     </span>
                   </h4>
                   {movie.genre && (
@@ -230,7 +230,7 @@ const MessageItem = memo(({
           <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 flex items-center justify-between">
             <div className="flex items-center">
               <span className="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 px-2 py-1 rounded-full text-xs font-medium mr-2">
-                📺 点击播放
+ 点击播放
               </span>
               YouTube视频推荐
             </div>
@@ -292,7 +292,7 @@ const MessageItem = memo(({
           <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 flex items-center justify-between">
             <div className="flex items-center">
               <span className="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 px-2 py-1 rounded-full text-xs font-medium mr-2">
-                🔗 链接解析
+ 链接解析
               </span>
               视频链接解析结果
             </div>
@@ -397,12 +397,12 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const isSyncingRef = useRef(false); // 🔥 防止循环更新的标志
+ const isSyncingRef = useRef(false); // 防止循环更新的标志
 
-  // ✨ React 19: useTransition for non-urgent updates (流式聊天不需要useOptimistic)
+ // React 19: useTransition for non-urgent updates (流式聊天不需要useOptimistic)
   const [isPending, startTransition] = useTransition();
 
-  // ⚡ 优化：防抖滚动到底部
+ // 优化：防抖滚动到底部
   const scrollToBottom = useCallback(() => {
     if (scrollTimerRef.current) {
       clearTimeout(scrollTimerRef.current);
@@ -417,7 +417,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     }, 50); // 减少延迟到 50ms 提高响应速度
   }, []);
 
-  // ⚡ 优化：异步保存到 localStorage
+ // 优化：异步保存到 localStorage
   const saveMessagesToStorage = useCallback((messagesToSave: ExtendedAIMessage[]) => {
     if (saveTimerRef.current) {
       clearTimeout(saveTimerRef.current);
@@ -446,7 +446,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
             };
             localStorage.setItem('ai-recommend-messages', JSON.stringify(cache));
 
-            // 🔥 手动派发 storage 事件，同步同一页面内的其他组件实例
+ // 手动派发 storage 事件，同步同一页面内的其他组件实例
             window.dispatchEvent(new StorageEvent('storage', {
               key: 'ai-recommend-messages',
               newValue: JSON.stringify(cache),
@@ -479,7 +479,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
             };
             localStorage.setItem('ai-recommend-messages', JSON.stringify(cache));
 
-            // 🔥 手动派发 storage 事件，同步同一页面内的其他组件实例
+ // 手动派发 storage 事件，同步同一页面内的其他组件实例
             window.dispatchEvent(new StorageEvent('storage', {
               key: 'ai-recommend-messages',
               newValue: JSON.stringify(cache),
@@ -494,7 +494,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     }, 300); // 300ms 防抖延迟
   }, []);
 
-  // ✨ Native dialog control
+ // Native dialog control
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -524,8 +524,8 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
         // 检查缓存是否包含旧格式的欢迎消息（不包含Markdown列表标记）
         const hasOldFormatWelcome = storedMessages.length > 0 &&
           storedMessages[0].role === 'assistant' &&
-          storedMessages[0].content.includes('🎬 影视剧推荐 - 推荐电影') &&
-          !storedMessages[0].content.includes('- 🎬');
+ storedMessages[0].content.includes(' 影视剧推荐 - 推荐电影') &&
+ !storedMessages[0].content.includes('- ');
 
         // 30分钟缓存，但如果是旧格式则强制刷新
         if (now - timestamp < 30 * 60 * 1000 && !hasOldFormatWelcome) {
@@ -546,11 +546,11 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
         ? `想了解《${context.title}》的更多信息吗？我可以帮你查询剧情、演员、评价等。`
         : `你好！我是 **AI 智能助手**，支持以下功能：
 
-- 🎬 **影视剧推荐** - 推荐电影、电视剧、动漫等
-- 🔗 **视频链接解析** - 解析 YouTube 链接并播放
-- 📺 **视频内容搜索** - 搜索相关视频内容
+- **影视剧推荐** - 推荐电影、电视剧、动漫等
+- **视频链接解析** - 解析 YouTube 链接并播放
+- **视频内容搜索** - 搜索相关视频内容
 
-💡 **提示**：直接告诉我你想看什么类型的内容，或发送 YouTube 链接给我解析！`;
+ **提示**：直接告诉我你想看什么类型的内容，或发送 YouTube 链接给我解析！`;
 
       const welcomeMsg: ExtendedAIMessage = {
         role: 'assistant',
@@ -565,10 +565,10 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     }
   }, []);
 
-  // 🔥 监听 storage 事件，同步其他组件实例的更新
+ // 监听 storage 事件，同步其他组件实例的更新
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {
-      // 🚫 防止循环：如果正在同步中，忽略此次事件
+ // 防止循环：如果正在同步中，忽略此次事件
       if (isSyncingRef.current) return;
 
       if (e.key === 'ai-recommend-messages' && e.newValue) {
@@ -578,9 +578,9 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
 
           // 检查缓存是否有效（30分钟内）
           if (now - timestamp < 30 * 60 * 1000) {
-            console.log('🔄 检测到其他组件实例更新，同步聊天记录');
+ console.log(' 检测到其他组件实例更新，同步聊天记录');
 
-            // 🔥 设置同步标志，防止触发保存
+ // 设置同步标志，防止触发保存
             isSyncingRef.current = true;
 
             setMessages(updatedMessages.map((msg: ExtendedAIMessage) => ({
@@ -588,7 +588,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
               timestamp: msg.timestamp || new Date().toISOString()
             })));
 
-            // 🔥 延迟重置标志，确保保存逻辑不会立即触发
+ // 延迟重置标志，确保保存逻辑不会立即触发
             setTimeout(() => {
               isSyncingRef.current = false;
             }, 500);
@@ -604,20 +604,20 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  // ⚡ 优化：保存对话到localStorage并滚动到底部
+ // 优化：保存对话到localStorage并滚动到底部
   useEffect(() => {
     scrollToBottom();
 
-    // 🚫 如果正在同步，跳过保存（避免循环）
+ // 如果正在同步，跳过保存（避免循环）
     if (isSyncingRef.current) {
-      console.log('⏭️ 跳过保存（正在同步中）');
+ console.log(' 跳过保存（正在同步中）');
       return;
     }
 
     saveMessagesToStorage(messages);
   }, [messages, scrollToBottom, saveMessagesToStorage]);
 
-  // ⚡ 优化：使用 useCallback 缓存事件处理函数
+ // 优化：使用 useCallback 缓存事件处理函数
   const handleTitleClick = useCallback((title: string) => {
     const cleanTitle = cleanMovieTitle(title);
     const searchUrl = generateSearchUrl(cleanTitle);
@@ -641,7 +641,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     }
   }, []);
 
-  // ✨ Optimized sendMessage with useState (不使用useOptimistic，直接更新state以确保流式响应立即显示)
+ // Optimized sendMessage with useState (不使用useOptimistic，直接更新state以确保流式响应立即显示)
   const sendMessage = async (content: string) => {
     if (!content.trim() || isPending) return;
 
@@ -661,7 +661,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     setInputMessage('');
     setError(null);
 
-    // 🔥 立即同步更新state（不使用optimistic，确保用户消息和思考中立即显示）
+ // 立即同步更新state（不使用optimistic，确保用户消息和思考中立即显示）
     const updatedMessages = [...messages, userMessage];
     const messagesWithThinking = [...updatedMessages, thinkingMessage];
     setMessages(messagesWithThinking);
@@ -671,7 +671,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
         // 智能上下文管理：只发送最近8条消息（4轮对话）
         const conversationHistory = updatedMessages.slice(-8);
 
-        // 🔥 流式响应：逐字显示AI回复
+ // 流式响应：逐字显示AI回复
         let streamingContent = '';
         const response = await sendAIRecommendMessage(
           conversationHistory,
@@ -805,7 +805,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
     });
   };
 
-  // ⚡ 优化：使用 useCallback 缓存更多事件处理函数
+ // 优化：使用 useCallback 缓存更多事件处理函数
   const handlePresetClick = useCallback((preset: { title: string; message: string }) => {
     sendMessage(preset.message);
   }, []);
@@ -833,11 +833,11 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
       role: 'assistant',
       content: `你好！我是 **AI 智能助手**，支持以下功能：
 
-- 🎬 **影视剧推荐** - 推荐电影、电视剧、动漫等
-- 🔗 **视频链接解析** - 解析 YouTube 链接并播放
-- 📺 **视频内容搜索** - 搜索相关视频内容
+- **影视剧推荐** - 推荐电影、电视剧、动漫等
+- **视频链接解析** - 解析 YouTube 链接并播放
+- **视频内容搜索** - 搜索相关视频内容
 
-💡 **提示**：直接告诉我你想看什么类型的内容，或发送 YouTube 链接给我解析！`,
+ **提示**：直接告诉我你想看什么类型的内容，或发送 YouTube 链接给我解析！`,
       timestamp: new Date().toISOString()
     };
     setMessages([welcomeMessage]);
@@ -848,7 +848,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
   // 不再需要为消息内容添加点击监听器，因为点击功能已移至右侧卡片
 
   return (
-    /* ✨ Native HTML dialog element with Tailwind 4.0 styling */
+ /* Native HTML dialog element with Tailwind 4.0 styling */
     <dialog
       ref={dialogRef}
       onClose={onClose}
@@ -857,7 +857,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
       {/* 对话框内容容器 - 使用 @container 查询 */}
       <div className="@container relative w-full h-full bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
         {/* 头部 - 使用 Tailwind 4.0 改进的渐变 */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200/50 dark:border-gray-700/50 bg-linear-to-br from-blue-600 via-purple-600 to-blue-700 shadow-lg">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200/50 dark:border-gray-700/50 bg-blue-600 shadow-lg">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm ring-1 ring-white/30 shadow-inner">
               <Brain className="h-6 w-6 text-white drop-shadow-md" />
@@ -888,11 +888,11 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
         {/* 消息区域 - 直接使用 messages state */}
         <div
           ref={messagesContainerRef}
-          className="flex-1 overflow-y-auto p-4 space-y-4 bg-linear-to-b from-gray-50 to-gray-100/50 dark:from-gray-800 dark:to-gray-900/50"
+          className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-800"
         >
           {messages.length <= 1 && messages.every(msg => msg.role === 'assistant') && (
             <div className="text-center py-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-blue-500 to-purple-600 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-4">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
@@ -909,11 +909,11 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
               {context?.title ? (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-2xl mx-auto">
                   <button
-                    onClick={() => handlePresetClick({ title: '📖 剧情介绍', message: '这部影片讲了什么故事？请详细介绍一下剧情' })}
+ onClick={() => handlePresetClick({ title: ' 剧情介绍', message: '这部影片讲了什么故事？请详细介绍一下剧情' })}
                     className="p-4 text-center bg-white dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg hover:scale-105 transition-all group"
                     disabled={isPending}
                   >
-                    <div className="text-3xl mb-2">📖</div>
+ <div className="text-3xl mb-2"></div>
                     <div className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       剧情介绍
                     </div>
@@ -937,11 +937,11 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
                   </button>
 
                   <button
-                    onClick={() => handlePresetClick({ title: '🎬 相似推荐', message: '有没有类似的影片推荐？请推荐5部相似的电影或电视剧' })}
+ onClick={() => handlePresetClick({ title: ' 相似推荐', message: '有没有类似的影片推荐？请推荐5部相似的电影或电视剧' })}
                     className="p-4 text-center bg-white dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-400 hover:shadow-lg hover:scale-105 transition-all group"
                     disabled={isPending}
                   >
-                    <div className="text-3xl mb-2">🎬</div>
+ <div className="text-3xl mb-2"></div>
                     <div className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       相似推荐
                     </div>
@@ -970,7 +970,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
             </div>
           )}
 
-          {/* ⚡ 优化：使用记忆化的消息组件 */}
+ {/* 优化：使用记忆化的消息组件 */}
           {messages.map((message, index) => (
             <MessageItem
               key={index}
@@ -990,9 +990,9 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
             <div className="flex justify-start animate-in fade-in slide-in-from-bottom-2 duration-300">
               <div className="bg-white dark:bg-gray-700 p-3 rounded-xl border border-gray-200/50 dark:border-gray-600/50 shadow-sm">
                 <div className="flex space-x-1.5">
-                  <div className="w-2 h-2 bg-linear-to-br from-blue-500 to-purple-500 rounded-full animate-bounce shadow-sm"></div>
-                  <div className="w-2 h-2 bg-linear-to-br from-blue-500 to-purple-500 rounded-full animate-bounce shadow-sm" style={{ animationDelay: '0.15s' }}></div>
-                  <div className="w-2 h-2 bg-linear-to-br from-blue-500 to-purple-500 rounded-full animate-bounce shadow-sm" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce shadow-sm"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce shadow-sm" style={{ animationDelay: '0.15s' }}></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce shadow-sm" style={{ animationDelay: '0.3s' }}></div>
                 </div>
               </div>
             </div>
@@ -1000,7 +1000,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
 
           {/* 错误提示 - 优化样式 */}
           {error && (
-            <div className="bg-linear-to-br from-red-50 to-red-100/50 dark:from-red-900/20 dark:to-red-950/30 border border-red-200/50 dark:border-red-800/50 text-red-700 dark:text-red-400 p-4 rounded-xl shadow-lg animate-in fade-in slide-in-from-top-2 duration-300">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200/50 dark:border-red-800/50 text-red-700 dark:text-red-400 p-4 rounded-xl shadow-lg animate-in fade-in slide-in-from-top-2 duration-300">
               <div className="flex items-start space-x-3">
                 <div className="shrink-0 p-1">
                   <svg className="h-5 w-5 text-red-500 dark:text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -1049,7 +1049,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
             <button
               type="submit"
               disabled={!inputMessage.trim() || isPending}
-              className="px-6 py-3 bg-linear-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed text-white rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 shadow-lg shadow-blue-500/30 disabled:shadow-none active:scale-95"
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl font-medium transition-all duration-200 flex items-center space-x-2 shadow-lg shadow-blue-500/30 disabled:shadow-none active:scale-95"
             >
               <Send className="h-4 w-4" />
               <span>{isPending ? '发送中' : '发送'}</span>

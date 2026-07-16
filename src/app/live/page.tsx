@@ -228,7 +228,7 @@ function LivePageClient() {
   });
   const autoRefreshTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 🚀 直连模式相关状态
+ // 直连模式相关状态
   const [directPlaybackEnabled, setDirectPlaybackEnabled] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('live-direct-playback-enabled');
@@ -240,7 +240,7 @@ function LivePageClient() {
   const corsSupportRef = useRef<Map<string, boolean>>(new Map());
   const [playbackMode, setPlaybackMode] = useState<'direct' | 'proxy'>('proxy');
 
-  // 📊 CORS 检测统计（管理员用）
+ // CORS 检测统计（管理员用）
   const [corsStats, setCorsStats] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('live-cors-stats');
@@ -563,7 +563,7 @@ function LivePageClient() {
       }
 
       setLoadingStage('ready');
-      setLoadingMessage('✨ 准备就绪...');
+ setLoadingMessage(' 准备就绪...');
 
       setTimeout(() => {
         setLoading(false);
@@ -763,11 +763,11 @@ function LivePageClient() {
     }
   };
 
-  // 🚀 CORS 智能检测函数（带持久化和统计）
+ // CORS 智能检测函数（带持久化和统计）
   const testCORSSupport = async (url: string): Promise<boolean> => {
-    // 0. 🔐 Mixed Content 检测：HTTPS页面不能加载HTTP资源
+ // 0. Mixed Content 检测：HTTPS页面不能加载HTTP资源
     if (typeof window !== 'undefined' && window.location.protocol === 'https:' && url.startsWith('http:')) {
-      console.log(`🔐 Mixed Content: ${url.substring(0, 50)}... => ❌ 需要代理 (HTTPS页面不能加载HTTP资源)`);
+ console.log(` Mixed Content: ${url.substring(0, 50)}... => 需要代理 (HTTPS页面不能加载HTTP资源)`);
       // 直接返回false，不浪费时间检测，也不计入统计
       corsSupportRef.current.set(url, false);
       setCorsSupport(new Map(corsSupportRef.current));
@@ -793,7 +793,7 @@ function LivePageClient() {
             // 缓存有效，直接使用
             corsSupportRef.current.set(url, supports);
             setCorsSupport(new Map(corsSupportRef.current));
-            console.log(`💾 CORS缓存命中: ${url.substring(0, 50)}... => ${supports ? '✅ 直连' : '❌ 代理'} (${Math.floor(age / 86400000)}天前检测)`);
+ console.log(` CORS缓存命中: ${url.substring(0, 50)}... => ${supports ? ' 直连' : ' 代理'} (${Math.floor(age / 86400000)}天前检测)`);
             return supports;
           }
         }
@@ -849,7 +849,7 @@ function LivePageClient() {
         return newStats;
       });
 
-      console.log(`🔍 CORS检测: ${url.substring(0, 50)}... => ${supports ? '✅ 支持直连' : '❌ 需要代理'}`);
+ console.log(` CORS检测: ${url.substring(0, 50)}... => ${supports ? ' 支持直连' : ' 需要代理'}`);
 
       return supports;
     } catch (error) {
@@ -898,13 +898,13 @@ function LivePageClient() {
         }
       }
 
-      console.log(`🔍 CORS检测: ${url.substring(0, 50)}... => ❌ 需要代理 (${errorMsg})`);
+ console.log(` CORS检测: ${url.substring(0, 50)}... => 需要代理 (${errorMsg})`);
 
       return false;
     }
   };
 
-  // 🚀 决定是否使用直连播放
+ // 决定是否使用直连播放
   const shouldUseDirectPlayback = async (url: string): Promise<boolean> => {
     // 如果用户未启用直连模式，始终使用代理
     if (!directPlaybackEnabled) {
@@ -2093,24 +2093,24 @@ function LivePageClient() {
                        videoUrl.includes('/bilibili/') || // B站源
                        videoUrl.includes('/yy/');         // YY源
 
-      // 🚀 智能选择直连或代理模式
+ // 智能选择直连或代理模式
       let targetUrl: string;
       const useDirect = await shouldUseDirectPlayback(videoUrl);
 
       if (useDirect) {
         // 直连模式：直接使用原始 URL
         targetUrl = videoUrl;
-        console.log(`🎬 播放模式: ⚡ 直连 (${isFlvUrl ? 'FLV' : 'M3U8'}) | URL: ${targetUrl.substring(0, 100)}...`);
+ console.log(` 播放模式: 直连 (${isFlvUrl ? 'FLV' : 'M3U8'}) | URL: ${targetUrl.substring(0, 100)}...`);
       } else {
         // 代理模式：FLV 和 M3U8 都通过代理
         const proxyEndpoint = isFlvUrl ? '/api/proxy/stream' : '/api/proxy/m3u8';
         targetUrl = `${proxyEndpoint}?url=${encodeURIComponent(videoUrl)}&moontv-source=${currentSourceRef.current?.key || ''}`;
-        console.log(`🎬 播放模式: 🔄 代理 (${isFlvUrl ? 'FLV' : 'M3U8'}) | URL: ${targetUrl.substring(0, 100)}...`);
+ console.log(` 播放模式: 代理 (${isFlvUrl ? 'FLV' : 'M3U8'}) | URL: ${targetUrl.substring(0, 100)}...`);
       }
 
       // 根据 URL 类型选择播放器类型
       const playerType = isFlvUrl ? 'flv' : 'm3u8';
-      console.log(`📺 播放器类型: ${playerType} | FLV检测: ${isFlvUrl}`);
+ console.log(` 播放器类型: ${playerType} | FLV检测: ${isFlvUrl}`);
 
       const customType = {
         m3u8: m3u8Loader,
@@ -2188,11 +2188,11 @@ function LivePageClient() {
 
                     // 如果可拖动范围大于60秒，说明支持回放
                     if (seekableRange > 60) {
-                      console.log('✓ 检测到支持回放，可拖动范围:', Math.floor(seekableRange), '秒');
+ console.log(' 检测到支持回放，可拖动范围:', Math.floor(seekableRange), '秒');
                       setDvrDetected(true);
                       setDvrSeekableRange(Math.floor(seekableRange));
                     } else {
-                      console.log('✗ 纯直播流，可拖动范围:', Math.floor(seekableRange), '秒');
+ console.log(' 纯直播流，可拖动范围:', Math.floor(seekableRange), '秒');
                       setDvrDetected(false);
                     }
                   }
@@ -2366,10 +2366,10 @@ function LivePageClient() {
           <div className='text-center max-w-md mx-auto px-6'>
             {/* 动画直播图标 */}
             <div className='relative mb-8'>
-              <div className='relative mx-auto w-24 h-24 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
-                <div className='text-white text-4xl'>📺</div>
+              <div className='relative mx-auto w-24 h-24 bg-green-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
+ <div className='text-white text-4xl'></div>
                 {/* 旋转光环 */}
-                <div className='absolute -inset-2 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl opacity-20 animate-spin'></div>
+                <div className='absolute -inset-2 bg-green-500 rounded-2xl opacity-20 animate-spin'></div>
               </div>
 
               {/* 浮动粒子效果 */}
@@ -2406,7 +2406,7 @@ function LivePageClient() {
               {/* 进度条 */}
               <div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden'>
                 <div
-                  className='h-full bg-linear-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-1000 ease-out'
+                  className='h-full bg-green-500 rounded-full transition-all duration-1000 ease-out'
                   style={{
                     width:
                       loadingStage === 'loading' ? '33%' : loadingStage === 'fetching' ? '66%' : '100%',
@@ -2434,10 +2434,10 @@ function LivePageClient() {
           <div className='text-center max-w-md mx-auto px-6'>
             {/* 错误图标 */}
             <div className='relative mb-8'>
-              <div className='relative mx-auto w-24 h-24 bg-linear-to-r from-red-500 to-orange-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
-                <div className='text-white text-4xl'>😵</div>
+              <div className='relative mx-auto w-24 h-24 bg-red-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
+ <div className='text-white text-4xl'></div>
                 {/* 脉冲效果 */}
-                <div className='absolute -inset-2 bg-linear-to-r from-red-500 to-orange-500 rounded-2xl opacity-20 animate-pulse'></div>
+                <div className='absolute -inset-2 bg-red-500 rounded-2xl opacity-20 animate-pulse'></div>
               </div>
             </div>
 
@@ -2460,9 +2460,9 @@ function LivePageClient() {
             <div className='space-y-3'>
               <button
                 onClick={() => window.location.reload()}
-                className='w-full px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-cyan-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl'
+                className='w-full px-6 py-3 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl'
               >
-                🔄 重新尝试
+ 重新尝试
               </button>
             </div>
           </div>
@@ -2528,7 +2528,7 @@ function LivePageClient() {
                     }
                     // useEffect 会自动检测 directPlaybackEnabled 的变化并重新加载播放器
                   }}
-                  className='inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full shrink-0 bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-900/40 dark:to-cyan-900/40 border border-blue-200 dark:border-blue-700 whitespace-nowrap cursor-pointer hover:opacity-80 active:scale-95 transition-all duration-150'
+                  className='inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full shrink-0 bg-blue-100 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-700 whitespace-nowrap cursor-pointer hover:opacity-80 active:scale-95 transition-all duration-150'
                   title={
                     directPlaybackEnabled
                       ? (playbackMode === 'direct'
@@ -2539,14 +2539,14 @@ function LivePageClient() {
                 >
                   {directPlaybackEnabled ? (
                     <>
-                      <span className='text-green-600 dark:text-green-400'>⚡</span>
+ <span className='text-green-600 dark:text-green-400'></span>
                       <span className='text-green-700 dark:text-green-300'>
                         直连{playbackMode === 'proxy' ? '(降级)' : ''}
                       </span>
                     </>
                   ) : (
                     <>
-                      <span className='text-gray-600 dark:text-gray-400'>🔒</span>
+ <span className='text-gray-600 dark:text-gray-400'></span>
                       <span className='text-gray-700 dark:text-gray-300'>代理</span>
                     </>
                   )}
@@ -2614,14 +2614,14 @@ function LivePageClient() {
                   <div className='absolute inset-0 bg-black/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-white/0 dark:border-white/30 flex items-center justify-center z-600 transition-all duration-300'>
                     <div className='text-center max-w-md mx-auto px-6'>
                       <div className='relative mb-8'>
-                        <div className='relative mx-auto w-24 h-24 bg-linear-to-r from-orange-500 to-red-600 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
+                        <div className='relative mx-auto w-24 h-24 bg-orange-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
                           <div className='text-white text-4xl'>
-                            {unsupportedType === 'network-error' ? '🌐' :
-                             unsupportedType === 'channel-unavailable' ? '🔒' :
-                             unsupportedType === 'decode-error' ? '🔧' :
-                             unsupportedType === 'format-not-supported' ? '📼' : '⚠️'}
+ {unsupportedType === 'network-error' ? '' :
+ unsupportedType === 'channel-unavailable' ? '' :
+ unsupportedType === 'decode-error' ? '' :
+ unsupportedType === 'format-not-supported' ? '' : ''}
                           </div>
-                          <div className='absolute -inset-2 bg-linear-to-r from-orange-500 to-red-600 rounded-2xl opacity-20 animate-pulse'></div>
+                          <div className='absolute -inset-2 bg-orange-500 rounded-2xl opacity-20 animate-pulse'></div>
                         </div>
                       </div>
                       <div className='space-y-4'>
@@ -2686,12 +2686,12 @@ function LivePageClient() {
 
                 {/* DVR 回放支持提示 */}
                 {dvrDetected && (
-                  <div className='absolute top-4 left-4 right-4 bg-linear-to-r from-blue-500/90 to-cyan-500/90 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg z-550 animate-in fade-in slide-in-from-top-2 duration-300'>
+                  <div className='absolute top-4 left-4 right-4 bg-blue-500/90 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg z-550 animate-in fade-in slide-in-from-top-2 duration-300'>
                     <div className='flex items-center justify-between'>
                       <div className='flex items-center gap-3 flex-1'>
                         <div className='shrink-0'>
                           <div className='w-8 h-8 bg-white/20 rounded-full flex items-center justify-center'>
-                            <span className='text-lg'>⏯️</span>
+ <span className='text-lg'></span>
                           </div>
                         </div>
                         <div className='flex-1 min-w-0'>
@@ -2733,14 +2733,14 @@ function LivePageClient() {
                   <div className='absolute inset-0 bg-black/85 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-white/0 dark:border-white/30 flex items-center justify-center z-500 transition-all duration-300'>
                     <div className='text-center max-w-md mx-auto px-6'>
                       <div className='relative mb-8'>
-                        <div className='relative mx-auto w-24 h-24 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
-                          <div className='text-white text-4xl'>📺</div>
-                          <div className='absolute -inset-2 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl opacity-20 animate-spin'></div>
+                        <div className='relative mx-auto w-24 h-24 bg-green-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
+ <div className='text-white text-4xl'></div>
+                          <div className='absolute -inset-2 bg-green-500 rounded-2xl opacity-20 animate-spin'></div>
                         </div>
                       </div>
                       <div className='space-y-2'>
                         <p className='text-xl font-semibold text-white animate-pulse'>
-                          🔄 IPTV 加载中...
+ IPTV 加载中...
                         </p>
                       </div>
                     </div>
@@ -2915,7 +2915,7 @@ function LivePageClient() {
                       ) : (
                         <div className='flex flex-col items-center justify-center py-12 text-center'>
                           <div className='relative mb-6'>
-                            <div className='w-20 h-20 bg-linear-to-br from-gray-100 to-slate-200 dark:from-gray-700 dark:to-slate-700 rounded-2xl flex items-center justify-center shadow-lg'>
+                            <div className='w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-2xl flex items-center justify-center shadow-lg'>
                               <Tv className='w-10 h-10 text-gray-400 dark:text-gray-500' />
                             </div>
                             {/* 装饰小点 */}
@@ -3125,7 +3125,7 @@ function LivePageClient() {
                         )}
                       </div>
 
-                      {/* 🚀 直连模式控制 */}
+ {/* 直连模式控制 */}
                       <div className='flex items-center gap-3 pt-2'>
                         <div className='flex items-center gap-2'>
                           <input
@@ -3142,7 +3142,7 @@ function LivePageClient() {
                             className='rounded text-green-500 focus:ring-green-500'
                           />
                           <label htmlFor='directPlayback' className='text-sm text-gray-700 dark:text-gray-300 flex items-center gap-1'>
-                            ⚡ 直连模式
+ 直连模式
                             <span className='text-xs text-gray-500 dark:text-gray-400'>(智能检测CORS)</span>
                           </label>
                         </div>
@@ -3224,7 +3224,7 @@ function LivePageClient() {
                             // 无直播源
                             <>
                               <div className='relative mb-6'>
-                                <div className='w-20 h-20 bg-linear-to-br from-orange-100 to-red-200 dark:from-orange-900/40 dark:to-red-900/40 rounded-2xl flex items-center justify-center shadow-lg'>
+                                <div className='w-20 h-20 bg-orange-100 dark:bg-orange-900/40 rounded-2xl flex items-center justify-center shadow-lg'>
                                   <Radio className='w-10 h-10 text-orange-500 dark:text-orange-400' />
                                 </div>
                                 {/* 装饰小点 */}

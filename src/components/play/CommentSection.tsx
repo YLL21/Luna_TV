@@ -29,7 +29,7 @@ const CommentSection = memo(function CommentSection({
   return (
     <div className='mt-6 border-t border-gray-200 dark:border-gray-700 pt-6'>
       <h3 className='text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center gap-2'>
-        <span>💬</span>
+ <span></span>
         <span>豆瓣短评</span>
       </h3>
       <div className='space-y-4'>

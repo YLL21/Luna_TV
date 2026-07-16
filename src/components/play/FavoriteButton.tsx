@@ -26,7 +26,7 @@ const FavoriteButton = memo(function FavoriteButton({
       className='group relative shrink-0 transition-all duration-300 hover:scale-110'
       title={favorited ? '取消收藏' : '添加收藏'}
     >
-      <div className='absolute inset-0 bg-linear-to-r from-red-400 to-pink-400 rounded-full opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-300'></div>
+      <div className='absolute inset-0 bg-red-400 rounded-full opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-300'></div>
       <FavoriteIcon filled={favorited} />
     </button>
   );

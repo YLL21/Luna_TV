@@ -314,7 +314,7 @@ export default function WatchRoomPage() {
                 {currentRoom ? (
                   <div className="space-y-4">
                     {/* 房间信息卡片 */}
-                    <div className="bg-linear-to-r from-indigo-500 to-purple-600 rounded-xl p-6 text-white">
+                    <div className="bg-indigo-500 rounded-xl p-6 text-white">
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="text-2xl font-bold mb-1">{currentRoom.name}</h3>
@@ -440,7 +440,7 @@ export default function WatchRoomPage() {
                             className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3"
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-linear-to-r from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold">
+                              <div className="w-10 h-10 rounded-full bg-indigo-400 flex items-center justify-center text-white font-bold">
                                 {member.name.charAt(0).toUpperCase()}
                               </div>
                               <span className="font-medium text-gray-900 dark:text-gray-100">
@@ -460,7 +460,7 @@ export default function WatchRoomPage() {
                     {/* 提示信息 */}
                     <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 border border-indigo-200 dark:border-indigo-800">
                       <p className="text-sm text-indigo-800 dark:text-indigo-200">
-                        💡 {currentRoom.currentState && (currentRoom.currentState.type === 'play' || currentRoom.currentState.type === 'live')
+ {currentRoom.currentState && (currentRoom.currentState.type === 'play' || currentRoom.currentState.type === 'live')
                           ? '点击上方卡片可跳转到播放页面继续观看'
                           : '前往播放页面或直播页面开始观影，房间成员将自动同步您的操作'}
                       </p>
@@ -609,7 +609,7 @@ export default function WatchRoomPage() {
                 {currentRoom ? (
                   <div className="space-y-4">
                     {/* 房间信息卡片 */}
-                    <div className="bg-linear-to-r from-green-500 to-teal-600 rounded-xl p-6 text-white">
+                    <div className="bg-green-500 rounded-xl p-6 text-white">
                       <div className="flex items-start justify-between mb-4">
                         <div>
                           <h3 className="text-2xl font-bold mb-1">{currentRoom.name}</h3>
@@ -735,7 +735,7 @@ export default function WatchRoomPage() {
                             className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3"
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-linear-to-r from-green-400 to-teal-500 flex items-center justify-center text-white font-bold">
+                              <div className="w-10 h-10 rounded-full bg-green-400 flex items-center justify-center text-white font-bold">
                                 {member.name.charAt(0).toUpperCase()}
                               </div>
                               <span className="font-medium text-gray-900 dark:text-gray-100">
@@ -755,7 +755,7 @@ export default function WatchRoomPage() {
                     {/* 提示信息 */}
                     <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
                       <p className="text-sm text-green-800 dark:text-green-200">
-                        💡 {currentRoom.currentState && (currentRoom.currentState.type === 'play' || currentRoom.currentState.type === 'live')
+ {currentRoom.currentState && (currentRoom.currentState.type === 'play' || currentRoom.currentState.type === 'live')
                           ? '点击上方卡片可跳转到播放页面继续观看'
                           : isOwner
                             ? '前往播放页面或直播页面开始观影，房间成员将自动同步您的操作'
@@ -952,7 +952,7 @@ export default function WatchRoomPage() {
                                 if (playState.episode !== undefined && playState.episode !== null) {
                                   params.set('index', playState.episode.toString());
                                 }
-                                // ⚠️ 不携带时间参数 t 和 prefer，因为用户还没加入房间
+ // 不携带时间参数 t 和 prefer，因为用户还没加入房间
 
                                 router.push(`/play?${params.toString()}`);
                               }}

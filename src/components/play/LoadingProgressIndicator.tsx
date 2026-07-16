@@ -44,7 +44,7 @@ const LoadingProgressIndicator = memo(function LoadingProgressIndicator({
       {/* 进度条 */}
       <div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden'>
         <div
-          className='h-full bg-linear-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-1000 ease-out'
+          className='h-full bg-green-500 rounded-full transition-all duration-1000 ease-out'
           style={{
             width:
               loadingStage === 'searching' || loadingStage === 'fetching'

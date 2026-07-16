@@ -1234,7 +1234,7 @@ function SearchPageClient() {
   const handleTmdbActorSearch = async (query: string, type = tmdbActorType, filterState = tmdbFilterState) => {
     if (!query.trim()) return;
 
-    console.log(`🚀 [前端TMDB] 开始搜索: ${query}, type=${type}`);
+ console.log(` [前端TMDB] 开始搜索: ${query}, type=${type}`);
 
     setTmdbActorLoading(true);
     setTmdbActorError(null);
@@ -1360,7 +1360,7 @@ function SearchPageClient() {
           <div className='max-w-3xl mx-auto mb-6 px-3 sm:px-0'>
             {/* 移动端：可滚动横向布局；桌面端：居中排列 */}
             <div className='overflow-x-auto scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0'>
-              <div className='inline-flex sm:flex items-center justify-start sm:justify-center min-w-full sm:min-w-0 bg-gradient-to-r from-gray-100 via-white to-gray-100 dark:from-gray-800/95 dark:via-gray-750/95 dark:to-gray-800/95 rounded-2xl p-2 gap-2 sm:gap-2.5 shadow-xl border-2 border-gray-200/70 dark:border-gray-600/70 backdrop-blur-md'>
+              <div className='inline-flex sm:flex items-center justify-start sm:justify-center min-w-full sm:min-w-0 bg-gray-100 dark:bg-gray-800/95 rounded-2xl p-2 gap-2 sm:gap-2.5 shadow-xl border-2 border-gray-200/70 dark:border-gray-600/70 backdrop-blur-md'>
                 <button
                   type='button'
                   onClick={() => {
@@ -1381,11 +1381,11 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 px-4 sm:px-6 py-3 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[110px] sm:min-w-0 ${
                     searchType === 'video'
-                      ? 'bg-gradient-to-br from-green-400 via-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/50 scale-105 ring-2 ring-green-400/60 dark:ring-green-500/80'
+                      ? 'bg-green-400 text-white shadow-lg shadow-green-500/50 scale-105 ring-2 ring-green-400/60 dark:ring-green-500/80'
                       : 'bg-gray-200/60 dark:bg-gray-700/80 text-gray-800 dark:text-gray-100 border-2 border-gray-300/50 dark:border-gray-600/50 shadow-md hover:bg-gray-300/80 dark:hover:bg-gray-600/90 hover:scale-105 hover:shadow-lg active:scale-100'
                   }`}
                 >
-                  🎬 影视资源
+ 影视资源
                 </button>
                 <button
                   type='button'
@@ -1406,11 +1406,11 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 px-4 sm:px-6 py-3 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[110px] sm:min-w-0 ${
                     searchType === 'netdisk'
-                      ? 'bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/50 scale-105 ring-2 ring-blue-400/60 dark:ring-blue-500/80'
+                      ? 'bg-blue-400 text-white shadow-lg shadow-blue-500/50 scale-105 ring-2 ring-blue-400/60 dark:ring-blue-500/80'
                       : 'bg-gray-200/60 dark:bg-gray-700/80 text-gray-800 dark:text-gray-100 border-2 border-gray-300/50 dark:border-gray-600/50 shadow-md hover:bg-gray-300/80 dark:hover:bg-gray-600/90 hover:scale-105 hover:shadow-lg active:scale-100'
                   }`}
                 >
-                  💾 网盘资源
+ 网盘资源
                 </button>
                 <button
                   type='button'
@@ -1443,11 +1443,11 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 px-4 sm:px-6 py-3 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[110px] sm:min-w-0 ${
                     searchType === 'youtube'
-                      ? 'bg-gradient-to-br from-red-400 via-red-500 to-rose-600 text-white shadow-lg shadow-red-500/50 scale-105 ring-2 ring-red-400/60 dark:ring-red-500/80'
+                      ? 'bg-red-400 text-white shadow-lg shadow-red-500/50 scale-105 ring-2 ring-red-400/60 dark:ring-red-500/80'
                       : 'bg-gray-200/60 dark:bg-gray-700/80 text-gray-800 dark:text-gray-100 border-2 border-gray-300/50 dark:border-gray-600/50 shadow-md hover:bg-gray-300/80 dark:hover:bg-gray-600/90 hover:scale-105 hover:shadow-lg active:scale-100'
                   }`}
                 >
-                  📺 YouTube
+ YouTube
                 </button>
                 <button
                   type='button'
@@ -1473,11 +1473,11 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 px-4 sm:px-6 py-3 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[110px] sm:min-w-0 ${
                     searchType === 'bilibili'
-                      ? 'bg-gradient-to-br from-pink-400 via-pink-500 to-rose-600 text-white shadow-lg shadow-pink-500/50 scale-105 ring-2 ring-pink-400/60 dark:ring-pink-500/80'
+                      ? 'bg-pink-400 text-white shadow-lg shadow-pink-500/50 scale-105 ring-2 ring-pink-400/60 dark:ring-pink-500/80'
                       : 'bg-gray-200/60 dark:bg-gray-700/80 text-gray-800 dark:text-gray-100 border-2 border-gray-300/50 dark:border-gray-600/50 shadow-md hover:bg-gray-300/80 dark:hover:bg-gray-600/90 hover:scale-105 hover:shadow-lg active:scale-100'
                   }`}
                 >
-                  📺 Bilibili
+ Bilibili
                 </button>
                 <button
                   type='button'
@@ -1499,11 +1499,11 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 px-4 sm:px-6 py-3 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[110px] sm:min-w-0 ${
                     searchType === 'tmdb-actor'
-                      ? 'bg-gradient-to-br from-purple-400 via-purple-500 to-violet-600 text-white shadow-lg shadow-purple-500/50 scale-105 ring-2 ring-purple-400/60 dark:ring-purple-500/80'
+                      ? 'bg-purple-400 text-white shadow-lg shadow-purple-500/50 scale-105 ring-2 ring-purple-400/60 dark:ring-purple-500/80'
                       : 'bg-gray-200/60 dark:bg-gray-700/80 text-gray-800 dark:text-gray-100 border-2 border-gray-300/50 dark:border-gray-600/50 shadow-md hover:bg-gray-300/80 dark:hover:bg-gray-600/90 hover:scale-105 hover:shadow-lg active:scale-100'
                   }`}
                 >
-                  🎬 TMDB演员
+ TMDB演员
                 </button>
               </div>
             </div>
@@ -1521,7 +1521,7 @@ function SearchPageClient() {
                 value={searchQuery}
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
-                placeholder={searchType === 'video' ? '🎬 搜索电影、电视剧...' : searchType === 'netdisk' ? '💾 搜索网盘资源...' : searchType === 'youtube' ? '📺 搜索YouTube视频...' : searchType === 'bilibili' ? '📺 搜索Bilibili视频...' : '🎭 搜索演员姓名...'}
+ placeholder={searchType === 'video' ? ' 搜索电影、电视剧...' : searchType === 'netdisk' ? ' 搜索网盘资源...' : searchType === 'youtube' ? ' 搜索YouTube视频...' : searchType === 'bilibili' ? ' 搜索Bilibili视频...' : ' 搜索演员姓名...'}
                 autoComplete="off"
                 className='w-full h-14 rounded-xl bg-white/90 py-4 pl-12 pr-14 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:bg-white border-2 border-gray-200/80 shadow-lg hover:shadow-xl focus:shadow-2xl focus:border-green-400 transition-all duration-300 dark:bg-gray-800/90 dark:text-gray-300 dark:placeholder-gray-500 dark:focus:bg-gray-800 dark:border-gray-700 dark:focus:border-green-500 backdrop-blur-sm'
               />
@@ -1604,7 +1604,7 @@ function SearchPageClient() {
                               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'
                           }`}
                         >
-                          💾 网盘资源
+ 网盘资源
                         </button>
                         <button
                           onClick={() => {
@@ -1622,7 +1622,7 @@ function SearchPageClient() {
                               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700'
                           }`}
                         >
-                          🎌 动漫磁力
+ 动漫磁力
                         </button>
                       </div>
                     </div>
@@ -1747,7 +1747,7 @@ function SearchPageClient() {
                 <>
                   <div className='mb-4'>
                     <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200'>
-                      {youtubeMode === 'search' ? 'YouTube搜索' : '🔥 YouTube热门推荐'}
+ {youtubeMode === 'search' ? 'YouTube搜索' : ' YouTube热门推荐'}
                       {(youtubeLoading || isLoadingYoutubePopular) && (
                         <span className='ml-2 inline-block align-middle'>
                           <span className='inline-block h-3 w-3 border-2 border-gray-300 border-t-red-500 rounded-full animate-spin'></span>
@@ -1771,7 +1771,7 @@ function SearchPageClient() {
                               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                           }`}
                         >
-                          🔍 搜索
+ 搜索
                         </button>
                         <button
                           type='button'
@@ -1791,7 +1791,7 @@ function SearchPageClient() {
                               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                           }`}
                         >
-                          🔥 热门推荐
+ 热门推荐
                         </button>
                       </div>
                     </div>
@@ -1839,10 +1839,10 @@ function SearchPageClient() {
                         <div className='flex flex-wrap gap-2'>
                           {[
                             { key: 'relevance', label: '相关性' },
-                            { key: 'date', label: '最新发布', icon: '🕒' },
-                            { key: 'viewCount', label: '观看次数', icon: '👀' },
+ { key: 'date', label: '最新发布', icon: '' },
+ { key: 'viewCount', label: '观看次数', icon: '' },
                             { key: 'rating', label: '评分', icon: '⭐' },
-                            { key: 'title', label: '标题', icon: '🔤' }
+ { key: 'title', label: '标题', icon: '' }
                           ].map((sort) => (
                             <button
                               key={sort.key}
@@ -1996,11 +1996,11 @@ function SearchPageClient() {
                               <button
                                 onClick={() => fetchNextYoutubePopular()}
                                 disabled={isFetchingNextYoutubePopular}
-                                className='relative px-8 py-4 rounded-2xl bg-gradient-to-r from-red-50 via-pink-50 to-rose-50 dark:from-red-900/20 dark:via-pink-900/20 dark:to-rose-900/20 border border-red-200/50 dark:border-red-700/50 shadow-lg backdrop-blur-sm overflow-hidden hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed'
+                                className='relative px-8 py-4 rounded-2xl bg-red-50 dark:bg-red-900/20 border border-red-200/50 dark:border-red-700/50 shadow-lg backdrop-blur-sm overflow-hidden hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed'
                               >
                                 {isFetchingNextYoutubePopular ? (
                                   <>
-                                    <div className='absolute inset-0 bg-gradient-to-r from-red-400/10 via-pink-400/10 to-rose-400/10 animate-pulse'></div>
+                                    <div className='absolute inset-0 bg-red-400/10 animate-pulse'></div>
                                     <div className='relative flex items-center gap-3 justify-center'>
                                       <div className='relative'>
                                         <div className='animate-spin rounded-full h-6 w-6 border-[3px] border-red-200 dark:border-red-800'></div>
@@ -2017,7 +2017,7 @@ function SearchPageClient() {
                                     </div>
                                   </>
                                 ) : (
-                                  <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>👆 点我加载更多</span>
+ <span className='text-sm font-medium text-gray-700 dark:text-gray-300'> 点我加载更多</span>
                                 )}
                               </button>
                             </div>
@@ -2036,7 +2036,7 @@ function SearchPageClient() {
                 <>
                   <div className='mb-4'>
                     <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200'>
-                      {bilibiliMode === 'search' ? 'Bilibili搜索' : '🔥 Bilibili热门推荐'}
+ {bilibiliMode === 'search' ? 'Bilibili搜索' : ' Bilibili热门推荐'}
                       {(bilibiliLoading || isLoadingBilibiliPopular) && (
                         <span className='ml-2 inline-block align-middle'>
                           <span className='inline-block h-3 w-3 border-2 border-gray-300 border-t-pink-500 rounded-full animate-spin'></span>
@@ -2059,7 +2059,7 @@ function SearchPageClient() {
                               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                           }`}
                         >
-                          🔍 搜索
+ 搜索
                         </button>
                         <button
                           type='button'
@@ -2074,7 +2074,7 @@ function SearchPageClient() {
                               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                           }`}
                         >
-                          🔥 热门推荐
+ 热门推荐
                         </button>
                       </div>
                     </div>
@@ -2092,7 +2092,7 @@ function SearchPageClient() {
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                             }`}
                           >
-                            📹 视频
+ 视频
                           </button>
                           <button
                             type='button'
@@ -2103,7 +2103,7 @@ function SearchPageClient() {
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                             }`}
                           >
-                            🎬 番剧
+ 番剧
                           </button>
                           <button
                             type='button'
@@ -2114,7 +2114,7 @@ function SearchPageClient() {
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                             }`}
                           >
-                            👤 UP主
+ UP主
                           </button>
                         </div>
                       </div>
@@ -2255,7 +2255,7 @@ function SearchPageClient() {
                   {/* 虚拟化开关 */}
                   <label className='flex items-center gap-3 cursor-pointer select-none shrink-0 group'>
                     <span className='text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors'>
-                      ⚡ 虚拟滑动
+ 虚拟滑动
                     </span>
                     <div className='relative'>
                       <input
@@ -2264,12 +2264,12 @@ function SearchPageClient() {
                         checked={useVirtualization}
                         onChange={toggleVirtualization}
                       />
-                      <div className='w-11 h-6 bg-linear-to-r from-gray-200 to-gray-300 rounded-full peer-checked:from-blue-400 peer-checked:to-purple-500 transition-all duration-300 dark:from-gray-600 dark:to-gray-700 dark:peer-checked:from-blue-500 dark:peer-checked:to-purple-600 shadow-inner'></div>
+                      <div className='w-11 h-6 bg-gray-200 rounded-full peer-checked:from-blue-400 peer-checked:to-purple-500 transition-all duration-300 dark:bg-gray-600 dark:peer-checked:from-blue-500 dark:peer-checked:to-purple-600 shadow-inner'></div>
                       <div className='absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow-lg peer-checked:shadow-blue-300 dark:peer-checked:shadow-blue-500/50 peer-checked:scale-105'></div>
                       {/* 开关内图标 */}
                       <div className='absolute top-1.5 left-1.5 w-3 h-3 flex items-center justify-center pointer-events-none transition-all duration-300 peer-checked:translate-x-5'>
                         <span className='text-[10px] peer-checked:text-white text-gray-500'>
-                          {useVirtualization ? '✨' : '○'}
+ {useVirtualization ? '' : '○'}
                         </span>
                       </div>
                     </div>
@@ -2278,7 +2278,7 @@ function SearchPageClient() {
                   {/* 聚合开关 */}
                   <label className='flex items-center gap-3 cursor-pointer select-none shrink-0 group'>
                     <span className='text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors'>
-                      🔄 聚合
+ 聚合
                     </span>
                     <div className='relative'>
                       <input
@@ -2287,12 +2287,12 @@ function SearchPageClient() {
                         checked={viewMode === 'agg'}
                         onChange={() => setViewMode(viewMode === 'agg' ? 'all' : 'agg')}
                       />
-                      <div className='w-11 h-6 bg-linear-to-r from-gray-200 to-gray-300 rounded-full peer-checked:from-emerald-400 peer-checked:to-green-500 transition-all duration-300 dark:from-gray-600 dark:to-gray-700 dark:peer-checked:from-emerald-500 dark:peer-checked:to-green-600 shadow-inner'></div>
+                      <div className='w-11 h-6 bg-gray-200 rounded-full peer-checked:from-emerald-400 peer-checked:to-green-500 transition-all duration-300 dark:bg-gray-600 dark:peer-checked:from-emerald-500 dark:peer-checked:to-green-600 shadow-inner'></div>
                       <div className='absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow-lg peer-checked:shadow-emerald-300 dark:peer-checked:shadow-emerald-500/50 peer-checked:scale-105'></div>
                       {/* 开关内图标 */}
                       <div className='absolute top-1.5 left-1.5 w-3 h-3 flex items-center justify-center pointer-events-none transition-all duration-300 peer-checked:translate-x-5'>
                         <span className='text-[10px] peer-checked:text-white text-gray-500'>
-                          {viewMode === 'agg' ? '🔗' : '○'}
+ {viewMode === 'agg' ? '' : '○'}
                         </span>
                       </div>
                     </div>
@@ -2466,11 +2466,11 @@ function SearchPageClient() {
                 </div>
               ) : !isLoading && (filteredAggResults.length > 0 || filteredAllResults.length > 0) ? (
                 <div className='flex justify-center mt-8 py-8'>
-                  <div className='relative px-8 py-5 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-purple-900/20 border border-blue-200/50 dark:border-blue-700/50 shadow-lg overflow-hidden'>
-                    <div className='absolute inset-0 bg-gradient-to-br from-blue-100/20 to-purple-100/20 dark:from-blue-800/10 dark:to-purple-800/10'></div>
+                  <div className='relative px-8 py-5 rounded-2xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200/50 dark:border-blue-700/50 shadow-lg overflow-hidden'>
+                    <div className='absolute inset-0 bg-blue-100/20 dark:bg-blue-800/10'></div>
                     <div className='relative flex flex-col items-center gap-2'>
                       <div className='relative'>
-                        <div className='w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg'>
+                        <div className='w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shadow-lg'>
                           <svg className='w-7 h-7 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2.5' d='M5 13l4 4L19 7'></path>
                           </svg>
@@ -2565,7 +2565,7 @@ function SearchPageClient() {
                               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                           }`}
                         >
-                          🔍 搜索视频
+ 搜索视频
                         </button>
                         <button
                           type='button'
@@ -2585,7 +2585,7 @@ function SearchPageClient() {
                               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                           }`}
                         >
-                          🔥 热门推荐
+ 热门推荐
                         </button>
                       </div>
                     </div>

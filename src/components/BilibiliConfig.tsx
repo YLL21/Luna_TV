@@ -203,7 +203,7 @@ const BilibiliConfig = ({ config, refreshConfig }: BilibiliConfigProps) => {
       {isLoggedIn && userInfo && (
         <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-3">
-            ✅ 已登录
+ 已登录
           </h3>
           <div className="flex items-center space-x-4 mb-4">
             {userInfo.face && (
@@ -270,7 +270,7 @@ const BilibiliConfig = ({ config, refreshConfig }: BilibiliConfigProps) => {
       {!isLoggedIn && !showQRCode && (
         <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-            🔐 账号登录（可选）
+ 账号登录（可选）
           </h3>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             登录后搜索时会使用你的账号凭证，可能获得更好的搜索结果
@@ -342,7 +342,7 @@ const BilibiliConfig = ({ config, refreshConfig }: BilibiliConfigProps) => {
       {/* 基础设置 */}
       <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-          ⚙️ 基础设置
+ 基础设置
         </h3>
 
         <div className="space-y-4">
@@ -372,7 +372,7 @@ const BilibiliConfig = ({ config, refreshConfig }: BilibiliConfigProps) => {
       {/* 功能说明 */}
       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-3">
-          💡 功能说明
+ 功能说明
         </h3>
         <ul className="space-y-2 text-sm text-blue-800 dark:text-blue-200">
           <li className="flex items-start">
@@ -397,7 +397,7 @@ const BilibiliConfig = ({ config, refreshConfig }: BilibiliConfigProps) => {
       {/* 注意事项 */}
       <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-3">
-          ⚠️ 注意事项
+ 注意事项
         </h3>
         <ul className="space-y-2 text-sm text-yellow-800 dark:text-yellow-200">
           <li className="flex items-start">
@@ -408,14 +408,14 @@ const BilibiliConfig = ({ config, refreshConfig }: BilibiliConfigProps) => {
             <span className="mr-2">•</span>
             <span className="font-semibold">
               {isLoggedIn
-                ? '✅ 已登录：搜索时会使用管理员凭证，可能看到更多结果'
-                : '❌ 未登录：搜索结果可能受限'}
+ ? ' 已登录：搜索时会使用管理员凭证，可能看到更多结果'
+ : ' 未登录：搜索结果可能受限'}
             </span>
           </li>
           <li className="flex items-start">
             <span className="mr-2">•</span>
             <span className="font-semibold text-red-600 dark:text-red-400">
-              ⚠️ 播放限制：iframe 播放器是用户浏览器直接访问 B站，无法使用服务器端登录凭证
+ 播放限制：iframe 播放器是用户浏览器直接访问 B站，无法使用服务器端登录凭证
             </span>
           </li>
           <li className="flex items-start">

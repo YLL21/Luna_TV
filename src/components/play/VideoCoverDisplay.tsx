@@ -56,7 +56,7 @@ export default function VideoCoverDisplay({
                   rel='noopener noreferrer'
                   className='absolute top-3 left-3 z-20'
                 >
-                  <div className={`relative ${bangumiDetails ? 'bg-linear-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600' : 'bg-linear-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600'} text-white text-xs font-bold w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-110 group/link`}>
+                  <div className={`relative ${bangumiDetails ? 'bg-pink-500 hover:bg-pink-600' : 'bg-green-500 hover:bg-green-600'} text-white text-xs font-bold w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-110 group/link`}>
                     <div className={`absolute inset-0 ${bangumiDetails ? 'bg-pink-400' : 'bg-green-400'} rounded-full opacity-0 group-hover/link:opacity-30 blur transition-opacity duration-300`}></div>
                     <svg
                       width='18'

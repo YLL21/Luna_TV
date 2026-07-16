@@ -86,7 +86,7 @@ export function TelegramWelcomeModal() {
           {/* 重要提示 */}
           <div className='p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg'>
             <p className='text-sm text-yellow-800 dark:text-yellow-200 font-medium'>
-              ⚠️ 请务必记住以下信息，下次可以直接使用用户名和密码登录！
+ 请务必记住以下信息，下次可以直接使用用户名和密码登录！
             </p>
           </div>
 
@@ -158,7 +158,7 @@ export function TelegramWelcomeModal() {
           {/* 提示信息 */}
           <div className='p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg'>
             <p className='text-sm text-blue-800 dark:text-blue-200'>
-              💡 您可以在个人中心修改密码，也可以继续使用 Telegram 一键登录
+ 您可以在个人中心修改密码，也可以继续使用 Telegram 一键登录
             </p>
           </div>
         </div>

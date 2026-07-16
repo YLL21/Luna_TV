@@ -62,7 +62,7 @@ export const UserMenu: React.FC = () => {
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const [authInfo, setAuthInfo] = useState<AuthInfo | null>(null);
   const [storageType, setStorageType] = useState<string>(() => {
-    // 🔧 优化：直接从 RUNTIME_CONFIG 读取初始值，避免默认值导致的多次渲染
+ // 优化：直接从 RUNTIME_CONFIG 读取初始值，避免默认值导致的多次渲染
     if (typeof window !== 'undefined') {
       return (window as any).RUNTIME_CONFIG?.STORAGE_TYPE || 'localstorage';
     }
@@ -82,7 +82,7 @@ export const UserMenu: React.FC = () => {
     return new Set();
   });
 
-  // 🚀 TanStack Query - 追番更新
+ // TanStack Query - 追番更新
   const showWatchingUpdates = authInfo?.username && storageType !== 'localstorage';
   const { data: watchingUpdates } = useWatchingUpdatesQuery({
     enabled: showWatchingUpdates, // 页面加载时就检查（会使用缓存）
@@ -104,14 +104,14 @@ export const UserMenu: React.FC = () => {
       series => series.hasNewRelease && !dismissedReleases.has(`${series.sourceKey}+${series.videoId}`)
     ).length || 0);
 
-  // 🚀 TanStack Query - 观影室配置
+ // TanStack Query - 观影室配置
   const { data: showWatchRoom = false } = useWatchRoomConfigQuery();
-  // 🚀 TanStack Query - 下载功能配置
+ // TanStack Query - 下载功能配置
   const { data: serverConfig } = useServerConfigQuery();
   const downloadEnabled = serverConfig?.downloadEnabled ?? true;
   const { tasks, setShowDownloadPanel } = useDownload();
 
-  // 🚀 TanStack Query - 数据失效工具
+ // TanStack Query - 数据失效工具
   const { invalidatePlayRecords } = useInvalidateUserMenuData();
 
   // Body 滚动锁定 - 使用 overflow 方式避免布局问题
@@ -154,13 +154,13 @@ export const UserMenu: React.FC = () => {
   const [passwordLoading, setPasswordLoading] = useState(false);
   const [passwordError, setPasswordError] = useState('');
 
-  // 🚀 TanStack Query - 版本检查
+ // TanStack Query - 版本检查
   const { data: updateStatus = null, isLoading: isChecking } = useVersionCheckQuery();
 
   // 数据查询条件
   const dataQueryEnabled = typeof window !== 'undefined' && !!authInfo?.username && storageType !== 'localstorage';
 
-  // 🚀 TanStack Query - 播放记录
+ // TanStack Query - 播放记录
   const { data: playRecords = [] } = usePlayRecordsQuery({
     enabled: dataQueryEnabled,
     enableFilter: enableContinueWatchingFilter,
@@ -168,12 +168,12 @@ export const UserMenu: React.FC = () => {
     maxProgress: continueWatchingMaxProgress,
   });
 
-  // 🚀 TanStack Query - 收藏列表
+ // TanStack Query - 收藏列表
   const { data: favorites = [] } = useFavoritesQuery({
     enabled: dataQueryEnabled,
   });
 
-  // 🚀 TanStack Query - 修改密码
+ // TanStack Query - 修改密码
   const changePasswordMutation = useChangePasswordMutation();
 
   // 确保组件已挂载
@@ -189,9 +189,9 @@ export const UserMenu: React.FC = () => {
     }
   }, []);
 
-  // 🚀 观影室配置和下载配置由 TanStack Query 自动管理
+ // 观影室配置和下载配置由 TanStack Query 自动管理
 
-  // 🚀 版本检查由 TanStack Query 自动管理
+ // 版本检查由 TanStack Query 自动管理
 
 
   const handleMenuClick = async () => {
@@ -421,7 +421,7 @@ export const UserMenu: React.FC = () => {
       {/* 菜单面板 */}
       <div className='fixed top-14 right-4 w-56 bg-white dark:bg-gray-900 rounded-lg shadow-xl z-1001 border border-gray-200/50 dark:border-gray-700/50 overflow-hidden select-none'>
         {/* 用户信息区域 */}
-        <div className='px-3 py-2.5 border-b border-gray-200 dark:border-gray-700 bg-linear-to-r from-gray-50 to-gray-100/50 dark:from-gray-800 dark:to-gray-800/50'>
+        <div className='px-3 py-2.5 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800'>
           <div className='space-y-1'>
             <div className='flex items-center justify-between'>
               <span className='text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider'>
@@ -835,7 +835,7 @@ export const UserMenu: React.FC = () => {
               <div className='mb-8'>
                 <div className='flex items-center gap-2 mb-4'>
                   <h4 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    🎬 新上映
+ 新上映
                   </h4>
                   <div className='flex items-center gap-1'>
                     <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
@@ -1185,7 +1185,7 @@ export const UserMenu: React.FC = () => {
           aria-label='User Menu'
         >
           {/* 微光背景效果 */}
-          <div className='absolute inset-0 rounded-full bg-linear-to-br from-blue-400/0 to-purple-600/0 group-hover:from-blue-400/20 group-hover:to-purple-600/20 dark:group-hover:from-blue-300/20 dark:group-hover:to-purple-500/20 transition-all duration-300'></div>
+          <div className='absolute inset-0 rounded-full bg-blue-400/0 group-hover:from-blue-400/20 group-hover:to-purple-600/20 dark:group-hover:from-blue-300/20 dark:group-hover:to-purple-500/20 transition-all duration-300'></div>
 
           <User className='w-full h-full relative z-10 group-hover:scale-110 transition-transform duration-300' />
         </button>

@@ -45,7 +45,7 @@ export default function SearchSuggestions({
     };
   }, [query]);
 
-  // 🚀 TanStack Query - 搜索建议
+ // TanStack Query - 搜索建议
   // 参考源码模式：useQuery with enabled option + 缓存搜索结果
   // TanStack Query 内置了请求取消（AbortController），无需手动管理
   const { data: suggestions = [] } = useQuery<SuggestionItem[]>({

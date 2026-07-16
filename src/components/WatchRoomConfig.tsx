@@ -255,7 +255,7 @@ const WatchRoomConfig = ({ config, refreshConfig }: WatchRoomConfigProps) => {
         <div className='flex items-start gap-3'>
           <AlertCircle className='w-5 h-5 text-yellow-600 dark:text-yellow-400 shrink-0 mt-0.5' />
           <div className='text-sm text-yellow-800 dark:text-yellow-200'>
-            <p className='font-medium mb-2'>⚠️ 重要提示：多站点共享</p>
+ <p className='font-medium mb-2'> 重要提示：多站点共享</p>
             <ul className='space-y-1 list-disc list-inside'>
               <li><strong>如果多个 LunaTV 站点使用同一个观影室服务器，所有站点将共享房间列表</strong></li>
               <li>站点A创建的房间，站点B的用户也能看到和加入</li>
@@ -412,7 +412,7 @@ const WatchRoomConfig = ({ config, refreshConfig }: WatchRoomConfigProps) => {
             <div className='space-y-4'>
               {/* 总览卡片 */}
               <div className='grid grid-cols-2 gap-4'>
-                <div className='bg-linear-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-4'>
+                <div className='bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-4'>
                   <div className='text-sm font-medium text-indigo-700 dark:text-indigo-300 mb-1'>
                     活跃房间数
                   </div>
@@ -420,7 +420,7 @@ const WatchRoomConfig = ({ config, refreshConfig }: WatchRoomConfigProps) => {
                     {stats.totalRooms}
                   </div>
                 </div>
-                <div className='bg-linear-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4'>
+                <div className='bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4'>
                   <div className='text-sm font-medium text-green-700 dark:text-green-300 mb-1'>
                     在线用户数
                   </div>

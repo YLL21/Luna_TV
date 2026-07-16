@@ -9,7 +9,7 @@ import { useVoiceChat } from '@/hooks/useVoiceChat';
 import MiniVideoCard from '@/components/watch-room/MiniVideoCard';
 import type { PlayState, LiveState, ScreenState } from '@/types/watch-room.types';
 
-const EMOJI_LIST = ['😀', '😂', '😍', '🥰', '😎', '🤔', '👍', '👏', '🎉', '❤️', '🔥', '⭐'];
+const EMOJI_LIST = ['', '', '', '', '', '', '', '', '', '', '', '⭐'];
 
 export default function ChatFloatingWindow() {
   const router = useRouter();
@@ -227,7 +227,7 @@ export default function ChatFloatingWindow() {
                   if (state.episode !== undefined && state.episode !== null) {
                     params.set('index', state.episode.toString());
                   }
-                  // 🎯 关键：携带当前播放时间，实现时间同步
+ // 关键：携带当前播放时间，实现时间同步
                   if (state.currentTime) {
                     params.set('t', state.currentTime.toString());
                   }
@@ -310,7 +310,7 @@ export default function ChatFloatingWindow() {
                   className="flex items-center justify-between bg-gray-50 dark:bg-gray-700 rounded-lg p-2"
                 >
                   <div className="flex items-center gap-2 min-w-0 flex-1">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-linear-to-r from-indigo-400 to-purple-500 flex items-center justify-center text-white font-bold text-xs sm:text-sm shrink-0">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-indigo-400 flex items-center justify-center text-white font-bold text-xs sm:text-sm shrink-0">
                       {member.name.charAt(0).toUpperCase()}
                     </div>
                     <span className="text-sm sm:text-base font-medium text-gray-900 dark:text-gray-100 truncate">{member.name}</span>

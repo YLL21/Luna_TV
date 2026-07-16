@@ -416,7 +416,7 @@ const DataMigration = ({ onRefreshConfig }: DataMigrationProps) => {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-gray-100">数据导入</h3>
-                <p className="text-sm text-red-600 dark:text-red-400">⚠️ 将清空现有数据</p>
+ <p className="text-sm text-red-600 dark:text-red-400"> 将清空现有数据</p>
               </div>
             </div>
 

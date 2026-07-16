@@ -552,7 +552,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
   // 用户名搜索状态
   const [filterUsername, setFilterUsername] = useState<string>('');
 
-  // 🔑 TVBox Token 管理状态
+ // TVBox Token 管理状态
   const [showTVBoxTokenModal, setShowTVBoxTokenModal] = useState(false);
   const [tvboxTokenUser, setTVBoxTokenUser] = useState<{
     username: string;
@@ -1006,7 +1006,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
   if (!config) {
     return (
       <div className='flex justify-center items-center py-8'>
-        <div className='flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
+        <div className='flex items-center gap-3 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
           <div className='animate-spin rounded-full h-5 w-5 border-2 border-blue-300 border-t-blue-600 dark:border-blue-700 dark:border-t-blue-400'></div>
           <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>加载配置中...</span>
         </div>
@@ -1365,7 +1365,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
               {config.SiteConfig.DefaultUserTags && config.SiteConfig.DefaultUserTags.length > 0 && (
                 <div className='mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-200 dark:border-blue-800'>
                   <div className='text-xs text-blue-700 dark:text-blue-300'>
-                    💡 已选择 {config.SiteConfig.DefaultUserTags.length} 个默认分组，新用户将获得这些分组的权限并集
+ 已选择 {config.SiteConfig.DefaultUserTags.length} 个默认分组，新用户将获得这些分组的权限并集
                   </div>
                 </div>
               )}
@@ -1464,7 +1464,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                   <td colSpan={3} className='px-6 py-12'>
                     <div className='flex flex-col items-center justify-center'>
                       <div className='relative mb-4'>
-                        <div className='w-16 h-16 bg-linear-to-br from-blue-100 to-indigo-200 dark:from-blue-900/40 dark:to-indigo-900/40 rounded-2xl flex items-center justify-center shadow-lg'>
+                        <div className='w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center shadow-lg'>
                           <svg className='w-8 h-8 text-blue-500 dark:text-blue-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'></path>
                           </svg>
@@ -2093,14 +2093,14 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
               </div>
 
               {/* 成人内容控制 */}
-              <div className='mb-6 p-4 bg-linear-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-lg border border-red-200 dark:border-red-800'>
+              <div className='mb-6 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800'>
                 <label className='flex items-center justify-between cursor-pointer'>
                   <div className='flex-1'>
                     <div className='flex items-center space-x-2'>
                       <span className='text-base font-medium text-gray-900 dark:text-gray-100'>
                         显示成人内容
                       </span>
-                      <span className='text-lg'>🔞</span>
+ <span className='text-lg'></span>
                     </div>
                     <p className='text-sm text-gray-600 dark:text-gray-400 mt-1'>
                       允许此用户查看被标记为成人资源的视频源（需要同时启用站点级别和用户组级别的成人内容开关，优先级：用户 &gt; 用户组 &gt; 全局）
@@ -2113,7 +2113,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                       onChange={(e) => setSelectedShowAdultContent(e.target.checked)}
                       className='sr-only peer'
                     />
-                    <div className='w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-linear-to-r peer-checked:from-red-600 peer-checked:to-pink-600'></div>
+                    <div className='w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-red-600'></div>
                   </div>
                 </label>
               </div>
@@ -2255,7 +2255,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         />
                         <div className="flex-1">
                           <div className="text-sm font-medium text-orange-900 dark:text-orange-100">
-                            🤖 AI推荐功能
+ AI推荐功能
                           </div>
                           <div className="text-xs text-orange-700 dark:text-orange-300">
                             智能推荐影视内容 (消耗OpenAI API费用)
@@ -2285,7 +2285,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         />
                         <div className="flex-1">
                           <div className="text-sm font-medium text-red-900 dark:text-red-100">
-                            📺 YouTube搜索功能
+ YouTube搜索功能
                           </div>
                           <div className="text-xs text-red-700 dark:text-red-300">
                             搜索和推荐YouTube视频 (消耗YouTube API配额)
@@ -2317,14 +2317,14 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                 </div>
 
                 {/* 成人内容控制 */}
-                <div className='p-4 bg-linear-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-lg border border-red-200 dark:border-red-800'>
+                <div className='p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800'>
                   <label className='flex items-center justify-between cursor-pointer'>
                     <div className='flex-1'>
                       <div className='flex items-center space-x-2'>
                         <span className='text-base font-medium text-gray-900 dark:text-gray-100'>
                           显示成人内容
                         </span>
-                        <span className='text-lg'>🔞</span>
+ <span className='text-lg'></span>
                       </div>
                       <p className='text-sm text-gray-600 dark:text-gray-400 mt-1'>
                         允许此用户组查看被标记为成人资源的视频源（需要同时启用站点级别的成人内容开关）
@@ -2342,7 +2342,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         }
                         className='sr-only peer'
                       />
-                      <div className='w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-linear-to-r peer-checked:from-red-600 peer-checked:to-pink-600'></div>
+                      <div className='w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-red-600'></div>
                     </div>
                   </label>
                 </div>
@@ -2467,7 +2467,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         />
                         <div className="flex-1">
                           <div className="text-sm font-medium text-orange-900 dark:text-orange-100">
-                            🤖 AI推荐功能
+ AI推荐功能
                           </div>
                           <div className="text-xs text-orange-700 dark:text-orange-300">
                             智能推荐影视内容 (消耗OpenAI API费用)
@@ -2497,7 +2497,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         />
                         <div className="flex-1">
                           <div className="text-sm font-medium text-red-900 dark:text-red-100">
-                            📺 YouTube搜索功能
+ YouTube搜索功能
                           </div>
                           <div className="text-xs text-red-700 dark:text-red-300">
                             搜索和推荐YouTube视频 (消耗YouTube API配额)
@@ -2529,14 +2529,14 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                 </div>
 
                 {/* 成人内容控制 */}
-                <div className='p-4 bg-linear-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 rounded-lg border border-red-200 dark:border-red-800'>
+                <div className='p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800'>
                   <label className='flex items-center justify-between cursor-pointer'>
                     <div className='flex-1'>
                       <div className='flex items-center space-x-2'>
                         <span className='text-base font-medium text-gray-900 dark:text-gray-100'>
                           显示成人内容
                         </span>
-                        <span className='text-lg'>🔞</span>
+ <span className='text-lg'></span>
                       </div>
                       <p className='text-sm text-gray-600 dark:text-gray-400 mt-1'>
                         允许此用户组查看被标记为成人资源的视频源（需要同时启用站点级别的成人内容开关）
@@ -2554,7 +2554,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         }
                         className='sr-only peer'
                       />
-                      <div className='w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-linear-to-r peer-checked:from-red-600 peer-checked:to-pink-600'></div>
+                      <div className='w-14 h-7 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[""] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-red-600'></div>
                     </div>
                   </label>
                 </div>
@@ -2728,7 +2728,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                       </svg>
                       <span className='text-sm font-medium text-yellow-800 dark:text-yellow-300'>
-                        ⚠️ 将影响 {deletingUserGroup.affectedUsers.length} 个用户：
+ 将影响 {deletingUserGroup.affectedUsers.length} 个用户：
                       </span>
                     </div>
                     <div className='space-y-1'>
@@ -2749,7 +2749,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
                       </svg>
                       <span className='text-sm font-medium text-green-800 dark:text-green-300'>
-                        ✅ 当前没有用户使用此用户组
+ 当前没有用户使用此用户组
                       </span>
                     </div>
                   </div>
@@ -3002,7 +3002,7 @@ const VideoSourceConfig = ({
   // 编辑视频源状态
   const [editingSource, setEditingSource] = useState<DataSource | null>(null);
 
-  // 🔑 普通视频源代理配置
+ // 普通视频源代理配置
   const [videoProxySettings, setVideoProxySettings] = useState({
     enabled: false,
     proxyUrl: 'https://corsapi.smone.workers.dev'
@@ -3534,21 +3534,21 @@ const VideoSourceConfig = ({
         return {
           text: '有效',
           className: 'bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-300',
-          icon: '✓',
+ icon: '',
           message: result.message
         };
       case 'no_results':
         return {
           text: '无法搜索',
           className: 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300',
-          icon: '⚠',
+ icon: '',
           message: result.message
         };
       case 'invalid':
         return {
           text: '无效',
           className: 'bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-300',
-          icon: '✗',
+ icon: '',
           message: result.message
         };
       default:
@@ -3621,7 +3621,7 @@ const VideoSourceConfig = ({
             onClick={() => handleToggleAdult(source.key, !source.is_adult)}
             disabled={isLoading(`toggleAdult_${source.key}`)}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${source.is_adult
-              ? 'bg-linear-to-r from-red-600 to-pink-600 focus:ring-red-500'
+              ? 'bg-red-600 focus:ring-red-500'
               : 'bg-gray-200 dark:bg-gray-700 focus:ring-gray-500'
             } ${isLoading(`toggleAdult_${source.key}`) ? 'opacity-50 cursor-not-allowed' : ''}`}
             title={source.is_adult ? '点击取消成人资源标记' : '点击标记为成人资源'}
@@ -3629,13 +3629,13 @@ const VideoSourceConfig = ({
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${source.is_adult ? 'translate-x-6' : 'translate-x-1'}`} />
           </button>
           {source.is_adult && (
-            <span className='ml-2 text-xs text-red-600 dark:text-red-400'>🔞</span>
+ <span className='ml-2 text-xs text-red-600 dark:text-red-400'></span>
           )}
         </td>
         <td className='px-6 py-4 whitespace-nowrap text-center'>
           {source.type === 'shortdrama' ? (
             <span className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200'>
-              📺 短剧源
+ 短剧源
             </span>
           ) : (
             <span className='inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200'>
@@ -3988,7 +3988,7 @@ const VideoSourceConfig = ({
   if (!config) {
     return (
       <div className='flex justify-center items-center py-8'>
-        <div className='flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
+        <div className='flex items-center gap-3 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
           <div className='animate-spin rounded-full h-5 w-5 border-2 border-blue-300 border-t-blue-600 dark:border-blue-700 dark:border-t-blue-400'></div>
           <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>加载配置中...</span>
         </div>
@@ -3999,7 +3999,7 @@ const VideoSourceConfig = ({
   return (
     <div className='space-y-6'>
       {/* Cloudflare Worker 代理配置 */}
-      <div className='border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10'>
+      <div className='border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-blue-50/50 dark:bg-blue-900/10'>
         <div className='flex items-center justify-between mb-4'>
           <div>
             <h3 className='text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2'>
@@ -4043,7 +4043,7 @@ const VideoSourceConfig = ({
 
             <div className='bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3'>
               <h4 className='text-sm font-semibold text-blue-900 dark:text-blue-300 mb-2'>
-                💡 功能说明
+ 功能说明
               </h4>
               <ul className='text-xs text-blue-800 dark:text-blue-300 space-y-1'>
                 <li>• 通过Cloudflare全球CDN加速视频源API访问</li>
@@ -4058,7 +4058,7 @@ const VideoSourceConfig = ({
 
             <div className='bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3'>
               <h4 className='text-sm font-semibold text-yellow-900 dark:text-yellow-300 mb-2'>
-                ⚠️ 自定义部署
+ 自定义部署
               </h4>
               <p className='text-xs text-yellow-800 dark:text-yellow-300'>
                 如需自定义部署Worker服务，请参考：
@@ -4085,7 +4085,7 @@ const VideoSourceConfig = ({
                 : 'bg-green-600 hover:bg-green-700 text-white'
             }`}
           >
-            {isLoading('checkProxyStatus') ? '检测中...' : '🔍 检测代理状态'}
+ {isLoading('checkProxyStatus') ? '检测中...' : ' 检测代理状态'}
           </button>
           <button
             onClick={handleSaveVideoProxy}
@@ -4121,7 +4121,7 @@ const VideoSourceConfig = ({
                 <div className={`text-sm font-semibold ${
                   proxyStatus.healthy ? 'text-green-900 dark:text-green-300' : 'text-red-900 dark:text-red-300'
                 }`}>
-                  {proxyStatus.healthy ? '✅ 代理正常工作' : '❌ 代理连接失败'}
+ {proxyStatus.healthy ? ' 代理正常工作' : ' 代理连接失败'}
                 </div>
                 <div className='text-xs text-gray-600 dark:text-gray-400 mt-1'>
                   {proxyStatus.healthy && proxyStatus.responseTime && (
@@ -4178,7 +4178,7 @@ const VideoSourceConfig = ({
                 <button
                   onClick={() => handleBatchMarkAdult(true)}
                   disabled={isLoading('batchSource_batch_mark_adult')}
-                  className={`px-3 py-1 text-sm ${isLoading('batchSource_batch_mark_adult') ? buttonStyles.disabled : 'bg-linear-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white rounded-lg transition-colors'}`}
+                  className={`px-3 py-1 text-sm ${isLoading('batchSource_batch_mark_adult') ? buttonStyles.disabled : 'bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors'}`}
                   title='将选中的视频源标记为成人资源'
                 >
                   {isLoading('batchSource_batch_mark_adult') ? '标记中...' : '标记成人'}
@@ -4194,7 +4194,7 @@ const VideoSourceConfig = ({
                 <button
                   onClick={() => handleBatchMarkType('shortdrama')}
                   disabled={isLoading('batchSource_batch_mark_shortdrama')}
-                  className={`px-3 py-1 text-sm ${isLoading('batchSource_batch_mark_shortdrama') ? buttonStyles.disabled : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-lg transition-colors'}`}
+                  className={`px-3 py-1 text-sm ${isLoading('batchSource_batch_mark_shortdrama') ? buttonStyles.disabled : 'bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors'}`}
                   title='将选中的视频源标记为短剧类型'
                 >
                   {isLoading('batchSource_batch_mark_shortdrama') ? '标记中...' : '标记短剧'}
@@ -4214,7 +4214,7 @@ const VideoSourceConfig = ({
           <div className='flex items-center gap-2 order-1 sm:order-2'>
             <button
               onClick={() => setImportExportModal({ isOpen: true, mode: 'import' })}
-              className='group px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-500 hover:from-blue-700 hover:via-cyan-600 hover:to-blue-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10'
+              className='group px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-cyan-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10'
               title='从 JSON 文件导入视频源'
             >
               <Upload className='w-4 h-4 group-hover:scale-110 transition-transform duration-300' />
@@ -4223,7 +4223,7 @@ const VideoSourceConfig = ({
             </button>
             <button
               onClick={() => setImportExportModal({ isOpen: true, mode: 'export' })}
-              className='group px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 bg-gradient-to-br from-green-600 via-emerald-500 to-teal-500 hover:from-green-700 hover:via-emerald-600 hover:to-teal-600 text-white shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-emerald-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10'
+              className='group px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-emerald-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10'
               title={
                 selectedSources.size > 0
                   ? `导出选中的 ${selectedSources.size} 个视频源`
@@ -4244,7 +4244,7 @@ const VideoSourceConfig = ({
               className={`group px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 ${
                 isValidating
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-br from-purple-600 via-indigo-500 to-purple-500 hover:from-purple-700 hover:via-indigo-600 hover:to-purple-600 text-white shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:scale-95 backdrop-blur-sm border border-white/10'
+                  : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:scale-95 backdrop-blur-sm border border-white/10'
               } transition-all duration-300`}
             >
               {isValidating ? (
@@ -4265,7 +4265,7 @@ const VideoSourceConfig = ({
             {!isValidating && invalidSourceCount > 0 && (
               <button
                 onClick={handleSelectInvalidSources}
-                className='group relative px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 hover:from-orange-600 hover:via-red-600 hover:to-pink-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10'
+                className='group relative px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 backdrop-blur-sm border border-white/10'
                 title={`一键选中 ${invalidSourceCount} 个失效或无法搜索的视频源`}
               >
                 <svg
@@ -4291,8 +4291,8 @@ const VideoSourceConfig = ({
               onClick={() => setShowAddForm(!showAddForm)}
               className={`group px-4 py-2 text-sm rounded-xl font-medium flex items-center space-x-2 transition-all duration-300 backdrop-blur-sm border border-white/10 ${
                 showAddForm
-                  ? 'bg-gradient-to-br from-gray-500 via-gray-600 to-gray-500 hover:from-gray-600 hover:via-gray-700 hover:to-gray-600 text-white shadow-lg shadow-gray-500/30 hover:shadow-xl hover:shadow-gray-600/40'
-                  : 'bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500 hover:from-emerald-700 hover:via-green-600 hover:to-teal-600 text-white shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-green-500/40'
+                  ? 'bg-gray-500 hover:bg-gray-600 text-white shadow-lg shadow-gray-500/30 hover:shadow-xl hover:shadow-gray-600/40'
+                  : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-green-500/40'
               } hover:-translate-y-0.5 active:scale-95`}
             >
               {showAddForm ? (
@@ -4370,7 +4370,7 @@ const VideoSourceConfig = ({
                 className='w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
               />
               <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
-                标记为成人资源 <span className='text-red-600'>🔞</span>
+ 标记为成人资源 <span className='text-red-600'></span>
               </span>
             </label>
             {newSource.is_adult && (
@@ -4412,13 +4412,13 @@ const VideoSourceConfig = ({
                   className='w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
                 />
                 <span className='text-sm text-gray-700 dark:text-gray-300'>
-                  短剧源 📺
+ 短剧源 
                 </span>
               </label>
             </div>
             {newSource.type === 'shortdrama' && (
               <div className='mt-2 p-2 bg-purple-50 dark:bg-purple-900/20 rounded text-xs text-purple-700 dark:text-purple-300'>
-                💡 系统会自动查找该源的"短剧"或"微短剧"分类
+ 系统会自动查找该源的"短剧"或"微短剧"分类
               </div>
             )}
           </div>
@@ -4506,7 +4506,7 @@ const VideoSourceConfig = ({
                     className='w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500'
                   />
                   <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
-                    标记为成人资源 <span className='text-red-600'>🔞</span>
+ 标记为成人资源 <span className='text-red-600'></span>
                   </span>
                 </label>
               </div>
@@ -4535,7 +4535,7 @@ const VideoSourceConfig = ({
                       onChange={() => setEditingSource(prev => prev ? { ...prev, type: 'shortdrama' } : null)}
                       className='w-4 h-4 text-purple-600'
                     />
-                    <span className='text-sm text-gray-700 dark:text-gray-300'>📺 短剧源</span>
+ <span className='text-sm text-gray-700 dark:text-gray-300'> 短剧源</span>
                   </label>
                 </div>
               </div>
@@ -4968,7 +4968,7 @@ const CategoryConfig = ({
   if (!config) {
     return (
       <div className='flex justify-center items-center py-8'>
-        <div className='flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
+        <div className='flex items-center gap-3 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
           <div className='animate-spin rounded-full h-5 w-5 border-2 border-blue-300 border-t-blue-600 dark:border-blue-700 dark:border-t-blue-400'></div>
           <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>加载配置中...</span>
         </div>
@@ -5210,7 +5210,7 @@ const ConfigFileComponent = ({ config, refreshConfig }: { config: AdminConfig | 
   if (!config) {
     return (
       <div className='flex justify-center items-center py-8'>
-        <div className='flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
+        <div className='flex items-center gap-3 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
           <div className='animate-spin rounded-full h-5 w-5 border-2 border-blue-300 border-t-blue-600 dark:border-blue-700 dark:border-t-blue-400'></div>
           <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>加载配置中...</span>
         </div>
@@ -5570,7 +5570,7 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
         showSuccess('保存成功', showAlert);
         await refreshConfig();
 
-        // 🔥 如果API返回shouldReload标志，自动刷新页面使配置立即生效（解决Docker缓存问题）
+ // 如果API返回shouldReload标志，自动刷新页面使配置立即生效（解决Docker缓存问题）
         if (data.shouldReload) {
           setTimeout(() => {
             window.location.reload();
@@ -5586,7 +5586,7 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
   if (!config) {
     return (
       <div className='flex justify-center items-center py-8'>
-        <div className='flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
+        <div className='flex items-center gap-3 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
           <div className='animate-spin rounded-full h-5 w-5 border-2 border-blue-300 border-t-blue-600 dark:border-blue-700 dark:border-t-blue-400'></div>
           <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>加载配置中...</span>
         </div>
@@ -6244,7 +6244,7 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
           <label
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
-            显示成人内容 <span className='text-red-600 dark:text-red-400'>🔞</span>
+ 显示成人内容 <span className='text-red-600 dark:text-red-400'></span>
           </label>
           <button
             type='button'
@@ -6255,7 +6255,7 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
               }))
             }
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${siteSettings.ShowAdultContent
-              ? 'bg-linear-to-r from-red-600 to-pink-600 focus:ring-red-500'
+              ? 'bg-red-600 focus:ring-red-500'
               : buttonStyles.toggleOff + ' focus:ring-gray-500'
               }`}
           >
@@ -7146,7 +7146,7 @@ const LiveSourceConfig = ({
   if (!config) {
     return (
       <div className='flex justify-center items-center py-8'>
-        <div className='flex items-center gap-3 px-6 py-3 bg-linear-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
+        <div className='flex items-center gap-3 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50 shadow-md'>
           <div className='animate-spin rounded-full h-5 w-5 border-2 border-blue-300 border-t-blue-600 dark:border-blue-700 dark:border-t-blue-400'></div>
           <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>加载配置中...</span>
         </div>
@@ -7154,7 +7154,7 @@ const LiveSourceConfig = ({
     );
   }
 
-  // 📊 读取 CORS 统计数据
+ // 读取 CORS 统计数据
   const [corsStats, setCorsStats] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('live-cors-stats');
@@ -7184,7 +7184,7 @@ const LiveSourceConfig = ({
         }
       });
 
-      console.log('🧹 已清除所有CORS统计和缓存数据');
+ console.log(' 已清除所有CORS统计和缓存数据');
       showAlert({ type: 'success', title: '清除成功', message: 'CORS统计和缓存已清除', timer: 2000 });
     }
   };
@@ -7237,13 +7237,13 @@ const LiveSourceConfig = ({
         </div>
       </div>
 
-      {/* 📊 CORS 检测统计面板 */}
+ {/* CORS 检测统计面板 */}
       <div className='bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 space-y-3'>
         {corsStats.totalChecked > 0 ? (
           <>
           <div className='flex items-center justify-between'>
             <h4 className='text-sm font-semibold text-blue-900 dark:text-blue-100'>
-              📊 直连模式统计
+ 直连模式统计
             </h4>
             <button
               onClick={handleClearCorsCache}
@@ -7257,7 +7257,7 @@ const LiveSourceConfig = ({
             <div className='bg-white dark:bg-gray-800 rounded-lg px-3 py-2.5 border border-gray-200 dark:border-gray-700'>
               <div className='text-xs text-gray-500 dark:text-gray-400 mb-1'>支持直连</div>
               <div className='text-base font-semibold text-green-600 dark:text-green-400'>
-                ✅ {corsStats.directCount} 个
+ {corsStats.directCount} 个
                 <span className='text-sm ml-2 font-normal'>
                   ({corsStats.totalChecked > 0 ? Math.round((corsStats.directCount / corsStats.totalChecked) * 100) : 0}%)
                 </span>
@@ -7267,7 +7267,7 @@ const LiveSourceConfig = ({
             <div className='bg-white dark:bg-gray-800 rounded-lg px-3 py-2.5 border border-gray-200 dark:border-gray-700'>
               <div className='text-xs text-gray-500 dark:text-gray-400 mb-1'>需要代理</div>
               <div className='text-base font-semibold text-orange-600 dark:text-orange-400'>
-                ❌ {corsStats.proxyCount} 个
+ {corsStats.proxyCount} 个
                 <span className='text-sm ml-2 font-normal'>
                   ({corsStats.totalChecked > 0 ? Math.round((corsStats.proxyCount / corsStats.totalChecked) * 100) : 0}%)
                 </span>
@@ -7278,20 +7278,20 @@ const LiveSourceConfig = ({
           <div className='bg-white dark:bg-gray-800 rounded-lg px-3 py-2.5 border border-gray-200 dark:border-gray-700'>
             <div className='text-xs text-gray-500 dark:text-gray-400 mb-1'>总检测数 / 估算流量节省</div>
             <div className='text-base font-semibold text-blue-600 dark:text-blue-400'>
-              📈 {corsStats.totalChecked} 个源
+ {corsStats.totalChecked} 个源
               <span className='text-sm ml-3 text-green-600 dark:text-green-400 font-normal'>
-                💾 节省约 {corsStats.totalChecked > 0 ? Math.round((corsStats.directCount / corsStats.totalChecked) * 100) : 0}% 带宽
+ 节省约 {corsStats.totalChecked> 0 ? Math.round((corsStats.directCount / corsStats.totalChecked) * 100) : 0}% 带宽
               </span>
             </div>
           </div>
 
           <div className='text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-blue-200 dark:border-blue-800'>
-            💡 提示: 直连模式通过客户端直接访问流媒体源来节省服务器带宽，但需要流媒体源支持跨域访问（CORS）。检测结果缓存有效期7天。
+ 提示: 直连模式通过客户端直接访问流媒体源来节省服务器带宽，但需要流媒体源支持跨域访问（CORS）。检测结果缓存有效期7天。
           </div>
           </>
         ) : (
           <div className='text-center py-8'>
-            <div className='text-4xl mb-3'>📊</div>
+ <div className='text-4xl mb-3'></div>
             <p className='text-gray-600 dark:text-gray-400 text-sm'>
               暂无检测数据
             </p>
@@ -7402,7 +7402,7 @@ const LiveSourceConfig = ({
               onClick={handleCancelEdit}
               className='text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
             >
-              ✕
+ 
             </button>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
@@ -7598,7 +7598,7 @@ const LiveSourceConfig = ({
       {showM3UImportForm && createPortal(
         <div className='fixed inset-0 bg-black/60 backdrop-blur-sm z-9999 flex items-center justify-center p-4'>
           <div className='bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden'>
-            <div className='relative px-5 py-4 bg-gradient-to-r from-blue-600 to-cyan-600'>
+            <div className='relative px-5 py-4 bg-blue-600'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center space-x-3'>
                   <div className='bg-white/20 backdrop-blur-sm p-2 rounded-lg'>
@@ -7670,19 +7670,19 @@ const NetDiskConfig = ({
 
   // 网盘类型选项
   const CLOUD_TYPE_OPTIONS = [
-    { key: 'baidu', name: '百度网盘', icon: '📁' },
-    { key: 'aliyun', name: '阿里云盘', icon: '☁️' },
-    { key: 'quark', name: '夸克网盘', icon: '⚡' },
-    { key: 'guangya', name: '光鸭云盘', icon: '🦆' },
-    { key: 'tianyi', name: '天翼云盘', icon: '📱' },
-    { key: 'uc', name: 'UC网盘', icon: '🌐' },
-    { key: 'mobile', name: '移动云盘', icon: '📲' },
-    { key: '115', name: '115网盘', icon: '💾' },
-    { key: 'pikpak', name: 'PikPak', icon: '📦' },
-    { key: 'xunlei', name: '迅雷网盘', icon: '⚡' },
-    { key: '123', name: '123网盘', icon: '🔢' },
-    { key: 'magnet', name: '磁力链接', icon: '🧲' },
-    { key: 'ed2k', name: '电驴链接', icon: '🐴' }
+ { key: 'baidu', name: '百度网盘', icon: '' },
+ { key: 'aliyun', name: '阿里云盘', icon: '' },
+ { key: 'quark', name: '夸克网盘', icon: '' },
+ { key: 'guangya', name: '光鸭云盘', icon: '' },
+ { key: 'tianyi', name: '天翼云盘', icon: '' },
+ { key: 'uc', name: 'UC网盘', icon: '' },
+ { key: 'mobile', name: '移动云盘', icon: '' },
+ { key: '115', name: '115网盘', icon: '' },
+ { key: 'pikpak', name: 'PikPak', icon: '' },
+ { key: 'xunlei', name: '迅雷网盘', icon: '' },
+ { key: '123', name: '123网盘', icon: '' },
+ { key: 'magnet', name: '磁力链接', icon: '' },
+ { key: 'ed2k', name: '电驴链接', icon: '' }
   ];
 
   // 从config加载设置
@@ -7751,7 +7751,7 @@ const NetDiskConfig = ({
             <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
               <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
             </svg>
-            <span>📡 集成开源项目 <strong>PanSou</strong> 提供网盘资源搜索功能</span>
+ <span> 集成开源项目 <strong>PanSou</strong> 提供网盘资源搜索功能</span>
             <a 
               href='https://github.com/fish2018/pansou' 
               target='_blank' 
@@ -8063,9 +8063,9 @@ function AdminPageClient() {
               {Array.from({ length: 3 }).map((_, index) => (
                 <div
                   key={index}
-                  className='relative h-24 bg-linear-to-r from-gray-100 via-gray-200 to-gray-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 rounded-xl overflow-hidden'
+                  className='relative h-24 bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden'
                 >
-                  <div className='absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-linear-to-r from-transparent via-white/20 to-transparent'></div>
+                  <div className='absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-transparent'></div>
                 </div>
               ))}
             </div>
@@ -8616,7 +8616,7 @@ function AdminPageClient() {
                       <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' />
                     </svg>
                     <span className='text-sm font-medium text-yellow-800 dark:text-yellow-300'>
-                      ⚠️ 危险操作警告
+ 危险操作警告
                     </span>
                   </div>
                   <p className='text-sm text-yellow-700 dark:text-yellow-400'>

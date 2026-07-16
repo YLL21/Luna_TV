@@ -21,14 +21,14 @@ import {
 
 // 用户等级系统
 const USER_LEVELS = [
-  { level: 1, name: "新星观众", icon: "🌟", minLogins: 1, maxLogins: 9, description: "刚刚开启观影之旅", gradient: "from-slate-400 to-slate-600" },
-  { level: 2, name: "常客影迷", icon: "🎬", minLogins: 10, maxLogins: 49, description: "热爱电影的观众", gradient: "from-blue-400 to-blue-600" },
-  { level: 3, name: "资深观众", icon: "📺", minLogins: 50, maxLogins: 199, description: "对剧集有独特品味", gradient: "from-emerald-400 to-emerald-600" },
-  { level: 4, name: "影院达人", icon: "🎭", minLogins: 200, maxLogins: 499, description: "深度电影爱好者", gradient: "from-violet-400 to-violet-600" },
-  { level: 5, name: "观影专家", icon: "🏆", minLogins: 500, maxLogins: 999, description: "拥有丰富观影经验", gradient: "from-amber-400 to-amber-600" },
-  { level: 6, name: "传奇影神", icon: "👑", minLogins: 1000, maxLogins: 2999, description: "影视界的传奇人物", gradient: "from-red-400 via-red-500 to-red-600" },
-  { level: 7, name: "殿堂影帝", icon: "💎", minLogins: 3000, maxLogins: 9999, description: "影视殿堂的至尊", gradient: "from-pink-400 via-pink-500 to-pink-600" },
-  { level: 8, name: "永恒之光", icon: "✨", minLogins: 10000, maxLogins: Infinity, description: "永恒闪耀的观影之光", gradient: "from-indigo-400 via-purple-500 to-pink-500" }
+ { level: 1, name: "新星观众", icon: "", minLogins: 1, maxLogins: 9, description: "刚刚开启观影之旅", gradient: "from-slate-400 to-slate-600" },
+ { level: 2, name: "常客影迷", icon: "", minLogins: 10, maxLogins: 49, description: "热爱电影的观众", gradient: "from-blue-400 to-blue-600" },
+ { level: 3, name: "资深观众", icon: "", minLogins: 50, maxLogins: 199, description: "对剧集有独特品味", gradient: "from-emerald-400 to-emerald-600" },
+ { level: 4, name: "影院达人", icon: "", minLogins: 200, maxLogins: 499, description: "深度电影爱好者", gradient: "from-violet-400 to-violet-600" },
+ { level: 5, name: "观影专家", icon: "", minLogins: 500, maxLogins: 999, description: "拥有丰富观影经验", gradient: "from-amber-400 to-amber-600" },
+ { level: 6, name: "传奇影神", icon: "", minLogins: 1000, maxLogins: 2999, description: "影视界的传奇人物", gradient: "from-red-400 via-red-500 to-red-600" },
+ { level: 7, name: "殿堂影帝", icon: "", minLogins: 3000, maxLogins: 9999, description: "影视殿堂的至尊", gradient: "from-pink-400 via-pink-500 to-pink-600" },
+ { level: 8, name: "永恒之光", icon: "", minLogins: 10000, maxLogins: Infinity, description: "永恒闪耀的观影之光", gradient: "from-indigo-400 via-purple-500 to-pink-500" }
 ];
 
 function calculateUserLevel(loginCount: number) {
@@ -37,7 +37,7 @@ function calculateUserLevel(loginCount: number) {
     return {
       level: 0,
       name: "待激活",
-      icon: "💤",
+ icon: "",
       minLogins: 0,
       maxLogins: 0,
       description: "尚未开始观影之旅",
@@ -77,32 +77,32 @@ const PlayStatsPage: React.FC = () => {
   const [showWatchingUpdates, setShowWatchingUpdates] = useState(false);
   const [activeTab, setActiveTab] = useState<'admin' | 'personal'>('admin'); // 新增Tab状态
 
-  // 🚀 TanStack Query - 管理员统计数据
+ // TanStack Query - 管理员统计数据
   const {
     data: statsData = null,
     error: adminError,
     isLoading: adminLoading,
   } = useAdminStatsQuery(!!authInfo && isAdmin);
 
-  // 🚀 TanStack Query - 用户个人统计数据
+ // TanStack Query - 用户个人统计数据
   const {
     data: userStats = null,
     error: userError,
     isLoading: userLoading,
   } = useUserStatsQuery(!!authInfo);
 
-  // 🚀 TanStack Query - 追番更新
+ // TanStack Query - 追番更新
   const {
     data: watchingUpdates = null,
   } = usePlayStatsWatchingUpdatesQuery(!!authInfo);
 
-  // 🚀 TanStack Query - 即将上映
+ // TanStack Query - 即将上映
   const {
     data: upcomingReleases = [],
     isLoading: upcomingLoading,
   } = useUpcomingReleasesQuery(!!authInfo);
 
-  // 🚀 TanStack Query - 刷新所有数据
+ // TanStack Query - 刷新所有数据
   const invalidatePlayStats = useInvalidatePlayStats();
 
   // 兼容旧代码的loading和error状态
@@ -167,7 +167,7 @@ const PlayStatsPage: React.FC = () => {
     });
   };
 
-  // 🚀 数据获取由 TanStack Query 自动管理
+ // 数据获取由 TanStack Query 自动管理
 
   // 清理过期缓存
   const cleanExpiredCache = useCallback(() => {
@@ -224,7 +224,7 @@ const PlayStatsPage: React.FC = () => {
     });
   }, []);
 
-  // 🚀 即将上映由 TanStack Query 自动管理
+ // 即将上映由 TanStack Query 自动管理
 
   // 处理刷新按钮点击
   const handleRefreshClick = async () => {
@@ -278,7 +278,7 @@ const PlayStatsPage: React.FC = () => {
       ? (window as any).RUNTIME_CONFIG.STORAGE_TYPE
       : 'localstorage';
 
-  // 🚀 数据获取由 TanStack Query 的 enabled 选项自动控制
+ // 数据获取由 TanStack Query 的 enabled 选项自动控制
   // 当 authInfo 和 isAdmin 变化时，queries 自动重新执行
 
   // 处理401重定向
@@ -296,9 +296,9 @@ const PlayStatsPage: React.FC = () => {
     const handlePlayRecordsUpdate = () => {
       console.log('播放记录更新，重新检查 watchingUpdates');
 
-      // 🔧 防抖：避免无限循环，1秒内只执行一次
+ // 防抖：避免无限循环，1秒内只执行一次
       if (updateTimeout) {
-        console.log('⏸️ 防抖：跳过本次更新请求');
+ console.log(' 防抖：跳过本次更新请求');
         return;
       }
 
@@ -819,7 +819,7 @@ const PlayStatsPage: React.FC = () => {
                               </p>
                               {(userStat as any).lastLoginIp && (
                                 <p className='text-xs text-gray-500 dark:text-gray-400 flex items-center flex-wrap gap-1'>
-                                  <span>🌐</span>
+ <span></span>
                                   <span className='font-mono break-words'>{(userStat as any).lastLoginIp}</span>
                                   {(userStat as any).lastLoginLocation && (
                                     <span className='text-blue-500 dark:text-blue-400 shrink-0'>
@@ -831,9 +831,9 @@ const PlayStatsPage: React.FC = () => {
                               {(userStat as any).lastLoginDevice && (
                                 <p className='text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1'>
                                   <span>
-                                    {(userStat as any).lastLoginDevice === 'mobile' ? '📱'
-                                      : (userStat as any).lastLoginDevice === 'tablet' ? '📟'
-                                      : '💻'}
+ {(userStat as any).lastLoginDevice === 'mobile' ? ''
+ : (userStat as any).lastLoginDevice === 'tablet' ? ''
+ : ''}
                                   </span>
                                   <span className='truncate min-w-0'>
                                     {(userStat as any).lastLoginOs || ''}
@@ -927,7 +927,7 @@ const PlayStatsPage: React.FC = () => {
                               <div className='flex flex-col gap-2'>
                                 {(userStat as any).lastLoginIp && (
                                   <div className='flex items-start gap-1.5 text-xs text-gray-700 dark:text-gray-300 min-w-0'>
-                                    <span className='shrink-0'>🌐</span>
+ <span className='shrink-0'></span>
                                     <span className='font-mono break-words flex-1 min-w-0'>{(userStat as any).lastLoginIp}</span>
                                     {(userStat as any).lastLoginLocation && (
                                       <span className='shrink-0 px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded text-xs'>
@@ -939,9 +939,9 @@ const PlayStatsPage: React.FC = () => {
                                 {(userStat as any).lastLoginDevice && (
                                   <div className='flex items-center gap-1.5 text-xs text-gray-700 dark:text-gray-300'>
                                     <span className='shrink-0'>
-                                      {(userStat as any).lastLoginDevice === 'mobile' ? '📱'
-                                        : (userStat as any).lastLoginDevice === 'tablet' ? '📟'
-                                        : '💻'}
+ {(userStat as any).lastLoginDevice === 'mobile' ? ''
+ : (userStat as any).lastLoginDevice === 'tablet' ? ''
+ : ''}
                                     </span>
                                     <span className='truncate'>
                                       {[(userStat as any).lastLoginOs, (userStat as any).lastLoginBrowser].filter(Boolean).join(' · ')}
@@ -1215,11 +1215,11 @@ const PlayStatsPage: React.FC = () => {
               {/* 即将上映卡片 */}
               {(upcomingInitialized || upcomingLoading) && (
                 <div className="mb-8">
-                  <div className="bg-linear-to-r from-purple-500 to-pink-500 rounded-lg p-6 text-white shadow-lg">
+                  <div className="bg-purple-500 rounded-lg p-6 text-white">
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <h3 className="text-lg font-bold flex items-center gap-2">
-                          📅 即将上映
+ 即将上映
                         </h3>
                         <p className="text-purple-100 text-sm mt-1">
                           {upcomingLoading ? '正在获取最新内容...' : `未来两周将有 ${upcomingReleases.length} 部新内容上线`}
@@ -1254,7 +1254,7 @@ const PlayStatsPage: React.FC = () => {
                           {upcomingReleases.filter(item => item.type === 'movie').length > 0 && (
                             <div className="w-full">
                               <div className="text-sm font-medium text-purple-100 mb-3 flex items-center gap-2 border-b border-white/20 pb-2">
-                                🎬 电影
+ 电影
                               </div>
                               <div className="flex space-x-3 overflow-x-auto pb-1 w-full">
                                 {upcomingReleases.filter(item => item.type === 'movie').slice(0, 7).map(item => (
@@ -1278,7 +1278,7 @@ const PlayStatsPage: React.FC = () => {
                           {upcomingReleases.filter(item => item.type === 'tv').length > 0 && (
                             <div className="w-full">
                               <div className="text-sm font-medium text-purple-100 mb-3 flex items-center gap-2 border-b border-white/20 pb-2">
-                                📺 电视剧
+ 电视剧
                               </div>
                               <div className="flex space-x-3 overflow-x-auto pb-1 w-full">
                                 {upcomingReleases.filter(item => item.type === 'tv').slice(0, 7).map(item => (
@@ -1301,7 +1301,7 @@ const PlayStatsPage: React.FC = () => {
                           {/* 空状态提示 */}
                           {upcomingReleases.length === 0 && !upcomingLoading && upcomingInitialized && (
                             <div className="text-center py-6">
-                              <div className="text-purple-100 text-sm mb-2">📅</div>
+ <div className="text-purple-100 text-sm mb-2"></div>
                               <div className="text-purple-100 text-sm">
                                 暂无即将上映的内容
                               </div>
@@ -1815,11 +1815,11 @@ const PlayStatsPage: React.FC = () => {
           {/* 即将上映卡片 */}
           {(upcomingInitialized || upcomingLoading) && (
             <div className="mb-8">
-              <div className="bg-linear-to-r from-purple-500 to-pink-500 rounded-lg p-6 text-white shadow-lg">
+              <div className="bg-purple-500 rounded-lg p-6 text-white">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-lg font-bold flex items-center gap-2">
-                      📅 即将上映
+ 即将上映
                     </h3>
                     <p className="text-purple-100 text-sm mt-1">
                       {upcomingLoading ? '正在获取最新内容...' : `未来两周将有 ${upcomingReleases.length} 部新内容上线`}
@@ -1853,7 +1853,7 @@ const PlayStatsPage: React.FC = () => {
                       {upcomingReleases.filter(item => item.type === 'movie').length > 0 && (
                         <div className="w-full">
                           <div className="text-sm font-medium text-purple-100 mb-3 flex items-center gap-2 border-b border-white/20 pb-2">
-                            🎬 电影
+ 电影
                           </div>
                           <div className="flex space-x-3 overflow-x-auto pb-1 w-full">
                             {upcomingReleases.filter(item => item.type === 'movie').slice(0, 7).map(item => (
@@ -1877,7 +1877,7 @@ const PlayStatsPage: React.FC = () => {
                       {upcomingReleases.filter(item => item.type === 'tv').length > 0 && (
                         <div className="w-full">
                           <div className="text-sm font-medium text-purple-100 mb-3 flex items-center gap-2 border-b border-white/20 pb-2">
-                            📺 电视剧
+ 电视剧
                           </div>
                           <div className="flex space-x-3 overflow-x-auto pb-1 w-full">
                             {upcomingReleases.filter(item => item.type === 'tv').slice(0, 7).map(item => (
@@ -1900,7 +1900,7 @@ const PlayStatsPage: React.FC = () => {
                       {/* 空状态提示 */}
                       {upcomingReleases.length === 0 && !upcomingLoading && upcomingInitialized && (
                         <div className="text-center py-6">
-                          <div className="text-purple-100 text-sm mb-2">📅</div>
+ <div className="text-purple-100 text-sm mb-2"></div>
                           <div className="text-purple-100 text-sm">
                             暂无即将上映的内容
                           </div>

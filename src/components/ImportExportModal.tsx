@@ -111,12 +111,12 @@ export default function ImportExportModal({
         <div
           className={`relative px-5 py-4 ${
             mode === 'import'
-              ? 'bg-linear-to-r from-blue-600 to-cyan-600'
+              ? 'bg-blue-600'
               : mode === 'export'
-              ? 'bg-linear-to-r from-green-600 to-emerald-600'
+              ? 'bg-green-600'
               : result && result.failed > 0
-              ? 'bg-linear-to-r from-yellow-600 to-orange-600'
-              : 'bg-linear-to-r from-green-600 to-emerald-600'
+              ? 'bg-yellow-600'
+              : 'bg-green-600'
           }`}
         >
           <div className='flex items-center justify-between'>
@@ -244,7 +244,7 @@ export default function ImportExportModal({
               {/* 说明文档 - 更紧凑 */}
               <div className='bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3'>
                 <h4 className='font-semibold text-blue-900 dark:text-blue-200 mb-1.5 text-sm'>
-                  📝 导入说明
+ 导入说明
                 </h4>
                 <ul className='text-xs text-blue-800 dark:text-blue-300 space-y-0.5'>
                   <li>• 支持标准 JSON 格式的视频源配置文件</li>
@@ -273,7 +273,7 @@ export default function ImportExportModal({
               {/* 导出格式选择 */}
               <div className='bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3'>
                 <h4 className='font-semibold text-blue-900 dark:text-blue-200 mb-2.5 text-sm'>
-                  📋 选择导出格式
+ 选择导出格式
                 </h4>
                 <div className='space-y-2.5'>
                   {/* 数组格式选项 */}
@@ -320,7 +320,7 @@ export default function ImportExportModal({
 
               <div className='bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3'>
                 <h4 className='font-semibold text-green-900 dark:text-green-200 mb-1.5 text-sm'>
-                  📦 导出内容
+ 导出内容
                 </h4>
                 <ul className='text-xs text-green-800 dark:text-green-300 space-y-0.5'>
                   <li>• {entityName}配置将导出为 JSON 格式</li>
@@ -415,7 +415,7 @@ export default function ImportExportModal({
           {mode === 'export' && (
             <button
               onClick={() => onExport?.(exportFormat)}
-              className='px-4 py-2 text-sm bg-linear-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg font-medium'
+              className='px-4 py-2 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all shadow-md hover:shadow-lg font-medium'
             >
               确认导出
             </button>

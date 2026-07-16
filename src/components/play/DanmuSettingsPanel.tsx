@@ -138,7 +138,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
   const [showLoadMeta, setShowLoadMeta] = useState(false);
   const [isReloading, setIsReloading] = useState(false);
 
-  // ♿ 检测用户是否偏好减少动画
+ // 检测用户是否偏好减少动画
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -260,18 +260,18 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
         isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-2'
       }`}
       style={{
-        // 🎨 多层深度阴影（Apple风格）
+ // 多层深度阴影（Apple风格）
         boxShadow: `
           0 2px 8px rgba(0, 0, 0, 0.1),
           0 8px 32px rgba(0, 0, 0, 0.2),
           0 16px 64px rgba(0, 0, 0, 0.15),
           0 0 0 1px rgba(255, 255, 255, 0.05)
         `,
-        // 🎯 Spring动画模拟（cubic-bezier）
+ // Spring动画模拟（cubic-bezier）
         transitionTimingFunction: prefersReducedMotion
           ? 'linear'
           : 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-        // 🔥 背景毛玻璃 + 渐变
+ // 背景毛玻璃 + 渐变
         background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(20, 20, 20, 0.9) 100%)',
         backdropFilter: 'blur(24px) saturate(180%)',
         WebkitBackdropFilter: 'blur(24px) saturate(180%)',
@@ -280,7 +280,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      {/* 💎 边缘光晕效果 */}
+ {/* 边缘光晕效果 */}
       <div
         className="absolute inset-0 rounded-[20px] pointer-events-none"
         style={{
@@ -298,7 +298,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
           }}
         />
         <div className='relative flex items-center gap-3'>
-          <div className="p-2 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-600/20 backdrop-blur-sm">
+          <div className="p-2 rounded-xl bg-green-500/20 backdrop-blur-sm">
             <MessageSquare className='w-4 h-4 text-green-400' />
           </div>
           <div className="flex flex-col">
@@ -308,7 +308,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
             <span className="text-[10px] text-gray-400">Danmaku Settings</span>
           </div>
           <span
-            className='px-2.5 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-500/20 to-emerald-600/20 text-green-300 border border-green-500/30 backdrop-blur-sm'
+            className='px-2.5 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-300 border border-green-500/30 backdrop-blur-sm'
             style={{
               boxShadow: '0 0 12px rgba(16, 185, 129, 0.2)',
             }}
@@ -344,7 +344,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
                 setIsReloading(true);
                 try {
                   const count = await onReload();
-                  console.log(`✅ 弹幕刷新完成: ${count} 条`);
+ console.log(` 弹幕刷新完成: ${count} 条`);
                 } finally {
                   setIsReloading(false);
                 }
@@ -414,12 +414,12 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
                 loadMeta.source === 'error' ? 'text-red-400' :
                 'text-gray-300'
               }`}>
-                {loadMeta.source === 'cache' && '📦 会话缓存'}
-                {loadMeta.source === 'network' && '🌐 网络请求'}
-                {loadMeta.source === 'network-retry' && '🔄 网络重试'}
-                {loadMeta.source === 'empty' && '📭 空结果'}
-                {loadMeta.source === 'error' && '❌ 请求失败'}
-                {loadMeta.source === 'init' && '⏳ 初始化'}
+ {loadMeta.source === 'cache' && ' 会话缓存'}
+ {loadMeta.source === 'network' && ' 网络请求'}
+ {loadMeta.source === 'network-retry' && ' 网络重试'}
+ {loadMeta.source === 'empty' && ' 空结果'}
+ {loadMeta.source === 'error' && ' 请求失败'}
+ {loadMeta.source === 'init' && ' 初始化'}
               </span>
             </div>
             <div className='flex items-center justify-between'>
@@ -450,7 +450,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
             }}
           >
             <p className='text-xs text-red-300 font-medium'>
-              ❌ 加载失败
+ 加载失败
             </p>
             <p className='text-[11px] text-red-400/70 mt-0.5 truncate' title={error.message}>
               {error.message}
@@ -471,7 +471,7 @@ export const DanmuSettingsPanel = memo(function DanmuSettingsPanel({
               className='text-xs text-green-300 font-medium whitespace-nowrap overflow-hidden text-ellipsis'
               title={`${matchInfo.animeTitle} - ${matchInfo.episodeTitle}`}
             >
-              ✨ {matchInfo.animeTitle}
+ {matchInfo.animeTitle}
             </p>
             <p className='text-[11px] text-green-400/70 mt-0.5 truncate'>
               {matchInfo.episodeTitle}

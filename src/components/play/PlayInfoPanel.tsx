@@ -137,12 +137,12 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
               )}
               {displayRating && displayRating > 0 && (
                 <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/80 text-white font-medium">
-                  ★ {displayRating.toFixed(1)}
+ {displayRating.toFixed(1)}
                 </span>
               )}
               {bangumiDetails?.rating?.score && !tmdbRating && parseFloat(bangumiDetails.rating.score) > 0 && (
                 <span className="text-[11px] px-2 py-0.5 rounded-full bg-pink-500/80 text-white font-medium">
-                  ★ {parseFloat(bangumiDetails.rating.score).toFixed(1)}
+ {parseFloat(bangumiDetails.rating.score).toFixed(1)}
                 </span>
               )}
               {detail?.class && String(detail.class) !== '0' && (
@@ -405,7 +405,7 @@ function CastTab({ movieDetails, loadingCelebrityWorks, selectedCelebrityName,
         <div>
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-base font-semibold text-gray-800 dark:text-gray-200">{selectedCelebrityName} 的作品</h3>
-            <button onClick={onClearCelebrity} className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">收起 ✕</button>
+ <button onClick={onClearCelebrity} className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">收起 </button>
           </div>
           {loadingCelebrityWorks ? (
             <div className="flex items-center justify-center py-12">

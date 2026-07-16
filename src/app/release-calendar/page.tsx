@@ -49,7 +49,7 @@ export default function ReleaseCalendarPage() {
     });
   };
 
-  // 🚀 TanStack Query - 获取发布日历数据
+ // TanStack Query - 获取发布日历数据
   // 替换手动 fetch + localStorage缓存，TanStack Query 自动管理缓存
   const {
     data: rawData,
@@ -58,7 +58,7 @@ export default function ReleaseCalendarPage() {
   } = useQuery<ReleaseCalendarResult>({
     queryKey: ['releaseCalendar'],
     queryFn: async () => {
-      console.log('🌐 正在从API获取发布日历数据...');
+ console.log(' 正在从API获取发布日历数据...');
       const response = await fetch('/api/release-calendar');
 
       if (!response.ok) {
@@ -66,7 +66,7 @@ export default function ReleaseCalendarPage() {
       }
 
       const result: ReleaseCalendarResult = await response.json();
-      console.log(`📊 获取到 ${result.items.length} 条上映数据`);
+ console.log(` 获取到 ${result.items.length} 条上映数据`);
 
       // 清理遗留的localStorage缓存（兼容性清理）
       localStorage.removeItem('release_calendar_all_data');
@@ -138,19 +138,19 @@ export default function ReleaseCalendarPage() {
 
   // 处理刷新按钮点击
   const handleRefreshClick = async () => {
-    console.log('📅 刷新上映日程数据...');
+ console.log(' 刷新上映日程数据...');
 
     try {
       // 清除遗留的localStorage缓存（兼容性清理）
       localStorage.removeItem('release_calendar_all_data');
       localStorage.removeItem('release_calendar_all_data_time');
 
-      // 🔄 强制刷新（先fetch带refresh=true的API清除数据库缓存，再invalidate query）
+ // 强制刷新（先fetch带refresh=true的API清除数据库缓存，再invalidate query）
       await fetch('/api/release-calendar?refresh=true');
       await queryClient.invalidateQueries({ queryKey: ['releaseCalendar'] });
-      console.log('🎉 上映日程数据刷新成功！');
+ console.log(' 上映日程数据刷新成功！');
     } catch (error) {
-      console.error('❌ 刷新上映日程数据失败:', error);
+ console.error(' 刷新上映日程数据失败:', error);
     }
   };
 
@@ -174,7 +174,7 @@ export default function ReleaseCalendarPage() {
   const endIndex = startIndex + itemsPerPage;
   const currentItems = data?.items.slice(startIndex, endIndex) || [];
 
-  // 🚀 数据获取由 TanStack Query 自动管理，过滤由 useMemo 自动响应
+ // 数据获取由 TanStack Query 自动管理，过滤由 useMemo 自动响应
 
   // 监听滚动事件以显示/隐藏返回顶部按钮
   useEffect(() => {
@@ -234,13 +234,13 @@ export default function ReleaseCalendarPage() {
         {/* Aurora Mesh Gradient Background */}
         <div className="absolute inset-0 -z-10">
           {/* Light mode: Aurora mesh gradient */}
-          <div className="absolute inset-0 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:hidden"></div>
+          <div className="absolute inset-0 bg-blue-50 dark:hidden"></div>
           <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob dark:hidden"></div>
           <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 dark:hidden"></div>
           <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 dark:hidden"></div>
 
           {/* Dark mode: Deep aurora mesh gradient */}
-          <div className="hidden dark:block absolute inset-0 bg-linear-to-br from-gray-900 via-blue-950 to-purple-950"></div>
+          <div className="hidden dark:block absolute inset-0 bg-gray-900"></div>
           <div className="hidden dark:block absolute top-0 -left-4 w-72 h-72 bg-purple-700 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
           <div className="hidden dark:block absolute top-0 -right-4 w-72 h-72 bg-cyan-700 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
           <div className="hidden dark:block absolute -bottom-8 left-20 w-72 h-72 bg-pink-700 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
@@ -389,7 +389,7 @@ export default function ReleaseCalendarPage() {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
-                📱 网格视图
+ 网格视图
               </button>
               <button
                 onClick={() => setViewMode('calendar')}
@@ -399,7 +399,7 @@ export default function ReleaseCalendarPage() {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
-                📅 日历视图
+ 日历视图
               </button>
               <button
                 onClick={() => setViewMode('timeline')}
@@ -409,7 +409,7 @@ export default function ReleaseCalendarPage() {
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
-                ⏰ 时间线视图
+ 时间线视图
               </button>
             </div>
           </div>
@@ -464,17 +464,17 @@ export default function ReleaseCalendarPage() {
                       <div className="absolute top-3 right-3 z-10">
                         {isToday && (
                           <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 animate-pulse">
-                            🔥 今日上映
+ 今日上映
                           </span>
                         )}
                         {isUpcoming && !isToday && (
                           <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
-                            ⏰ 即将上映
+ 即将上映
                           </span>
                         )}
                         {isPast && (
                           <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400">
-                            ✅ 已上映
+ 已上映
                           </span>
                         )}
                       </div>
@@ -535,11 +535,11 @@ export default function ReleaseCalendarPage() {
                         </div>
 
                         {/* 底部渐变效果 */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
 
                       {/* 悬停效果遮罩 */}
-                      <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                      <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                   );
                 })}
@@ -623,11 +623,11 @@ export default function ReleaseCalendarPage() {
                               key={dateStr}
                               className={`${expandedDates.has(dateStr) ? 'min-h-[150px]' : 'min-h-[100px]'} p-2 rounded-xl transition-all duration-300 ${
                                 !isCurrentMonth
-                                  ? 'bg-linear-to-br from-gray-50/50 to-gray-100/30 dark:from-gray-800/30 dark:to-gray-900/20 text-gray-400'
-                                  : 'bg-linear-to-br from-white to-gray-50/50 dark:from-gray-800 dark:to-gray-800/80 shadow-sm hover:shadow-md'
+                                  ? 'bg-gray-50/50 dark:bg-gray-800/30 text-gray-400'
+                                  : 'bg-white dark:bg-gray-800 shadow-sm hover:shadow-md'
                               } ${
                                 isToday
-                                  ? 'ring-2 ring-blue-400 bg-linear-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/30 dark:to-blue-800/20 shadow-lg shadow-blue-500/20'
+                                  ? 'ring-2 ring-blue-400 bg-blue-50 dark:bg-blue-900/30 shadow-lg shadow-blue-500/20'
                                   : ''
                               } hover:scale-[1.02] hover:-translate-y-0.5`}
                             >
@@ -721,8 +721,8 @@ export default function ReleaseCalendarPage() {
                       return daysWithMovies.map(({ date, dateStr, isToday, items }) => (
                         <div key={dateStr} className={`rounded-xl p-4 transition-all duration-300 ${
                           isToday
-                            ? 'ring-2 ring-blue-400 bg-linear-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/30 dark:to-blue-800/20 shadow-lg shadow-blue-500/20'
-                            : 'bg-linear-to-br from-white to-gray-50/50 dark:from-gray-800 dark:to-gray-800/80 shadow-sm hover:shadow-md'
+                            ? 'ring-2 ring-blue-400 bg-blue-50 dark:bg-blue-900/30 shadow-lg shadow-blue-500/20'
+                            : 'bg-white dark:bg-gray-800 shadow-sm hover:shadow-md'
                         }`}>
                           {/* 日期标题 */}
                           <div className={`flex items-center justify-between mb-3 pb-2 border-b border-gray-200 dark:border-gray-700`}>
@@ -793,9 +793,9 @@ export default function ReleaseCalendarPage() {
 
                   if (uniqueTodayItems.length > 0) {
                     return (
-                      <div className="bg-linear-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-lg p-6 border border-red-200 dark:border-red-800">
+                      <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-6 border border-red-200 dark:border-red-800">
                         <div className="flex items-center gap-2 mb-4">
-                          <span className="text-2xl">🔥</span>
+ <span className="text-2xl"></span>
                           <h3 className="text-lg font-bold text-red-800 dark:text-red-300">
                             今日上映 ({uniqueTodayItems.length} 部)
                           </h3>
@@ -826,7 +826,7 @@ export default function ReleaseCalendarPage() {
             {viewMode === 'timeline' && (
               <div className="relative">
                 {/* 时间线主线 */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-linear-to-b from-blue-500 via-purple-500 to-pink-500"></div>
+                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-500"></div>
 
                 <div className="space-y-8">
                   {Object.entries(
@@ -874,10 +874,10 @@ export default function ReleaseCalendarPage() {
                           {/* 日期头部 */}
                           <div className={`px-6 py-4 border-b ${
                             isToday
-                              ? 'bg-linear-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border-red-200 dark:border-red-800'
+                              ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
                               : isPast
                                 ? 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
-                                : 'bg-linear-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-blue-200 dark:border-blue-800'
+                                : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
                           }`}>
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
@@ -910,17 +910,17 @@ export default function ReleaseCalendarPage() {
                               <div className="flex items-center gap-2">
                                 {isToday && (
                                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 animate-pulse">
-                                    🔥 今日上映
+ 今日上映
                                   </span>
                                 )}
                                 {isUpcoming && !isToday && (
                                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
-                                    ⏰ 即将上映
+ 即将上映
                                   </span>
                                 )}
                                 {isPast && (
                                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400">
-                                    ✅ 已上映
+ 已上映
                                   </span>
                                 )}
                               </div>
@@ -989,7 +989,7 @@ export default function ReleaseCalendarPage() {
                                   </div>
 
                                   {/* 悬停效果 */}
-                                  <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg pointer-events-none"></div>
+                                  <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg pointer-events-none"></div>
                                 </div>
                               ))}
                             </div>

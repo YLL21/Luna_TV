@@ -95,7 +95,7 @@ export default function GlobalError({
     }
 
     // 打印到控制台
-    console.error('🔥🔥🔥 全局崩溃 (Root Layout):', crashLog);
+ console.error(' 全局崩溃 (Root Layout):', crashLog);
   }, [error]);
 
   return (
@@ -118,7 +118,7 @@ export default function GlobalError({
             padding: '1.5rem 2rem',
           }}>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💥</div>
+ <div style={{ fontSize: '3rem', marginBottom: '1rem' }}></div>
               <h2 style={{
                 fontSize: '1.25rem',
                 fontWeight: 'bold',

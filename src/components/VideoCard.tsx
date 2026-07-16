@@ -131,7 +131,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
   const aiEnabled = aiEnabledProp !== undefined ? aiEnabledProp : aiEnabledLocal;
   const aiCheckComplete = aiCheckCompleteProp !== undefined ? aiCheckCompleteProp : aiCheckCompleteLocal;
 
-  // 🚀 React 19 useOptimistic - 乐观更新收藏状态，提供即时UI反馈
+ // React 19 useOptimistic - 乐观更新收藏状态，提供即时UI反馈
   const [optimisticFavorited, setOptimisticFavorited] = useOptimistic(
     favorited,
     (_state, newValue: boolean) => newValue
@@ -140,7 +140,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     searchFavorited,
     (_state, newValue: boolean | null) => newValue
   );
-  // 🚀 React 19 useOptimistic - 乐观更新提醒状态
+ // React 19 useOptimistic - 乐观更新提醒状态
   const [optimisticReminded, setOptimisticReminded] = useOptimistic(
     reminded,
     (_state, newValue: boolean) => newValue
@@ -157,7 +157,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     douban_id
   );
 
-  // ✅ 合并重复的 useEffect - 减少不必要的渲染
+ // 合并重复的 useEffect - 减少不必要的渲染
   useEffect(() => {
     setDynamicEpisodes(episodes);
     setDynamicSourceNames(source_names);
@@ -200,17 +200,17 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     [remarks]
   );
 
-  // 🎯 智能判断是否有底部标签（用于AI按钮位置调整）
+ // 智能判断是否有底部标签（用于AI按钮位置调整）
   const hasBottomTags = useMemo(() => {
     return (remarks && (isSeriesCompleted(remarks) || hasReleaseTag)) ||
            (isAggregate && dynamicSourceNames && dynamicSourceNames.length > 0);
   }, [remarks, hasReleaseTag, isAggregate, dynamicSourceNames]);
 
-  // 🔥 判断是否应该显示提醒按钮（即将上映或新上映）
+ // 判断是否应该显示提醒按钮（即将上映或新上映）
   const isNewRelease = remarks && (remarks.includes('已上映') || remarks.includes('今日上映'));
   const shouldShowBell = isUpcoming || isNewRelease;
 
-  // 🚀 TanStack Query - 获取收藏/提醒状态
+ // TanStack Query - 获取收藏/提醒状态
   const { data: favoritedStatus } = useIsFavoritedQuery(
     actualSource || '',
     actualId || '',
@@ -283,7 +283,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     setAiCheckCompleteLocal(true);
   }, [aiEnabledProp, aiCheckCompleteProp]); // 依赖父组件传递的props
 
-  // 🚀 使用 TanStack Query useMutation 优化收藏功能
+ // 使用 TanStack Query useMutation 优化收藏功能
   const handleToggleFavorite = useCallback(
     async (e: React.MouseEvent) => {
       e.preventDefault();
@@ -292,7 +292,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
       // 所有豆瓣内容都允许收藏/提醒
       if (!actualSource || !actualId) return;
 
-      // 🔥 修复：检查是否是"新上映"的内容
+ // 修复：检查是否是"新上映"的内容
       const isNewRelease = remarks && (remarks.includes('已上映') || remarks.includes('今日上映'));
       const shouldShowBell = isUpcoming || isNewRelease;
 
@@ -301,10 +301,10 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
         const currentReminded = reminded;
         const newRemindedState = !currentReminded;
 
-        // 🎯 立即更新 UI（乐观更新）
+ // 立即更新 UI（乐观更新）
         setOptimisticReminded(newRemindedState);
 
-        // 🔄 使用 reminder mutation
+ // 使用 reminder mutation
         toggleReminderMutation.mutate(
           {
             source: actualSource,
@@ -338,14 +338,14 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
         const currentFavorited = from === 'search' ? searchFavorited : favorited;
         const newFavoritedState = !currentFavorited;
 
-        // 🎯 立即更新 UI（乐观更新）
+ // 立即更新 UI（乐观更新）
         if (from === 'search') {
           setOptimisticSearchFavorited(newFavoritedState);
         } else {
           setOptimisticFavorited(newFavoritedState);
         }
 
-        // 🔄 使用 favorite mutation
+ // 使用 favorite mutation
         toggleFavoriteMutation.mutate(
           {
             source: actualSource,
@@ -430,7 +430,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     [from, actualSource, actualId, onDelete, deletePlayRecordMutation]
   );
 
-  // 🚀 数据预取 - 在 hover 时预取收藏数据和预加载路由
+ // 数据预取 - 在 hover 时预取收藏数据和预加载路由
   const handlePrefetch = useCallback(() => {
     if (!actualSource || !actualId) return;
 
@@ -445,7 +445,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
       staleTime: 10 * 1000, // 10秒内不重复预取
     });
 
-    // 🔥 预加载播放页面路由 - 关键优化！
+ // 预加载播放页面路由 - 关键优化！
     const doubanIdParam = actualDoubanId && actualDoubanId > 0 ? `&douban_id=${actualDoubanId}` : '';
 
     if (origin === 'live' && actualSource && actualId) {
@@ -469,7 +469,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
       return;
     }
 
-    // 🔥 立即显示加载状态，提供即时反馈
+ // 立即显示加载状态，提供即时反馈
     setIsNavigating(true);
 
     // 构建豆瓣ID参数
@@ -575,7 +575,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     if (rateNum >= 8.5) {
       // 高分：金色 + 发光
       return {
-        bgColor: 'bg-linear-to-br from-yellow-400 via-amber-500 to-yellow-600',
+        bgColor: 'bg-yellow-400',
         ringColor: 'ring-2 ring-yellow-400/50',
         shadowColor: 'shadow-lg shadow-yellow-500/50',
         textColor: 'text-white',
@@ -584,7 +584,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     } else if (rateNum >= 7.0) {
       // 中高分：蓝色
       return {
-        bgColor: 'bg-linear-to-br from-blue-500 via-blue-600 to-blue-700',
+        bgColor: 'bg-blue-500',
         ringColor: 'ring-2 ring-blue-400/40',
         shadowColor: 'shadow-md shadow-blue-500/30',
         textColor: 'text-white',
@@ -593,7 +593,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     } else if (rateNum >= 6.0) {
       // 中分：绿色
       return {
-        bgColor: 'bg-linear-to-br from-green-500 via-green-600 to-green-700',
+        bgColor: 'bg-green-500',
         ringColor: 'ring-2 ring-green-400/40',
         shadowColor: 'shadow-md shadow-green-500/30',
         textColor: 'text-white',
@@ -602,7 +602,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     } else {
       // 低分：灰色
       return {
-        bgColor: 'bg-linear-to-br from-gray-500 via-gray-600 to-gray-700',
+        bgColor: 'bg-gray-500',
         ringColor: 'ring-2 ring-gray-400/40',
         shadowColor: 'shadow-md shadow-gray-500/30',
         textColor: 'text-white',
@@ -657,7 +657,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
     return configs[from] || configs.search;
   }, [from, isAggregate, douban_id, rate, isUpcoming]);
 
-  // 🎯 智能判断是否有右下角按钮（垃圾桶/收藏，用于AI按钮水平位置调整）
+ // 智能判断是否有右下角按钮（垃圾桶/收藏，用于AI按钮水平位置调整）
   const hasRightBottomButtons = useMemo(() => {
     return (config.showHeart || config.showCheckCircle) && from !== 'favorite';
   }, [config.showHeart, config.showCheckCircle, from]);
@@ -691,7 +691,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
       actions.push({
         id: 'upcoming-notice',
         label: '该影片尚未上映，敬请期待',
-        icon: <span className="text-lg">📅</span>,
+ icon: <span className="text-lg"></span>,
         onClick: () => {}, // 不执行任何操作
         disabled: true,
         color: 'default' as const,
@@ -702,11 +702,11 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
 
     // 收藏/取消收藏操作（或提醒操作）
     if (config.showHeart && actualSource && actualId) {
-      // 🔥 修复：检查是否是"新上映"的内容
+ // 修复：检查是否是"新上映"的内容
       const isNewRelease = remarks && (remarks.includes('已上映') || remarks.includes('今日上映'));
       const shouldShowBell = isUpcoming || isNewRelease;
 
-      // 🚀 使用乐观状态显示，提供即时UI反馈
+ // 使用乐观状态显示，提供即时UI反馈
       const currentState = shouldShowBell
         ? optimisticReminded // 即将上映或新上映 → 使用提醒状态
         : (from === 'search' ? optimisticSearchFavorited : optimisticFavorited); // 已上映 → 使用收藏状态
@@ -1020,7 +1020,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
               }}
             >
               {isNavigating ? (
-                // 🔥 加载状态 - 提供即时反馈
+ // 加载状态 - 提供即时反馈
                 <div className='flex flex-col items-center gap-2 bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl'>
                   <div className='w-10 h-10 border-4 border-green-500/30 border-t-green-500 rounded-full animate-spin' />
                   <span className='text-white font-bold text-sm whitespace-nowrap'>加载中...</span>
@@ -1028,7 +1028,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
               ) : isUpcoming ? (
                 // 即将上映 - 显示敬请期待
                 <div className='flex flex-col items-center gap-2 bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl'>
-                  <span className='text-3xl'>📅</span>
+ <span className='text-3xl'></span>
                   <span className='text-white font-bold text-sm whitespace-nowrap'>敬请期待</span>
                 </div>
               ) : (
@@ -1085,7 +1085,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
               {config.showHeart && (
                 <>
                   {(() => {
-                    // 🔥 修复：如果是"新上映"的内容（remarks包含"已上映"或"今日上映"），显示Bell图标
+ // 修复：如果是"新上映"的内容（remarks包含"已上映"或"今日上映"），显示Bell图标
                     const isNewRelease = remarks && (remarks.includes('已上映') || remarks.includes('今日上映'));
                     const shouldShowBell = isUpcoming || isNewRelease;
 
@@ -1167,7 +1167,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
               }}
             >
               {(() => {
-                // 🔥 修复：检查是否是"新上映"的内容
+ // 修复：检查是否是"新上映"的内容
                 const isNewRelease = remarks && (remarks.includes('已上映') || remarks.includes('今日上映'));
                 const shouldShowBell = isUpcoming || isNewRelease;
 
@@ -1258,7 +1258,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                 return false;
               }}
             >
-              <span className="text-green-400">✓</span>
+ <span className="text-green-400"></span>
               <span>已完结</span>
             </div>
           )}
@@ -1294,7 +1294,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
             );
           })()}
 
-          {/* 评分徽章 - 动态颜色 - 🎯 使用容器查询替代媒体查询 */}
+ {/* 评分徽章 - 动态颜色 - 使用容器查询替代媒体查询 */}
           {config.showRating && rate && ratingBadgeStyle && (
               <div
                 className={`absolute top-2 right-2 ${ratingBadgeStyle.bgColor} ${ratingBadgeStyle.ringColor} ${ratingBadgeStyle.shadowColor} ${ratingBadgeStyle.textColor} ${ratingBadgeStyle.glowClass} text-xs font-bold rounded-full flex flex-col items-center justify-center transition-all duration-300 ease-out group-hover:scale-110 backdrop-blur-sm w-9 h-9 @[180px]:w-10 @[180px]:h-10`}
@@ -1480,7 +1480,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
             );
           })()}
 
-          {/* 🎯 AI问片按钮 - 桌面端hover显示，智能位置（避开底部标签和右下角按钮） */}
+ {/* AI问片按钮 - 桌面端hover显示，智能位置（避开底部标签和右下角按钮） */}
           {aiEnabled && actualTitle && (
             <div
               className={`
@@ -1583,10 +1583,10 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
             } as React.CSSProperties}
           >
             {/* 背景高亮效果 */}
-            <div className='absolute inset-0 bg-linear-to-r from-transparent via-green-50/0 to-transparent dark:via-green-900/0 group-hover:via-green-50/50 dark:group-hover:via-green-900/30 transition-all duration-300 rounded-md'></div>
+            <div className='absolute inset-0 bg-transparent group-hover:via-green-50/50 dark:group-hover:via-green-900/30 transition-all duration-300 rounded-md'></div>
 
             <span
-              className='block text-xs @[140px]:text-sm font-bold line-clamp-2 text-gray-900 dark:text-gray-100 transition-all duration-300 ease-in-out group-hover:scale-[1.02] peer relative z-10 group-hover:bg-linear-to-r group-hover:from-green-600 group-hover:via-emerald-600 group-hover:to-teal-600 dark:group-hover:from-green-400 dark:group-hover:via-emerald-400 dark:group-hover:to-teal-400 group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-[0_2px_8px_rgba(16,185,129,0.3)]'
+              className='block text-xs @[140px]:text-sm font-bold line-clamp-2 text-gray-900 dark:text-gray-100 transition-all duration-300 ease-in-out group-hover:scale-[1.02] peer relative z-10 group-hover:bg-green-600 dark:group-hover:bg-green-400 group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-[0_2px_8px_rgba(16,185,129,0.3)]'
               style={{
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
@@ -1606,7 +1606,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
             </span>
             {/* 增强的 tooltip */}
             <div
-              className='absolute bottom-full left-0 mb-2 px-3 py-2 bg-linear-to-br from-gray-800 to-gray-900 text-white text-xs rounded-lg shadow-xl border border-white/10 opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-200 ease-out delay-100 pointer-events-none z-40 backdrop-blur-sm'
+              className='absolute bottom-full left-0 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded-lg shadow-xl border border-white/10 opacity-0 invisible peer-hover:opacity-100 peer-hover:visible transition-all duration-200 ease-out delay-100 pointer-events-none z-40 backdrop-blur-sm'
               style={{
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
@@ -1705,7 +1705,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                   }}
                 >
                   {/* 背景渐变效果 */}
-                  <span className={`absolute inset-0 bg-linear-to-r from-transparent via-green-50/0 to-transparent dark:via-green-500/0 transition-all duration-300 ${bgGradient}`}></span>
+                  <span className={`absolute inset-0 bg-transparent transition-all duration-300${bgGradient}`}></span>
 
                   {/* 左侧装饰点 */}
                   <span className={`relative w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 transition-all duration-300 ${dotColor}`}></span>

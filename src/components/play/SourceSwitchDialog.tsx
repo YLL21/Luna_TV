@@ -37,7 +37,7 @@ export default function SourceSwitchDialog({
             {ownerSource}
           </p>
           <p className='text-xs text-orange-500 dark:text-orange-400 mb-6'>
-            ⚠️ 保持当前源将无法与房主同步进度
+ 保持当前源将无法与房主同步进度
           </p>
           <div className='flex gap-3'>
             <button

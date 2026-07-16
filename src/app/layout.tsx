@@ -33,7 +33,7 @@ export const dynamic = 'force-dynamic';
 
 // 动态生成 metadata，支持配置更新后的标题变化
 export async function generateMetadata(): Promise<Metadata> {
-  // 🔥 调用 cookies() 强制动态渲染，防止 Docker 环境下的缓存问题
+ // 调用 cookies() 强制动态渲染，防止 Docker 环境下的缓存问题
   await cookies();
 
   const storageType = process.env.NEXT_PUBLIC_STORAGE_TYPE || 'localstorage';
@@ -59,7 +59,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // 🔥 调用 cookies() 强制动态渲染，防止 Docker 环境下的缓存问题
+ // 调用 cookies() 强制动态渲染，防止 Docker 环境下的缓存问题
   await cookies();
 
   const storageType = process.env.NEXT_PUBLIC_STORAGE_TYPE || 'localstorage';

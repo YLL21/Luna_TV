@@ -340,11 +340,11 @@ export default function PrivateLibraryPage() {
               className={`group relative overflow-hidden flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105
                 ${isRefreshing
                   ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
-                  : 'bg-linear-to-r from-emerald-500 via-green-500 to-teal-500 text-white shadow-lg shadow-green-500/30 hover:shadow-green-500/50'
+                  : 'bg-emerald-500 text-white shadow-lg shadow-green-500/30 hover:shadow-green-500/50'
                 }`}
             >
               {!isRefreshing && (
-                <div className="absolute inset-0 rounded-xl bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                <div className="absolute inset-0 rounded-xl bg-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               )}
               <RefreshCw className={`h-4 w-4 relative z-10 ${isRefreshing ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
               <span className="relative z-10">{isRefreshing ? '刷新中...' : '刷新'}</span>
@@ -416,7 +416,7 @@ export default function PrivateLibraryPage() {
           {/* 排序选择 */}
           <div className="mb-6">
             <div className="flex items-center space-x-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-linear-to-br from-green-500 via-emerald-600 to-teal-500 flex items-center justify-center shadow-lg shadow-green-500/30">
+              <div className="w-9 h-9 rounded-xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/30">
                 <ArrowUpNarrowWide className="h-4 w-4 text-white" />
               </div>
               <span className="text-base font-bold text-gray-900 dark:text-gray-100">
@@ -432,7 +432,7 @@ export default function PrivateLibraryPage() {
                     onClick={() => { setSortBy(option.value); localStorage.setItem('emby_sortBy', option.value); }}
                     className={`group relative overflow-hidden rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                       sortBy === option.value
-                        ? 'bg-linear-to-r from-green-500 via-emerald-600 to-teal-500 text-white shadow-lg shadow-green-500/40'
+                        ? 'bg-green-500 text-white shadow-lg shadow-green-500/40'
                         : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 hover:shadow-md'
                     }`}
                     style={{
@@ -440,10 +440,10 @@ export default function PrivateLibraryPage() {
                     }}
                   >
                     {sortBy === option.value && (
-                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                      <div className="absolute inset-0 bg-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                     )}
                     {sortBy !== option.value && (
-                      <div className="absolute inset-0 bg-linear-to-r from-green-50 via-emerald-50 to-green-50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-green-50 dark:bg-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     )}
                     <span className="relative z-10 flex items-center gap-1.5">
                       <Icon className="h-4 w-4" />
@@ -456,9 +456,9 @@ export default function PrivateLibraryPage() {
               {/* 排序顺序按钮 */}
               <button
                 onClick={toggleSortOrder}
-                className="group relative overflow-hidden rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-300 transform hover:scale-105 bg-linear-to-r from-blue-500 via-blue-600 to-indigo-500 text-white shadow-lg shadow-blue-500/40"
+                className="group relative overflow-hidden rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-300 transform hover:scale-105 bg-blue-500 text-white shadow-lg shadow-blue-500/40"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                <div className="absolute inset-0 bg-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                 <span className="relative z-10 flex items-center gap-1.5">
                   {sortOrder === 'Ascending' ? (
                     <>
@@ -477,7 +477,7 @@ export default function PrivateLibraryPage() {
               {/* 虚拟化开关 */}
               <label className='flex items-center gap-2 cursor-pointer select-none group'>
                 <span className='text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors'>
-                  ⚡ 虚拟滑动
+ 虚拟滑动
                 </span>
                 <div className='relative'>
                   <input
@@ -486,11 +486,11 @@ export default function PrivateLibraryPage() {
                     checked={useVirtualization}
                     onChange={toggleVirtualization}
                   />
-                  <div className='w-11 h-6 bg-linear-to-r from-gray-200 to-gray-300 rounded-full peer-checked:from-blue-400 peer-checked:to-purple-500 transition-all duration-300 dark:from-gray-600 dark:to-gray-700 dark:peer-checked:from-blue-500 dark:peer-checked:to-purple-600 shadow-inner'></div>
+                  <div className='w-11 h-6 bg-gray-200 rounded-full peer-checked:from-blue-400 peer-checked:to-purple-500 transition-all duration-300 dark:bg-gray-600 dark:peer-checked:from-blue-500 dark:peer-checked:to-purple-600 shadow-inner'></div>
                   <div className='absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-all duration-300 peer-checked:translate-x-5 shadow-lg peer-checked:shadow-blue-300 dark:peer-checked:shadow-blue-500/50 peer-checked:scale-105'></div>
                   <div className='absolute top-1.5 left-1.5 w-3 h-3 flex items-center justify-center pointer-events-none transition-all duration-300 peer-checked:translate-x-5'>
                     <span className='text-[10px] peer-checked:text-white text-gray-500'>
-                      {useVirtualization ? '✨' : '○'}
+ {useVirtualization ? '' : '○'}
                     </span>
                   </div>
                 </div>
@@ -550,12 +550,12 @@ export default function PrivateLibraryPage() {
         {/* 无搜索结果 */}
         {isSearchMode && !isSearching && searchResults.length === 0 && (
           <div className='flex justify-center py-16'>
-            <div className='relative px-12 py-10 rounded-3xl bg-linear-to-br from-gray-50 via-slate-50 to-gray-100 dark:from-gray-800/40 dark:via-slate-800/40 dark:to-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 shadow-xl backdrop-blur-sm overflow-hidden max-w-md'>
-              <div className='absolute top-0 left-0 w-32 h-32 bg-linear-to-br from-green-200/20 to-teal-200/20 rounded-full blur-3xl'></div>
-              <div className='absolute bottom-0 right-0 w-32 h-32 bg-linear-to-br from-blue-200/20 to-green-200/20 rounded-full blur-3xl'></div>
+            <div className='relative px-12 py-10 rounded-3xl bg-gray-50 dark:bg-gray-800/40 border border-gray-200/50 dark:border-gray-700/50 shadow-xl backdrop-blur-sm overflow-hidden max-w-md'>
+              <div className='absolute top-0 left-0 w-32 h-32 bg-green-200/20 rounded-full blur-3xl'></div>
+              <div className='absolute bottom-0 right-0 w-32 h-32 bg-blue-200/20 rounded-full blur-3xl'></div>
               <div className='relative flex flex-col items-center gap-4'>
                 <div className='relative'>
-                  <div className='w-24 h-24 rounded-full bg-linear-to-br from-gray-100 to-slate-200 dark:from-gray-700 dark:to-slate-700 flex items-center justify-center shadow-lg'>
+                  <div className='w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center shadow-lg'>
                     <svg className='w-12 h-12 text-gray-400 dark:text-gray-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                       <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='1.5' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'></path>
                     </svg>
@@ -573,11 +573,11 @@ export default function PrivateLibraryPage() {
                 </div>
                 <button
                   onClick={() => setSearchKeyword('')}
-                  className='mt-2 px-6 py-2.5 bg-linear-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105'
+                  className='mt-2 px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105'
                 >
                   清除搜索条件
                 </button>
-                <div className='w-16 h-1 bg-linear-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600 rounded-full'></div>
+                <div className='w-16 h-1 bg-transparent rounded-full'></div>
               </div>
             </div>
           </div>

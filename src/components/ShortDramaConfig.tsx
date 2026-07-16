@@ -100,7 +100,7 @@ const ShortDramaConfig = ({ config, refreshConfig }: ShortDramaConfigProps) => {
             <svg className='h-4 w-4' fill='currentColor' viewBox='0 0 20 20'>
               <path fillRule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z' clipRule='evenodd' />
             </svg>
-            <span>🎬 配置短剧视频的解析API，支持主API和备用API自动切换</span>
+ <span> 配置短剧视频的解析API，支持主API和备用API自动切换</span>
           </div>
         </div>
 
@@ -166,7 +166,7 @@ const ShortDramaConfig = ({ config, refreshConfig }: ShortDramaConfigProps) => {
                 当主API不可用时使用的备用解析API地址
               </p>
               <div className='p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg'>
-                <p className='text-yellow-700 dark:text-yellow-300 text-xs font-medium mb-1'>🔒 隐私保护</p>
+ <p className='text-yellow-700 dark:text-yellow-300 text-xs font-medium mb-1'> 隐私保护</p>
                 <p className='text-yellow-700 dark:text-yellow-300 text-xs'>
                   • 备用API地址<strong>仅存储在服务器</strong>，不会暴露给前端用户
                 </p>
@@ -178,7 +178,7 @@ const ShortDramaConfig = ({ config, refreshConfig }: ShortDramaConfigProps) => {
                 </p>
               </div>
               <div className='p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg'>
-                <p className='text-blue-700 dark:text-blue-300 text-xs font-medium mb-1'>💡 工作原理</p>
+ <p className='text-blue-700 dark:text-blue-300 text-xs font-medium mb-1'> 工作原理</p>
                 <p className='text-blue-700 dark:text-blue-300 text-xs'>
                   1. 首先尝试使用<strong>主API</strong>解析视频
                 </p>

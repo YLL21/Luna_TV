@@ -453,14 +453,14 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
           >
             {/* 激活态背景光晕 */}
             {activeTab === 'episodes' && (
-              <div className='absolute inset-0 bg-linear-to-r from-green-50 via-emerald-50 to-teal-50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-teal-900/20 -z-10'></div>
+              <div className='absolute inset-0 bg-green-50 dark:bg-green-900/20 -z-10'></div>
             )}
             {/* 非激活态背景 */}
             {activeTab !== 'episodes' && (
               <div className='absolute inset-0 bg-gray-100/50 dark:bg-gray-800/50 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/70 transition-colors duration-300 -z-10'></div>
             )}
             {/* 悬浮光效 */}
-            <div className='absolute inset-0 bg-linear-to-r from-transparent via-green-100/0 to-transparent dark:via-green-500/0 group-hover:via-green-100/50 dark:group-hover:via-green-500/10 transition-all duration-300 -z-10'></div>
+            <div className='absolute inset-0 bg-transparent group-hover:via-green-100/50 dark:group-hover:via-green-500/10 transition-all duration-300 -z-10'></div>
             <span className='relative z-10 font-bold text-sm sm:text-base'>选集</span>
           </div>
         )}
@@ -475,14 +475,14 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
         >
           {/* 激活态背景光晕 */}
           {activeTab === 'sources' && (
-            <div className='absolute inset-0 bg-linear-to-r from-blue-50 via-cyan-50 to-sky-50 dark:from-blue-900/20 dark:via-cyan-900/20 dark:to-sky-900/20 -z-10'></div>
+            <div className='absolute inset-0 bg-blue-50 dark:bg-blue-900/20 -z-10'></div>
           )}
           {/* 非激活态背景 */}
           {activeTab !== 'sources' && (
             <div className='absolute inset-0 bg-gray-100/50 dark:bg-gray-800/50 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/70 transition-colors duration-300 -z-10'></div>
           )}
           {/* 悬浮光效 */}
-          <div className='absolute inset-0 bg-linear-to-r from-transparent via-blue-100/0 to-transparent dark:via-blue-500/0 group-hover:via-blue-100/50 dark:group-hover:via-blue-500/10 transition-all duration-300 -z-10'></div>
+          <div className='absolute inset-0 bg-transparent group-hover:via-blue-100/50 dark:group-hover:via-blue-500/10 transition-all duration-300 -z-10'></div>
           <span className='relative z-10 font-bold text-sm sm:text-base'>换源</span>
         </div>
       </div>
@@ -569,17 +569,17 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                   onClick={() => handleEpisodeClick(episodeNumber - 1)}
                   className={`group min-h-[40px] sm:min-h-[44px] min-w-[40px] sm:min-w-[44px] px-2 sm:px-3 py-2 flex items-center justify-center text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap font-mono relative overflow-hidden active:scale-95
                     ${isActive
-                      ? 'bg-linear-to-r from-green-500 via-emerald-500 to-teal-500 text-white shadow-lg shadow-green-500/30 dark:from-green-600 dark:via-emerald-600 dark:to-teal-600 dark:shadow-green-500/20 scale-105'
-                      : 'bg-linear-to-r from-gray-200 to-gray-100 text-gray-700 hover:from-gray-300 hover:to-gray-200 hover:scale-105 hover:shadow-md dark:from-white/10 dark:to-white/5 dark:text-gray-300 dark:hover:from-white/20 dark:hover:to-white/15'
+                      ? 'bg-green-500 text-white shadow-lg shadow-green-500/30 dark:bg-green-600 dark:shadow-green-500/20 scale-105'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:scale-105 hover:shadow-md dark:bg-white/10 dark:text-gray-300 dark:hover:from-white/20 dark:hover:to-white/15'
                     }`.trim()}
                 >
                   {/* 激活态光晕效果 */}
                   {isActive && (
-                    <div className='absolute inset-0 bg-linear-to-r from-green-400 via-emerald-400 to-teal-400 opacity-30 blur'></div>
+                    <div className='absolute inset-0 bg-green-400 opacity-30 blur'></div>
                   )}
                   {/* 悬浮态闪光效果 */}
                   {!isActive && (
-                    <div className='absolute inset-0 bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/20 dark:group-hover:via-white/10 transition-all duration-300'></div>
+                    <div className='absolute inset-0 bg-transparent group-hover:via-white/20 dark:group-hover:via-white/10 transition-all duration-300'></div>
                   )}
                   <span className='relative z-10'>
                     {(() => {
@@ -605,7 +605,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
       {activeTab === 'sources' && (
         <div className='flex flex-col h-full mt-4'>
           {/* 手动测速面板 */}
-          <div className='mb-4 p-3 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg border border-blue-200 dark:border-blue-700'>
+          <div className='mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700'>
             <div className='flex items-center justify-between'>
               <div className='flex items-center gap-2'>
                 <Gauge className='w-5 h-5 text-blue-600 dark:text-blue-400' />
@@ -626,7 +626,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
               <div className='mt-2 flex items-center gap-2'>
                 <div className='flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden'>
                   <div
-                    className='h-full bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-300'
+                    className='h-full bg-blue-500 transition-all duration-300'
                     style={{ width: `${(manualProgress.done / manualProgress.total) * 100}%` }}
                   />
                 </div>
@@ -684,7 +684,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
             </div>
             {sortMode === 'speed' && (
               <span className='text-xs text-blue-600 dark:text-blue-400 font-medium animate-fade-in'>
-                ⚡ 最快优先
+ 最快优先
               </span>
             )}
           </div>
@@ -701,7 +701,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
           {sourceSearchError && (
             <div className='flex items-center justify-center py-8'>
               <div className='text-center'>
-                <div className='text-red-500 text-2xl mb-2'>⚠️</div>
+ <div className='text-red-500 text-2xl mb-2'></div>
                 <p className='text-sm text-red-600 dark:text-red-400'>
                   {sourceSearchError}
                 </p>
@@ -714,7 +714,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
             availableSources.length === 0 && (
               <div className='flex items-center justify-center py-8'>
                 <div className='text-center'>
-                  <div className='text-gray-400 text-2xl mb-2'>📺</div>
+ <div className='text-gray-400 text-2xl mb-2'></div>
                   <p className='text-sm text-gray-600 dark:text-gray-300'>
                     暂无可用的换源
                   </p>
@@ -795,8 +795,8 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                         }
                         className={`group flex items-start gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-3 rounded-xl transition-all select-none duration-200 relative overflow-hidden active:scale-[0.98]
                       ${isCurrentSource
-                            ? 'bg-linear-to-r from-green-50 via-emerald-50 to-teal-50 dark:from-green-900/30 dark:via-emerald-900/30 dark:to-teal-900/30 border-2 border-green-500/50 dark:border-green-400/50 shadow-lg shadow-green-500/10'
-                            : 'bg-linear-to-r from-gray-50 to-gray-100/50 dark:from-white/5 dark:to-white/10 hover:from-blue-50 hover:to-cyan-50 dark:hover:from-blue-900/20 dark:hover:to-cyan-900/20 hover:scale-[1.02] hover:shadow-md cursor-pointer border border-gray-200/50 dark:border-white/10'
+                            ? 'bg-green-50 dark:bg-green-900/30 border-2 border-green-500/50 dark:border-green-400/50 shadow-lg shadow-green-500/10'
+                            : 'bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:from-blue-900/20 dark:hover:to-cyan-900/20 hover:scale-[1.02] hover:shadow-md cursor-pointer border border-gray-200/50 dark:border-white/10'
                           }`.trim()}
                       >
                         {/* 当前源标记 */}
@@ -804,7 +804,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                           <div className='absolute top-2 right-2 z-10'>
                             <div className='relative'>
                               <div className='absolute inset-0 bg-green-500 rounded-full blur opacity-60 animate-pulse'></div>
-                              <div className='relative bg-linear-to-r from-green-500 to-emerald-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold shadow-lg'>
+                              <div className='relative bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold shadow-lg'>
                                 当前源
                               </div>
                             </div>
@@ -813,11 +813,11 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
 
                         {/* 悬浮光效 */}
                         {!isCurrentSource && (
-                          <div className='absolute inset-0 bg-linear-to-r from-transparent via-white/0 to-transparent group-hover:via-white/30 dark:group-hover:via-white/5 transition-all duration-500 pointer-events-none'></div>
+                          <div className='absolute inset-0 bg-transparent group-hover:via-white/30 dark:group-hover:via-white/5 transition-all duration-500 pointer-events-none'></div>
                         )}
 
                         {/* 封面 */}
-                        <div className='shrink-0 w-10 h-16 sm:w-12 sm:h-20 bg-linear-to-br from-gray-300 to-gray-200 dark:from-gray-600 dark:to-gray-700 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-all duration-200'>
+                        <div className='shrink-0 w-10 h-16 sm:w-12 sm:h-20 bg-gray-300 dark:bg-gray-600 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-all duration-200'>
                           {source.episodes && source.episodes.length > 0 && (
                             <img
                               src={processImageUrl(source.poster)}

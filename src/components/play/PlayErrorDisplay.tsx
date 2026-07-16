@@ -15,10 +15,10 @@ export default function PlayErrorDisplay({ error, videoTitle }: PlayErrorDisplay
       <div className='text-center max-w-md mx-auto px-6'>
         {/* 错误图标 */}
         <div className='relative mb-8'>
-          <div className='relative mx-auto w-24 h-24 bg-linear-to-r from-red-500 to-orange-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
-            <div className='text-white text-4xl'>😵</div>
+          <div className='relative mx-auto w-24 h-24 bg-red-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
+ <div className='text-white text-4xl'></div>
             {/* 脉冲效果 */}
-            <div className='absolute -inset-2 bg-linear-to-r from-red-500 to-orange-500 rounded-2xl opacity-20 animate-pulse'></div>
+            <div className='absolute -inset-2 bg-red-500 rounded-2xl opacity-20 animate-pulse'></div>
           </div>
 
           {/* 浮动错误粒子 */}
@@ -58,16 +58,16 @@ export default function PlayErrorDisplay({ error, videoTitle }: PlayErrorDisplay
                 ? router.push(`/search?q=${encodeURIComponent(videoTitle)}`)
                 : router.back()
             }
-            className='w-full px-6 py-3 bg-linear-to-r from-green-500 to-emerald-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl'
+            className='w-full px-6 py-3 bg-green-500 text-white rounded-xl font-medium hover:bg-green-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl'
           >
-            {videoTitle ? '🔍 返回搜索' : '← 返回上页'}
+ {videoTitle ? ' 返回搜索' : '← 返回上页'}
           </button>
 
           <button
             onClick={() => window.location.reload()}
             className='w-full px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200'
           >
-            🔄 重新尝试
+ 重新尝试
           </button>
         </div>
       </div>

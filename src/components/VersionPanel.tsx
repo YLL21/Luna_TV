@@ -349,7 +349,7 @@ export const VersionPanel: React.FC<VersionPanelProps> = ({
           <div className='space-y-3 sm:space-y-6'>
             {/* 远程更新信息 */}
             {hasUpdate && (
-              <div className='bg-linear-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3 sm:p-4'>
+              <div className='bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3 sm:p-4'>
                 <div className='flex flex-col gap-3'>
                   <div className='flex items-center gap-2 sm:gap-3'>
                     <div className='w-8 h-8 sm:w-10 sm:h-10 bg-yellow-100 dark:bg-yellow-800/40 rounded-full flex items-center justify-center shrink-0'>
@@ -379,7 +379,7 @@ export const VersionPanel: React.FC<VersionPanelProps> = ({
 
             {/* 当前为最新版本信息 */}
             {!hasUpdate && (
-              <div className='bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3 sm:p-4'>
+              <div className='bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3 sm:p-4'>
                 <div className='flex flex-col gap-3'>
                   <div className='flex items-center gap-2 sm:gap-3'>
                     <div className='w-8 h-8 sm:w-10 sm:h-10 bg-green-100 dark:bg-green-800/40 rounded-full flex items-center justify-center shrink-0'>

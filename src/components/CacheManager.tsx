@@ -186,7 +186,7 @@ export default function CacheManager() {
 
   // 清理所有缓存
   const clearAllCache = async () => {
-    if (!confirm('⚠️ 确定要清理所有缓存吗？这将清除豆瓣、短剧、TMDB、弹幕、网盘搜索、YouTube搜索等所有缓存数据。')) {
+ if (!confirm(' 确定要清理所有缓存吗？这将清除豆瓣、短剧、TMDB、弹幕、网盘搜索、YouTube搜索等所有缓存数据。')) {
       return;
     }
     await clearCache('all');
@@ -238,7 +238,7 @@ export default function CacheManager() {
 
       {/* 总览统计 */}
       {stats && (
-        <div className="bg-linear-to-r from-blue-500 to-blue-600 rounded-lg p-6 text-white">
+        <div className="bg-blue-500 rounded-lg p-6 text-white">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="text-center">
               <div className="text-3xl font-bold">{stats.total.count}</div>

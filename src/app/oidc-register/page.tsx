@@ -87,7 +87,7 @@ export default function OIDCRegisterPage() {
       <div className='absolute top-3 right-3 sm:top-4 sm:right-4 z-20'>
         <ThemeToggle />
       </div>
-      <div className='relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-gradient-to-b from-white/90 via-white/70 to-white/40 dark:from-zinc-900/90 dark:via-zinc-900/70 dark:to-zinc-900/40 backdrop-blur-xl shadow-2xl p-6 sm:p-10 dark:border dark:border-zinc-800'
+      <div className='relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl shadow-2xl p-6 sm:p-10 dark:border dark:border-zinc-800'
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
         }}
