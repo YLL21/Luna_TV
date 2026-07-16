@@ -27,6 +27,28 @@ const STORAGE_TYPE =
     | 'sqlite'
     | undefined) || 'localstorage';
 
+// 空操作存储实现（localstorage 模式下使用）
+function createNoopStorage(): Record<string, unknown> {
+  function noopAsync(..._args: unknown[]): Promise<undefined> { return Promise.resolve(undefined); }
+  function getAllAsync(..._args: unknown[]): Promise<unknown[]> { return Promise.resolve([]); }
+  function getNullAsync(..._args: unknown[]): Promise<null> { return Promise.resolve(null); }
+  function getFalseAsync(..._args: unknown[]): Promise<boolean> { return Promise.resolve(false); }
+
+  const handler: ProxyHandler<Record<string, unknown>> = {
+    get(_target, prop, _receiver) {
+      if (prop === 'then') return undefined;
+      const name = String(prop);
+      if (name.startsWith('getAll') || name.startsWith('listAll')) return getAllAsync;
+      if (name.startsWith('verify') || name.startsWith('check')) return getFalseAsync;
+      if (name.startsWith('get') || name === 'migrateData' || name === 'migratePasswords') return getNullAsync;
+      if (name.startsWith('batch')) return getAllAsync;
+      // set / delete / save / register / create / update / change → noop
+      return noopAsync;
+    },
+  };
+  return new Proxy({}, handler);
+}
+
 // 创建存储实例
 function createStorage(): IStorage {
   switch (STORAGE_TYPE) {
@@ -46,7 +68,9 @@ function createStorage(): IStorage {
       return new SqliteStorage();
     case 'localstorage':
     default:
-      return null as unknown as IStorage;
+      // localstorage 模式下无需服务端存储，返回空操作存根避免 NullPointer
+      // getAll* → 空数组/空对象；get* → null；set/delete/save → 无操作
+      return createNoopStorage() as unknown as IStorage;
   }
 }
 
@@ -360,7 +384,7 @@ export class DbManager {
   // 获取全部用户名
   async getAllUsers(): Promise<string[]> {
     incrementDbQuery();
-    if (typeof (this.storage as any).getAllUsers === 'function') {
+    if (this.storage && typeof (this.storage as any).getAllUsers === 'function') {
       return (this.storage as any).getAllUsers();
     }
     return [];
@@ -369,7 +393,7 @@ export class DbManager {
   // ---------- 管理员配置 ----------
   async getAdminConfig(): Promise<AdminConfig | null> {
     incrementDbQuery();
-    if (typeof (this.storage as any).getAdminConfig === 'function') {
+    if (this.storage && typeof (this.storage as any).getAdminConfig === 'function') {
       return (this.storage as any).getAdminConfig();
     }
     return null;
