@@ -796,7 +796,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                         className={`group flex items-start gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-3 rounded-xl transition-all select-none duration-200 relative overflow-hidden active:scale-[0.98]
                       ${isCurrentSource
                             ? 'bg-green-50 dark:bg-green-900/30 border-2 border-green-500/50 dark:border-green-400/50 shadow-lg shadow-green-500/10'
-                            : 'bg-gray-50 dark:bg-white/5 hover:bg-blue-50 dark:hover:from-blue-900/20 dark:hover:to-cyan-900/20 hover:scale-[1.02] hover:shadow-md cursor-pointer border border-gray-200/50 dark:border-white/10'
+                            : 'bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 hover:scale-[1.02] cursor-pointer border border-gray-200/50 dark:border-white/10'
                           }`.trim()}
                       >
                         {/* 当前源标记 */}

@@ -15,7 +15,7 @@ interface TopContentListProps {
 export default function TopContentList({ topSources, className = '' }: TopContentListProps) {
   if (!topSources.length) {
     return (
-      <div className={`bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 ${className}`}>
+      <div className={`@container bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700 ${className}`}>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
           热门来源
         </h3>
@@ -41,7 +41,7 @@ export default function TopContentList({ topSources, className = '' }: TopConten
           return (
             <div key={index} className="flex items-center space-x-3">
               <div className="shrink-0 w-6 text-center">
-                <span className={`text-xs sm:text-sm font-medium ${
+                <span className={`text-[11px] @[180px]:text-xs @[240px]:text-sm font-medium ${
                   index === 0 ? 'text-yellow-600' :
                   index === 1 ? 'text-gray-500' :
                   index === 2 ? 'text-amber-600' : 'text-gray-400'
@@ -55,7 +55,7 @@ export default function TopContentList({ topSources, className = '' }: TopConten
                   <span className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate">
                     {item.source}
                   </span>
-                  <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 ml-2">
+                  <span className="text-[11px] @[180px]:text-xs @[240px]:text-sm text-gray-500 dark:text-gray-400 ml-2 tabular-nums">
                     {item.count}
                   </span>
                 </div>
