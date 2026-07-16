@@ -2,7 +2,6 @@
 
 import { AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 import { useSite } from '@/components/SiteProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -16,64 +15,19 @@ interface RegisterDisabledPageProps {
 export default function RegisterDisabledPage({ reason }: RegisterDisabledPageProps) {
   const router = useRouter();
   const { siteName } = useSite();
-  const [bingWallpaper, setBingWallpaper] = useState<string>('');
-
-  // 获取 Bing 每日壁纸（通过代理 API）
-  useEffect(() => {
-    const fetchBingWallpaper = async () => {
-      try {
-        const response = await fetch('/api/bing-wallpaper');
-        const data = await response.json();
-        if (data.url) {
-          setBingWallpaper(data.url);
-        }
-      } catch (error) {
-        console.log('Failed to fetch Bing wallpaper:', error);
-      }
-    };
-
-    fetchBingWallpaper();
-  }, []);
 
   return (
-    <div className='fixed inset-0 z-50 flex items-center justify-center px-4 overflow-hidden bg-purple-100 dark:bg-gray-900'>
-      {/* Bing 每日壁纸背景 */}
-      {bingWallpaper && (
-        <div
-          className='absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 animate-ken-burns'
-          style={{ backgroundImage: `url(${bingWallpaper})` }}
-        />
-      )}
-
-      {/* 渐变叠加层 */}
-      <div className='absolute inset-0 bg-purple-600/40 dark:bg-purple-900/50' />
-      <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30' />
-
+    <div className='fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
       <div className='absolute top-4 right-4 z-20'>
         <ThemeToggle />
       </div>
-      <div className='relative z-10 w-full max-w-md rounded-3xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.6)] p-10 border border-white/50 dark:border-zinc-700/50 animate-fade-in hover:shadow-[0_25px_100px_rgba(0,0,0,0.4)] transition-shadow duration-500'
-        style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        }}
-      >
-        {/* Fallback for browsers without backdrop-filter support */}
-        <style jsx>{`
-          @supports (backdrop-filter: blur(24px)) or (-webkit-backdrop-filter: blur(24px)) {
-            div {
-              background-color: transparent !important;
-            }
-          }
-        `}</style>
-        {/* 装饰性光效 */}
-        <div className='absolute -top-20 -left-20 w-40 h-40 bg-yellow-400/30 rounded-full blur-3xl animate-pulse' />
-        <div className='absolute -bottom-20 -right-20 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl animate-pulse' style={{ animationDelay: '1s' }} />
 
+      <div className='relative z-10 w-full max-w-md rounded-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-8'>
         <div className='text-center mb-8'>
-          <div className='inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-yellow-500 shadow-lg shadow-yellow-500/50 dark:shadow-yellow-500/30'>
-            <AlertCircle className='w-8 h-8 text-white' />
+          <div className='inline-flex items-center justify-center w-14 h-14 mb-4 rounded-md bg-yellow-500'>
+            <AlertCircle className='w-7 h-7 text-white' />
           </div>
-          <h1 className='text-transparent bg-clip-text bg-yellow-600 dark:bg-yellow-400 tracking-tight text-4xl font-extrabold mb-2 drop-shadow-sm'>
+          <h1 className='text-yellow-600 dark:text-yellow-400 text-2xl font-bold mb-2'>
             {siteName}
           </h1>
         </div>
@@ -81,7 +35,7 @@ export default function RegisterDisabledPage({ reason }: RegisterDisabledPagePro
           <h2 className='text-xl font-semibold text-gray-800 dark:text-gray-200'>
             注册功能暂不可用
           </h2>
-          <div className='p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800/50'>
+          <div className='p-4 rounded-md bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800/50'>
             <p className='text-gray-700 dark:text-gray-300 text-sm leading-relaxed'>
               {reason || '管理员已关闭用户注册功能'}
             </p>
@@ -91,9 +45,8 @@ export default function RegisterDisabledPage({ reason }: RegisterDisabledPagePro
           </p>
           <button
             onClick={() => router.push('/login')}
-            className='group relative inline-flex w-full justify-center items-center gap-2 rounded-xl bg-green-600 hover:bg-green-700 py-3.5 text-base font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/40 hover:-translate-y-0.5 overflow-hidden'
+            className='inline-flex w-full justify-center items-center gap-2 rounded-md bg-green-600 hover:bg-green-700 py-3 text-base font-semibold text-white transition-colors'
           >
-            <span className='absolute inset-0 w-full h-full bg-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
             返回登录 →
           </button>
         </div>

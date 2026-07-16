@@ -26,26 +26,8 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [bingWallpaper, setBingWallpaper] = useState<string>('');
 
   const { siteName } = useSite();
-
-  // 获取 Bing 每日壁纸（通过代理 API）
-  useEffect(() => {
-    const fetchBingWallpaper = async () => {
-      try {
-        const response = await fetch('/api/bing-wallpaper');
-        const data = await response.json();
-        if (data.url) {
-          setBingWallpaper(data.url);
-        }
-      } catch (error) {
-        console.log('Failed to fetch Bing wallpaper:', error);
-      }
-    };
-
-    fetchBingWallpaper();
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -105,51 +87,24 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
   };
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-4 py-8 sm:py-0 overflow-hidden bg-purple-100 dark:bg-gray-900'>
-      {/* Bing 每日壁纸背景 */}
-      {bingWallpaper && (
-        <div
-          className='absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 animate-ken-burns'
-          style={{ backgroundImage: `url(${bingWallpaper})` }}
-        />
-      )}
-
-      {/* 渐变叠加层 */}
-      <div className='absolute inset-0 bg-purple-600/40 dark:bg-purple-900/50' />
-      <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30' />
-
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
       <div className='absolute top-3 right-3 sm:top-4 sm:right-4 z-20'>
         <ThemeToggle />
       </div>
-      <div className='relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_80px_rgba(0,0,0,0.6)] p-6 sm:p-10 border border-white/50 dark:border-zinc-700/50 animate-fade-in hover:shadow-[0_25px_100px_rgba(0,0,0,0.4)] transition-shadow duration-500'
-        style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        }}
-      >
-        {/* Fallback for browsers without backdrop-filter support */}
-        <style jsx>{`
-          @supports (backdrop-filter: blur(24px)) or (-webkit-backdrop-filter: blur(24px)) {
-            div {
-              background-color: transparent !important;
-            }
-          }
-        `}</style>
-        {/* 装饰性光效 */}
-        <div className='absolute -top-20 -left-20 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl animate-pulse' />
-        <div className='absolute -bottom-20 -right-20 w-40 h-40 bg-purple-400/30 rounded-full blur-3xl animate-pulse' style={{ animationDelay: '1s' }} />
 
+      <div className='relative z-10 w-full max-w-md rounded-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 sm:p-8'>
         {/* 标题区域 */}
         <div className='text-center mb-6 sm:mb-8'>
-          <div className='inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50 dark:shadow-blue-500/30'>
-            <UserPlus className='w-6 h-6 sm:w-8 sm:h-8 text-white' />
+          <div className='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-3 sm:mb-4 rounded-md bg-blue-500'>
+            <UserPlus className='w-6 h-6 sm:w-7 sm:h-7 text-white' />
           </div>
-          <h1 className='text-transparent bg-clip-text bg-blue-600 dark:bg-blue-400 tracking-tight text-3xl sm:text-4xl font-extrabold mb-2 drop-shadow-sm'>
+          <h1 className='text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl font-bold mb-2'>
             {siteName}
           </h1>
-          <p className='text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium'>创建您的新账户</p>
+          <p className='text-gray-500 dark:text-gray-400 text-sm'>创建您的新账户</p>
         </div>
 
-        <form onSubmit={handleSubmit} className='space-y-4 sm:space-y-5'>
+        <form onSubmit={handleSubmit} className='space-y-4'>
           <div className='group'>
             <label htmlFor='username' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
               用户名
@@ -162,7 +117,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
                 id='username'
                 type='text'
                 autoComplete='username'
-                className='block w-full pl-12 pr-4 py-3.5 rounded-xl border-0 text-gray-900 dark:text-gray-100 shadow-sm ring-2 ring-white/60 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:outline-none sm:text-base bg-white/80 dark:bg-zinc-800/80 backdrop-blur transition-all duration-300 hover:shadow-md'
+                className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors'
                 placeholder='3-20位字母数字下划线'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -182,7 +137,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
                 id='password'
                 type='password'
                 autoComplete='new-password'
-                className='block w-full pl-12 pr-4 py-3.5 rounded-xl border-0 text-gray-900 dark:text-gray-100 shadow-sm ring-2 ring-white/60 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:outline-none sm:text-base bg-white/80 dark:bg-zinc-800/80 backdrop-blur transition-all duration-300 hover:shadow-md'
+                className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors'
                 placeholder='至少6位字符'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -202,7 +157,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
                 id='confirmPassword'
                 type='password'
                 autoComplete='new-password'
-                className='block w-full pl-12 pr-4 py-3.5 rounded-xl border-0 text-gray-900 dark:text-gray-100 shadow-sm ring-2 ring-white/60 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:outline-none sm:text-base bg-white/80 dark:bg-zinc-800/80 backdrop-blur transition-all duration-300 hover:shadow-md'
+                className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors'
                 placeholder='再次输入密码'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -223,7 +178,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
                   id='inviteCode'
                   type='text'
                   autoComplete='off'
-                  className='block w-full pl-12 pr-4 py-3.5 rounded-xl border-0 text-gray-900 dark:text-gray-100 shadow-sm ring-2 ring-white/60 dark:ring-white/10 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:outline-none sm:text-base bg-white/80 dark:bg-zinc-800/80 backdrop-blur transition-all duration-300 hover:shadow-md uppercase'
+                  className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors uppercase'
                   placeholder='请输入邀请码'
                   value={inviteCode}
                   onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
@@ -233,14 +188,14 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
           )}
 
           {error && (
-            <div className='flex items-center gap-2 p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 animate-slide-down'>
+            <div className='flex items-center gap-2 p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50'>
               <AlertCircle className='h-4 w-4 text-red-600 dark:text-red-400 shrink-0' />
               <p className='text-sm text-red-600 dark:text-red-400'>{error}</p>
             </div>
           )}
 
           {success && (
-            <div className='flex items-center gap-2 p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/50 animate-slide-down'>
+            <div className='flex items-center gap-2 p-3 rounded-md bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/50'>
               <CheckCircle className='h-4 w-4 text-green-600 dark:text-green-400 shrink-0' />
               <p className='text-sm text-green-600 dark:text-green-400'>{success}</p>
             </div>
@@ -251,25 +206,23 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
             disabled={
               !username || !password || !confirmPassword || loading || !!success
             }
-            className='group relative inline-flex w-full justify-center items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-lg overflow-hidden'
+            className='inline-flex w-full justify-center items-center gap-2 rounded-md bg-blue-600 hover:bg-blue-700 py-3 text-base font-semibold text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
           >
-            <span className='absolute inset-0 w-full h-full bg-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000' />
             <UserPlus className='h-5 w-5' />
             {loading ? '注册中...' : success ? '注册成功，正在跳转...' : '立即注册'}
           </button>
 
           <div className='mt-6 pt-6 border-t border-gray-200 dark:border-gray-700'>
-            <p className='text-center text-gray-600 dark:text-gray-400 text-sm mb-3'>
+            <p className='text-center text-gray-500 dark:text-gray-400 text-sm mb-3'>
               已有账户？
             </p>
             <Link
               href='/login'
               prefetch={true}
-              className='group flex items-center justify-center gap-2 w-full px-6 py-2.5 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 text-blue-700 dark:text-blue-400 text-sm font-semibold hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-100'
+              className='flex items-center justify-center gap-2 w-full px-6 py-2.5 rounded-md bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 text-blue-700 dark:text-blue-400 text-sm font-semibold hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors'
             >
               <Lock className='w-4 h-4' />
               <span>立即登录</span>
-              <span className='inline-block transition-transform group-hover:translate-x-1'>→</span>
             </Link>
           </div>
         </form>
