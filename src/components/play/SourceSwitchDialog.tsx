@@ -33,7 +33,7 @@ export default function SourceSwitchDialog({
           <p className='text-base font-medium text-gray-900 dark:text-white mb-1'>
             房主播放源
           </p>
-          <p className='text-sm text-blue-500 dark:text-blue-400 mb-3 font-mono'>
+          <p className='text-sm text-gray-700 dark:text-gray-300 mb-3 font-mono'>
             {ownerSource}
           </p>
           <p className='text-xs text-orange-500 dark:text-orange-400 mb-6'>
@@ -48,7 +48,7 @@ export default function SourceSwitchDialog({
             </button>
             <button
               onClick={onConfirm}
-              className='flex-1 px-4 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition-colors font-medium'
+              className='flex-1 px-4 py-2.5 rounded-xl bg-green-500 hover:bg-green-600 text-white transition-colors font-medium'
             >
               切换源
             </button>

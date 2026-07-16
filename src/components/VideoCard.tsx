@@ -1205,17 +1205,17 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
               {currentEpisode ? (
                 <>
                   {/* 左侧：当前集 - 品牌色背景（红色） */}
-                  <span className='flex items-center bg-red-600 px-1.5 py-0.5 text-[10px] font-bold text-white'>
+                  <span className='flex items-center bg-red-600 px-1.5 py-0.5 text-[10px] @[180px]:text-[11px] font-bold text-white'>
                     EP {String(currentEpisode).padStart(2, '0')}
                   </span>
                   {/* 右侧：总集数 - 半透明黑背景 */}
-                  <span className='flex items-center bg-black/70 backdrop-blur-sm px-1.5 py-0.5 text-[10px] font-medium text-white/60'>
+                  <span className='flex items-center bg-black/70 backdrop-blur-sm px-1.5 py-0.5 text-[10px] @[180px]:text-[11px] font-medium text-white/60'>
                     / {actualEpisodes}
                   </span>
                 </>
               ) : (
                 /* 仅显示总集数 */
-                <span className='flex items-center bg-black/70 backdrop-blur-sm px-2 py-0.5 text-[10px] font-medium text-white/80'>
+                <span className='flex items-center bg-black/70 backdrop-blur-sm px-2 py-0.5 text-[10px] @[180px]:text-[11px] font-medium text-white/80'>
                   {actualEpisodes} 集
                 </span>
               )}
@@ -1225,7 +1225,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
           {/* 年份徽章 - Netflix 风格 - 左上角第二位 */}
           {config.showYear && actualYear && actualYear !== 'unknown' && actualYear.trim() !== '' && (
             <div
-              className={`absolute left-2 flex items-center bg-black/70 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-lg text-white/80 text-[10px] font-medium transition-all duration-300 ease-out group-hover:scale-105 z-30 ${
+              className={`absolute left-2 flex items-center bg-black/70 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-lg text-white/80 text-[10px] @[180px]:text-[11px] font-medium transition-all duration-300 ease-out group-hover:scale-105 z-30 ${
                 actualEpisodes && actualEpisodes > 1 && !isUpcoming && !(from === 'favorite' && actualEpisodes === 99)
                   ? 'top-[38px]'  // 有集数徽章时向下偏移
                   : 'top-2'
@@ -1247,7 +1247,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
           {/* 已完结徽章 - Netflix 风格 - 底部左侧 */}
           {remarks && isSeriesCompleted(remarks) && (
             <div
-              className="absolute bottom-2 left-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-lg text-white/80 text-[10px] font-medium transition-all duration-300 ease-out group-hover:scale-105 z-30"
+              className="absolute bottom-2 left-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-lg text-white/80 text-[10px] @[180px]:text-[11px] font-medium transition-all duration-300 ease-out group-hover:scale-105 z-30"
               style={{
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
@@ -1277,7 +1277,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
 
             return (
               <div
-                className="absolute bottom-2 left-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-lg text-[10px] font-medium transition-all duration-300 ease-out group-hover:scale-105 z-30"
+                className="absolute bottom-2 left-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-lg text-[10px] @[180px]:text-[11px] font-medium transition-all duration-300 ease-out group-hover:scale-105 z-30"
                 style={{
                   WebkitUserSelect: 'none',
                   userSelect: 'none',
@@ -1309,7 +1309,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                 }}
               >
                 <Star size={10} className="fill-current mb-0.5" />
-                <span className="text-[10px] @[180px]:text-xs font-extrabold leading-none">{rate}</span>
+                <span className="text-[11px] @[180px]:text-xs font-extrabold leading-none">{rate}</span>
               </div>
           )}
 
@@ -1388,7 +1388,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                 >
                   {/* 源数量徽章 */}
                   <div
-                    className='bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-lg flex items-center gap-1 hover:scale-105 transition-all duration-300 cursor-pointer'
+                    className='bg-black/70 backdrop-blur-sm text-white text-[10px] @[180px]:text-[11px] font-bold px-2 py-0.5 rounded-md shadow-lg flex items-center gap-1 hover:scale-105 transition-all duration-300 cursor-pointer'
                     style={{
                       WebkitUserSelect: 'none',
                       userSelect: 'none',
@@ -1453,7 +1453,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                             {displaySources.map((sourceName, index) => (
                               <div key={index} className='flex items-center gap-1 sm:gap-1.5'>
                                 <div className='w-0.5 h-0.5 sm:w-1 sm:h-1 bg-blue-400 rounded-full shrink-0'></div>
-                                <span className='truncate text-[10px] sm:text-xs leading-tight' title={sourceName}>
+                                <span className='truncate text-[10px] @[180px]:text-[11px] sm:text-xs leading-tight' title={sourceName}>
                                   {sourceName}
                                 </span>
                               </div>
@@ -1464,7 +1464,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                           {hasMore && (
                             <div className='mt-1 sm:mt-2 pt-1 sm:pt-1.5 border-t border-gray-700/50'>
                               <div className='flex items-center justify-center text-gray-400'>
-                                <span className='text-[10px] sm:text-xs font-medium'>+{remainingCount} 播放源</span>
+                                <span className='text-[10px] @[180px]:text-[11px] sm:text-xs font-medium'>+{remainingCount} 播放源</span>
                               </div>
                             </div>
                           )}

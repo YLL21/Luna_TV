@@ -4757,11 +4757,11 @@ function PlayPageClient() {
             html: '控制栏遮挡度',
             icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="M3 9h18M9 21V9"></path></svg>',
             tooltip: (() => {
-              const opacity = parseFloat(localStorage.getItem('control_bar_opacity') || '0.5');
+              const opacity = parseFloat(localStorage.getItem('control_bar_opacity') || '0');
               return `${Math.round(opacity * 100)}%`;
             })(),
             range: [
-              parseFloat(localStorage.getItem('control_bar_opacity') || '0.5'),
+              parseFloat(localStorage.getItem('control_bar_opacity') || '0'),
               0.0,
               0.8,
               0.1
@@ -5066,7 +5066,7 @@ function PlayPageClient() {
         }
 
  // 应用保存的控制栏透明度设置（毛玻璃效果）
-        const savedOpacity = parseFloat(localStorage.getItem('control_bar_opacity') || '0.5');
+        const savedOpacity = parseFloat(localStorage.getItem('control_bar_opacity') || '0');
         const liquidGlass = document.querySelector('.art-liquid-glass') as HTMLElement;
         if (liquidGlass) {
           // 调整背景色透明度
@@ -5086,7 +5086,7 @@ function PlayPageClient() {
             left: '20px',
             padding: '5px 12px',
             borderRadius: '6px',
-            fontSize: '13px',
+            fontSize: 'clamp(11px, 1vw, 15px)',
             fontWeight: '700',
             color: 'white',
             textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
@@ -5730,7 +5730,7 @@ function PlayPageClient() {
         // 应用保存的透明度设置
         const liquidGlass = artPlayerRef.current?.template?.$player?.querySelector('.art-liquid-glass') as HTMLElement | null;
         if (liquidGlass) {
-          const savedOpacity = parseFloat(localStorage.getItem('control_bar_opacity') || '0.5');
+          const savedOpacity = parseFloat(localStorage.getItem('control_bar_opacity') || '0');
           if (isFullscreen) {
             // 全屏：禁用 backdrop-filter，使用渐变 + 阴影（根据用户透明度调整）
             liquidGlass.style.setProperty('backdrop-filter', 'none', 'important');
@@ -6211,13 +6211,13 @@ function PlayPageClient() {
           >
             {/* 播放器 */}
             <div
-              className={`h-full transition-all duration-300 ease-in-out rounded-xl border border-white/0 dark:border-white/30 ${isEpisodeSelectorCollapsed ? 'col-span-1' : 'md:col-span-3'
+              className={`h-full transition-all duration-300 ease-in-out rounded-md border border-white/0 dark:border-white/30 ${isEpisodeSelectorCollapsed ? 'col-span-1' : 'md:col-span-3'
                 }`}
             >
               <div className='relative w-full h-[300px] lg:h-full'>
                 <div
                   ref={artRef}
-                  className='bg-black w-full h-full rounded-xl overflow-hidden shadow-lg'
+                  className='bg-black w-full h-full rounded-md overflow-hidden shadow-lg'
                 ></div>
 
                 {/* WebSR 分屏对比分割线 */}

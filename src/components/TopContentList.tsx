@@ -41,7 +41,7 @@ export default function TopContentList({ topSources, className = '' }: TopConten
           return (
             <div key={index} className="flex items-center space-x-3">
               <div className="shrink-0 w-6 text-center">
-                <span className={`text-sm font-medium ${
+                <span className={`text-xs sm:text-sm font-medium ${
                   index === 0 ? 'text-yellow-600' :
                   index === 1 ? 'text-gray-500' :
                   index === 2 ? 'text-amber-600' : 'text-gray-400'
@@ -52,10 +52,10 @@ export default function TopContentList({ topSources, className = '' }: TopConten
 
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                  <span className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate">
                     {item.source}
                   </span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 ml-2">
+                  <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 ml-2">
                     {item.count}
                   </span>
                 </div>

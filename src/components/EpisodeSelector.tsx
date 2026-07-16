@@ -85,7 +85,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
         return saved;
       }
     }
-    return 'original';
+    return 'speed';
   });
 
   // 使用 ref 来避免闭包问题
@@ -468,21 +468,21 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
           onClick={handleSourceTabClick}
           className={`group flex-1 py-3.5 sm:py-4 px-4 sm:px-6 text-center cursor-pointer transition-all duration-300 font-semibold relative overflow-hidden active:scale-[0.98] min-h-[44px]
             ${activeTab === 'sources'
-              ? 'text-blue-600 dark:text-blue-400'
-              : 'text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400'
+              ? 'text-green-600 dark:text-green-400'
+              : 'text-gray-700 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400'
             }
           `.trim()}
         >
           {/* 激活态背景光晕 */}
           {activeTab === 'sources' && (
-            <div className='absolute inset-0 bg-blue-50 dark:bg-blue-900/20 -z-10'></div>
+            <div className='absolute inset-0 bg-green-50 dark:bg-green-900/20 -z-10'></div>
           )}
           {/* 非激活态背景 */}
           {activeTab !== 'sources' && (
             <div className='absolute inset-0 bg-gray-100/50 dark:bg-gray-800/50 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/70 transition-colors duration-300 -z-10'></div>
           )}
           {/* 悬浮光效 */}
-          <div className='absolute inset-0 bg-transparent group-hover:via-blue-100/50 dark:group-hover:via-blue-500/10 transition-all duration-300 -z-10'></div>
+          <div className='absolute inset-0 bg-transparent group-hover:via-green-100/50 dark:group-hover:via-green-500/10 transition-all duration-300 -z-10'></div>
           <span className='relative z-10 font-bold text-sm sm:text-base'>换源</span>
         </div>
       </div>
@@ -605,10 +605,10 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
       {activeTab === 'sources' && (
         <div className='flex flex-col h-full mt-4'>
           {/* 手动测速面板 */}
-          <div className='mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700'>
+          <div className='mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700'>
             <div className='flex items-center justify-between'>
               <div className='flex items-center gap-2'>
-                <Gauge className='w-5 h-5 text-blue-600 dark:text-blue-400' />
+                <Gauge className='w-5 h-5 text-gray-600 dark:text-gray-400' />
                 <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
                   视频源测速
                 </span>
@@ -616,7 +616,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
               <button
                 onClick={handleManualSpeedTest}
                 disabled={manualTesting || availableSources.length === 0}
-                className='flex items-center gap-2 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg text-sm font-medium transition-all duration-200 active:scale-95 disabled:cursor-not-allowed'
+                className='flex items-center gap-2 px-3 py-1.5 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white rounded-lg text-sm font-medium transition-all duration-200 active:scale-95 disabled:cursor-not-allowed'
               >
                 <RefreshCw className={`w-4 h-4 ${manualTesting ? 'animate-spin' : ''}`} />
                 {manualTesting ? '测速中...' : '手动测速'}
@@ -626,7 +626,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
               <div className='mt-2 flex items-center gap-2'>
                 <div className='flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden'>
                   <div
-                    className='h-full bg-blue-500 transition-all duration-300'
+                    className='h-full bg-green-500 transition-all duration-300'
                     style={{ width: `${(manualProgress.done / manualProgress.total) * 100}%` }}
                   />
                 </div>
@@ -661,7 +661,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                 }}
                 className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 flex items-center gap-1 ${
                   sortMode === 'speed'
-                    ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 shadow-sm'
+                    ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
@@ -683,7 +683,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
               </button>
             </div>
             {sortMode === 'speed' && (
-              <span className='text-xs text-blue-600 dark:text-blue-400 font-medium animate-fade-in'>
+              <span className='text-xs text-gray-600 dark:text-gray-400 font-medium animate-fade-in'>
  最快优先
               </span>
             )}
@@ -801,7 +801,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                       >
                         {/* 当前源标记 */}
                         {isCurrentSource && (
-                          <div className='absolute top-2 right-2 z-10'>
+                          <div className='absolute top-2 left-2 z-10'>
                             <div className='relative'>
                               <div className='absolute inset-0 bg-green-500 rounded-full blur opacity-60 animate-pulse'></div>
                               <div className='relative bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-semibold shadow-lg'>
@@ -810,6 +810,20 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                             </div>
                           </div>
                         )}
+
+                        {/* 延迟毫秒 - 右上角 */}
+                        {(() => {
+                          const pingSourceKey = `${source.source}-${source.id}`;
+                          const pingInfo = videoInfoMap.get(pingSourceKey);
+                          if (pingInfo && !testingSourceKeys.has(pingSourceKey) && !pingInfo.hasError && pingInfo.status !== 'failed' && pingInfo.pingTime != null) {
+                            return (
+                              <div className='absolute top-2 right-2 z-10 flex items-center text-[10px] sm:text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-400/10 px-1.5 py-0.5 rounded'>
+                                {pingInfo.pingTime}ms
+                              </div>
+                            );
+                          }
+                          return null;
+                        })()}
 
                         {/* 悬浮光效 */}
                         {!isCurrentSource && (
@@ -870,7 +884,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
 
                               if (isTesting) {
                                 return (
-                                  <div className='text-blue-600 dark:text-blue-400 font-medium text-[10px] sm:text-xs animate-pulse'>
+                                  <div className='text-gray-600 dark:text-gray-400 font-medium text-[10px] sm:text-xs animate-pulse'>
                                     正在测速...
                                   </div>
                                 );
@@ -885,14 +899,11 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                                   );
                                 } else if (!videoInfo.hasError) {
                                   return (
-                                    <div className='flex items-end gap-2 sm:gap-3'>
-                                      <div className='text-green-600 dark:text-green-400 font-medium text-[10px] sm:text-xs'>
-                                        {videoInfo.loadSpeed}
-                                      </div>
-                                      <div className='text-orange-600 dark:text-orange-400 font-medium text-[10px] sm:text-xs'>
-                                        {videoInfo.pingTime}ms
-                                      </div>
+                                  <div className='flex items-end gap-2 sm:gap-3'>
+                                    <div className='text-green-600 dark:text-green-400 font-medium text-[10px] sm:text-xs'>
+                                      {videoInfo.loadSpeed}
                                     </div>
+                                  </div>
                                   );
                                 }
                               }
@@ -910,7 +921,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                             // 正在测试中
                             if (isTesting) {
                               return (
-                                <div className='absolute bottom-0 right-0 flex items-center gap-1 bg-blue-500/10 dark:bg-blue-400/20 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded text-xs shrink-0'>
+                                <div className='absolute bottom-0 right-0 flex items-center gap-1 bg-gray-500/10 dark:bg-gray-400/20 text-gray-600 dark:text-gray-400 px-2 py-0.5 rounded text-xs shrink-0'>
                                   <RefreshCw className='w-3 h-3 animate-spin' />
                                   <span>检测中</span>
                                 </div>

@@ -126,37 +126,37 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
             {/* 标签行 */}
             <div className="flex flex-wrap items-center gap-1.5">
               {sourceName && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
                   {sourceName}
                 </span>
               )}
               {(detail?.year || year) && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
                   {detail?.year || year}
                 </span>
               )}
               {displayRating && displayRating > 0 && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/80 text-white font-medium">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-amber-500/80 text-white font-medium">
  {displayRating.toFixed(1)}
                 </span>
               )}
               {bangumiDetails?.rating?.score && !tmdbRating && parseFloat(bangumiDetails.rating.score) > 0 && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-pink-500/80 text-white font-medium">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-pink-500/80 text-white font-medium">
  {parseFloat(bangumiDetails.rating.score).toFixed(1)}
                 </span>
               )}
               {detail?.class && String(detail.class) !== '0' && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-green-500/80 text-white font-medium">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-green-500/80 text-white font-medium">
                   {detail.class}
                 </span>
               )}
               {episodeText && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
                   {episodeText}
                 </span>
               )}
               {tmdbNumberOfSeasons && tmdbNumberOfSeasons > 1 && (
-                <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
                   共 {tmdbNumberOfSeasons} 季
                 </span>
               )}

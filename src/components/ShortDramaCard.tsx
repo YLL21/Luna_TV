@@ -273,7 +273,7 @@ function ShortDramaCard({
   return (
     <>
       <div
-        className={`group relative ${className} transition-all duration-300 ease-in-out hover:scale-[1.05] hover:z-30 hover:shadow-2xl cursor-pointer`}
+        className={`group relative @container ${className} transition-all duration-300 ease-in-out hover:scale-[1.05] hover:z-30 hover:shadow-2xl cursor-pointer`}
         onClick={handleClick}
         onMouseEnter={handlePrefetch}
         onFocus={handlePrefetch}
@@ -338,7 +338,7 @@ function ShortDramaCard({
             {/* 集数标识 - Netflix 统一风格 - 只在集数>1时显示 */}
             {showEpisodeCount && (
               <div className="flex items-center overflow-hidden rounded-md shadow-lg transition-all duration-300 ease-out group-hover:scale-105 bg-black/70 backdrop-blur-sm px-2 py-0.5">
-                <span className="flex items-center text-[10px] font-medium text-white/80">
+                <span className="flex items-center text-[10px] @[200px]:text-[11px] font-medium text-white/80">
                   {realEpisodeCount} 集
                 </span>
               </div>
@@ -346,7 +346,7 @@ function ShortDramaCard({
 
             {/* 评分 - 只在评分大于0时显示 */}
             {Number(drama.vote_average) > 0 && (
-              <div className="flex items-center rounded-lg bg-yellow-400 px-2 py-1 text-[10px] font-bold text-white shadow-lg backdrop-blur-sm ring-2 ring-white/30 transition-all duration-300 group-hover:scale-105">
+              <div className="flex items-center rounded-lg bg-yellow-400 px-2 py-1 text-[10px] @[200px]:text-[11px] font-bold text-white shadow-lg backdrop-blur-sm ring-2 ring-white/30 transition-all duration-300 group-hover:scale-105">
                 <Star className="h-3 w-3 mr-0.5 fill-current" />
                 {drama.vote_average.toFixed(1)}
               </div>
@@ -407,7 +407,7 @@ function ShortDramaCard({
 
         {/* 信息区域 */}
         <div className="mt-2 space-y-1.5">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-blue-600 dark:group-hover:bg-blue-400 transition-all duration-300">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-all duration-300">
             {drama.name}
           </h3>
 
