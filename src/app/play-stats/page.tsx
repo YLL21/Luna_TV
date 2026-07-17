@@ -927,7 +927,7 @@ const PlayStatsPage: React.FC = () => {
                               <div className='flex flex-col gap-2'>
                                 {(userStat as any).lastLoginIp && (
                                   <div className='flex items-start gap-1.5 text-xs text-gray-700 dark:text-gray-300 min-w-0'>
- <span className='shrink-0'></span>
+ {null}
                                     <span className='font-mono break-words flex-1 min-w-0'>{(userStat as any).lastLoginIp}</span>
                                     {(userStat as any).lastLoginLocation && (
                                       <span className='shrink-0 px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded text-xs'>
@@ -1301,7 +1301,7 @@ const PlayStatsPage: React.FC = () => {
                           {/* 空状态提示 */}
                           {upcomingReleases.length === 0 && !upcomingLoading && upcomingInitialized && (
                             <div className="text-center py-6">
- <div className="text-purple-100 text-sm mb-2"></div>
+ {null}
                               <div className="text-purple-100 text-sm">
                                 暂无即将上映的内容
                               </div>
@@ -1900,7 +1900,7 @@ const PlayStatsPage: React.FC = () => {
                       {/* 空状态提示 */}
                       {upcomingReleases.length === 0 && !upcomingLoading && upcomingInitialized && (
                         <div className="text-center py-6">
- <div className="text-purple-100 text-sm mb-2"></div>
+ {null}
                           <div className="text-purple-100 text-sm">
                             暂无即将上映的内容
                           </div>

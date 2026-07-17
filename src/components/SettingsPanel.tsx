@@ -749,7 +749,7 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 ${downloadFormat === 'TS' ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'}`}
                 >
                   <div className='flex flex-col items-center gap-2'>
- <div className={`text-2xl ${downloadFormat === 'TS' ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}></div>
+                    {null}
                     <div className='text-center'>
                       <div className={`text-sm font-semibold ${downloadFormat === 'TS' ? 'text-green-700 dark:text-green-300' : 'text-gray-900 dark:text-gray-100'}`}>TS格式</div>
                       <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>推荐，兼容性好</div>
@@ -767,7 +767,7 @@ export const SettingsPanel = memo(({ isOpen, onClose }: SettingsPanelProps) => {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 ${downloadFormat === 'MP4' ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'}`}
                 >
                   <div className='flex flex-col items-center gap-2'>
- <div className={`text-2xl ${downloadFormat === 'MP4' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'}`}></div>
+                    {null}
                     <div className='text-center'>
                       <div className={`text-sm font-semibold ${downloadFormat === 'MP4' ? 'text-blue-700 dark:text-blue-300' : 'text-gray-900 dark:text-gray-100'}`}>MP4格式</div>
                       <div className='text-xs text-gray-500 dark:text-gray-400 mt-1'>通用格式</div>

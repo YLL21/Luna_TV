@@ -78,9 +78,7 @@ export default function TopContentList({ topSources, className = '' }: TopConten
 
       {topSources.length === 0 && (
         <div className="text-center py-8">
-          <div className="text-gray-400 dark:text-gray-600 mb-2">
- 
-          </div>
+          {null}
           <p className="text-sm text-gray-500 dark:text-gray-400">
             还没有播放数据
           </p>

@@ -778,7 +778,7 @@ export default function TVBoxConfigPage() {
                   className="group flex items-center justify-between px-3 py-2.5 bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-700 rounded-lg hover:border-green-400 dark:hover:border-green-500 hover:shadow-md transition-all"
                 >
                   <div className="flex items-center space-x-2.5">
- <span className="text-xl"></span>
+ {null}
                     <div className="text-left">
                       <div className="text-xs font-semibold text-green-700 dark:text-green-300">
                         家庭安全模式
@@ -821,7 +821,7 @@ export default function TVBoxConfigPage() {
                   className="group flex items-center justify-between px-3 py-2.5 bg-orange-50 dark:bg-orange-900/20 border-2 border-orange-200 dark:border-orange-700 rounded-lg hover:border-orange-400 dark:hover:border-orange-500 hover:shadow-md transition-all"
                 >
                   <div className="flex items-center space-x-2.5">
- <span className="text-xl"></span>
+ {null}
                     <div className="text-left">
                       <div className="text-xs font-semibold text-orange-700 dark:text-orange-300">
                         完整内容模式

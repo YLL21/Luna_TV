@@ -1120,7 +1120,7 @@ export default function SkipController({
             {/* 标题栏带关闭按钮 */}
             <div className="flex items-center justify-between mb-6 border-b border-gray-200/50 dark:border-gray-700/50 pb-4">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
- <span className="text-2xl"></span>
+ {null}
                 智能跳过设置
               </h3>
               <button
@@ -1185,7 +1185,7 @@ export default function SkipController({
               {/* 片头设置 */}
               <div className="space-y-4 bg-green-50/50 dark:bg-green-900/20 p-4 rounded-xl border border-green-100/50 dark:border-green-800/50 backdrop-blur-sm">
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 border-b border-green-200/50 dark:border-green-700/50 pb-2 flex items-center gap-2">
- <span className="text-xl"></span>
+ {null}
                   片头设置
                 </h4>
 
@@ -1228,7 +1228,7 @@ export default function SkipController({
               {/* 片尾设置 */}
               <div className="space-y-4 bg-purple-50/50 dark:bg-purple-900/20 p-4 rounded-xl border border-purple-100/50 dark:border-purple-800/50 backdrop-blur-sm">
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 border-b border-purple-200/50 dark:border-purple-700/50 pb-2 flex items-center gap-2">
- <span className="text-xl"></span>
+ {null}
                   片尾设置
                 </h4>
 
@@ -1361,7 +1361,7 @@ export default function SkipController({
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
- <span className="text-xl"></span>
+ {null}
                     跳过预设组
                   </h4>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">

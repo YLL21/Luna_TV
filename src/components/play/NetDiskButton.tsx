@@ -35,8 +35,7 @@ export default function NetDiskButton({
       title='网盘资源'
     >
       <div className='absolute inset-0 bg-transparent group-hover:via-white/30 dark:group-hover:via-white/10 transition-all duration-500'></div>
- <span className='relative z-10 text-sm sm:text-base'></span>
-      <span className='relative z-10 hidden sm:inline text-xs font-medium text-gray-600 dark:text-gray-300'>
+        <span className='relative z-10 text-xs font-medium text-gray-600 dark:text-gray-300'>
         {netdiskLoading ? (
           <span className='flex items-center gap-1'>
             <span className='inline-block h-3 w-3 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin'></span>

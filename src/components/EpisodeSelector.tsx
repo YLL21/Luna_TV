@@ -701,7 +701,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
           {sourceSearchError && (
             <div className='flex items-center justify-center py-8'>
               <div className='text-center'>
- <div className='text-red-500 text-2xl mb-2'></div>
+ {null}
                 <p className='text-sm text-red-600 dark:text-red-400'>
                   {sourceSearchError}
                 </p>
@@ -714,7 +714,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
             availableSources.length === 0 && (
               <div className='flex items-center justify-center py-8'>
                 <div className='text-center'>
- <div className='text-gray-400 text-2xl mb-2'></div>
+ {null}
                   <p className='text-sm text-gray-600 dark:text-gray-300'>
                     暂无可用的换源
                   </p>

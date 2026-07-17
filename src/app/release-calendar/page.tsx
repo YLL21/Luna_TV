@@ -795,7 +795,7 @@ export default function ReleaseCalendarPage() {
                     return (
                       <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-6 border border-red-200 dark:border-red-800">
                         <div className="flex items-center gap-2 mb-4">
- <span className="text-2xl"></span>
+ {null}
                           <h3 className="text-lg font-bold text-red-800 dark:text-red-300">
                             今日上映 ({uniqueTodayItems.length} 部)
                           </h3>

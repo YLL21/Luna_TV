@@ -2367,7 +2367,7 @@ function LivePageClient() {
             {/* 动画直播图标 */}
             <div className='relative mb-8'>
               <div className='relative mx-auto w-24 h-24 bg-green-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
- <div className='text-white text-4xl'></div>
+ {null}
                 {/* 旋转光环 */}
                 <div className='absolute -inset-2 bg-green-500 rounded-2xl opacity-20 animate-spin'></div>
               </div>
@@ -2435,7 +2435,7 @@ function LivePageClient() {
             {/* 错误图标 */}
             <div className='relative mb-8'>
               <div className='relative mx-auto w-24 h-24 bg-red-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
- <div className='text-white text-4xl'></div>
+ {null}
                 {/* 脉冲效果 */}
                 <div className='absolute -inset-2 bg-red-500 rounded-2xl opacity-20 animate-pulse'></div>
               </div>
@@ -2539,14 +2539,14 @@ function LivePageClient() {
                 >
                   {directPlaybackEnabled ? (
                     <>
- <span className='text-green-600 dark:text-green-400'></span>
+ {null}
                       <span className='text-green-700 dark:text-green-300'>
                         直连{playbackMode === 'proxy' ? '(降级)' : ''}
                       </span>
                     </>
                   ) : (
                     <>
- <span className='text-gray-600 dark:text-gray-400'></span>
+ {null}
                       <span className='text-gray-700 dark:text-gray-300'>代理</span>
                     </>
                   )}
@@ -2691,7 +2691,7 @@ function LivePageClient() {
                       <div className='flex items-center gap-3 flex-1'>
                         <div className='shrink-0'>
                           <div className='w-8 h-8 bg-white/20 rounded-full flex items-center justify-center'>
- <span className='text-lg'></span>
+ {null}
                           </div>
                         </div>
                         <div className='flex-1 min-w-0'>
@@ -2734,7 +2734,7 @@ function LivePageClient() {
                     <div className='text-center max-w-md mx-auto px-6'>
                       <div className='relative mb-8'>
                         <div className='relative mx-auto w-24 h-24 bg-green-500 rounded-2xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-300'>
- <div className='text-white text-4xl'></div>
+ {null}
                           <div className='absolute -inset-2 bg-green-500 rounded-2xl opacity-20 animate-spin'></div>
                         </div>
                       </div>

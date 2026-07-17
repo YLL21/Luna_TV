@@ -6665,7 +6665,7 @@ function PlayPageClient() {
             <div className='shrink-0 border-b border-gray-200 dark:border-gray-700 p-4 sm:p-6'>
               <div className='flex items-center justify-between mb-3'>
                 <div className='flex items-center gap-2 sm:gap-3'>
- <div className='text-2xl sm:text-3xl'></div>
+ {null}
                   <div>
                     <h3 className='text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200'>
                       资源搜索
@@ -6756,7 +6756,7 @@ function PlayPageClient() {
                 <>
                   {videoTitle && !netdiskLoading && !netdiskResults && !netdiskError && (
                     <div className='flex flex-col items-center justify-center py-12 sm:py-16 text-center'>
- <div className='text-5xl sm:text-6xl mb-4'></div>
+ {null}
                       <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400'>
                         点击搜索按钮开始查找网盘资源
                       </p>

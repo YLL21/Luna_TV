@@ -691,7 +691,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
       actions.push({
         id: 'upcoming-notice',
         label: '该影片尚未上映，敬请期待',
- icon: <span className="text-lg"></span>,
+ icon: <></>,
         onClick: () => {}, // 不执行任何操作
         disabled: true,
         color: 'default' as const,
@@ -1028,7 +1028,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
               ) : isUpcoming ? (
                 // 即将上映 - 显示敬请期待
                 <div className='flex flex-col items-center gap-2 bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl'>
- <span className='text-3xl'></span>
+ {null}
                   <span className='text-white font-bold text-sm whitespace-nowrap'>敬请期待</span>
                 </div>
               ) : (
@@ -1258,7 +1258,7 @@ const VideoCard = forwardRef<VideoCardHandle, VideoCardProps>(function VideoCard
                 return false;
               }}
             >
- <span className="text-green-400"></span>
+ {null}
               <span>已完结</span>
             </div>
           )}

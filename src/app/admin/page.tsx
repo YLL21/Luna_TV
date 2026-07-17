@@ -2100,7 +2100,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                       <span className='text-base font-medium text-gray-900 dark:text-gray-100'>
                         显示成人内容
                       </span>
- <span className='text-lg'></span>
+ {null}
                     </div>
                     <p className='text-sm text-gray-600 dark:text-gray-400 mt-1'>
                       允许此用户查看被标记为成人资源的视频源（需要同时启用站点级别和用户组级别的成人内容开关，优先级：用户 &gt; 用户组 &gt; 全局）
@@ -2324,7 +2324,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         <span className='text-base font-medium text-gray-900 dark:text-gray-100'>
                           显示成人内容
                         </span>
- <span className='text-lg'></span>
+ {null}
                       </div>
                       <p className='text-sm text-gray-600 dark:text-gray-400 mt-1'>
                         允许此用户组查看被标记为成人资源的视频源（需要同时启用站点级别的成人内容开关）
@@ -2536,7 +2536,7 @@ const UserConfig = ({ config, role, refreshConfig }: UserConfigProps) => {
                         <span className='text-base font-medium text-gray-900 dark:text-gray-100'>
                           显示成人内容
                         </span>
- <span className='text-lg'></span>
+ {null}
                       </div>
                       <p className='text-sm text-gray-600 dark:text-gray-400 mt-1'>
                         允许此用户组查看被标记为成人资源的视频源（需要同时启用站点级别的成人内容开关）
@@ -3629,7 +3629,7 @@ const VideoSourceConfig = ({
             <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${source.is_adult ? 'translate-x-6' : 'translate-x-1'}`} />
           </button>
           {source.is_adult && (
- <span className='ml-2 text-xs text-red-600 dark:text-red-400'></span>
+            <></>
           )}
         </td>
         <td className='px-6 py-4 whitespace-nowrap text-center'>
@@ -4370,7 +4370,7 @@ const VideoSourceConfig = ({
                 className='w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
               />
               <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
- 标记为成人资源 <span className='text-red-600'></span>
+ 标记为成人资源 {null}
               </span>
             </label>
             {newSource.is_adult && (
@@ -4506,7 +4506,7 @@ const VideoSourceConfig = ({
                     className='w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500'
                   />
                   <span className='text-sm font-medium text-gray-700 dark:text-gray-300'>
- 标记为成人资源 <span className='text-red-600'></span>
+ 标记为成人资源 {null}
                   </span>
                 </label>
               </div>
@@ -6244,7 +6244,7 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
           <label
             className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
           >
- 显示成人内容 <span className='text-red-600 dark:text-red-400'></span>
+ 显示成人内容 {null}
           </label>
           <button
             type='button'
@@ -7291,7 +7291,7 @@ const LiveSourceConfig = ({
           </>
         ) : (
           <div className='text-center py-8'>
- <div className='text-4xl mb-3'></div>
+ {null}
             <p className='text-gray-600 dark:text-gray-400 text-sm'>
               暂无检测数据
             </p>

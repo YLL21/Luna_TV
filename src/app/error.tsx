@@ -108,7 +108,7 @@ export default function Error({
     <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-8">
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 sm:p-8">
         <div className="text-center">
- <div className="text-5xl sm:text-6xl mb-3 sm:mb-4"></div>
+ {null}
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
             页面出错了
           </h2>

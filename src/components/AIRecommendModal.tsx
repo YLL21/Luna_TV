@@ -913,7 +913,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
                     className="p-4 text-center bg-white dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg hover:scale-105 transition-all group"
                     disabled={isPending}
                   >
- <div className="text-3xl mb-2"></div>
+ {null}
                     <div className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       剧情介绍
                     </div>
@@ -941,7 +941,7 @@ export default function AIRecommendModal({ isOpen, onClose, context, welcomeMess
                     className="p-4 text-center bg-white dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600 hover:border-purple-500 dark:hover:border-purple-400 hover:shadow-lg hover:scale-105 transition-all group"
                     disabled={isPending}
                   >
- <div className="text-3xl mb-2"></div>
+ {null}
                     <div className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       相似推荐
                     </div>

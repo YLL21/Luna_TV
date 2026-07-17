@@ -494,7 +494,7 @@ function HeroBanner({
           <div className="flex items-center gap-3 sm:gap-4 text-sm sm:text-base md:text-lg flex-wrap">
             {currentItem.rate && (
               <div className="flex items-center gap-1.5 px-2.5 py-1 bg-yellow-500/90 backdrop-blur-sm rounded">
- <span className="text-white font-bold"></span>
+ {null}
                 <span className="text-white font-bold">{currentItem.rate}</span>
               </div>
             )}
