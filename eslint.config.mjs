@@ -1,23 +1,14 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
+import next from 'eslint-config-next';
+import prettier from 'eslint-config-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
 
 export default [
   {
     ignores: ['public/sw.js', 'public/workbox-*.js', 'node_modules/**', '.next/**'],
   },
-  ...compat.extends('next/core-web-vitals', 'prettier'),
+  ...next,
+  prettier,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
