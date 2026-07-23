@@ -233,7 +233,11 @@ function LoginPageClient() {
 
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4 py-8 bg-gray-950'>
+      <div className='pointer-events-none absolute inset-0 overflow-hidden'>
+        <div className='absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-emerald-500/10 blur-3xl'></div>
+        <div className='absolute -bottom-32 -right-24 w-[28rem] h-[28rem] rounded-full bg-indigo-500/10 blur-3xl'></div>
+      </div>
 
       {/* 右上角主题切换 */}
       <div className='absolute top-4 right-4 z-20'>
@@ -242,7 +246,7 @@ function LoginPageClient() {
 
       {/* 介绍文字 + 登录卡片（介绍文字后台可配） */}
       <AuthIntroShell siteName={siteName} intro={loginIntro}>
-      <div className='relative z-10 w-full max-w-sm shrink-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-md p-8'>
+      <div className='relative z-10 w-full max-w-sm shrink-0 bg-[#F9F9FB] dark:bg-gray-900 rounded-2xl p-8 shadow-2xl shadow-black/50 ring-1 ring-black/5 dark:ring-white/10'>
         {/* 标题区域 */}
         <div className='text-center mb-8'>
           <div className='inline-flex items-center justify-center w-12 h-12 mb-4 rounded-md bg-green-600'>
@@ -401,7 +405,7 @@ function LoginPageClient() {
                 <div className='w-full border-t border-gray-200 dark:border-gray-800'></div>
               </div>
               <div className='relative flex justify-center text-sm'>
-                <span className='px-3 bg-white dark:bg-gray-900 text-gray-400 dark:text-gray-500'>
+                <span className='px-3 bg-[#F9F9FB] dark:bg-gray-900 text-gray-400 dark:text-gray-500'>
                   或
                 </span>
               </div>
