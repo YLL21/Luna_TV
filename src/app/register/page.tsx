@@ -30,6 +30,14 @@ export default async function RegisterPage() {
   // 检查是否需要邀请码
   const requireInviteCode = config.UserConfig?.RequireInviteCode ?? false;
 
+  // 登录/注册页介绍文字配置
+  const loginIntro = {
+    enabled: config.SiteConfig.LoginIntroEnabled ?? false,
+    position: (config.SiteConfig.LoginIntroPosition || 'left') as 'left' | 'right' | 'top' | 'bottom',
+    text: config.SiteConfig.LoginIntroText || '',
+    copyright: config.SiteConfig.LoginIntroCopyright || '',
+  };
+
   // 显示注册表单
-  return <RegisterPageClient requireInviteCode={requireInviteCode} />;
+  return <RegisterPageClient requireInviteCode={requireInviteCode} loginIntro={loginIntro} />;
 }

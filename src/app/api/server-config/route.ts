@@ -30,6 +30,13 @@ export async function GET(request: NextRequest) {
     Version: CURRENT_VERSION,
     DownloadEnabled: config.DownloadConfig?.enabled ?? true,
     requireInviteCode: config.UserConfig?.RequireInviteCode ?? false,
+    // 登录/注册页介绍文字配置（公开信息）
+    LoginIntroConfig: {
+      enabled: config.SiteConfig.LoginIntroEnabled ?? false,
+      position: config.SiteConfig.LoginIntroPosition || 'left',
+      text: config.SiteConfig.LoginIntroText || '',
+      copyright: config.SiteConfig.LoginIntroCopyright || '',
+    },
   };
 
   // 添加 Telegram 登录配置（仅公开必要信息）

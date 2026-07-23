@@ -10,6 +10,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { CURRENT_VERSION } from '@/lib/version';
 import { checkForUpdates, UpdateStatus } from '@/lib/version_check';
 
+import { AuthIntroShell, LoginIntroConfig } from '@/components/AuthIntroShell';
 import { useSite } from '@/components/SiteProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { OIDCProviderLogo, detectProvider, getProviderButtonStyle, getProviderButtonText } from '@/components/OIDCProviderLogos';
@@ -91,6 +92,9 @@ function LoginPageClient() {
   const [oidcButtonText, setOidcButtonText] = useState('使用OIDC登录');
   const [oidcIssuer, setOidcIssuer] = useState<string>('');
 
+  // 登录页介绍文字配置（后台可配）
+  const [loginIntro, setLoginIntro] = useState<LoginIntroConfig | null>(null);
+
   const { siteName } = useSite();
 
   // 获取 Telegram Magic Link 配置
@@ -107,6 +111,11 @@ function LoginPageClient() {
           setTelegramEnabled(true);
         } else {
           console.log('[Login] Telegram is NOT enabled');
+        }
+
+        // 登录页介绍文字配置
+        if (data.LoginIntroConfig) {
+          setLoginIntro(data.LoginIntroConfig);
         }
 
         // 检查 OIDC 配置
@@ -224,15 +233,16 @@ function LoginPageClient() {
 
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
 
       {/* 右上角主题切换 */}
       <div className='absolute top-4 right-4 z-20'>
         <ThemeToggle />
       </div>
 
-      {/* 登录卡片 */}
-      <div className='relative z-10 w-full max-w-sm bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-md p-8'>
+      {/* 介绍文字 + 登录卡片（介绍文字后台可配） */}
+      <AuthIntroShell siteName={siteName} intro={loginIntro}>
+      <div className='relative z-10 w-full max-w-sm shrink-0 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-md p-8'>
         {/* 标题区域 */}
         <div className='text-center mb-8'>
           <div className='inline-flex items-center justify-center w-12 h-12 mb-4 rounded-md bg-green-600'>
@@ -445,6 +455,7 @@ function LoginPageClient() {
           </div>
         )}
       </div>
+      </AuthIntroShell>
 
       {/* 版本信息显示 */}
       <VersionDisplay />

@@ -252,6 +252,11 @@ async function getInitConfig(configFile: string, subConfig: {
       TMDBApiKey: process.env.TMDB_API_KEY || '',
       TMDBLanguage: 'zh-CN',
       EnableTMDBActorSearch: false, // 默认关闭，需要配置API Key后手动开启
+      // 登录/注册页介绍文字默认值
+      LoginIntroEnabled: false,
+      LoginIntroPosition: 'left',
+      LoginIntroText: '',
+      LoginIntroCopyright: '',
     },
     UserConfig: {
       AllowRegister: true, // 默认允许注册

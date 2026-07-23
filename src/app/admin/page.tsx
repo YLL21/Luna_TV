@@ -402,6 +402,11 @@ interface SiteConfig {
   // Bangumi 图片代理
   BangumiImageProxyType?: string;
   BangumiImageProxy?: string;
+  // 登录/注册页介绍文字
+  LoginIntroEnabled?: boolean;
+  LoginIntroPosition?: 'left' | 'right' | 'top' | 'bottom';
+  LoginIntroText?: string;
+  LoginIntroCopyright?: string;
 }
 
 // Cron 配置类型
@@ -5380,6 +5385,11 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
     TMDBApiKey: '',
     TMDBLanguage: 'zh-CN',
     EnableTMDBActorSearch: false,
+    // 登录页介绍文字默认值
+    LoginIntroEnabled: false,
+    LoginIntroPosition: 'left',
+    LoginIntroText: '',
+    LoginIntroCopyright: '',
   });
 
   // Cron 配置状态
@@ -5481,6 +5491,11 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
         TMDBApiKey: config.SiteConfig.TMDBApiKey || '',
         TMDBLanguage: config.SiteConfig.TMDBLanguage || 'zh-CN',
         EnableTMDBActorSearch: config.SiteConfig.EnableTMDBActorSearch || false,
+        // 登录页介绍文字
+        LoginIntroEnabled: config.SiteConfig.LoginIntroEnabled ?? false,
+        LoginIntroPosition: config.SiteConfig.LoginIntroPosition || 'left',
+        LoginIntroText: config.SiteConfig.LoginIntroText || '',
+        LoginIntroCopyright: config.SiteConfig.LoginIntroCopyright || '',
       });
     }
   }, [config]);
@@ -5633,6 +5648,112 @@ const SiteConfigComponent = ({ config, refreshConfig }: { config: AdminConfig | 
           rows={3}
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
+      </div>
+
+      {/* 登录/注册页介绍文字 */}
+      <div className='space-y-3'>
+        <div className='flex items-center justify-between'>
+          <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+            登录/注册页介绍文字
+          </label>
+          <button
+            type='button'
+            onClick={() =>
+              setSiteSettings((prev) => ({
+                ...prev,
+                LoginIntroEnabled: !prev.LoginIntroEnabled,
+              }))
+            }
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${siteSettings.LoginIntroEnabled
+              ? buttonStyles.toggleOn
+              : buttonStyles.toggleOff
+              }`}
+          >
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full ${buttonStyles.toggleThumb} transition-transform ${siteSettings.LoginIntroEnabled
+                ? buttonStyles.toggleThumbOn
+                : buttonStyles.toggleThumbOff
+                }`}
+            />
+          </button>
+        </div>
+        <p className='-mt-2 text-xs text-gray-500 dark:text-gray-400'>
+          开启后登录/注册页将在表单旁展示站点介绍与版权文字（类似 CAS 统一认证页风格）。
+        </p>
+        {siteSettings.LoginIntroEnabled && (
+          <>
+            <div>
+              <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+                文字位置
+              </label>
+              <div className='grid grid-cols-4 gap-2'>
+                {([
+                  { value: 'left', label: '左侧' },
+                  { value: 'right', label: '右侧' },
+                  { value: 'top', label: '上方' },
+                  { value: 'bottom', label: '下方' },
+                ] as const).map((opt) => (
+                  <button
+                    key={opt.value}
+                    type='button'
+                    onClick={() =>
+                      setSiteSettings((prev) => ({
+                        ...prev,
+                        LoginIntroPosition: opt.value,
+                      }))
+                    }
+                    className={`px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${(siteSettings.LoginIntroPosition || 'left') === opt.value
+                      ? 'bg-green-600 border-green-600 text-white'
+                      : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-green-500'
+                      }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+              <p className='mt-1 text-xs text-gray-500 dark:text-gray-400'>
+                左/右为并排布局（小屏自动堆叠），上/下为纵向布局。
+              </p>
+            </div>
+            <div>
+              <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+                介绍文字内容
+              </label>
+              <textarea
+                value={siteSettings.LoginIntroText || ''}
+                onChange={(e) =>
+                  setSiteSettings((prev) => ({
+                    ...prev,
+                    LoginIntroText: e.target.value,
+                  }))
+                }
+                rows={3}
+                placeholder={'例如：XXX 是统一账户体系\n您可使用通行证畅行我们旗下的在线平台'}
+                className='w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent'
+              />
+            </div>
+            <div>
+              <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+                版权/附加文字
+              </label>
+              <textarea
+                value={siteSettings.LoginIntroCopyright || ''}
+                onChange={(e) =>
+                  setSiteSettings((prev) => ({
+                    ...prev,
+                    LoginIntroCopyright: e.target.value,
+                  }))
+                }
+                rows={2}
+                placeholder={'例如：© 2026 保留版权'}
+                className='w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent'
+              />
+              <p className='mt-1 text-xs text-gray-500 dark:text-gray-400'>
+                支持多行，留空则不显示该部分。两项都留空时即使开启也不会展示。
+              </p>
+            </div>
+          </>
+        )}
       </div>
 
       {/* 豆瓣数据源设置 */}

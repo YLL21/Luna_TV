@@ -31,6 +31,11 @@ export interface AdminConfig {
     // 自定义去广告代码
     CustomAdFilterCode?: string;
     CustomAdFilterVersion?: number;
+    // 登录/注册页介绍文字（参考 CAS 风格）
+    LoginIntroEnabled?: boolean; // 是否显示介绍文字区
+    LoginIntroPosition?: 'left' | 'right' | 'top' | 'bottom'; // 介绍文字相对表单卡片的位置
+    LoginIntroText?: string; // 介绍文字内容（支持多行）
+    LoginIntroCopyright?: string; // 底部版权/附加文字（支持多行）
     // 默认用户组
     DefaultUserTags?: string[];
   };

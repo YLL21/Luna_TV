@@ -51,6 +51,10 @@ export async function POST(request: NextRequest) {
       TMDBApiKey,
       TMDBLanguage,
       EnableTMDBActorSearch,
+      LoginIntroEnabled,
+      LoginIntroPosition,
+      LoginIntroText,
+      LoginIntroCopyright,
       cronConfig,
     } = body as {
       SiteName: string;
@@ -74,6 +78,10 @@ export async function POST(request: NextRequest) {
       TMDBApiKey?: string;
       TMDBLanguage?: string;
       EnableTMDBActorSearch?: boolean;
+      LoginIntroEnabled?: boolean;
+      LoginIntroPosition?: 'left' | 'right' | 'top' | 'bottom';
+      LoginIntroText?: string;
+      LoginIntroCopyright?: string;
       cronConfig?: {
         enableAutoRefresh: boolean;
         maxRecordsPerRun: number;
@@ -135,6 +143,12 @@ export async function POST(request: NextRequest) {
       TMDBApiKey: TMDBApiKey || '',
       TMDBLanguage: TMDBLanguage || 'zh-CN',
       EnableTMDBActorSearch: EnableTMDBActorSearch || false,
+      LoginIntroEnabled: LoginIntroEnabled ?? false,
+      LoginIntroPosition: ['left', 'right', 'top', 'bottom'].includes(LoginIntroPosition || '')
+        ? LoginIntroPosition
+        : 'left',
+      LoginIntroText: typeof LoginIntroText === 'string' ? LoginIntroText : '',
+      LoginIntroCopyright: typeof LoginIntroCopyright === 'string' ? LoginIntroCopyright : '',
     };
 
     // 更新豆瓣配置

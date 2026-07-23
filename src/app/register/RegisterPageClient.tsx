@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
+import { AuthIntroShell, LoginIntroConfig } from '@/components/AuthIntroShell';
 import { useSite } from '@/components/SiteProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
@@ -14,9 +15,10 @@ import { VersionDisplay } from './VersionDisplay';
 
 interface RegisterPageClientProps {
   requireInviteCode: boolean;
+  loginIntro?: LoginIntroConfig | null;
 }
 
-function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
+function RegisterForm({ requireInviteCode, loginIntro }: RegisterPageClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [username, setUsername] = useState('');
@@ -87,12 +89,14 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
   };
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4 py-8 bg-[#f5f5f7] dark:bg-gray-950'>
       <div className='absolute top-3 right-3 sm:top-4 sm:right-4 z-20'>
         <ThemeToggle />
       </div>
 
-      <div className='relative z-10 w-full max-w-md rounded-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 sm:p-8'>
+      {/* 介绍文字 + 注册卡片（介绍文字后台可配） */}
+      <AuthIntroShell siteName={siteName} intro={loginIntro ?? null}>
+      <div className='relative z-10 w-full max-w-md shrink-0 rounded-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-6 sm:p-8'>
         {/* 标题区域 */}
         <div className='text-center mb-6 sm:mb-8'>
           <div className='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-3 sm:mb-4 rounded-md bg-blue-500'>
@@ -227,6 +231,7 @@ function RegisterForm({ requireInviteCode }: RegisterPageClientProps) {
           </div>
         </form>
       </div>
+      </AuthIntroShell>
 
       <VersionDisplay />
     </div>
