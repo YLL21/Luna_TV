@@ -233,10 +233,11 @@ function LoginPageClient() {
 
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4 py-8 bg-gray-950'>
-      <div className='pointer-events-none absolute inset-0 overflow-hidden'>
-        <div className='absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-emerald-500/10 blur-3xl'></div>
-        <div className='absolute -bottom-32 -right-24 w-[28rem] h-[28rem] rounded-full bg-indigo-500/10 blur-3xl'></div>
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto py-8 px-[5px] min-[888px]:px-[max(calc(50vw-600px),100px)] bg-black'>
+      {/* 全屏氛围背景 */}
+      <div className='pointer-events-none absolute inset-0 overflow-hidden bg-gradient-to-br from-[#0d1b2a] via-[#10233a] to-[#050a14]'>
+        <div className='absolute -top-40 right-[15%] w-[36rem] h-[36rem] rounded-full bg-[#3BB0FE]/15 blur-3xl'></div>
+        <div className='absolute -bottom-48 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#1e3a5f]/40 blur-3xl'></div>
       </div>
 
       {/* 右上角主题切换 */}
@@ -246,68 +247,54 @@ function LoginPageClient() {
 
       {/* 介绍文字 + 登录卡片（介绍文字后台可配） */}
       <AuthIntroShell siteName={siteName} intro={loginIntro}>
-      <div className='relative z-10 w-full max-w-sm shrink-0 bg-[#F9F9FB] dark:bg-gray-900 rounded-2xl p-8 shadow-2xl shadow-black/50 ring-1 ring-black/5 dark:ring-white/10'>
+      <div className='relative z-10 w-full max-w-[400px] shrink-0 bg-[#F9F9FB] rounded-[10px] p-[35px] text-center overflow-hidden'>
         {/* 标题区域 */}
-        <div className='text-center mb-8'>
-          <div className='inline-flex items-center justify-center w-12 h-12 mb-4 rounded-md bg-green-600'>
-            <Sparkles className='w-6 h-6 text-white' />
+        <div className='mb-5'>
+          <div className='inline-flex items-center justify-center gap-2 mb-2.5'>
+            <Sparkles className='w-6 h-6 text-[#3BB0FE]' />
+            <h1 className='text-xl font-bold text-black tracking-tight'>
+              {siteName}
+            </h1>
           </div>
-          <h1 className='text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1.5 tracking-tight'>
-            {siteName}
-          </h1>
-          <p className='text-sm text-gray-500 dark:text-gray-400'>
+          <p className='text-[.85em] text-black/80'>
             欢迎回来，请登录您的账户
           </p>
         </div>
 
         {/* 登录表单 */}
-        <form onSubmit={handleSubmit} className='space-y-4'>
+        <form onSubmit={handleSubmit}>
           {shouldAskUsername && (
-            <div>
-              <label htmlFor='username' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5'>
-                用户名
-              </label>
-              <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                  <User className='h-4 w-4 text-gray-400 dark:text-gray-500' />
-                </div>
-                <input
-                  id='username'
-                  type='text'
-                  autoComplete='username'
-                  className='block w-full pl-10 pr-3 py-2.5 rounded-md border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 bg-white dark:bg-gray-800 focus:outline-none focus:border-green-500 dark:focus:border-green-400 focus:ring-1 focus:ring-green-500 dark:focus:ring-green-400 text-sm transition-colors'
-                  placeholder='请输入用户名'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
+            <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+              <User className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+              <input
+                id='username'
+                type='text'
+                autoComplete='username'
+                className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none'
+                placeholder='请输入用户名'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </div>
           )}
 
-          <div>
-            <label htmlFor='password' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5'>
-              密码
-            </label>
-            <div className='relative'>
-              <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                <Lock className='h-4 w-4 text-gray-400 dark:text-gray-500' />
-              </div>
-              <input
-                id='password'
-                type='password'
-                autoComplete='current-password'
-                className='block w-full pl-10 pr-3 py-2.5 rounded-md border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 bg-white dark:bg-gray-800 focus:outline-none focus:border-green-500 dark:focus:border-green-400 focus:ring-1 focus:ring-green-500 dark:focus:ring-green-400 text-sm transition-colors'
-                placeholder='请输入访问密码'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+          <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+            <Lock className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+            <input
+              id='password'
+              type='password'
+              autoComplete='current-password'
+              className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none'
+              placeholder='请输入访问密码'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           {error && (
-            <div className='flex items-center gap-2 p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50'>
-              <AlertCircle className='h-4 w-4 text-red-600 dark:text-red-400 shrink-0' />
-              <p className='text-sm text-red-600 dark:text-red-400'>{error}</p>
+            <div className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-red-50 text-left'>
+              <AlertCircle className='h-4 w-4 text-red-500 shrink-0' />
+              <p className='text-[.85em] text-red-500'>{error}</p>
             </div>
           )}
 
@@ -315,79 +302,66 @@ function LoginPageClient() {
           <button
             type='submit'
             disabled={!password || loading || (shouldAskUsername && !username)}
-            className='w-full py-2.5 rounded-md bg-green-600 hover:bg-green-700 text-sm font-semibold text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            className='w-full h-[35px] my-[5px] rounded-[5px] bg-[#3BB0FE] text-base text-white border-0 transition-[filter] hover:brightness-95 active:brightness-90 disabled:grayscale disabled:cursor-not-allowed'
           >
             {loading ? '登录中...' : '立即登录'}
           </button>
 
           {/* 注册链接 */}
           {shouldAskUsername && (
-            <div className='pt-4 border-t border-gray-200 dark:border-gray-800'>
-              <p className='text-center text-sm text-gray-500 dark:text-gray-400 mb-3'>
-                还没有账户？
-              </p>
+            <>
               <Link
                 href='/register'
                 prefetch={true}
-                className='flex items-center justify-center gap-2 w-full py-2.5 rounded-md border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors'
+                className='flex items-center justify-center gap-2 w-full h-[35px] my-[5px] rounded-[5px] bg-[#E8F5FF] text-[#3BB0FE] text-base transition-[filter] hover:brightness-[.97] active:brightness-95'
               >
                 <UserPlus className='w-4 h-4' />
                 <span>立即注册</span>
               </Link>
-            </div>
+              <div className='mt-[15px] text-[.85em] text-black/80'>
+                还没有账户？注册即可开始使用
+              </div>
+            </>
           )}
         </form>
 
         {/* Telegram Magic Link 登录 */}
         {telegramEnabled && (
-          <div className='mt-6 pt-6 border-t border-gray-200 dark:border-gray-800'>
-            <p className='text-center text-sm text-gray-500 dark:text-gray-400 mb-4'>
+          <div className='mt-5 pt-4 border-t border-black/5'>
+            <p className='text-[.85em] text-black/80 mb-2.5'>
               或使用 Telegram 登录
             </p>
 
             {/* Telegram 用户名输入 */}
-            <div className='mb-4'>
-              <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5'>
-                Telegram 用户名
-              </label>
-              <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                  <Send className='h-4 w-4 text-gray-400' />
-                </div>
-                <input
-                  type='text'
-                  value={telegramUsername}
-                  onChange={(e) => setTelegramUsername(e.target.value)}
-                  placeholder='输入您的 Telegram 用户名'
-                  className='block w-full pl-10 pr-3 py-2.5 rounded-md border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 bg-white dark:bg-gray-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm transition-colors'
-                  disabled={telegramLoading}
-                />
-              </div>
-              <p className='mt-1.5 text-xs text-gray-400 dark:text-gray-500'>
-                输入您的 Telegram 用户名（不含 @）
-              </p>
+            <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+              <Send className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+              <input
+                type='text'
+                value={telegramUsername}
+                onChange={(e) => setTelegramUsername(e.target.value)}
+                placeholder='输入您的 Telegram 用户名（不含 @）'
+                className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none'
+                disabled={telegramLoading}
+              />
             </div>
 
             <button
               onClick={handleTelegramLogin}
               disabled={telegramLoading || !telegramUsername.trim()}
-              className='w-full py-2.5 rounded-md bg-blue-600 hover:bg-blue-700 text-sm font-semibold text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+              className='w-full h-[35px] my-[5px] rounded-[5px] bg-[#3BB0FE] text-base text-white border-0 transition-[filter] hover:brightness-95 active:brightness-90 disabled:grayscale disabled:cursor-not-allowed'
             >
               {telegramLoading ? '正在打开 Telegram...' : '通过 Telegram 登录'}
             </button>
 
             {telegramDeepLink && (
-              <div className='mt-4 p-3 rounded-md bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50'>
-                <p className='text-sm text-blue-800 dark:text-blue-200 mb-1.5'>
-                  已在新标签页打开 Telegram
-                </p>
-                <p className='text-xs text-blue-600 dark:text-blue-300'>
-                  如果没有自动打开，请点击{' '}
+              <div className='my-[5px] px-2.5 py-[5px] rounded-[5px] bg-[#E8F5FF] text-left'>
+                <p className='text-[.85em] text-black/80'>
+                  已在新标签页打开 Telegram，如果没有自动打开，请点击{' '}
                   <a
                     href={telegramDeepLink}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='underline font-semibold'
+                    className='text-[#3BB0FE] hover:underline'
                   >
                     这里
                   </a>
@@ -399,13 +373,13 @@ function LoginPageClient() {
 
         {/* OIDC 登录 */}
         {oidcEnabled && shouldAskUsername && (
-          <div className='mt-6 pt-6 border-t border-gray-200 dark:border-gray-800'>
+          <div className='mt-5 pt-4 border-t border-black/5'>
             <div className='relative mb-4'>
               <div className='absolute inset-0 flex items-center'>
-                <div className='w-full border-t border-gray-200 dark:border-gray-800'></div>
+                <div className='w-full border-t border-black/5'></div>
               </div>
               <div className='relative flex justify-center text-sm'>
-                <span className='px-3 bg-[#F9F9FB] dark:bg-gray-900 text-gray-400 dark:text-gray-500'>
+                <span className='px-3 bg-[#F9F9FB] text-black/50'>
                   或
                 </span>
               </div>

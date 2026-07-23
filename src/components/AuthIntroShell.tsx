@@ -18,7 +18,7 @@ interface AuthIntroShellProps {
 /**
  * 登录/注册页布局壳：
  * 介绍区（站名 + 介绍文字 + 版权）与表单卡片按配置位置排布，
- * 宽屏左右两端排布，小屏隐藏介绍区（上/下位置时保留并堆叠）。
+ * 宽屏两端排布，窄屏（<888px）隐藏介绍区、卡片居中（上/下位置时保留堆叠）。
  */
 export function AuthIntroShell({ siteName, intro, children }: AuthIntroShellProps) {
   const show = !!intro?.enabled && !!(intro.text || intro.copyright);
@@ -29,41 +29,40 @@ export function AuthIntroShell({ siteName, intro, children }: AuthIntroShellProp
 
   const pos = intro.position || 'left';
   const horizontal = pos === 'left' || pos === 'right';
-  const containerClass =
-    pos === 'right'
-      ? 'flex-col lg:flex-row-reverse lg:justify-between'
-      : pos === 'left'
-        ? 'flex-col lg:flex-row lg:justify-between'
-        : 'flex-col';
+  const containerClass = horizontal
+    ? pos === 'right'
+      ? 'flex-col justify-center min-[888px]:flex-row-reverse min-[888px]:justify-between min-[888px]:gap-[50px]'
+      : 'flex-col justify-center min-[888px]:flex-row min-[888px]:justify-between min-[888px]:gap-[50px]'
+    : 'flex-col justify-center gap-8';
   const introFirst = pos !== 'bottom';
 
   const panel = (
     <div
-      className={`flex-col ${
+      className={
         horizontal
-          ? 'hidden lg:flex max-w-md items-start text-left'
-          : 'flex w-full max-w-md items-center text-center'
-      }`}
+          ? 'hidden min-[888px]:block max-w-md text-left'
+          : 'block w-full max-w-md text-center'
+      }
     >
-      <h2 className='text-3xl lg:text-4xl font-bold text-white mb-5 tracking-tight drop-shadow-sm'>
+      <div className='text-[1.7rem] font-bold text-white mb-[30px] leading-tight'>
         {siteName}
-      </h2>
-      {intro.text && (
-        <div className='text-sm lg:text-base leading-7 text-white/85 whitespace-pre-line drop-shadow-sm'>
-          {intro.text}
-        </div>
-      )}
-      {intro.copyright && (
-        <div className='mt-6 text-xs leading-6 text-white/50 whitespace-pre-line'>
-          {intro.copyright}
-        </div>
-      )}
+      </div>
+      <div className='text-white leading-[1.6] whitespace-pre-line'>
+        {intro.text && <>{intro.text}</>}
+        {intro.text && intro.copyright && (
+          <>
+            <br />
+            <br />
+          </>
+        )}
+        {intro.copyright && <>{intro.copyright}</>}
+      </div>
     </div>
   );
 
   return (
     <div
-      className={`relative z-10 flex ${containerClass} items-center justify-center gap-8 lg:gap-12 w-full max-w-5xl lg:px-2`}
+      className={`relative z-10 flex items-center w-full max-w-[1200px] ${containerClass}`}
     >
       {introFirst && panel}
       {children}

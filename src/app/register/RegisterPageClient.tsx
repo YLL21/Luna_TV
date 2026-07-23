@@ -89,10 +89,11 @@ function RegisterForm({ requireInviteCode, loginIntro }: RegisterPageClientProps
   };
 
   return (
-    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4 py-8 bg-gray-950'>
-      <div className='pointer-events-none absolute inset-0 overflow-hidden'>
-        <div className='absolute -top-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-blue-500/10 blur-3xl'></div>
-        <div className='absolute -bottom-32 -right-24 w-[28rem] h-[28rem] rounded-full bg-purple-500/10 blur-3xl'></div>
+    <div translate="no" className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto py-8 px-[5px] min-[888px]:px-[max(calc(50vw-600px),100px)] bg-black'>
+      {/* 全屏氛围背景 */}
+      <div className='pointer-events-none absolute inset-0 overflow-hidden bg-gradient-to-br from-[#0d1b2a] via-[#10233a] to-[#050a14]'>
+        <div className='absolute -top-40 right-[15%] w-[36rem] h-[36rem] rounded-full bg-[#3BB0FE]/15 blur-3xl'></div>
+        <div className='absolute -bottom-48 -left-32 w-[32rem] h-[32rem] rounded-full bg-[#1e3a5f]/40 blur-3xl'></div>
       </div>
 
       <div className='absolute top-3 right-3 sm:top-4 sm:right-4 z-20'>
@@ -101,112 +102,84 @@ function RegisterForm({ requireInviteCode, loginIntro }: RegisterPageClientProps
 
       {/* 介绍文字 + 注册卡片（介绍文字后台可配） */}
       <AuthIntroShell siteName={siteName} intro={loginIntro ?? null}>
-      <div className='relative z-10 w-full max-w-md shrink-0 rounded-2xl bg-[#F9F9FB] dark:bg-gray-900 p-6 sm:p-8 shadow-2xl shadow-black/50 ring-1 ring-black/5 dark:ring-white/10'>
+      <div className='relative z-10 w-full max-w-[400px] shrink-0 rounded-[10px] bg-[#F9F9FB] p-[35px] text-center overflow-hidden'>
         {/* 标题区域 */}
-        <div className='text-center mb-6 sm:mb-8'>
-          <div className='inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mb-3 sm:mb-4 rounded-md bg-blue-500'>
-            <UserPlus className='w-6 h-6 sm:w-7 sm:h-7 text-white' />
+        <div className='mb-5'>
+          <div className='inline-flex items-center justify-center gap-2 mb-2.5'>
+            <UserPlus className='w-6 h-6 text-[#3BB0FE]' />
+            <h1 className='text-xl font-bold text-black tracking-tight'>
+              {siteName}
+            </h1>
           </div>
-          <h1 className='text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl font-bold mb-2'>
-            {siteName}
-          </h1>
-          <p className='text-gray-500 dark:text-gray-400 text-sm'>创建您的新账户</p>
+          <p className='text-[.85em] text-black/80'>创建您的新账户</p>
         </div>
 
-        <form onSubmit={handleSubmit} className='space-y-4'>
-          <div className='group'>
-            <label htmlFor='username' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
-              用户名
-            </label>
-            <div className='relative'>
-              <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                <User className='h-5 w-5 text-gray-400 dark:text-gray-500 group-focus-within:text-blue-500 transition-colors' />
-              </div>
-              <input
-                id='username'
-                type='text'
-                autoComplete='username'
-                className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors'
-                placeholder='3-20位字母数字下划线'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
+        <form onSubmit={handleSubmit}>
+          <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+            <User className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+            <input
+              id='username'
+              type='text'
+              autoComplete='username'
+              className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none'
+              placeholder='用户名（3-20位字母数字下划线）'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
 
-          <div className='group'>
-            <label htmlFor='password' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
-              密码
-            </label>
-            <div className='relative'>
-              <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                <Lock className='h-5 w-5 text-gray-400 dark:text-gray-500 group-focus-within:text-blue-500 transition-colors' />
-              </div>
-              <input
-                id='password'
-                type='password'
-                autoComplete='new-password'
-                className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors'
-                placeholder='至少6位字符'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+          <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+            <Lock className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+            <input
+              id='password'
+              type='password'
+              autoComplete='new-password'
+              className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none'
+              placeholder='密码（至少6位字符）'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
-          <div className='group'>
-            <label htmlFor='confirmPassword' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
-              确认密码
-            </label>
-            <div className='relative'>
-              <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                <Shield className='h-5 w-5 text-gray-400 dark:text-gray-500 group-focus-within:text-blue-500 transition-colors' />
-              </div>
-              <input
-                id='confirmPassword'
-                type='password'
-                autoComplete='new-password'
-                className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors'
-                placeholder='再次输入密码'
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+          <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+            <Shield className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+            <input
+              id='confirmPassword'
+              type='password'
+              autoComplete='new-password'
+              className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none'
+              placeholder='再次输入密码'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </div>
 
           {requireInviteCode && (
-            <div className='group'>
-              <label htmlFor='inviteCode' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
-                邀请码
-              </label>
-              <div className='relative'>
-                <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                  <Sparkles className='h-5 w-5 text-gray-400 dark:text-gray-500 group-focus-within:text-blue-500 transition-colors' />
-                </div>
-                <input
-                  id='inviteCode'
-                  type='text'
-                  autoComplete='off'
-                  className='block w-full pl-12 pr-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 focus:outline-none sm:text-base transition-colors uppercase'
-                  placeholder='请输入邀请码'
-                  value={inviteCode}
-                  onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
-                />
-              </div>
+            <div className='flex items-center h-10 my-[5px] rounded-[5px] border border-black/5 bg-[#FCFCFC] transition-colors focus-within:border-[#3BB0FE] focus-within:bg-white overflow-hidden cursor-text'>
+              <Sparkles className='h-4 w-4 ml-2.5 shrink-0 text-[#5C5C5C]' />
+              <input
+                id='inviteCode'
+                type='text'
+                autoComplete='off'
+                className='w-full bg-transparent border-0 px-2.5 py-[5px] text-base text-black placeholder:text-gray-400 focus:outline-none uppercase'
+                placeholder='请输入邀请码'
+                value={inviteCode}
+                onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
+              />
             </div>
           )}
 
           {error && (
-            <div className='flex items-center gap-2 p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50'>
-              <AlertCircle className='h-4 w-4 text-red-600 dark:text-red-400 shrink-0' />
-              <p className='text-sm text-red-600 dark:text-red-400'>{error}</p>
+            <div className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-red-50 text-left'>
+              <AlertCircle className='h-4 w-4 text-red-500 shrink-0' />
+              <p className='text-[.85em] text-red-500'>{error}</p>
             </div>
           )}
 
           {success && (
-            <div className='flex items-center gap-2 p-3 rounded-md bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800/50'>
-              <CheckCircle className='h-4 w-4 text-green-600 dark:text-green-400 shrink-0' />
-              <p className='text-sm text-green-600 dark:text-green-400'>{success}</p>
+            <div className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-[#E8F5FF] text-left'>
+              <CheckCircle className='h-4 w-4 text-[#3BB0FE] shrink-0' />
+              <p className='text-[.85em] text-black/80'>{success}</p>
             </div>
           )}
 
@@ -215,24 +188,21 @@ function RegisterForm({ requireInviteCode, loginIntro }: RegisterPageClientProps
             disabled={
               !username || !password || !confirmPassword || loading || !!success
             }
-            className='inline-flex w-full justify-center items-center gap-2 rounded-md bg-blue-600 hover:bg-blue-700 py-3 text-base font-semibold text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            className='w-full h-[35px] my-[5px] rounded-[5px] bg-[#3BB0FE] text-base text-white border-0 transition-[filter] hover:brightness-95 active:brightness-90 disabled:grayscale disabled:cursor-not-allowed'
           >
-            <UserPlus className='h-5 w-5' />
             {loading ? '注册中...' : success ? '注册成功，正在跳转...' : '立即注册'}
           </button>
 
-          <div className='mt-6 pt-6 border-t border-gray-200 dark:border-gray-700'>
-            <p className='text-center text-gray-500 dark:text-gray-400 text-sm mb-3'>
-              已有账户？
-            </p>
-            <Link
-              href='/login'
-              prefetch={true}
-              className='flex items-center justify-center gap-2 w-full px-6 py-2.5 rounded-md bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 text-blue-700 dark:text-blue-400 text-sm font-semibold hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors'
-            >
-              <Lock className='w-4 h-4' />
-              <span>立即登录</span>
-            </Link>
+          <Link
+            href='/login'
+            prefetch={true}
+            className='flex items-center justify-center gap-2 w-full h-[35px] my-[5px] rounded-[5px] bg-[#E8F5FF] text-[#3BB0FE] text-base transition-[filter] hover:brightness-[.97] active:brightness-95'
+          >
+            <Lock className='w-4 h-4' />
+            <span>立即登录</span>
+          </Link>
+          <div className='mt-[15px] text-[.85em] text-black/80'>
+            已有账户？直接登录即可
           </div>
         </form>
       </div>
