@@ -11,7 +11,7 @@ import React, {
 import { Gauge, RefreshCw, Wifi } from 'lucide-react';
 
 import { SearchResult } from '@/lib/types';
-import { getVideoResolutionFromM3u8, processImageUrl, VideoSourceTestResult } from '@/lib/utils';
+import { getVideoResolutionFromM3u8, processImageUrl, translateTestErrorMessage, VideoSourceTestResult } from '@/lib/utils';
 
 // 使用统一的视频测试结果类型
 type VideoInfo = VideoSourceTestResult;
@@ -616,10 +616,11 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
               <button
                 onClick={handleManualSpeedTest}
                 disabled={manualTesting || availableSources.length === 0}
-                className='flex items-center gap-2 px-3 py-1.5 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white rounded-lg text-sm font-medium transition-all duration-200 active:scale-95 disabled:cursor-not-allowed'
+                title={manualTesting ? '测速中' : '手动测速'}
+                aria-label={manualTesting ? '测速中' : '手动测速'}
+                className='flex items-center justify-center p-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white rounded-lg transition-all duration-200 active:scale-95 disabled:cursor-not-allowed'
               >
                 <RefreshCw className={`w-4 h-4 ${manualTesting ? 'animate-spin' : ''}`} />
-                {manualTesting ? '测速中...' : '手动测速'}
               </button>
             </div>
             {manualTesting && (
@@ -894,7 +895,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                                 if (videoInfo.hasError || videoInfo.status === 'failed') {
                                   return (
                                     <div className='text-red-500/90 dark:text-red-400 font-medium text-[10px] sm:text-xs' title={videoInfo.message}>
-                                      {videoInfo.message || '测速失败'}
+                                      {translateTestErrorMessage(videoInfo.message)}
                                     </div>
                                   );
                                 } else if (!videoInfo.hasError) {

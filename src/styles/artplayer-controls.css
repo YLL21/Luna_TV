@@ -79,12 +79,20 @@
 }
 
 /* ===== Player Control Bar - Layout & Visibility Optimization ===== */
-/* 控制栏清晰背景渐变，确保亮色/浅色视频上控件清晰可见 */
+/* 默认透明度最大：控制栏背景完全透明，不再有深色渐变遮罩 */
+.art-video-player .art-bottom {
+  background: transparent !important;
+}
+
 .art-video-player .art-controls {
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0) 100%) !important;
+  background: transparent !important;
   padding: 0 16px !important;
   min-height: 50px !important;
   align-items: center !important;
+  /* 底部居中：控制栏收窄并水平居中，小屏自动占满宽度（自适应） */
+  width: min(96%, 980px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* 控件间距与可见性 */
@@ -95,20 +103,24 @@
 .art-video-player .art-controls .art-control button,
 .art-video-player .art-controls .art-control [role="button"] {
   color: #fff !important;
-  opacity: 0.85 !important;
-  transition: transform 0.15s ease, opacity 0.15s ease !important;
+  opacity: 1 !important;
+  transition: transform 0.15s ease !important;
+  /* 背景透明后依靠轻微投影保证亮色画面上图标可辨 */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
 }
 
 .art-video-player .art-controls .art-control button:hover,
 .art-video-player .art-controls .art-control [role="button"]:hover {
-  opacity: 1 !important;
   transform: scale(1.08) !important;
 }
 
-/* 进度条清晰可见 */
+/* 进度条与控制栏同宽居中，保持清晰可见 */
 .art-video-player .art-progress {
   height: 4px !important;
-  background: rgba(255,255,255,0.25) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  width: min(96%, 980px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .art-video-player .art-progress:hover {

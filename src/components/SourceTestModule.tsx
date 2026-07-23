@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { SearchResult } from '@/lib/types';
+import { translateTestErrorMessage } from '@/lib/utils';
 
 import VideoCard from '@/components/VideoCard';
 
@@ -860,7 +861,7 @@ export default function SourceTestModule() {
 
                 {result?.error && (
                   <div className='mt-2 pt-2 text-sm text-red-600 dark:text-red-400 border-t border-red-200 dark:border-red-800'>
-                    <span className='font-medium'>错误:</span> {result.error}
+                    <span className='font-medium'>错误:</span> {translateTestErrorMessage(result.error, '请求失败')}
                   </div>
                 )}
               </div>

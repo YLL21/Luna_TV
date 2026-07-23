@@ -289,6 +289,55 @@ export function formatVideoLoadSpeed(speedKBps?: number): string {
 // ============ 结束新增类型 ============
 
 /**
+ * 将测速/检测过程中的英文报错兜底翻译为中文（浏览器原生错误等）
+ */
+export function translateTestErrorMessage(message?: string, fallback = '测速失败'): string {
+  if (!message) return fallback;
+  // 已是中文（含中日韩字符）直接返回
+  if (/[\u4e00-\u9fff]/.test(message)) return message;
+  const m = message.toLowerCase();
+  const httpMatch = m.match(/http\s*(\d{3})/);
+  if (httpMatch) return `请求失败 (HTTP ${httpMatch[1]})`;
+  if (m.includes('failed to fetch') || m.includes('networkerror') || m.includes('load failed')) return '网络请求失败';
+  if (m.includes('timeout') || m.includes('timed out')) return '连接超时';
+  if (m.includes('abort')) return '请求被中断';
+  if (m.includes('cors')) return '跨域请求被拒绝';
+  if (m.includes('hls')) return '播放源检测失败';
+  if (m.includes('manifest')) return '播放列表加载失败';
+  if (m.includes('metadata')) return '视频加载失败';
+  return fallback;
+}
+
+/**
+ * 将 HLS 错误类型/详情转换为中文提示
+ */
+function hlsErrorToChinese(type?: string, details?: string): string {
+  const detailMap: Record<string, string> = {
+    manifestLoadError: '播放列表加载失败',
+    manifestLoadTimeOut: '播放列表加载超时',
+    manifestParsingError: '播放列表解析失败',
+    levelLoadError: '清晰度列表加载失败',
+    levelLoadTimeOut: '清晰度列表加载超时',
+    fragLoadError: '视频分片加载失败',
+    fragLoadTimeOut: '视频分片加载超时',
+    keyLoadError: '解密密钥加载失败',
+    keyLoadTimeOut: '解密密钥加载超时',
+    bufferAppendError: '缓冲写入失败',
+    bufferStalledError: '缓冲停滞',
+  };
+  const typeMap: Record<string, string> = {
+    networkError: '网络错误',
+    mediaError: '媒体错误',
+    keySystemError: '解密错误',
+    muxError: '封装错误',
+    otherError: '其他错误',
+  };
+  if (details && detailMap[details]) return detailMap[details];
+  if (type && typeMap[type]) return typeMap[type];
+  return '播放源检测失败';
+}
+
+/**
  * 从m3u8地址获取视频质量等级和网络信息
  * @param m3u8Url m3u8播放列表的URL
  * @param options 配置选项
@@ -428,7 +477,7 @@ export async function getVideoResolutionFromM3u8(
 
       const timeout = setTimeout(() => {
         cleanup();
-        reject(new Error('Timeout loading video metadata'));
+        reject(new Error('加载超时'));
       }, timeoutMs);
 
       const cleanup = () => {
@@ -451,7 +500,7 @@ export async function getVideoResolutionFromM3u8(
 
       video.onerror = () => {
         cleanup();
-        reject(new Error('Failed to load video metadata'));
+        reject(new Error('视频加载失败'));
       };
 
       let actualLoadSpeed = '未知';
@@ -541,7 +590,7 @@ export async function getVideoResolutionFromM3u8(
 
         if (data.fatal) {
           cleanup();
-          reject(new Error(`HLS Error: ${data.type} - ${data.details}`));
+          reject(new Error(hlsErrorToChinese(data.type, data.details)));
         }
       });
 
@@ -563,7 +612,8 @@ export async function getVideoResolutionFromM3u8(
       }
     });
   } catch (error) {
-    throw new Error(`测速失败: ${error}`);
+    const msg = error instanceof Error ? error.message : String(error);
+    throw new Error(msg || '测速失败');
   }
 }
 
