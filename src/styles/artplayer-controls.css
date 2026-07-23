@@ -77,3 +77,48 @@
     max-width: calc(100vw - 40px) !important;
   }
 }
+
+/* ===== Player Control Bar - Layout & Visibility Optimization ===== */
+/* 控制栏清晰背景渐变，确保亮色/浅色视频上控件清晰可见 */
+.art-video-player .art-controls {
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0) 100%) !important;
+  padding: 0 16px !important;
+  min-height: 50px !important;
+  align-items: center !important;
+}
+
+/* 控件间距与可见性 */
+.art-video-player .art-controls .art-control {
+  margin: 0 2px !important;
+}
+
+.art-video-player .art-controls .art-control button,
+.art-video-player .art-controls .art-control [role="button"] {
+  color: #fff !important;
+  opacity: 0.85 !important;
+  transition: transform 0.15s ease, opacity 0.15s ease !important;
+}
+
+.art-video-player .art-controls .art-control button:hover,
+.art-video-player .art-controls .art-control [role="button"]:hover {
+  opacity: 1 !important;
+  transform: scale(1.08) !important;
+}
+
+/* 进度条清晰可见 */
+.art-video-player .art-progress {
+  height: 4px !important;
+  background: rgba(255,255,255,0.25) !important;
+}
+
+.art-video-player .art-progress:hover {
+  height: 7px !important;
+}
+
+/* 时间文字清晰 */
+.art-video-player .art-controls .art-time {
+  color: #fff !important;
+  font-variant-numeric: tabular-nums !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9) !important;
+  letter-spacing: 0.3px !important;
+}

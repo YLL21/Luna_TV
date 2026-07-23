@@ -615,9 +615,8 @@ export default function SourceBrowserPage() {
         <div className='relative'>
           <div className='absolute inset-0 bg-emerald-400/10 rounded-2xl blur-3xl'></div>
           <div className='relative flex items-center gap-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-xl'>
-            <div className='relative w-16 h-16 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-lg group hover:scale-110 transition-transform duration-300'>
-              <div className='absolute inset-0 bg-emerald-400 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity'></div>
-              <Layers className='relative w-8 h-8 text-white drop-shadow-lg' />
+            <div className='relative w-16 h-16 rounded-2xl bg-emerald-500 flex items-center justify-center hover:scale-110 transition-transform duration-300'>
+              <Layers className='relative w-8 h-8 text-white' />
             </div>
             <div className='flex-1'>
               <h1 className='text-3xl md:text-4xl font-bold bg-emerald-600 dark:bg-emerald-400 bg-clip-text text-transparent'>

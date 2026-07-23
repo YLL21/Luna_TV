@@ -196,7 +196,7 @@ export default async function RootLayout({
                     <NavigationShell />
                     {/* 主内容区域 - 只有这部分会在路由切换时重新渲染 */}
                     <main className='w-full min-h-screen pt-[calc(44px+env(safe-area-inset-top))] md:pt-16 pb-16 md:pb-8'>
-                      <div className='w-full max-w-[2560px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20'>
+                      <div className='w-full max-w-[2560px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12'>
                         <DOMErrorBoundary componentName="PageContent">
                           <Suspense fallback={
                             <div className="fixed inset-0 z-50">
