@@ -101,7 +101,7 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
   const episodeText = totalEpisodes > 1 ? (episodeName || `第 ${currentEpisodeIndex + 1} 集`) : null;
 
   return (
-    <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50">
+    <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50" style={{ transform: 'scale(0.8)', transformOrigin: 'top left' }}>
 
       {/* ── Hero 背景图 ── */}
       {bgUrl && (
@@ -111,6 +111,45 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
             className="absolute inset-0 w-full h-full object-cover object-top" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/70 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
+
+          {/* 标签行 — 置顶左上方 */}
+          <div className="absolute top-4 left-4 z-20 flex flex-wrap items-center gap-1.5 max-w-[72%]">
+            {sourceName && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                {sourceName}
+              </span>
+            )}
+            {(detail?.year || year) && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                {detail?.year || year}
+              </span>
+            )}
+            {displayRating && displayRating > 0 && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-amber-500/80 text-white font-medium">
+                {displayRating.toFixed(1)}
+              </span>
+            )}
+            {bangumiDetails?.rating?.score && !tmdbRating && parseFloat(bangumiDetails.rating.score) > 0 && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-pink-500/80 text-white font-medium">
+                {parseFloat(bangumiDetails.rating.score).toFixed(1)}
+              </span>
+            )}
+            {detail?.class && String(detail.class) !== '0' && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-green-500/80 text-white font-medium">
+                {detail.class}
+              </span>
+            )}
+            {episodeText && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                {episodeText}
+              </span>
+            )}
+            {tmdbNumberOfSeasons && tmdbNumberOfSeasons > 1 && (
+              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
+                共 {tmdbNumberOfSeasons} 季
+              </span>
+            )}
+          </div>
 
           {/* 右下角竖版海报 */}
           {posterUrl && (
@@ -122,45 +161,6 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
 
           {/* 内容区 — 右边留出海报宽度 */}
           <div className="absolute inset-0 z-10 flex flex-col justify-end gap-2.5 p-4 sm:p-6 lg:pr-36 xl:pr-40">
-
-            {/* 标签行 */}
-            <div className="flex flex-wrap items-center gap-1.5">
-              {sourceName && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
-                  {sourceName}
-                </span>
-              )}
-              {(detail?.year || year) && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
-                  {detail?.year || year}
-                </span>
-              )}
-              {displayRating && displayRating > 0 && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-amber-500/80 text-white font-medium">
- {displayRating.toFixed(1)}
-                </span>
-              )}
-              {bangumiDetails?.rating?.score && !tmdbRating && parseFloat(bangumiDetails.rating.score) > 0 && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-pink-500/80 text-white font-medium">
- {parseFloat(bangumiDetails.rating.score).toFixed(1)}
-                </span>
-              )}
-              {detail?.class && String(detail.class) !== '0' && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-green-500/80 text-white font-medium">
-                  {detail.class}
-                </span>
-              )}
-              {episodeText && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
-                  {episodeText}
-                </span>
-              )}
-              {tmdbNumberOfSeasons && tmdbNumberOfSeasons > 1 && (
-                <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-white/15 text-white/90 border border-white/20">
-                  共 {tmdbNumberOfSeasons} 季
-                </span>
-              )}
-            </div>
 
             {/* 标题 — 有 TMDB logo 就显示图片，没有就显示文字 */}
             {tmdbLogo ? (
