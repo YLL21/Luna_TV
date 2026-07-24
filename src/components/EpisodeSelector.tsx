@@ -639,55 +639,56 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
           </div>
 
           {/* 排序模式切换 */}
-          <div className='mb-4 flex items-center gap-2'>
+          <div className='mb-4 flex flex-col gap-2'>
             <span className='text-xs text-gray-600 dark:text-gray-400'>排序:</span>
-            <div className='flex gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg'>
-              <button
-                onClick={() => {
-                  setSortMode('original');
-                  localStorage.setItem('episodeSelectorSortMode', 'original');
-                }}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
-                  sortMode === 'original'
-                    ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                原始
-              </button>
-              <button
-                onClick={() => {
-                  setSortMode('speed');
-                  localStorage.setItem('episodeSelectorSortMode', 'speed');
-                }}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 flex items-center gap-1 ${
-                  sortMode === 'speed'
-                    ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                <Gauge className='w-3 h-3' />
-                速度
-              </button>
-              <button
-                onClick={() => {
-                  setSortMode('name');
-                  localStorage.setItem('episodeSelectorSortMode', 'name');
-                }}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
-                  sortMode === 'name'
-                    ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                }`}
-              >
-                名称
-              </button>
-            </div>
-            {sortMode === 'speed' && (
-              <span className='text-xs text-gray-600 dark:text-gray-400 font-medium animate-fade-in'>
+            <div className='flex items-center gap-2'>
+              <div className='flex gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg'>
+                <button
+                  onClick={() => {
+                    setSortMode('original');
+                    localStorage.setItem('episodeSelectorSortMode', 'original');
+                  }}
+                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+                    sortMode === 'original'
+                      ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  }`}
+                >
+                  原始
+                </button>
+                <button
+                  onClick={() => {
+                    setSortMode('speed');
+                    localStorage.setItem('episodeSelectorSortMode', 'speed');
+                  }}
+                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+                    sortMode === 'speed'
+                      ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  }`}
+                >
+                  速度
+                </button>
+                <button
+                  onClick={() => {
+                    setSortMode('name');
+                    localStorage.setItem('episodeSelectorSortMode', 'name');
+                  }}
+                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+                    sortMode === 'name'
+                      ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  }`}
+                >
+                  名称
+                </button>
+              </div>
+              {sortMode === 'speed' && (
+                <span className='text-xs text-gray-600 dark:text-gray-400 font-medium animate-fade-in'>
  最快优先
-              </span>
-            )}
+                </span>
+              )}
+            </div>
           </div>
 
           {sourceSearchLoading && (
