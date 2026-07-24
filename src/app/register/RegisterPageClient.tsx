@@ -11,7 +11,7 @@ import { AuthIntroShell, LoginIntroConfig } from '@/components/AuthIntroShell';
 import { useSite } from '@/components/SiteProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
-import { VersionDisplay } from './VersionDisplay';
+import { AuthVersionDisplay } from '@/components/AuthVersionDisplay';
 
 interface RegisterPageClientProps {
   requireInviteCode: boolean;
@@ -208,7 +208,7 @@ function RegisterForm({ requireInviteCode, loginIntro }: RegisterPageClientProps
       </div>
       </AuthIntroShell>
 
-      <VersionDisplay />
+      <AuthVersionDisplay />
     </div>
   );
 }

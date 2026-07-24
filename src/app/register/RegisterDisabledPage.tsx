@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useSite } from '@/components/SiteProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
-import { VersionDisplay } from './VersionDisplay';
+import { AuthVersionDisplay } from '@/components/AuthVersionDisplay';
 
 interface RegisterDisabledPageProps {
   reason: string;
@@ -60,7 +60,7 @@ export default function RegisterDisabledPage({ reason }: RegisterDisabledPagePro
         </div>
       </div>
 
-      <VersionDisplay />
+      <AuthVersionDisplay />
     </div>
   );
 }

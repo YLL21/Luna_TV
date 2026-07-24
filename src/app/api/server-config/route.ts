@@ -30,6 +30,7 @@ export async function GET(request: NextRequest) {
     Version: CURRENT_VERSION,
     DownloadEnabled: config.DownloadConfig?.enabled ?? true,
     requireInviteCode: config.UserConfig?.RequireInviteCode ?? false,
+    AllowRegister: config.UserConfig?.AllowRegister ?? true,
     // 登录/注册页介绍文字配置（公开信息）
     LoginIntroConfig: {
       enabled: config.SiteConfig.LoginIntroEnabled ?? false,

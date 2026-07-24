@@ -2,69 +2,17 @@
 
 'use client';
 
-import { AlertCircle, CheckCircle, User, Lock, Sparkles, UserPlus, Send } from 'lucide-react';
+import { AlertCircle, User, Lock, Sparkles, UserPlus, Send } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
-import { CURRENT_VERSION } from '@/lib/version';
-import { checkForUpdates, UpdateStatus } from '@/lib/version_check';
+import { AuthVersionDisplay } from '@/components/AuthVersionDisplay';
 
 import { AuthIntroShell, LoginIntroConfig } from '@/components/AuthIntroShell';
 import { useSite } from '@/components/SiteProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { OIDCProviderLogo, detectProvider, getProviderButtonStyle, getProviderButtonText } from '@/components/OIDCProviderLogos';
-
-// 版本显示组件
-function VersionDisplay() {
-  const [updateStatus, setUpdateStatus] = useState<UpdateStatus | null>(null);
-  const [isChecking, setIsChecking] = useState(true);
-
-  useEffect(() => {
-    const checkUpdate = async () => {
-      try {
-        const status = await checkForUpdates();
-        setUpdateStatus(status);
-      } catch (_) {
-        // do nothing
-      } finally {
-        setIsChecking(false);
-      }
-    };
-
-    checkUpdate();
-  }, []);
-
-  return (
-    <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 text-xs text-white/50'>
-      <span className='font-mono'>v{CURRENT_VERSION}</span>
-      {!isChecking && updateStatus !== UpdateStatus.FETCH_FAILED && (
-        <div
-          className={`flex items-center gap-1.5 ${
-            updateStatus === UpdateStatus.HAS_UPDATE
-              ? 'text-amber-600 dark:text-amber-400'
-              : updateStatus === UpdateStatus.NO_UPDATE
-                ? 'text-green-600 dark:text-green-400'
-                : ''
-          }`}
-        >
-          {updateStatus === UpdateStatus.HAS_UPDATE && (
-            <>
-              <AlertCircle className='w-3.5 h-3.5' />
-              <span className='font-semibold'>有新版本</span>
-            </>
-          )}
-          {updateStatus === UpdateStatus.NO_UPDATE && (
-            <>
-              <CheckCircle className='w-3.5 h-3.5' />
-              <span className='font-semibold'>已是最新</span>
-            </>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
 
 function LoginPageClient() {
   const router = useRouter();
@@ -91,6 +39,7 @@ function LoginPageClient() {
   const [oidcEnabled, setOidcEnabled] = useState(false);
   const [oidcButtonText, setOidcButtonText] = useState('使用OIDC登录');
   const [oidcIssuer, setOidcIssuer] = useState<string>('');
+  const [allowRegister, setAllowRegister] = useState(true);
 
   // 登录页介绍文字配置（后台可配）
   const [loginIntro, setLoginIntro] = useState<LoginIntroConfig | null>(null);
@@ -116,6 +65,11 @@ function LoginPageClient() {
         // 登录页介绍文字配置
         if (data.LoginIntroConfig) {
           setLoginIntro(data.LoginIntroConfig);
+        }
+
+        // 注册开关（关闭时登录页注册入口展示禁用态）
+        if (typeof data.AllowRegister === 'boolean') {
+          setAllowRegister(data.AllowRegister);
         }
 
         // 检查 OIDC 配置
@@ -310,16 +264,23 @@ function LoginPageClient() {
           {/* 注册链接 */}
           {shouldAskUsername && (
             <>
-              <Link
-                href='/register'
-                prefetch={true}
-                className='flex items-center justify-center gap-2 w-full h-[35px] my-[5px] rounded-[5px] bg-[#E8F5FF] text-[#3BB0FE] text-base transition-[filter] hover:brightness-[.97] active:brightness-95'
-              >
-                <UserPlus className='w-4 h-4' />
-                <span>立即注册</span>
-              </Link>
+              {allowRegister ? (
+                <Link
+                  href='/register'
+                  prefetch={true}
+                  className='flex items-center justify-center gap-2 w-full h-[35px] my-[5px] rounded-[5px] bg-[#E8F5FF] text-[#3BB0FE] text-base transition-[filter] hover:brightness-[.97] active:brightness-95'
+                >
+                  <UserPlus className='w-4 h-4' />
+                  <span>立即注册</span>
+                </Link>
+              ) : (
+                <div className='flex items-center justify-center gap-2 w-full h-[35px] my-[5px] rounded-[5px] bg-black/5 text-black/30 text-base cursor-not-allowed'>
+                  <UserPlus className='w-4 h-4' />
+                  <span>注册已关闭</span>
+                </div>
+              )}
               <div className='mt-[15px] text-[.85em] text-black/80'>
-                还没有账户？注册即可开始使用
+                {allowRegister ? '还没有账户？注册即可开始使用' : '管理员已关闭注册'}
               </div>
             </>
           )}
@@ -402,7 +363,7 @@ function LoginPageClient() {
                       key={provider.id}
                       type='button'
                       onClick={() => window.location.href = `/api/auth/oidc/login?provider=${provider.id}`}
-                      className={`w-full inline-flex justify-center items-center rounded-md py-2.5 text-sm font-semibold transition-colors ${buttonStyle}`}
+                      className={`w-full inline-flex justify-center items-center h-[35px] my-[5px] rounded-[5px] text-base font-semibold transition-colors ${buttonStyle}`}
                     >
                       <OIDCProviderLogo provider={detectedProvider} />
                       <span className='ml-2'>{buttonText}</span>
@@ -436,7 +397,7 @@ function LoginPageClient() {
       </AuthIntroShell>
 
       {/* 版本信息显示 */}
-      <VersionDisplay />
+      <AuthVersionDisplay />
     </div>
   );
 }
