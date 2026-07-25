@@ -1368,10 +1368,10 @@ function SearchPageClient() {
         {/* 搜索框区域 - 美化版 */}
         <div className='mb-8'>
           {/* 搜索类型选项卡 - 移动优先响应式设计 */}
-          <div className='mb-6 px-3 sm:px-0'>
+          <div className='mb-6 px-3 sm:px-0 flex justify-center'>
             {/* 移动端：可滚动横向布局；桌面端：居中排列 */}
-            <div className='overflow-x-auto scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0'>
-              <div className='inline-flex sm:flex items-center justify-start sm:justify-center min-w-full sm:min-w-0 bg-gradient-to-b from-gray-100 to-gray-200/80 dark:from-gray-800/90 dark:to-gray-800/95 rounded-2xl p-1.5 gap-1.5 sm:gap-2 shadow-lg border border-gray-200/70 dark:border-gray-700/70 backdrop-blur-md ring-1 ring-black/5 dark:ring-white/5'>
+            <div className='w-full flex justify-center'>
+              <div className='flex w-full max-w-3xl items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-b from-gray-100 to-gray-200/80 dark:from-gray-800/90 dark:to-gray-800/95 rounded-2xl p-1.5 shadow-lg border border-gray-200/70 dark:border-gray-700/70 backdrop-blur-md ring-1 ring-black/5 dark:ring-white/5'>
                 {/* 影视资源 — 核心功能，始终显示 */}
                 <button
                   type='button'
@@ -1389,13 +1389,13 @@ function SearchPageClient() {
                       router.push(`/search?q=${encodeURIComponent(currentQuery)}`);
                     }
                   }}
-                  className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap ${
                     searchType === 'video'
                       ? 'bg-green-500 text-white shadow-md shadow-green-500/30'
                       : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
-                  <Film className='w-4 h-4' />
+                  <Film className='hidden sm:block w-4 h-4' />
                   影视资源
                 </button>
                 {channelsEnabled.netdisk && (
@@ -1414,13 +1414,13 @@ function SearchPageClient() {
                       handleNetDiskSearch(currentQuery);
                     }
                   }}
-                  className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap ${
                     searchType === 'netdisk'
                       ? 'bg-blue-500 text-white shadow-md shadow-blue-500/30'
                       : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
-                  <HardDrive className='w-4 h-4' />
+                  <HardDrive className='hidden sm:block w-4 h-4' />
                   网盘资源
                 </button>
                 )}
@@ -1449,13 +1449,13 @@ function SearchPageClient() {
                       }
                     }
                   }}
-                  className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap ${
                     searchType === 'youtube'
                       ? 'bg-red-500 text-white shadow-md shadow-red-500/30'
                       : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
-                  <PlayCircle className='w-4 h-4' />
+                  <PlayCircle className='hidden sm:block w-4 h-4' />
                   YouTube
                 </button>
                 )}
@@ -1480,13 +1480,13 @@ function SearchPageClient() {
                       }
                     }
                   }}
-                  className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap ${
                     searchType === 'bilibili'
                       ? 'bg-pink-500 text-white shadow-md shadow-pink-500/30'
                       : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
-                  <Tv className='w-4 h-4' />
+                  <Tv className='hidden sm:block w-4 h-4' />
                   Bilibili
                 </button>
                 )}
@@ -1507,13 +1507,13 @@ function SearchPageClient() {
                       handleTmdbActorSearch(currentQuery, tmdbActorType, tmdbFilterState);
                     }
                   }}
-                  className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap ${
                     searchType === 'tmdb-actor'
                       ? 'bg-purple-500 text-white shadow-md shadow-purple-500/30'
                       : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
-                  <Users className='w-4 h-4' />
+                  <Users className='hidden sm:block w-4 h-4' />
                   TMDB演员
                 </button>
                 )}
