@@ -106,9 +106,12 @@ const serverConfigOptions = () => queryOptions({
     const response = await fetch('/api/server-config');
     if (response.ok) {
       const config = await response.json();
-      return { downloadEnabled: config.DownloadEnabled ?? true };
+      return {
+        downloadEnabled: config.DownloadEnabled ?? true,
+        SearchChannels: config.SearchChannels ?? { netdisk: false, youtube: false, bilibili: false, tmdbActor: false },
+      };
     }
-    return { downloadEnabled: true };
+    return { downloadEnabled: true, SearchChannels: { netdisk: false, youtube: false, bilibili: false, tmdbActor: false } };
   },
   staleTime: 10 * 60 * 1000, // 10 minutes
   gcTime: 30 * 60 * 1000,

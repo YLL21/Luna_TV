@@ -38,6 +38,13 @@ export async function GET(request: NextRequest) {
       text: config.SiteConfig.LoginIntroText || '',
       copyright: config.SiteConfig.LoginIntroCopyright || '',
     },
+    // 搜索渠道启用状态（控制搜索页 tab 显示；影视资源为核心功能始终启用，不在此列）
+    SearchChannels: {
+      netdisk: config.NetDiskConfig?.enabled ?? false,
+      youtube: config.YouTubeConfig?.enabled ?? false,
+      bilibili: config.BilibiliConfig?.enabled ?? false,
+      tmdbActor: config.SiteConfig?.EnableTMDBActorSearch ?? false,
+    },
   };
 
   // 添加 Telegram 登录配置（仅公开必要信息）
