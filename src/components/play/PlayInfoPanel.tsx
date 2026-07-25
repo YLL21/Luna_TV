@@ -101,7 +101,7 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
   const episodeText = totalEpisodes > 1 ? (episodeName || `第 ${currentEpisodeIndex + 1} 集`) : null;
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50">
+    <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50">
 
       {/* ── Hero 背景图 ── */}
       {bgUrl && (
