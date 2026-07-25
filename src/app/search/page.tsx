@@ -1371,7 +1371,7 @@ function SearchPageClient() {
           <div className='mb-6 px-3 sm:px-0'>
             {/* 移动端：可滚动横向布局；桌面端：居中排列 */}
             <div className='overflow-x-auto scrollbar-hide -mx-3 px-3 sm:mx-0 sm:px-0'>
-              <div className='inline-flex sm:flex items-center justify-start sm:justify-center min-w-full sm:min-w-0 bg-gray-100 dark:bg-gray-800/95 rounded-2xl p-1.5 gap-1.5 sm:gap-2 shadow-xl border border-gray-200/70 dark:border-gray-600/70 backdrop-blur-md'>
+              <div className='inline-flex sm:flex items-center justify-start sm:justify-center min-w-full sm:min-w-0 bg-gradient-to-b from-gray-100 to-gray-200/80 dark:from-gray-800/90 dark:to-gray-800/95 rounded-2xl p-1.5 gap-1.5 sm:gap-2 shadow-lg border border-gray-200/70 dark:border-gray-700/70 backdrop-blur-md ring-1 ring-black/5 dark:ring-white/5'>
                 {/* 影视资源 — 核心功能，始终显示 */}
                 <button
                   type='button'
@@ -1391,8 +1391,8 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
                     searchType === 'video'
-                      ? 'bg-green-500 text-white shadow-lg shadow-green-500/40 ring-2 ring-green-400/50'
-                      : 'bg-white/60 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200 border border-gray-300/50 dark:border-gray-600/50 shadow-sm hover:bg-white dark:hover:bg-gray-600/80 hover:shadow-md active:scale-95'
+                      ? 'bg-green-500 text-white shadow-md shadow-green-500/30'
+                      : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
                   <Film className='w-4 h-4' />
@@ -1416,8 +1416,8 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
                     searchType === 'netdisk'
-                      ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/40 ring-2 ring-blue-400/50'
-                      : 'bg-white/60 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200 border border-gray-300/50 dark:border-gray-600/50 shadow-sm hover:bg-white dark:hover:bg-gray-600/80 hover:shadow-md active:scale-95'
+                      ? 'bg-blue-500 text-white shadow-md shadow-blue-500/30'
+                      : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
                   <HardDrive className='w-4 h-4' />
@@ -1451,8 +1451,8 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
                     searchType === 'youtube'
-                      ? 'bg-red-500 text-white shadow-lg shadow-red-500/40 ring-2 ring-red-400/50'
-                      : 'bg-white/60 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200 border border-gray-300/50 dark:border-gray-600/50 shadow-sm hover:bg-white dark:hover:bg-gray-600/80 hover:shadow-md active:scale-95'
+                      ? 'bg-red-500 text-white shadow-md shadow-red-500/30'
+                      : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
                   <PlayCircle className='w-4 h-4' />
@@ -1482,8 +1482,8 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
                     searchType === 'bilibili'
-                      ? 'bg-pink-500 text-white shadow-lg shadow-pink-500/40 ring-2 ring-pink-400/50'
-                      : 'bg-white/60 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200 border border-gray-300/50 dark:border-gray-600/50 shadow-sm hover:bg-white dark:hover:bg-gray-600/80 hover:shadow-md active:scale-95'
+                      ? 'bg-pink-500 text-white shadow-md shadow-pink-500/30'
+                      : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
                   <Tv className='w-4 h-4' />
@@ -1509,8 +1509,8 @@ function SearchPageClient() {
                   }}
                   className={`flex-shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2.5 text-sm sm:text-base font-bold rounded-xl transition-all duration-300 whitespace-nowrap min-w-[84px] sm:min-w-0 ${
                     searchType === 'tmdb-actor'
-                      ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/40 ring-2 ring-purple-400/50'
-                      : 'bg-white/60 dark:bg-gray-700/60 text-gray-700 dark:text-gray-200 border border-gray-300/50 dark:border-gray-600/50 shadow-sm hover:bg-white dark:hover:bg-gray-600/80 hover:shadow-md active:scale-95'
+                      ? 'bg-purple-500 text-white shadow-md shadow-purple-500/30'
+                      : 'bg-white/70 dark:bg-gray-700/70 text-gray-600 dark:text-gray-300 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:bg-white dark:hover:bg-gray-600 hover:shadow-md active:scale-95'
                   }`}
                 >
                   <Users className='w-4 h-4' />
