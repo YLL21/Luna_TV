@@ -16,21 +16,6 @@ export default function CollapseButton({
       title={isCollapsed ? '显示选集面板' : '隐藏选集面板'}
     >
       <div className='absolute inset-0 bg-transparent group-hover:via-white/30 dark:group-hover:via-white/10 transition-all duration-500'></div>
-      <svg
-        className={`relative z-10 w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform duration-200 ${
-          isCollapsed ? 'rotate-180' : 'rotate-0'
-        }`}
-        fill='none'
-        stroke='currentColor'
-        viewBox='0 0 24 24'
-      >
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth='2'
-          d='M9 5l7 7-7 7'
-        />
-      </svg>
       <span className='relative z-10 text-xs font-medium text-gray-600 dark:text-gray-300'>
         {isCollapsed ? '显示' : '隐藏'}
       </span>
