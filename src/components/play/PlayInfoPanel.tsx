@@ -101,14 +101,14 @@ export default function PlayInfoPanel(props: PlayInfoPanelProps) {
   const episodeText = totalEpisodes > 1 ? (episodeName || `第 ${currentEpisodeIndex + 1} 集`) : null;
 
   return (
-    <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50" style={{ transform: 'scale(0.8)', transformOrigin: 'top left' }}>
+    <div className="mx-auto w-full max-w-[1200px] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700/50">
 
       {/* ── Hero 背景图 ── */}
       {bgUrl && (
         <section className="relative overflow-hidden rounded-t-xl min-h-[360px] sm:min-h-[420px] md:min-h-[520px] lg:min-h-[620px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={bgUrl} alt={title}
-            className="absolute inset-0 w-full h-full object-cover object-top" />
+            className="absolute inset-0 w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/70 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
 
