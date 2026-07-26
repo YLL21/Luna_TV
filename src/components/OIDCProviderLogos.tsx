@@ -100,25 +100,9 @@ export function detectProvider(issuer?: string): 'google' | 'microsoft' | 'githu
 }
 
 // Get provider button styling
-export function getProviderButtonStyle(provider: ReturnType<typeof detectProvider>) {
-  switch (provider) {
-    case 'google':
-      return 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-300 dark:bg-gray-100 dark:hover:bg-white';
-    case 'microsoft':
-      return 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-300 dark:bg-gray-100 dark:hover:bg-white';
-    case 'github':
-      return 'bg-gray-900 hover:bg-gray-800 text-white border-2 border-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700';
-    case 'facebook':
-      return 'bg-[#1877F2] hover:bg-[#166FE5] text-white border-2 border-[#1877F2]';
-    case 'wechat':
-      return 'bg-[#09BB07] hover:bg-[#08A006] text-white border-2 border-[#09BB07]';
-    case 'apple':
-      return 'bg-black hover:bg-gray-900 text-white border-2 border-black dark:bg-gray-900 dark:hover:bg-gray-800';
-    case 'linuxdo':
-      return 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-300 dark:bg-gray-100 dark:hover:bg-white dark:text-gray-800';
-    default:
-      return 'bg-white hover:bg-gray-50 text-gray-700 border-2 border-gray-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-gray-200 dark:border-gray-600';
-  }
+// 与登录卡片内输入框/按钮统一：白底、细边（border 而非 border-2）、圆角 5px，品牌 logo 仅作辨识
+export function getProviderButtonStyle(_provider: ReturnType<typeof detectProvider>) {
+  return 'bg-white hover:bg-gray-50 text-black/80 border border-black/10';
 }
 
 // Get provider default button text

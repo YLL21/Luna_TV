@@ -363,7 +363,7 @@ function LoginPageClient() {
                       key={provider.id}
                       type='button'
                       onClick={() => window.location.href = `/api/auth/oidc/login?provider=${provider.id}`}
-                      className={`w-full inline-flex justify-center items-center h-[35px] my-[5px] rounded-[5px] text-base font-semibold transition-colors ${buttonStyle}`}
+                      className={`w-full inline-flex justify-center items-center h-[35px] my-[5px] rounded-[5px] text-base transition-colors ${buttonStyle}`}
                     >
                       <OIDCProviderLogo provider={detectedProvider} />
                       <span className='ml-2'>{buttonText}</span>
@@ -379,11 +379,11 @@ function LoginPageClient() {
                 const customText = oidcButtonText && oidcButtonText !== '使用OIDC登录' ? oidcButtonText : undefined;
                 const buttonText = getProviderButtonText(provider, customText);
 
-                return (
+                  return (
                   <button
                     type='button'
                     onClick={() => window.location.href = '/api/auth/oidc/login'}
-                    className={`w-full inline-flex justify-center items-center rounded-md py-2.5 text-sm font-semibold transition-colors ${buttonStyle}`}
+                    className={`w-full inline-flex justify-center items-center h-[35px] my-[5px] rounded-[5px] text-base transition-colors ${buttonStyle}`}
                   >
                     <OIDCProviderLogo provider={provider} />
                     <span className='ml-2'>{buttonText}</span>
