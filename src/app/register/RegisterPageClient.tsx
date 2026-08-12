@@ -170,14 +170,14 @@ function RegisterForm({ requireInviteCode, loginIntro }: RegisterPageClientProps
           )}
 
           {error && (
-            <div className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-red-50 text-left'>
+            <div role='alert' className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-red-50 text-left animate-shake-in'>
               <AlertCircle className='h-4 w-4 text-red-500 shrink-0' />
               <p className='text-[.85em] text-red-500'>{error}</p>
             </div>
           )}
 
           {success && (
-            <div className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-[#E8F5FF] text-left'>
+            <div role='status' className='flex items-center gap-2 my-[5px] px-2.5 py-[5px] rounded-[5px] bg-[#E8F5FF] text-left animate-shake-in'>
               <CheckCircle className='h-4 w-4 text-[#3BB0FE] shrink-0' />
               <p className='text-[.85em] text-black/80'>{success}</p>
             </div>
