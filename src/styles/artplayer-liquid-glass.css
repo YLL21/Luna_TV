@@ -12,15 +12,15 @@
 .artplayer-plugin-liquid-glass.art-control-show .art-bottom {
   align-items: center;
   background-image: none;
-  padding-bottom: var(--art-padding);
+  padding-bottom: 0;
 }
 
 .artplayer-plugin-liquid-glass.art-control-show .art-bottom .art-liquid-glass {
   border-radius: 8px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   background-color: rgba(0, 0, 0, 0);
-  padding: var(--art-padding) calc(var(--art-padding) * 1.5) 5px;
+  padding: var(--art-padding) calc(var(--art-padding) * 1.5) 0;
 }
 
 /* 全屏模式：默认完全透明（遮挡层透明度默认值调整为 0），保留极轻阴影占位以维持控制栏布局 */

@@ -4396,6 +4396,9 @@ function PlayPageClient() {
       // 重新启用5.3.0内存优化功能，但使用false参数避免清空DOM
       Artplayer.REMOVE_SRC_WHEN_DESTROY = true;
 
+      // 默认不自动播放，需用户手动点击播放
+      const shouldAutoPlay = false;
+
       artPlayerRef.current = new Artplayer({
         container: artRef.current,
         url: videoUrl,
@@ -4404,7 +4407,7 @@ function PlayPageClient() {
         isLive: false,
         // iOS设备需要静音才能自动播放，参考ArtPlayer源码处理
         muted: isIOS || isSafari,
-        autoplay: true,
+        autoplay: shouldAutoPlay,
         pip: true,
         autoSize: false,
         autoMini: false,
@@ -4835,7 +4838,7 @@ function PlayPageClient() {
                 // 调整背景色透明度
                 liquidGlass.style.setProperty('background-color', `rgba(0, 0, 0, ${opacity})`, 'important');
                 // 同时调整模糊效果：透明度越低，模糊越少
-                const blurAmount = Math.max(0, opacity * 15); // 0-12px
+                const blurAmount = Math.max(0, opacity * 8); // 0-8px
                 liquidGlass.style.setProperty('backdrop-filter', `blur(${blurAmount}px)`, 'important');
               }
 
@@ -5131,7 +5134,7 @@ function PlayPageClient() {
           // 调整背景色透明度
           liquidGlass.style.setProperty('background-color', `rgba(0, 0, 0, ${savedOpacity})`, 'important');
           // 同时调整模糊效果：透明度越低，模糊越少
-          const blurAmount = Math.max(0, savedOpacity * 15); // 0-12px
+          const blurAmount = Math.max(0, savedOpacity * 8); // 0-8px
           liquidGlass.style.setProperty('backdrop-filter', `blur(${blurAmount}px)`, 'important');
         }
 
@@ -5141,7 +5144,7 @@ function PlayPageClient() {
           html: '<div class="resolution-badge"></div>',
           style: {
             position: 'absolute',
-            bottom: '60px',
+            bottom: '48px',
             left: '20px',
             padding: '5px 12px',
             borderRadius: '6px',
@@ -5149,7 +5152,7 @@ function PlayPageClient() {
             fontWeight: '700',
             color: 'white',
             textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
-            backdropFilter: 'blur(10px)',
+            backdropFilter: 'blur(5px)',
             pointerEvents: 'none',
             opacity: '1',
             transition: 'opacity 0.3s ease',
@@ -5857,7 +5860,7 @@ function PlayPageClient() {
         }
 
         // iOS设备自动播放回退机制：如果自动播放失败，尝试用户交互触发播放
-        if ((isIOS || isSafari) && artPlayerRef.current.paused) {
+        if ((isIOS || isSafari) && shouldAutoPlay && artPlayerRef.current.paused) {
           console.log('iOS设备检测到视频未自动播放，准备交互触发机制');
           
           const tryAutoPlay = async () => {
