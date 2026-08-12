@@ -1373,7 +1373,7 @@ function SearchPageClient() {
           <div className='mb-6 px-3 sm:px-0 flex justify-center'>
             {/* 移动端：可滚动横向布局；桌面端：居中排列 */}
             <div className='w-full flex justify-center'>
-              <div className='flex w-full max-w-3xl items-center justify-center gap-1 bg-[#F9F9FB] dark:bg-gray-800/70 rounded-[10px] p-1 border border-black/5 dark:border-white/10 shadow-sm'>
+              <div className='flex w-full max-w-3xl lg:max-w-4xl items-center justify-center gap-1 bg-[#F9F9FB] dark:bg-gray-800/70 rounded-[10px] p-1 border border-black/5 dark:border-white/10 shadow-sm'>
                 {/* 影视资源 — 核心功能，始终显示 */}
                 <button
                   type='button'
@@ -1391,7 +1391,7 @@ function SearchPageClient() {
                       router.push(`/search?q=${encodeURIComponent(currentQuery)}`);
                     }
                   }}
-                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[13px] sm:text-lg font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
                     searchType === 'video'
                       ? 'bg-[#3BB0FE] text-white shadow-sm'
                       : 'bg-white dark:bg-gray-700/50 text-black/60 dark:text-gray-300 border border-black/5 dark:border-white/10 hover:bg-[#E8F5FF] dark:hover:bg-gray-600/50 active:scale-95'
@@ -1416,7 +1416,7 @@ function SearchPageClient() {
                       handleNetDiskSearch(currentQuery);
                     }
                   }}
-                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[13px] sm:text-lg font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
                     searchType === 'netdisk'
                       ? 'bg-[#3BB0FE] text-white shadow-sm'
                       : 'bg-white dark:bg-gray-700/50 text-black/60 dark:text-gray-300 border border-black/5 dark:border-white/10 hover:bg-[#E8F5FF] dark:hover:bg-gray-600/50 active:scale-95'
@@ -1451,7 +1451,7 @@ function SearchPageClient() {
                       }
                     }
                   }}
-                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[13px] sm:text-lg font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
                     searchType === 'youtube'
                       ? 'bg-[#3BB0FE] text-white shadow-sm'
                       : 'bg-white dark:bg-gray-700/50 text-black/60 dark:text-gray-300 border border-black/5 dark:border-white/10 hover:bg-[#E8F5FF] dark:hover:bg-gray-600/50 active:scale-95'
@@ -1482,7 +1482,7 @@ function SearchPageClient() {
                       }
                     }
                   }}
-                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[13px] sm:text-lg font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
                     searchType === 'bilibili'
                       ? 'bg-[#3BB0FE] text-white shadow-sm'
                       : 'bg-white dark:bg-gray-700/50 text-black/60 dark:text-gray-300 border border-black/5 dark:border-white/10 hover:bg-[#E8F5FF] dark:hover:bg-gray-600/50 active:scale-95'
@@ -1509,7 +1509,7 @@ function SearchPageClient() {
                       handleTmdbActorSearch(currentQuery, tmdbActorType, tmdbFilterState);
                     }
                   }}
-                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[11px] sm:text-base font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
+                  className={`flex-1 inline-flex items-center justify-center gap-1 px-1.5 sm:px-5 py-2.5 text-[13px] sm:text-lg font-medium rounded-[5px] transition-all duration-200 whitespace-nowrap ${
                     searchType === 'tmdb-actor'
                       ? 'bg-[#3BB0FE] text-white shadow-sm'
                       : 'bg-white dark:bg-gray-700/50 text-black/60 dark:text-gray-300 border border-black/5 dark:border-white/10 hover:bg-[#E8F5FF] dark:hover:bg-gray-600/50 active:scale-95'
@@ -1523,7 +1523,7 @@ function SearchPageClient() {
             </div>
           </div>
 
-          <form onSubmit={handleSearch} className='max-w-3xl mx-auto px-3 sm:px-0'>
+          <form onSubmit={handleSearch} className='max-w-3xl lg:max-w-4xl mx-auto px-3 sm:px-0'>
             <div className='relative group'>
               {/* 搜索图标 - 增强动画 */}
               <Search className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-gray-500 transition-all duration-300 group-focus-within:text-green-500 dark:group-focus-within:text-green-400 group-focus-within:scale-110' />
@@ -2509,7 +2509,7 @@ function SearchPageClient() {
             <>
               {/* 搜索历史 - 优先显示 */}
               {searchHistory.length > 0 && (
-                <section className='mb-12'>
+                <section className='mb-12 max-w-3xl lg:max-w-4xl mx-auto px-3 sm:px-0'>
                   <h2 className='mb-4 text-xl font-bold text-gray-800 text-left dark:text-gray-200'>
                     搜索历史
                     {searchHistory.length > 0 && (
