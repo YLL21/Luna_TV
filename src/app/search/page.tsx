@@ -401,7 +401,9 @@ function SearchPageClient() {
   // 当前选中的非核心搜索渠道若被后台禁用，自动回退到影视搜索
   useEffect(() => {
     const enabledMap = channelsEnabled as Record<string, boolean>;
-    if (searchType !== 'video' && !enabledMap[searchType]) {
+    // searchType 用连字符（tmdb-actor），channelsEnabled 用驼峰键（tmdbActor），需映射
+    const enabledKey = searchType === 'tmdb-actor' ? 'tmdbActor' : searchType;
+    if (searchType !== 'video' && !enabledMap[enabledKey]) {
       setSearchType('video');
     }
   }, [searchType, channelsEnabled]);
@@ -1521,7 +1523,7 @@ function SearchPageClient() {
             </div>
           </div>
 
-          <form onSubmit={handleSearch} className='max-w-2xl mx-auto'>
+          <form onSubmit={handleSearch} className='max-w-3xl mx-auto px-3 sm:px-0'>
             <div className='relative group'>
               {/* 搜索图标 - 增强动画 */}
               <Search className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400 dark:text-gray-500 transition-all duration-300 group-focus-within:text-green-500 dark:group-focus-within:text-green-400 group-focus-within:scale-110' />
