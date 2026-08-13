@@ -642,13 +642,13 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
           <div className='mb-4 flex flex-col gap-2'>
             <span className='text-xs text-gray-600 dark:text-gray-400'>排序:</span>
             <div className='flex items-center gap-2'>
-              <div className='flex gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg'>
+              <div className='flex gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg w-full'>
                 <button
                   onClick={() => {
                     setSortMode('original');
                     localStorage.setItem('episodeSelectorSortMode', 'original');
                   }}
-                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+                  className={`flex-1 text-center px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
                     sortMode === 'original'
                       ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -661,7 +661,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                     setSortMode('speed');
                     localStorage.setItem('episodeSelectorSortMode', 'speed');
                   }}
-                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+                  className={`flex-1 text-center px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
                     sortMode === 'speed'
                       ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -674,7 +674,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                     setSortMode('name');
                     localStorage.setItem('episodeSelectorSortMode', 'name');
                   }}
-                  className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+                  className={`flex-1 text-center px-3 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
                     sortMode === 'name'
                       ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -683,11 +683,6 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                   名称
                 </button>
               </div>
-              {sortMode === 'speed' && (
-                <span className='text-xs text-gray-600 dark:text-gray-400 font-medium animate-fade-in'>
- 最快优先
-                </span>
-              )}
             </div>
           </div>
 
@@ -819,7 +814,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = ({
                           const pingInfo = videoInfoMap.get(pingSourceKey);
                           if (pingInfo && !testingSourceKeys.has(pingSourceKey) && !pingInfo.hasError && pingInfo.status !== 'failed' && pingInfo.pingTime != null) {
                             return (
-                              <div className='absolute top-2 right-2 z-10 flex items-center text-[10px] sm:text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-400/10 px-1.5 py-0.5 rounded'>
+                              <div className='absolute top-2 right-2 z-30 flex items-center text-[10px] sm:text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-500/25 dark:bg-orange-400/25 px-1.5 py-0.5 rounded'>
                                 {pingInfo.pingTime}ms
                               </div>
                             );

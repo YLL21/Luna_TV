@@ -13,10 +13,11 @@
   align-items: center;
   background-image: none;
   padding-bottom: 0;
+  bottom: 0;
 }
 
 .artplayer-plugin-liquid-glass.art-control-show .art-bottom .art-liquid-glass {
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   background-color: rgba(0, 0, 0, 0);
